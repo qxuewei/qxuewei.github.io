@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qxuewei.github.io/</id>
     <title>极客学伟</title>
-    <updated>2021-04-27T05:52:41.673Z</updated>
+    <updated>2021-04-27T07:04:43.271Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qxuewei.github.io/"/>
     <link rel="self" href="https://qxuewei.github.io/atom.xml"/>
@@ -10,6 +10,64 @@
     <logo>https://qxuewei.github.io/images/avatar.png</logo>
     <icon>https://qxuewei.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 极客学伟</rights>
+    <entry>
+        <title type="html"><![CDATA[Git-合并两个不同的仓库]]></title>
+        <id>https://qxuewei.github.io/post/git-he-bing-liang-ge-bu-tong-de-cang-ku/</id>
+        <link href="https://qxuewei.github.io/post/git-he-bing-liang-ge-bu-tong-de-cang-ku/">
+        </link>
+        <updated>2021-04-27T07:00:14.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="git-合并两个不同的仓库">Git-合并两个不同的仓库</h1>
+<p>有时候我们需要合并两个不同地址的Git仓库，比如：其中一个仓库A我们在GitHub上部署，另外一个仓库B我们在国内的Coding上部署，两者为同一个工程，如果我们希望将仓库A的所有改动合并到仓库B上。</p>
+<p>整个操作的思路是伪造伪造其中一个远程仓库作为另一个仓库的一个分支，然后进行分支合并。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="git-合并两个不同的仓库">Git-合并两个不同的仓库</h1>
+<p>有时候我们需要合并两个不同地址的Git仓库，比如：其中一个仓库A我们在GitHub上部署，另外一个仓库B我们在国内的Coding上部署，两者为同一个工程，如果我们希望将仓库A的所有改动合并到仓库B上。</p>
+<p>整个操作的思路是伪造伪造其中一个远程仓库作为另一个仓库的一个分支，然后进行分支合并。</p>
+<!-- more -->
+<h4 id="背景">背景：</h4>
+<p>A仓库地址为：git@github.com:qxuewei/notebook.git<br>
+B仓库地址为：git@e.coding.net:qxuewei/notebook/notebook.git<br>
+需要将A仓库改动合并到B仓库中，首先保证A仓库内所有的改动均已提交。</p>
+<p><strong>另外一个前提是你需要有两个仓库的代码操作权限，否则无法合并。</strong></p>
+<h4 id="1-下载需要进行合并的仓库-b">1. 下载需要进行合并的仓库 B</h4>
+<pre><code>git clone git@e.coding.net:qxuewei/notebook/notebook.git
+</code></pre>
+<h4 id="2-添加需要被合并的远程仓库-a">2. 添加需要被合并的远程仓库 A</h4>
+<pre><code>git remote add base git@github.com:qxuewei/notebook.git
+</code></pre>
+<p>将 base 作为远程仓库，添加到 本地仓库(origin)中，设置别名为 base(自定义，为了方便与本地仓库origin作区分)</p>
+<p>此时使用 <code>git remote</code> 查看所有远程仓库将看到两个 一个本地默认仓库origin 另外一个我们新增的 base<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2021.02.10.16129426962995.16129414984288.jpg" alt="-w772" loading="lazy"></p>
+<h4 id="3-把base远程仓库a中数据抓取到本仓库b">3. 把base远程仓库（A）中数据抓取到本仓库（B）</h4>
+<pre><code>git fetch base
+</code></pre>
+<p>第2步 <code>git remote add xxx</code> 我们仅仅是新增了远程仓库的引用，这一步真正将远程仓库的数据抓取到本地，准备后续的更新。<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2021.02.10.16129426963015.16129417088506.jpg" alt="-w669" loading="lazy"></p>
+<h4 id="4-基于base仓库的master分支新建一个分支并切换到该分支命名为-githubb">4. 基于base仓库的master分支，新建一个分支，并切换到该分支，命名为 &quot;githubB&quot;</h4>
+<pre><code>git checkout -b githubB base/master
+</code></pre>
+<p>此时我们的仓库B就有了一个基于仓库A内容的分支 &quot;githubB&quot;，后续我们将 &quot;githubB&quot; 分支代码合并到master就可以了。</p>
+<p>此时使用 <code>git branch</code> 查看所有分支<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2021.02.10.16129426963027.16129419488703.jpg" alt="-w222" loading="lazy"></p>
+<h4 id="5-我们切换到需要合并的分支-master">5. 我们切换到需要合并的分支 master</h4>
+<pre><code>git checkout master
+</code></pre>
+<p>第 4 步我们创建了即将被合并分支 &quot;githubB&quot; ，默认是在当前分支上的，所以我们需要切换回我们的目标分支。</p>
+<h4 id="6-合并">6. 合并</h4>
+<pre><code>git merge githubB --allow-unrelated-histories
+</code></pre>
+<p>如果不加 <code>--allow-unrelated-histories</code> 关键字会报错</p>
+<pre><code>fatal: refusing to merge unrelated histories
+</code></pre>
+<p>如果在流程中报上述错误加该关键词<code>--allow-unrelated-histories</code>即可。</p>
+<p>合并过程中可能会遇到各种冲突，如果有冲突解决就可以了。<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2021.02.10.16129426963038.16129425194956.jpg" alt="-w817" loading="lazy"></p>
+<h4 id="7-提交">7. 提交</h4>
+<pre><code>git push origin master
+</code></pre>
+<p>最后提交，大功告成。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[MySQL - 基础语法]]></title>
         <id>https://qxuewei.github.io/post/mysql-ji-chu-yu-fa/</id>
@@ -763,12 +821,12 @@ WHERE
         <summary type="html"><![CDATA[<h1 id="ios-runtime-详解">iOS - Runtime 详解</h1>
 <h2 id="0-概述">0. 概述</h2>
 <p>Objective-C Runtime 使得C具有了面向对象的能力，在程序运行时创建，检查，修改类，对象和它们的方法。Runtime 是 C和汇编写的，这里<a href="http://www.opensource.apple.com/source/objc4/">http://www.opensource.apple.com/source/objc4/</a>可以下载Apple维护的开源代码，GUN也有一个开源的Runtime版本，它们都努力保持一致。<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048">Apple官方的runtime编程指南</a></p>
-<p>对于 C 语言，函数的调用会在编译期就已经决定好，在编译完成后直接顺序执行。但是 OC 是一门动态语言，函数调用变成了消息发送，在编译期不能知道调用哪个函数，Runtime 就是去解决如何在运行时期找到调用方法的问题。&gt;</p>
+<p>对于 C 语言，函数的调用会在编译期就已经决定好，在编译完成后直接顺序执行。但是 OC 是一门动态语言，函数调用变成了消息发送，在编译期不能知道调用哪个函数，Runtime 就是去解决如何在运行时期找到调用方法的问题。</p>
 ]]></summary>
         <content type="html"><![CDATA[<h1 id="ios-runtime-详解">iOS - Runtime 详解</h1>
 <h2 id="0-概述">0. 概述</h2>
 <p>Objective-C Runtime 使得C具有了面向对象的能力，在程序运行时创建，检查，修改类，对象和它们的方法。Runtime 是 C和汇编写的，这里<a href="http://www.opensource.apple.com/source/objc4/">http://www.opensource.apple.com/source/objc4/</a>可以下载Apple维护的开源代码，GUN也有一个开源的Runtime版本，它们都努力保持一致。<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048">Apple官方的runtime编程指南</a></p>
-<p>对于 C 语言，函数的调用会在编译期就已经决定好，在编译完成后直接顺序执行。但是 OC 是一门动态语言，函数调用变成了消息发送，在编译期不能知道调用哪个函数，Runtime 就是去解决如何在运行时期找到调用方法的问题。&gt;</p>
+<p>对于 C 语言，函数的调用会在编译期就已经决定好，在编译完成后直接顺序执行。但是 OC 是一门动态语言，函数调用变成了消息发送，在编译期不能知道调用哪个函数，Runtime 就是去解决如何在运行时期找到调用方法的问题。</p>
 <!-- more -->
 <h2 id="1-runtime-函数">1、Runtime 函数</h2>
 <p>Runtime 系统是由一系列的函数和数据结构组成的公共接口动态共享库，在/user/includeobjc 目录下可以看到头文件，可以用到其中一些函数通过C语言实现Objective-C中一样的功能。苹果官方文档 <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html">https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html</a> 里有详细的Runtime 函数文档。</p>
@@ -4026,187 +4084,6 @@ Consumer()
 <p>学习要真正有效, 一定更要有反馈. 学完一项技能一定要输出, 比如掌握了一项编程知识, 要把它写成博客记录下来, 学唱了一首歌要把它录下来, 这样在输出的时候会发现掌握的情况, 也会对自己更自信, 看到一本书或是一篇文章之后, 一定要写个摘要或是笔记, 再或是发篇微博, 总之一定要有一个反馈,没人看不重要, 这是记录给自己看的! 写摘要不要脱稿写, 因为那是考研你的记忆力, 要照着文本用自己的语言进行总结输出, 另外两种反馈一是给自己录音, 给自己录像. 针对不一样的情景给自己制造不一样的反馈.</p>
 <h2 id="7怎样突破学习瓶颈">7.怎样突破学习瓶颈</h2>
 <p>首先要有一个认知, 瓶颈不是极限. 学习过程中遇到瓶颈需要调整的不是方法, 而是心态. 遇到瓶颈很可能是对自己不自信造成的. 所以解决心态问题. 把注意力放在每一件小事上, 而不要过多去想最后的结果. 这样会不知不觉的达到你想要的高度. 扩大涉猎范围, 想要突破它需要不断积累, 比如吉他弹奏遇到瓶颈之后多听一些顶级大师的吉他演奏, 会从中找到突破的. 更加专注,请教名师.</p>
-<hr>
-<h3 id="更多干货文章">更多干货文章</h3>
-<h5 id="博客wwwqiuxueweicom">博客：<a href="http://www.qiuxuewei.com">www.qiuxuewei.com</a></h5>
-<h5 id="微信公众号开发者成长之路">微信公众号：<strong>@开发者成长之路</strong></h5>
-<h5 id=""><img src="http://blog.image.jkxuewei.com/sou_wechat.png" alt="公众号二维码" loading="lazy"></h5>
-<p><strong>一个没有鸡汤只有干货的公众号</strong></p>
-<hr>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[体系结构与操作系统拾遗]]></title>
-        <id>https://qxuewei.github.io/post/ti-xi-jie-gou-yu-cao-zuo-xi-tong-shi-yi/</id>
-        <link href="https://qxuewei.github.io/post/ti-xi-jie-gou-yu-cao-zuo-xi-tong-shi-yi/">
-        </link>
-        <updated>2019-12-28T11:19:19.000Z</updated>
-        <summary type="html"><![CDATA[<h1 id="体系结构与操作系统拾遗">体系结构与操作系统拾遗</h1>
-<h2 id="part1-体系结构基础">Part1. 体系结构基础</h2>
-<h3 id="1-冯诺依曼体系结构">1. 冯·诺依曼体系结构</h3>
-<ol>
-<li>计算机处理的数据和指令一律用二进制数表示</li>
-<li>顺序执行程序
-<ol>
-<li>计算机运行过程中，把要执行的程序和处理的数据首先存入主存储器（内存），计算机执行程序时，将自动地并按顺序从主存储器中取出指令一条一条地执行，这一概念称作顺序执行程序。</li>
-</ol>
-</li>
-<li>计算机硬件由运算器、控制器、存储器、输入设备和输出设备五大部分组成。</li>
-</ol>
-]]></summary>
-        <content type="html"><![CDATA[<h1 id="体系结构与操作系统拾遗">体系结构与操作系统拾遗</h1>
-<h2 id="part1-体系结构基础">Part1. 体系结构基础</h2>
-<h3 id="1-冯诺依曼体系结构">1. 冯·诺依曼体系结构</h3>
-<ol>
-<li>计算机处理的数据和指令一律用二进制数表示</li>
-<li>顺序执行程序
-<ol>
-<li>计算机运行过程中，把要执行的程序和处理的数据首先存入主存储器（内存），计算机执行程序时，将自动地并按顺序从主存储器中取出指令一条一条地执行，这一概念称作顺序执行程序。</li>
-</ol>
-</li>
-<li>计算机硬件由运算器、控制器、存储器、输入设备和输出设备五大部分组成。</li>
-</ol>
-<!-- more -->
-<h3 id="2-数据的机内表示">2. 数据的机内表示</h3>
-<h4 id="二进制表示">二进制表示</h4>
-<ol>
-<li>
-<p>机器数</p>
-<ol>
-<li>由于计算机中符号和数字是一样的，都必须用二进制数串来表示，因此，正负号也必须用 0、1 来表示。</li>
-<li>用最高位 0 表示正、1 表示负，这种正负号数字化的机内表示形式就称为 “机器数”，而相应的机器外部用正负号表示的数称为“真值”，将一个真值表示成二进制字串的机器数的过程就称为编码。</li>
-</ol>
-</li>
-<li>
-<p>原码<br>
-原码就是符号位加上真值的绝对值，即用第一位表示符号，其余位表示值，比如如果是 8 位二进制:<br>
-[+1]原 = 0000 0001<br>
-[-1]原 = 1000 0001<br>
-第一位是符号位，因为第一位是符号位，所以 8 位二进制的取值范围就是：<br>
-[1111 1111, 0111, 1111] 即 [-127, +127]<br>
-原码是人脑最容易理解和计算表达方式。</p>
-</li>
-<li>
-<p>反码<br>
-反码的表示方法是：正数的反码就是其本身，负数的反码是在其原码的基础上，符号位不变，其余各个位取反。<br>
-[+1] = 原码:[0000 0001] = 反码:[0000 0001]<br>
-[-1] = 原码:[1000 0001] = 反码:[1111 1110]<br>
-可见如果一个反码表示负数，人脑无法直观的看出它的数值，通常要将其转换成原码再计算。</p>
-</li>
-<li>
-<p>补码<br>
-补码的表示方法是：正数的补码就是其本身，负数的补码是在其原码的基础上，符号位不变，其余各位取反，最后 +1。（即在反码的基础上 +1）<br>
-[+1] = 原码:[0000 0001] = 补码:[0000 0001]<br>
-[-1] = 原码:[1000 0001] = 补码:[1111 1111]<br>
-对于负数，补码表示方式也是人脑无法直观看出其数值的，通常也需要转换成原码再计算其数值。</p>
-</li>
-<li>
-<p>定点数与浮点数<br>
-定点数是小数点固定的数。在计算机中没有专门表示小数点的位，小数点的位置是约定默认的。一般固定在机器数的最低位之后，或是固定在符号位之后。前者称为定点纯整数，后者称为定点纯小数。<br>
-定点数表示法简单直观，但是数值表示的范围太小，运算时容易产生溢出。</p>
-<p>浮点数是小数点的位置可以变动的数。为增大数值表示范围，防止溢出，采用浮点数表示法。浮点表示法类似于十进制中的科学计数法。</p>
-<p>在计算机中，通常把浮点数分成阶码和尾数两部分来表示，其中阶码一般用补码定点整数表示，尾数一般用补码或原码定点小数表示。为保证不损失有效数字，对尾数进行格式化处理，也就是平时所说的科学计数法，即保证尾数的最高位为 1，实际数值通过阶码进行调整。<br>
-阶符表示指数的符号位、阶码表示幂次、数符表示尾数的符号位、尾数表示格式化后的小数值。</p>
-<pre><code>N = 尾数 x 基数阶码（指数）
-</code></pre>
-</li>
-</ol>
-<h4 id="位bit-字节byte-字word">位（Bit）、字节（Byte）、字（Word）</h4>
-<p>位（Bit）：是电子计算机中最小的数据单位，每一位的状态只能是 0 或 1.</p>
-<p>字节（Byte）：8 个二进制构成 1 个字节（Byte），它是存储空间的基本计量单位。1 个字节（Byte）可以存储一个英文字母或半个汉字，换而言之：1 个汉字占据 2 个字节（Byte）的存储空间。</p>
-<p>字（Word）：由若干个字节构成，字的位数叫做字长，不同档次的机器有不同的字长。例如：一台 8 位机，它的 1 个字就等于 1 个字节。如果是一台 16 位机，那么它的 1 个字就由 2 个字节构成，字长为 16 位。字是计算机进行数据处理和运算的单位。</p>
-<h4 id="字节序">字节序</h4>
-<p>字节序（字节顺序）是指占内存多于一个字节类型的数据在内存中的存放顺序，通常有小端、大端两种字节顺序。</p>
-<p>小端字节序（Little Endian）：指低字节数据存放在内存低地址处，高字节数据存放在内存高地址处；<br>
-大端字节序（Big Endian）：指高字节数据存放在低地址处，低字节数据存放在高地址处。</p>
-<p>基于 X86 平台的 PC 机是小端字节序的，而有的嵌入式平台则是大端字节序的。所有网络协议也都是采用大端字节序的方式来传输数据的，所以有时我们也会把大端字节序称之为：网络字节序。</p>
-<p>比如数字 0x12345678 在两种不同字节序 CPU 中的存储顺序如下所示：</p>
-<pre><code>大端字节序（Big Endian）
-低地址                                            高地址
-----------------------------------------------------&gt;
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|     12     |      34    |     56      |     78    |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-
-小端字节序（Little Endian）
-低地址                                            高地址
-----------------------------------------------------&gt;
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|     78     |      56    |     34      |     12    |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-</code></pre>
-<p>联合体 <code>union</code> 的存放顺序是所有成员都从低地址开始存放，利用该特性，就能判断 CPU 对内存采用 Little-Endian 还是 Big-Endian 模式读写。<br>
-示例代码:</p>
-<pre><code class="language-c">union test {
-    short value;
-    char str[sizeof(short)];
-}example
-
-void main()
-{
-    example.value = 0x0102;
-    if (sizeof(short) == 2) {
-        if (example.str[0] == 1 &amp;&amp; example.str[1] == 2) {
-            printf(&quot;大端字节序&quot;);
-        } else if (example.str[0] == 2 &amp;&amp; example.str[1] == 1) {
-            printf(&quot;小端字节序&quot;);        
-        } else {
-            printf(&quot;结果未知&quot;);
-        }
-    }
-}
-</code></pre>
-<h4 id="字节对齐">字节对齐</h4>
-<p>现代计算机中内存空间都是按照 byte 划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个接一个的排放，这就是对齐。</p>
-<h5 id="为什么要进行字节对齐">为什么要进行字节对齐？</h5>
-<ul>
-<li>最根本的原因是效率问题，字节对齐能提高存取数据的速度。</li>
-<li>某些平台只能在特定的地址处访问特定类型的数据</li>
-</ul>
-<p>比如有的平台每次都是从偶地址处读取数据，对于一个 int 型的变量，若从偶地址单元处存放，则只需一个读取周期即可读取该变量，但是若从奇地址单元处存放，则需要 2 个读取周期读取该变量。</p>
-<h5 id="字节对齐的原则">字节对齐的原则</h5>
-<ul>
-<li>数据成员对齐规则：结构（struct）或联合（union）的数据成员，第一个数据成员放在 <code>offset</code> 为 0 的地方，以后每个数据成员存储的起初位置要从该成员大小或者成员的子成员大小（只要该成员有子成员，比如说是数组、结构体等）的整数倍开始，比如 int 在 32 位机为 4 字节，则要从 4 的整数倍地址开始存储。</li>
-<li>结构体作为成员：如果一个结构体里有某些结构体成员，则结构体成员要从其内部最大元素大小的整数倍地址开始存储。（<code>struct a</code> 里存有 <code>struct b</code>，<code>b</code> 里有 <code>char</code>、<code>int</code>、<code>double</code> 等元素，那么 <code>b</code> 应该从 8 的整数倍开始存储。）</li>
-<li>结构体的总大小，也就是 <code>sizeof</code> 的结果，必须使其内部最大成员的整数倍，不足的要补齐。</li>
-</ul>
-<h2 id="part2-操作系统基础">Part2. 操作系统基础</h2>
-<h3 id="1-操作系统提供的服务">1. 操作系统提供的服务</h3>
-<p>操作系统五大功能：</p>
-<ul>
-<li>作业管理</li>
-<li>文件管理</li>
-<li>存储管理</li>
-<li>输入输出设备管理</li>
-<li>进程及处理机管理</li>
-</ul>
-<h3 id="2-中断与系统调用">2. 中断与系统调用</h3>
-<h4 id="中断">中断</h4>
-<p>中断：计算机执行程序的过程中，由于出现了某些特殊事情，使得 CPU 暂停对程序的执行，转而去执行处理这一事件的程序，等这些特殊事情处理完之后再回去执行之前的程序。<br>
-中断分三类：</p>
-<ol>
-<li>由计算机硬件异常或故障引起的中断，称为内部异常中断；</li>
-<li>由程序中执行了引起中断的指令而造成的中断，称为软中断（这也是和我们将要说明的系统调用相关的中断）</li>
-<li>由外部设备请求引起的中断，称为外部中断。</li>
-</ol>
-<p>简单说，对中断的理解就是对一些特殊事情的处理。</p>
-<p>与中断紧密相连的一个概念就是中断处理程序，当中断发生的时候，系统需要去对中断进行处理，对这些中断的处理是由操作系统内核中的特定函数进行的，这些处理中断的特定的函数就是我们所说的中断处理程序。</p>
-<p>另一个与中断紧密相连的概念是中断的优先级，中断的优先级说明的是当一个中断正在被处理的时候，处理器能接收的中断的级别。中断的优先级表明了中断需要被处理的紧急程度，每个中断都有一个对应的优先级，当处理器在处理某一中断的时候，只有比这个中断优先级高的中断可以被处理器接受并且被处理。优先级比这个当前正在被处理的中断优先级要低的中断将会被忽略。<br>
-中断优先级：</p>
-<pre><code>机器错误 &gt; 时钟 &gt; 磁盘 &gt; 网络设备 &gt; 终端 &gt; 软件中断
-</code></pre>
-<p>当发现软件中断时，其他所有的中断都可能发生并被处理；但当发生磁盘中断时，就只有时钟中断和机器错误中断能被处理了。</p>
-<h4 id="系统调用">系统调用</h4>
-<p>进程的执行在系统上的两个级别：用户级（用户态）和核心级（系统态）。</p>
-<p>程序的执行一般是在用户态下执行的，但当程序需要使用操作系统提供的服务时，比如说打开某一设备、创建文件、读写文件等，就需要向操作系统发生调用服务的请求，这就是系统调用。</p>
-<p><code>Linux</code> 系统有专门的函数库来提供这些请求操作系统服务的入口，这个函数库中包含了操作系统所提供的对外服务的接口，当进程发出系统调用之后，它所处的运行状态就会由用户态变成核心态。但这个时候，进程本身其实并没有做什么事情，这个时候是由内核在做相应的操作，去完成进程所提出的这些请求。</p>
-<p>系统调用和中断的关系在于：当进程发出系统调用申请的时候，会产生一个软件中断。产生这个软件中断以后，系统会去对这个软中断进行处理，这个时候进程就处于核心态了。</p>
-<p>用户态和核心态区别：</p>
-<ol>
-<li>用户态的进程能存取他们自己的指令和数据，但不能存取内核指令和数据（或其他进程的指令和数据），然而，核心态下的进程能够存取内核和用户地址。</li>
-<li>某些机器指令是特权指令，在用户态下执行特权指令会引起错误。</li>
-</ol>
-<p><strong>在系统中内核并不是作为一个与用户进程平行的进程的集合，内核是为用户进程运行的。</strong></p>
 <hr>
 <h3 id="更多干货文章">更多干货文章</h3>
 <h5 id="博客wwwqiuxueweicom">博客：<a href="http://www.qiuxuewei.com">www.qiuxuewei.com</a></h5>

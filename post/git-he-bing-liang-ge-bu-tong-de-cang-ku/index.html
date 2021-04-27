@@ -1,0 +1,284 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Git-合并两个不同的仓库 | 极客学伟</title>
+<meta name="description" content="一名准独立开发者的内心独白" />
+<link rel="shortcut icon" href="https://qxuewei.github.io//favicon.ico?v=1619507077659">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://qxuewei.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124834054-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124834054-1');
+</script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qxuewei.github.io/">
+  <img class="avatar" src="https://qxuewei.github.io//images/avatar.png?v=1619507077659" alt="">
+  </a>
+  <h1 class="site-title">
+    极客学伟
+  </h1>
+  <p class="site-description">
+    一名准独立开发者的内心独白
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://blog.csdn.net/qxuewei" class="menu" target="_blank">
+          CSDN
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/qxuewei" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/qxuewei" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://weibo.com/qxuewei" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/qxuewei" target="_blank">
+          <i class="fab fa-zhihu"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/qxuewei" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Git-合并两个不同的仓库
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-04-27
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://blog.image.jkxuewei.com/pankaj-patel-ZV_64LdGoao-unsplash.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="git-合并两个不同的仓库">Git-合并两个不同的仓库</h1>
+<p>有时候我们需要合并两个不同地址的Git仓库，比如：其中一个仓库A我们在GitHub上部署，另外一个仓库B我们在国内的Coding上部署，两者为同一个工程，如果我们希望将仓库A的所有改动合并到仓库B上。</p>
+<p>整个操作的思路是伪造伪造其中一个远程仓库作为另一个仓库的一个分支，然后进行分支合并。</p>
+<!-- more -->
+<h4 id="背景">背景：</h4>
+<p>A仓库地址为：git@github.com:qxuewei/notebook.git<br>
+B仓库地址为：git@e.coding.net:qxuewei/notebook/notebook.git<br>
+需要将A仓库改动合并到B仓库中，首先保证A仓库内所有的改动均已提交。</p>
+<p><strong>另外一个前提是你需要有两个仓库的代码操作权限，否则无法合并。</strong></p>
+<h4 id="1-下载需要进行合并的仓库-b">1. 下载需要进行合并的仓库 B</h4>
+<pre><code>git clone git@e.coding.net:qxuewei/notebook/notebook.git
+</code></pre>
+<h4 id="2-添加需要被合并的远程仓库-a">2. 添加需要被合并的远程仓库 A</h4>
+<pre><code>git remote add base git@github.com:qxuewei/notebook.git
+</code></pre>
+<p>将 base 作为远程仓库，添加到 本地仓库(origin)中，设置别名为 base(自定义，为了方便与本地仓库origin作区分)</p>
+<p>此时使用 <code>git remote</code> 查看所有远程仓库将看到两个 一个本地默认仓库origin 另外一个我们新增的 base<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2021.02.10.16129426962995.16129414984288.jpg" alt="-w772" loading="lazy"></p>
+<h4 id="3-把base远程仓库a中数据抓取到本仓库b">3. 把base远程仓库（A）中数据抓取到本仓库（B）</h4>
+<pre><code>git fetch base
+</code></pre>
+<p>第2步 <code>git remote add xxx</code> 我们仅仅是新增了远程仓库的引用，这一步真正将远程仓库的数据抓取到本地，准备后续的更新。<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2021.02.10.16129426963015.16129417088506.jpg" alt="-w669" loading="lazy"></p>
+<h4 id="4-基于base仓库的master分支新建一个分支并切换到该分支命名为-githubb">4. 基于base仓库的master分支，新建一个分支，并切换到该分支，命名为 &quot;githubB&quot;</h4>
+<pre><code>git checkout -b githubB base/master
+</code></pre>
+<p>此时我们的仓库B就有了一个基于仓库A内容的分支 &quot;githubB&quot;，后续我们将 &quot;githubB&quot; 分支代码合并到master就可以了。</p>
+<p>此时使用 <code>git branch</code> 查看所有分支<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2021.02.10.16129426963027.16129419488703.jpg" alt="-w222" loading="lazy"></p>
+<h4 id="5-我们切换到需要合并的分支-master">5. 我们切换到需要合并的分支 master</h4>
+<pre><code>git checkout master
+</code></pre>
+<p>第 4 步我们创建了即将被合并分支 &quot;githubB&quot; ，默认是在当前分支上的，所以我们需要切换回我们的目标分支。</p>
+<h4 id="6-合并">6. 合并</h4>
+<pre><code>git merge githubB --allow-unrelated-histories
+</code></pre>
+<p>如果不加 <code>--allow-unrelated-histories</code> 关键字会报错</p>
+<pre><code>fatal: refusing to merge unrelated histories
+</code></pre>
+<p>如果在流程中报上述错误加该关键词<code>--allow-unrelated-histories</code>即可。</p>
+<p>合并过程中可能会遇到各种冲突，如果有冲突解决就可以了。<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2021.02.10.16129426963038.16129425194956.jpg" alt="-w817" loading="lazy"></p>
+<h4 id="7-提交">7. 提交</h4>
+<pre><code>git push origin master
+</code></pre>
+<p>最后提交，大功告成。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#git-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BB%93%E5%BA%93">Git-合并两个不同的仓库</a><br>
+*<br>
+*<br>
+* <a href="#%E8%83%8C%E6%99%AF">背景：</a><br>
+* <a href="#1-%E4%B8%8B%E8%BD%BD%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E5%90%88%E5%B9%B6%E7%9A%84%E4%BB%93%E5%BA%93-b">1. 下载需要进行合并的仓库 B</a><br>
+* <a href="#2-%E6%B7%BB%E5%8A%A0%E9%9C%80%E8%A6%81%E8%A2%AB%E5%90%88%E5%B9%B6%E7%9A%84%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93-a">2. 添加需要被合并的远程仓库 A</a><br>
+* <a href="#3-%E6%8A%8Abase%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93a%E4%B8%AD%E6%95%B0%E6%8D%AE%E6%8A%93%E5%8F%96%E5%88%B0%E6%9C%AC%E4%BB%93%E5%BA%93b">3. 把base远程仓库（A）中数据抓取到本仓库（B）</a><br>
+* <a href="#4-%E5%9F%BA%E4%BA%8Ebase%E4%BB%93%E5%BA%93%E7%9A%84master%E5%88%86%E6%94%AF%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%88%86%E6%94%AF%E5%B9%B6%E5%88%87%E6%8D%A2%E5%88%B0%E8%AF%A5%E5%88%86%E6%94%AF%E5%91%BD%E5%90%8D%E4%B8%BA-githubb">4. 基于base仓库的master分支，新建一个分支，并切换到该分支，命名为 &quot;githubB&quot;</a><br>
+* <a href="#5-%E6%88%91%E4%BB%AC%E5%88%87%E6%8D%A2%E5%88%B0%E9%9C%80%E8%A6%81%E5%90%88%E5%B9%B6%E7%9A%84%E5%88%86%E6%94%AF-master">5. 我们切换到需要合并的分支 master</a><br>
+* <a href="#6-%E5%90%88%E5%B9%B6">6. 合并</a><br>
+* <a href="#7-%E6%8F%90%E4%BA%A4">7. 提交</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qxuewei.github.io/post/mysql-ji-chu-yu-fa/">
+              <h3 class="post-title">
+                MySQL - 基础语法
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b5a81cc33693e3ea874',
+    clientSecret: '7bb94672c847c4aa5723a9419fc5b3db33ca0dd6',
+    repo: 'Gittalk',
+    owner: 'qxuewei',
+    admin: ['qxuewei'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://qxuewei.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
