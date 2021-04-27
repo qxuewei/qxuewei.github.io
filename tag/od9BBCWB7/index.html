@@ -1,0 +1,280 @@
+<html>
+  <head>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>计算机 | 极客学伟</title>
+<meta name="description" content="一名准独立开发者的内心独白" />
+<link rel="shortcut icon" href="https://qxuewei.github.io//favicon.ico?v=1619502595382">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://qxuewei.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124834054-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124834054-1');
+</script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qxuewei.github.io/">
+  <img class="avatar" src="https://qxuewei.github.io//images/avatar.png?v=1619502595382" alt="">
+  </a>
+  <h1 class="site-title">
+    极客学伟
+  </h1>
+  <p class="site-description">
+    一名准独立开发者的内心独白
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://blog.csdn.net/qxuewei" class="menu" target="_blank">
+          CSDN
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/qxuewei" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/qxuewei" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://weibo.com/qxuewei" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/qxuewei" target="_blank">
+          <i class="fab fa-zhihu"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/qxuewei" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="current-tag-container">
+            <h2 class="title">
+                标签：# 计算机
+            </h2> 
+        </div>
+        <div class="post-container">
+  
+    <article class="post">
+      <a href="https://qxuewei.github.io/post/nei-cun-guan-li-ci-pan-he-wen-jian-shi-yi/">
+        <h2 class="post-title">内存管理、磁盘和文件拾遗</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2020-01-01
+        </span>
+        <span>
+          16 min read
+        </span>
+        
+          <a href="https://qxuewei.github.io/tag/od9BBCWB7/" class="post-tag">
+            # 计算机
+          </a>
+        
+      </div>
+      
+        <a href="https://qxuewei.github.io/post/nei-cun-guan-li-ci-pan-he-wen-jian-shi-yi/" class="post-feature-image" style="background-image: url('http://blog.image.jkxuewei.com/mweb/2020.01.01.15778871221740.mr-cup-fabien-barral-o6GEPQXnqMY-unsplash.jpg')">
+        </a>
+      
+      <div class="post-abstract">
+        <h1 id="内存管理-磁盘和文件拾遗">内存管理、磁盘和文件拾遗</h1>
+<h2 id="part1-内存管理">Part1. 内存管理</h2>
+<p>一个程序的可执行文件在内存中的结果，从大的角度可以分为两个部分：只读部分和可读写部分。只读部分包括程序代码（.text）和程序中的常量（.rodata）。<br>
+可读写部分（变量）大致可分为下面几个部分：</p>
+<ul>
+<li><code>.data</code>：初始化了的全局变量和静态变量</li>
+<li><code>.bss</code>：即 <code>Block Started by Symbol</code>，未初始化的全局变量和静态变量</li>
+<li><code>heap</code>：堆，使用 <code>malloc</code>、<code>realloc</code>和<code>free</code>函数控制的变量，堆在所有的线程，共享库，和动态加载的模块中被共享使用。</li>
+<li><code>stack</code>：栈，函数调用时使用栈来保存函数现场，自动变量（即生命周期限制在某个 scope 的变量）也存放在栈中。</li>
+</ul>
+
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://qxuewei.github.io/post/bing-fa-ji-zhu-jin-cheng-xian-cheng-he-suo-shi-yi/">
+        <h2 class="post-title">并发技术、进程、线程和锁拾遗</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2019-12-31
+        </span>
+        <span>
+          19 min read
+        </span>
+        
+          <a href="https://qxuewei.github.io/tag/od9BBCWB7/" class="post-tag">
+            # 计算机
+          </a>
+        
+      </div>
+      
+        <a href="https://qxuewei.github.io/post/bing-fa-ji-zhu-jin-cheng-xian-cheng-he-suo-shi-yi/" class="post-feature-image" style="background-image: url('http://blog.image.jkxuewei.com/mweb/2019.12.31.15777952677146.joakim-honkasalo-tvVcBCFVHY8-unsplash.jpg')">
+        </a>
+      
+      <div class="post-abstract">
+        <h1 id="并发技术-进程-线程和锁拾遗">并发技术、进程、线程和锁拾遗</h1>
+<h2 id="part1-多任务">Part1. 多任务</h2>
+<p>计算机发展起初，CPU 资源十分昂贵，如果让 CPU 只能运行一个程序那么当 CPU 空闲下来（例如等待 I/O 时），CPU 资源就会被浪费，为了使 CPU 资源得到更好的利用，先驱编写了一个监控程序，如果发现某个程序暂时无需使用 CPU 时，监控程序就把另外的正在等待 CPU 资源的程序启动起来，以充分利用 CPU资源。这种方法称为 - <strong>多道程序（Multiprogramming）</strong></p>
+<p>对于多道程序，最大的弊端是各程序之间不区分轻重缓急，对于用户交互式的程序来说，对 CPU 计算时间的需求并不多，但是对于响应速度却有比较高的要求。而对于计算类程序来说则相反，对响应速度要求低，但需要长时间的 CPU 计算。想象一个场景：我在同时在浏览网页和听音乐，我们希望浏览器能够快速响应，同时也希望音乐不停，这时候<strong>多道程序</strong>就没法达到我们的要求了。</p>
+
+      </di>
+    </article>
+  
+    <article class="post">
+      <a href="https://qxuewei.github.io/post/ti-xi-jie-gou-yu-cao-zuo-xi-tong-shi-yi/">
+        <h2 class="post-title">体系结构与操作系统拾遗</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2019-12-28
+        </span>
+        <span>
+          11 min read
+        </span>
+        
+          <a href="https://qxuewei.github.io/tag/od9BBCWB7/" class="post-tag">
+            # 计算机
+          </a>
+        
+          <a href="https://qxuewei.github.io/tag/Re43WuPjwZ/" class="post-tag">
+            # 操作系统
+          </a>
+        
+      </div>
+      
+        <a href="https://qxuewei.github.io/post/ti-xi-jie-gou-yu-cao-zuo-xi-tong-shi-yi/" class="post-feature-image" style="background-image: url('http://blog.image.jkxuewei.com/mweb/2019.12.28.15775292852857.victor-aznabaev-pjTU9Edzc1g-unsplash.jpg')">
+        </a>
+      
+      <div class="post-abstract">
+        <h1 id="体系结构与操作系统拾遗">体系结构与操作系统拾遗</h1>
+<h2 id="part1-体系结构基础">Part1. 体系结构基础</h2>
+<h3 id="1-冯诺依曼体系结构">1. 冯·诺依曼体系结构</h3>
+<ol>
+<li>计算机处理的数据和指令一律用二进制数表示</li>
+<li>顺序执行程序
+<ol>
+<li>计算机运行过程中，把要执行的程序和处理的数据首先存入主存储器（内存），计算机执行程序时，将自动地并按顺序从主存储器中取出指令一条一条地执行，这一概念称作顺序执行程序。</li>
+</ol>
+</li>
+<li>计算机硬件由运算器、控制器、存储器、输入设备和输出设备五大部分组成。</li>
+</ol>
+
+      </di>
+    </article>
+  
+</div>
+
+        <div class="pagination-container">
+  
+  
+</div>
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://qxuewei.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

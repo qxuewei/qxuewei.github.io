@@ -1,0 +1,4219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://qxuewei.github.io/</id>
+    <title>极客学伟</title>
+    <updated>2021-04-27T05:49:59.851Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://qxuewei.github.io/"/>
+    <link rel="self" href="https://qxuewei.github.io/atom.xml"/>
+    <subtitle>一名准独立开发者的内心独白</subtitle>
+    <logo>https://qxuewei.github.io/images/avatar.png</logo>
+    <icon>https://qxuewei.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2021, 极客学伟</rights>
+    <entry>
+        <title type="html"><![CDATA[MySQL - 基础语法]]></title>
+        <id>https://qxuewei.github.io/post/mysql-ji-chu-yu-fa/</id>
+        <link href="https://qxuewei.github.io/post/mysql-ji-chu-yu-fa/">
+        </link>
+        <updated>2020-06-30T08:27:49.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="mysql-基础语法">MySQL - 基础语法</h1>
+<h2 id="sql">SQL</h2>
+<p>Structured Query Language：结构化查询语言<br>
+定义了了操作所有关系型数据库的规则</p>
+<h2 id="sql-通用语法">SQL 通用语法</h2>
+<ol>
+<li>SQL 语句可以单行或多行书写，以分号结尾</li>
+<li>可使用空格和缩进来增强语句的可读性</li>
+<li>MySQL 数据库的SQL语句不区分大小写，关键字建议大写</li>
+<li>注释：
+<ol>
+<li>单行注释：-- 注释内容 或 # 注释内容 （MySQL独有）</li>
+<li>多行注释：/* 注释内容 */</li>
+</ol>
+</li>
+</ol>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="mysql-基础语法">MySQL - 基础语法</h1>
+<h2 id="sql">SQL</h2>
+<p>Structured Query Language：结构化查询语言<br>
+定义了了操作所有关系型数据库的规则</p>
+<h2 id="sql-通用语法">SQL 通用语法</h2>
+<ol>
+<li>SQL 语句可以单行或多行书写，以分号结尾</li>
+<li>可使用空格和缩进来增强语句的可读性</li>
+<li>MySQL 数据库的SQL语句不区分大小写，关键字建议大写</li>
+<li>注释：
+<ol>
+<li>单行注释：-- 注释内容 或 # 注释内容 （MySQL独有）</li>
+<li>多行注释：/* 注释内容 */</li>
+</ol>
+</li>
+</ol>
+<!-- more -->
+<h2 id="sql-分类">SQL 分类</h2>
+<ol>
+<li>DDL（Date Definition Language） 数据库定义语言：定义数据库对象：数据库、表、列。关键字：<code>CREATE</code>、<code>DROP</code>、<code>ALTER</code> 等</li>
+<li>DML（Date Manipulation Language）数据库操作语言：对数据库表中的数据进行增删改。关键字：<code>INSERT</code>、<code>DELETE</code>、<code>UPDATE</code> 等</li>
+<li>DQL (Date Query Language) 数据库查询语言：用来查询数据库表中的数据。关键字：<code>SELECT</code>、<code>WHERE</code> 等</li>
+<li>DCL (Date Control Language) 数据库控制语言：定于数据库的访问权限和安全级别。关键字：<code>CRANT</code>、<code>REVOKE</code> 等</li>
+</ol>
+<h3 id="ddl">DDL</h3>
+<h4 id="操作数据库">操作数据库</h4>
+<h5 id="c-create-创建">C (Create) - 创建</h5>
+<ul>
+<li>创建数据库：<code>CREATE DATABASE 数据库名称;</code></li>
+<li>创建数据库-不存在再创建：<code>CREATE DATABASE IF NOT EXISTS 数据库名称;</code></li>
+<li>创建数据库-指定字符集：<code>CREATE DATABASE 数据库名称 CHARACTER SET 字符集名;</code></li>
+</ul>
+<h5 id="r-retrieve-查询">R (Retrieve) - 查询</h5>
+<ul>
+<li>查询所有数据库名称：<code>SHOW DATABASE;</code></li>
+<li>查询某个数据库的字符集：查询某个数据库的创建语句：<code>SHOW CREATE DATABASE 数据库名称;</code></li>
+</ul>
+<h5 id="u-update-修改">U (Update) - 修改</h5>
+<ul>
+<li>修改数据库的字符集：<code>ALTER DATABASE 数据库名称 CHARACTER SET 字符集名称;</code></li>
+</ul>
+<h5 id="d-delete-删除">D (Delete) - 删除</h5>
+<ul>
+<li>删除数据库：<code>DROP DATABASE 数据库名称</code></li>
+<li>删除数据库-存在再删除：<code>DROP DATABASE IF EXISTS 数据库名称</code></li>
+</ul>
+<h5 id="使用数据库">使用数据库</h5>
+<ul>
+<li>查询当前正在使用的数据库名称：<code>SELECT DATABASE();</code></li>
+<li>使用数据库：<code>USE 数据库名称;</code></li>
+</ul>
+<h4 id="操作表">操作表</h4>
+<h5 id="c-create-创建-2">C (Create) - 创建</h5>
+<pre><code class="language-sql">CREAT TABLE 表名(
+    列名1 数据类型1,
+    列名2 数据类型2,
+    ...
+    列名n 数据类型n
+);
+</code></pre>
+<p>常用表类型：</p>
+<ul>
+<li>int: <code>age INT,</code></li>
+<li>double: <code>score DOUBLE(5,2), # 最多5位，保留2位小数 99.12</code></li>
+<li>date: 日期，只包含年月日，yyyy-MM-dd</li>
+<li>datetime: 日期，包含年月日时分秒，yyyy-MM-dd HH:mm:ss</li>
+<li>timestamp: 时间戳，包含年月日时分秒，yyyy-MM-dd HH:mm:ss，如果不给其赋值，或赋值为null，则默认使用当前系统时间自动赋值，常用语 创建时间 字段</li>
+<li>varchar: 字符串，<code>name VARCHAR(20) # 最大20字符的姓名</code></li>
+</ul>
+<p>复制表：<code>CREATE TABLE 新表名 LIKE 旧表名;</code></p>
+<h5 id="r-retrieve-查询-2">R (Retrieve) - 查询</h5>
+<ul>
+<li>查询某个数据库中所有的表名称：<code>SHOW TABLES;</code></li>
+<li>查询表结构：<code>DESC 表名称;</code></li>
+<li>查询建表语句：<code>SHOW CREATE TABLE 表名;</code></li>
+</ul>
+<h5 id="u-update-修改-2">U (Update) - 修改</h5>
+<ul>
+<li>修改表名：<code>ALTER TABLE 旧表名 RENAME TO 新表名;</code></li>
+<li>修改表字符集：<code>ALTER TABLE 表名 CHARACTER SET 字符集名称;</code></li>
+<li>添加一列：<code>ALTER TABLE 表名 ADD 列名 数据类型;</code></li>
+<li>修改列名称和数据类型：
+<ul>
+<li>即修改名称也修改数据类型：<code>ALTER TABLE 表名 CHANGE 列名 新列名 新数据类型;</code></li>
+<li>只修改数据类型：<code>ALTER TABLE 表名 MODIFY 列名 新数据类型;</code></li>
+</ul>
+</li>
+<li>删除列：<code>ALTER TABLE 表名 DROP 列名;</code></li>
+</ul>
+<h5 id="d-delete-删除-2">D (Delete) - 删除</h5>
+<ul>
+<li>删除表：<code>DROP TABLE 表名;</code></li>
+<li>删除表-存在再删：<code>DROP TABLE IF EXISTS 表名;</code></li>
+</ul>
+<h3 id="dml">DML</h3>
+<h4 id="添加数据">添加数据</h4>
+<p>语法：<code>INSTER INTO 表名(列名1,列名2,...,列名n) VALUES(值1,值2,...,值n);</code><br>
+注意：1. 列名和值要一一对应。2.如果表名后，不定义列名，则默认给所列添加值(<code>INSERT INTO 表名 VALUES(值1,值2,...,值n)</code>)。3.除了数字类型，其他类型需要使用引号（单引号、双引号都行）引起来</p>
+<h4 id="删除数据">删除数据</h4>
+<p>语法：<code>DELETE FROM 表名 [WHERE 条件]</code><br>
+注意：1. 如果不加条件（<code>DELETE FORM 表名;</code>），删除表中所有记录。如果不加 WHERE 则删除整个表中所有数据(会执行n次删除操作)。2. 如果想删除整个表中所有数据，建议使用<code>TRUNCATE TABLE 表名; (删除表，然后创建一个同名空表)</code></p>
+<h4 id="修改数据">修改数据</h4>
+<p>语法：<code>UPDATE 表名 SET 列名1=值1, 列名2=值2, ... [WHERE 条件];</code><br>
+注意：1. 如果不加条件（<code>UPDATE 表名 SET 列名1=值1, 列名2=值2, ...</code>）,则会将表中所有记录全部修改。</p>
+<h3 id="dql">DQL</h3>
+<p>查询表中的记录：<code>SELECT * FROM 表名;</code><br>
+语法：<code>SELECT 字段列表 FROM 表名列表 WHERE 条件列表 GROUP BY 分组字段 HAVING 分组之后的条件 ORDER BY 排序 LIMIT 分页限定</code></p>
+<h4 id="基础查询">基础查询</h4>
+<ol>
+<li>多个字段的查询
+<ol>
+<li><code>SELECT 字段名1，字段名2，... FROM 表名;</code></li>
+<li>注意：如果查询所有字段，则可以使用 * 来替代字段列表</li>
+</ol>
+</li>
+<li>去除重复
+<ul>
+<li><code>DISTINCT</code>
+<ul>
+<li>eg: <code>SELECT DISTINCT address FROM student;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>计算列
+<ol>
+<li>一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）
+<ul>
+<li>eg: <code>SELECT name,math,english,math + english FROM student;</code> # (查询每个人的各科成绩和总分)</li>
+</ul>
+</li>
+<li>ifnull(表达式1，表达式2)：null 参与的运算，计算结果都为null
+<ol>
+<li>表达式1：哪个字段需要判断是否为 null</li>
+<li>表达式2：如果1字段为null后替换的新值</li>
+<li>eg: <code>SELECT name,math,english,math + IFNULL(english, 0) FROM student;</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>起别名
+<ol>
+<li>as: as 可以省略</li>
+<li>eg: <code>SELECT name,math AS 数学,english AS 英语,math + IFNULL(english, 0) AS 总分 FROM student;</code></li>
+</ol>
+</li>
+</ol>
+<h4 id="条件查询">条件查询</h4>
+<ol>
+<li><code>WHERERE</code> 子句后跟条件</li>
+<li>运算符
+<ol>
+<li><code>&gt;、 &lt;、 &lt;=、 &gt;=、 =、 &lt;&gt;</code></li>
+<li><code>BETWEEN...AND</code></li>
+<li><code>IN (集合)</code></li>
+<li><code>LIKE</code></li>
+<li><code>IS NULL</code></li>
+<li><code>AND 或 &amp;&amp;</code></li>
+<li><code>OR 或 ||</code></li>
+<li><code>NOT 或 !</code></li>
+<li><code>LIKE</code>
+<ol>
+<li>占位符
+<ol>
+<li>_: 单个任意字符</li>
+<li>%: 多个任意字符</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h5 id="eg">eg:</h5>
+<pre><code class="language-sql">-- 查询年龄大于20岁
+SELECT * FROM student WHERE age &gt; 20;
+
+-- 查询年龄大于等于20岁
+SELECT * FROM student WHERE age &gt;= 20;
+	
+-- 查询年龄等于20岁
+SELECT * FROM student WHERE age = 20;
+	
+-- 查询年龄不等于20岁
+SELECT * FROM student WHERE age != 20;
+SELECT * FROM student WHERE age &lt;&gt; 20;
+	
+-- 查询年龄大于等于20 小于等于30
+SELECT * FROM student WHERE age &gt;= 20 &amp;&amp;  age &lt;=30;
+SELECT * FROM student WHERE age &gt;= 20 AND  age &lt;=30;
+SELECT * FROM student WHERE age BETWEEN 20 AND 30;
+	
+-- 查询年龄22岁，18岁，25岁的信息
+SELECT * FROM student WHERE age = 22 OR age = 18 OR age = 25
+SELECT * FROM student WHERE age IN (22,18,25);
+	
+-- 查询英语成绩为null
+SELECT * FROM student WHERE english = NULL; -- 不对的。null值不能使用 = （!=） 判断
+SELECT * FROM student WHERE english IS NULL;
+	
+-- 查询英语成绩不为null
+SELECT * FROM student WHERE english  IS NOT NULL;
+
+-- 查询姓马的有哪些？ like
+SELECT * FROM student WHERE NAME LIKE '马%';
+
+-- 查询姓名第二个字是化的人
+SELECT * FROM student WHERE NAME LIKE &quot;_化%&quot;;
+	
+-- 查询姓名是3个字的人
+SELECT * FROM student WHERE NAME LIKE '___';
+				
+-- 查询姓名中包含德的人
+SELECT * FROM student WHERE NAME LIKE '%德%';
+</code></pre>
+<h4 id="排序查询">排序查询</h4>
+<ul>
+<li>语法：<code>ORDER BY 子句</code>
+<ul>
+<li><code>ORDER BY 排序字段1 排序方式1, 排序字段2 排序方式2...;</code></li>
+</ul>
+</li>
+<li>排序方式：
+<ul>
+<li>ASC：升序 （默认）</li>
+<li>DESC：降序</li>
+</ul>
+</li>
+<li>注意：
+<ul>
+<li>如果有多个排序条件，则当前面条件值一致时，才会判断第二条件。</li>
+</ul>
+</li>
+</ul>
+<h4 id="聚合函数">聚合函数</h4>
+<p>将一列数据作为一个整体，进行纵向计算。<br>
+注意：聚合函数的计算时，默认排除null值</p>
+<ul>
+<li><code>COUNT</code>: 计算个数
+<ul>
+<li>一般选择非空的列：主键</li>
+<li><code>COUNT(*)</code></li>
+</ul>
+</li>
+<li><code>MAX</code>: 最大值</li>
+<li><code>MIN</code>: 最小值</li>
+<li><code>SUM</code>: 和</li>
+<li><code>AVG</code>: 平均值</li>
+</ul>
+<h4 id="分组查询">分组查询</h4>
+<ul>
+<li>语法：<code>GROUP BY 分组字段;</code></li>
+<li>注意：
+<ul>
+<li>分组之后查询的字段只能是: 分组字段和聚合函数</li>
+<li><code>WHERE</code> 和 <code>HAVING</code> 的区别？
+<ul>
+<li><code>WHERE</code> 在分组之前进行限定，如果不满足条件，则不参与分组。<code>HAVING</code> 在分组之后限定，如果不满足结果，则不会被查询出来。</li>
+<li><code>WHERE</code> 后不可以跟聚合函数，<code>HAVING</code> 可以进行聚合函数的判断。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="eg-2">eg:</h5>
+<pre><code class="language-sql">-- 按照性别分组。分别查询男、女同学的平均分
+SELECT sex , AVG(math) FROM student GROUP BY sex;
+	
+-- 按照性别分组。分别查询男、女同学的平均分,人数
+SELECT sex , AVG(math),COUNT(id) FROM student GROUP BY sex;
+	
+--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组
+SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex;
+	
+--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组,分组之后。人数要大于2个人
+SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex HAVING COUNT(id) &gt; 2;
+
+SELECT sex , AVG(math),COUNT(id) 人数 FROM student WHERE math &gt; 70 GROUP BY sex HAVING 人数 &gt; 2;
+</code></pre>
+<h4 id="分页查询">分页查询</h4>
+<ul>
+<li>语法：<code>LIMIT</code> 开始的索引，每页查询的条数；</li>
+<li>公式：开始的索引 = （当前的页码-1） * 每页显示的条数</li>
+<li><code>LIMIT</code> 是一个MYSQL的特有关键字</li>
+</ul>
+<h3 id="dcl">DCL</h3>
+<p>管理用户，授权。</p>
+<h4 id="管理用户">管理用户</h4>
+<ul>
+<li>添加用户：<code>CREATE USER '用户名'@'主机名' INDENTIFIED' BY '密码';</code></li>
+<li>删除用户：<code>DROP USER '用户名'@'主机名'</code></li>
+<li>修改用户密码：<code>UPDATE USER SET PASSWORD = PASSWORD('新密码') WHERE USER = '用户名';</code> 或 <code>SET PASSWORD FOR '用户名'@'主机名' = PASSWORD('新密码');</code></li>
+</ul>
+<h4 id="权限管理">权限管理</h4>
+<ul>
+<li>查询权限: <code>SHOW GRANTS FOR '用户名'@'主机名';</code>
+<ul>
+<li><code>SHOW GRANTS FOR 'lisi'@'%';</code></li>
+</ul>
+</li>
+<li>授予权限：<code>GRANT 权限列表 ON 数据库名.表名 TO '用户名'@'主机名';</code>
+<ul>
+<li><code>GRANT ALL ON *.* TO 'zhangsan'@'localhost'; -- 为张三授予root权限</code></li>
+</ul>
+</li>
+<li>撤销权限：<code>REVOKE 权限列表 ON 数据库名.表名 FROM '用户名'@'主机名';</code>
+<ul>
+<li><code>REVOKE UPDATE ON db3.</code>account<code>FROM 'lisi'@'%'; -- 撤销李四db3的account表的操作权限</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="eg-3">eg:</h5>
+<pre><code class="language-sql">-- 每页显示3条记录 
+SELECT * FROM student LIMIT 0,3; -- 第1页
+SELECT * FROM student LIMIT 3,3; -- 第2页
+SELECT * FROM student LIMIT 6,3; -- 第3页
+</code></pre>
+<h2 id="约束">约束</h2>
+<ul>
+<li>概念：对表中的数据进行限定，保证数据的正确性、有效性和完整性。</li>
+<li>分类：
+<ul>
+<li>主键：<code>PRIMARY KEY</code></li>
+<li>非空：<code>NOT NULL</code></li>
+<li>唯一：<code>UNIQUE</code></li>
+<li>外键：<code>FOREIGN KEY</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="非空not-null-某一列的值不能为-null">非空：<code>NOT NULL</code>, 某一列的值不能为 null</h3>
+<ul>
+<li>
+<p>创建表时添加非空约束</p>
+<pre><code class="language-SQL">CREAT TABLE student (
+    id INT,
+    NAME VARCHAR(20) NOT NULL -- name 不为空    
+);
+</code></pre>
+</li>
+<li>
+<p>创建完表后，添加非空约束<br>
+<code>ALTER TABLE student MODIFY NAME VARCHAR(20) NOT NULL;</code></p>
+</li>
+<li>
+<p>创建完表后，删除非空约束<br>
+<code>ALTER TABLE student MODIFY NAME VARCHAR(20);</code></p>
+</li>
+</ul>
+<h3 id="唯一约束unique-某一列的值不能重复">唯一约束：<code>UNIQUE</code> 某一列的值不能重复</h3>
+<ul>
+<li>
+<p>注意：唯一约束可以有 NULL 值，但只能有一条记录为 NULL</p>
+</li>
+<li>
+<p>创建表时添加唯一约束</p>
+<pre><code class="language-sql">CREAT TABLE student (
+id INT,
+phoneNumber VARCHAR(20) UNIQUE -- 手机号 不可重复    
+);
+</code></pre>
+</li>
+<li>
+<p>创建完表后，添加唯一约束<br>
+<code>ALTER TABLE student MODIFY phoneNumber VARCHAR(20) UNIQUE;</code></p>
+</li>
+<li>
+<p>创建完表后，删除唯一约束<br>
+<code>ALTER TABLE student DROP INDEX phoneNumber;</code></p>
+</li>
+</ul>
+<h3 id="主键约束primary-key">主键约束：<code>PRIMARY KEY</code></h3>
+<ul>
+<li>
+<p>注意：</p>
+<ul>
+<li>含义：非空且唯一</li>
+<li>一张表只能有一个字段为主键</li>
+<li>主键就是表中记录的唯一标识</li>
+</ul>
+</li>
+<li>
+<p>在创建表时，添加主键约束</p>
+<pre><code class="language-SQL">CREAT TABLE student(
+    id INT PRIMARY KEY, -- 给id添加主键约束
+    name VARCHAR(20)
+);
+</code></pre>
+</li>
+<li>
+<p>删除主键约束<br>
+<code>ALTER TABLE student DROP PRIMARY KEY;</code></p>
+</li>
+<li>
+<p>创建完表后，添加主键<br>
+<code>ALTER TABLE student MODIFY id INT PRIMARY KEY;</code></p>
+</li>
+<li>
+<p>自动增长：如果某一列是数值类型，使用 <code>AUTO_INCREMENT</code> 可以完成值的自动增长。</p>
+<ul>
+<li>
+<p>在创建表时，添加主键约束，并且完成主键自增长</p>
+<pre><code class="language-SQL">CREATE TABLE student (
+    id INT PRIMARY KEY AUTO_INCREMENT, -- 给id添加主键约束
+    name VARCHAR(20)
+);
+</code></pre>
+</li>
+<li>
+<p>删除自动增长<br>
+<code>ALTER TABLE student MODIFY id INT</code></p>
+</li>
+<li>
+<p>添加自动增长<br>
+<code>ALTER TABLE student MODIFY id INT AUTO_INCREMENT</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="外键约束foreign-key">外键约束：<code>FOREIGN KEY</code></h3>
+<ul>
+<li>
+<p>在创建表时，可以添加外键</p>
+<ul>
+<li>
+<p>注意：外键可以为null，但不能为不存在的值</p>
+</li>
+<li>
+<p>语法：</p>
+<pre><code class="language-SQL">CREATE TABLE 表名(
+	....
+	外键列
+    CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称)
+);
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>删除外键<br>
+<code>ALTER TABLE 表名 DROP FOREIGN KEY 外键名称;</code></p>
+</li>
+<li>
+<p>创建表之后，添加外键<br>
+<code>ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称);</code></p>
+</li>
+<li>
+<p>级联操作</p>
+<ol>
+<li>
+<p>添加级联操作</p>
+<ol>
+<li>分类：
+<ol>
+<li>级联更新：ON UPDATE CASCADE</li>
+<li>级联删除：ON DELETE CASCADE</li>
+</ol>
+</li>
+<li>语法：</li>
+</ol>
+<pre><code class="language-SQL">ALTER TABLE 表名 ADD CONSTRAINT 外键名称 
+FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称) ON UPDATE CASCADE / ON DELETE CASCADE;
+</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="数据库的设计">数据库的设计</h2>
+<h3 id="多表之间的关系">多表之间的关系</h3>
+<ul>
+<li>一对一：eg: 人和身份证</li>
+<li>一对多：eg: 部门和员工
+<ul>
+<li>实现方式：在&quot;多&quot;的一方建立外键，指向&quot;一&quot;的一方的主键</li>
+</ul>
+</li>
+<li>多对多：eg: 学生和课程
+<ul>
+<li>实现方式：借助第三张中间表。中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键</li>
+</ul>
+</li>
+</ul>
+<h4 id="案例">案例</h4>
+<pre><code class="language-SQL">-- 创建旅游线路分类表 tab_category
+-- cid 旅游线路分类主键，自动增长
+-- cname 旅游线路分类名称非空，唯一，字符串 100
+CREATE TABLE tab_category (
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    cname VARCHAR(100) NOT NULL UNIQUE
+);
+	
+-- 创建旅游线路表 tab_route
+/*
+rid 旅游线路主键，自动增长
+rname 旅游线路名称非空，唯一，字符串 100
+price 价格
+rdate 上架时间，日期类型
+cid 外键，所属分类
+*/
+CREATE TABLE tab_route(
+    rid INT PRIMARY KEY AUTO_INCREMENT,
+    rname VARCHAR(100) NOT NULL UNIQUE,
+    price DOUBLE,
+    rdate DATE,
+    cid INT,
+    FOREIGN KEY (cid) REFERENCES tab_category(cid)
+);
+	
+/*创建用户表 tab_user
+uid 用户主键，自增长
+username 用户名长度 100，唯一，非空
+password 密码长度 30，非空
+name 真实姓名长度 100
+birthday 生日
+sex 性别，定长字符串 1
+telephone 手机号，字符串 11
+email 邮箱，字符串长度 100
+*/
+CREATE TABLE tab_user (
+    uid INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    PASSWORD VARCHAR(30) NOT NULL,
+    NAME VARCHAR(100),
+    birthday DATE,
+    sex CHAR(1) DEFAULT '男',
+    telephone VARCHAR(11),
+    email VARCHAR(100)
+);
+	
+/*
+创建收藏表 tab_favorite
+rid 旅游线路 id，外键
+date 收藏时间
+uid 用户 id，外键
+rid 和 uid 不能重复，设置复合主键，同一个用户不能收藏同一个线路两次
+*/
+CREATE TABLE tab_favorite (
+    rid INT, -- 线路id
+    DATE DATETIME,
+    uid INT, -- 用户id
+    -- 创建复合主键
+    PRIMARY KEY(rid,uid), -- 联合主键
+    FOREIGN KEY (rid) REFERENCES tab_route(rid),
+    FOREIGN KEY(uid) REFERENCES tab_user(uid)
+);
+
+</code></pre>
+<h3 id="数据库设计的范式">数据库设计的范式</h3>
+<ul>
+<li>
+<p>概念：设计数据库时，需要遵循的一些规范。要遵循后边的范式要求，必须先遵循前边的所有范式要求</p>
+<pre><code>  	设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，各种范式呈递次规范，越高的范式数据库冗余越小。
+  	目前关系数据库有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、巴斯-科德范式（BCNF）、第四范式(4NF）和第五范式（5NF，又称完美范式）。
+</code></pre>
+</li>
+<li>
+<p>分类：</p>
+<ul>
+<li>第一范式（1NF）：每一列都是不可分割的原子数据项</li>
+<li>第二范式（2NF）：在第一范式的基础上，非码属性必须完全依赖于码。（在1NF基础上消除非主属性对码的部分函数依赖）
+<ul>
+<li>函数依赖：A-&gt;B, 如果通过A属性（属性组）的值，可以确定唯一B属性的值，则称B依赖于A。eg: 学号-&gt;姓名，（学号，课程名称）-&gt; 分数
+<ul>
+<li>完全函数依赖：A-&gt;B，如果A是一个属性组，则B属性的值需要依赖于A属性组中的所有元素值。eg:（学号，课程名称）-&gt; 分数</li>
+<li>部分函数依赖：A-&gt;B，如果A是一个属性组，则B属性值只需要依赖A属性组中的某一些值即可。eg:（学号，课程名称）-&gt; 姓名</li>
+<li>传递函数依赖：A-&gt;B, B-&gt;C，如果通过A属性（属性组）的值，可以确定唯一B属性的值，再通过B属性（属性组）的值可以确定唯一C属性的值，则称C传递依赖于A。</li>
+</ul>
+</li>
+<li>码：如果在一张表中，一个属性（属性组）被其他所有属性完全依赖，则称这个属性（属性组）为该表的码。eg: （学号，课程名称）
+<ul>
+<li>主属性：码属性（组）中所有的属性</li>
+<li>非主属性：除码属性（组）外的属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第三范式（3NF）：在2NF的基础上，任何非主属性不依赖于其他非主属性。（在2NF基础上消除传递依赖）</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库的备份和还原">数据库的备份和还原</h2>
+<ul>
+<li>命令行：
+<ul>
+<li>备份语法：<code>mysqldump -u用户名 -p密码 数据库名称 &gt; 保存的位置</code></li>
+<li>还原方式：
+<ul>
+<li>登录数据库</li>
+<li>创建数据库</li>
+<li>使用数据库</li>
+<li>执行文件 （之前保存的文件路径）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="多表查询">多表查询</h2>
+<ul>
+<li>笛卡尔积：有两个集合A、B, 取这两个集合的所有组成情况</li>
+<li>要完成多表查询，需要消除无用的数据</li>
+<li>语法：</li>
+</ul>
+<pre><code class="language-SQL">SELECT
+    列名列表
+FROM
+    表名列表
+WHERE
+    条件
+</code></pre>
+<p>练习：</p>
+<pre><code class="language-SQL"># 创建部门表
+CREATE TABLE dept(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(20)
+);
+INSERT INTO dept (NAME) VALUES ('开发部'),('市场部'),('财务部');
+# 创建员工表
+CREATE TABLE emp (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(10),
+	gender CHAR(1), -- 性别
+	salary DOUBLE, -- 工资
+	join_date DATE, -- 入职日期
+	dept_id INT,
+	FOREIGN KEY (dept_id) REFERENCES dept(id) -- 外键，关联部门表(部门表的主键)
+);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('孙悟空','男',7200,'2013-02-24',1);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('猪八戒','男',3600,'2010-12-02',2);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('唐僧','男',9000,'2008-08-08',2);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('白骨精','女',5000,'2015-10-07',3);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('蜘蛛精','女',4500,'2011-03-14',1);
+</code></pre>
+<h3 id="多表查询的分类">多表查询的分类</h3>
+<h4 id="内连接查询">内连接查询</h4>
+<pre><code>1. 从哪些表中查询数据
+2. 条件是什么
+3. 查询哪些字段
+</code></pre>
+<h5 id="隐式内连接">隐式内连接</h5>
+<pre><code class="language-sql">-- 查询所有员工信息和对应的部门信息
+SELECT * FROM emp,dept WHERE emp.dept_id = dept.id;
+    
+-- 查询员工表的名称，性别。部门表的名称
+-- 查询员工表的名称，性别。部门表的名称
+SELECT
+	t1.`NAME`,
+	t1.gender,
+	t2.`NAME`
+FROM
+	emp t1,		-- 员工表
+	dept t2		-- 部门表
+WHERE
+	t1.dept_id = t2.id
+</code></pre>
+<h5 id="显式内连接">显式内连接</h5>
+<ul>
+<li>语法：<code>SELECT 字段名称 FROM 表名1 [INNER] JOIN 表名2 ON 条件;</code>
+<ul>
+<li>例如 <code>SELECT * FROM emp JOIN dept ON emp.dept_id = dept.id;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="外连接查询">外连接查询</h4>
+<h5 id="左外连接">左外连接</h5>
+<ul>
+<li>语法：<code>SELECT 字段列表 FROM 表1 LEFT [OUTER] JOIN 表2 ON 条件;</code></li>
+<li>含义：查询左表所有的数据与有表有交集的部分</li>
+<li>实例：</li>
+</ul>
+<pre><code class="language-sql">-- 查询所有员工信息，如果员工有部门，则查询部门名称，没有部门，则不显示部门名称
+SELECT
+	t1.*,
+	t2.`NAME`
+FROM
+	emp t1
+LEFT JOIN
+	dept t2
+ON
+	t1.dept_id = t2.id
+</code></pre>
+<h4 id="子查询">子查询</h4>
+<ul>
+<li>概念：查询中嵌套查询，成嵌套查询为子查询。</li>
+<li>实例：</li>
+</ul>
+<pre><code class="language-SQL">-- 查询工资最高的员工信息
+SELECT * FROM emp WHERE emp.`salary` = (SELECT MAX(salary) FROM emp);
+
+-- 查询'财务部'和'市场部'所有的员工信息
+SELECT * FROM emp WHERE dept_id IN (SELECT id FROM dept WHERE NAME = '财务部' OR NAME = '市场部');
+
+-- 查询员工入职日期是2011-11-11日之后的员工信息和部门信息
+SELECT 
+    * 
+FROM 
+    dept t1 ,
+    (SELECT * FROM emp WHERE emp.`join_date` &gt; '2011-11-11') t2
+WHERE 
+    t1.id = t2.dept_id;
+</code></pre>
+<h3 id="事务">事务</h3>
+<ul>
+<li>概念：如果一个包含多个步骤的业务操作，被事务管理，那么这些操作要么同时成功，要么同时失败。</li>
+<li>操作:
+<ul>
+<li>开启事务：<code>START TRANSACTION;</code></li>
+<li>回滚：<code>ROLLBACK</code></li>
+<li>提交：<code>COMMIT</code></li>
+</ul>
+</li>
+<li>MySQL 中事务是默认自动提交。（运行一条DML(增删改)语句就会自动提交一次事务）</li>
+<li>Oracle 数据库是默认手动提交事务，需要先开启事务，再提交。</li>
+</ul>
+<h4 id="事务的四大特征">事务的四大特征：</h4>
+<ol>
+<li>原子性：是不可分割的最小操作单位，要么同时成功，要么同时失败。</li>
+<li>持久性：当事务提交或回滚后，数据库会持久化的保存数据。</li>
+<li>隔离性：多个事务之间。相互独立。</li>
+<li>一致性：事务操作前后，数据总量不变</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[iOS - Runtime 详解]]></title>
+        <id>https://qxuewei.github.io/post/ios-runtime-xiang-jie/</id>
+        <link href="https://qxuewei.github.io/post/ios-runtime-xiang-jie/">
+        </link>
+        <updated>2020-06-12T08:02:19.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="ios-runtime-详解">iOS - Runtime 详解</h1>
+<h2 id="0-概述">0. 概述</h2>
+<p>Objective-C Runtime 使得C具有了面向对象的能力，在程序运行时创建，检查，修改类，对象和它们的方法。Runtime 是 C和汇编写的，这里<a href="http://www.opensource.apple.com/source/objc4/">http://www.opensource.apple.com/source/objc4/</a>可以下载Apple维护的开源代码，GUN也有一个开源的Runtime版本，它们都努力保持一致。<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048">Apple官方的runtime编程指南</a></p>
+<p>对于 C 语言，函数的调用会在编译期就已经决定好，在编译完成后直接顺序执行。但是 OC 是一门动态语言，函数调用变成了消息发送，在编译期不能知道调用哪个函数，Runtime 就是去解决如何在运行时期找到调用方法的问题。&gt;</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="ios-runtime-详解">iOS - Runtime 详解</h1>
+<h2 id="0-概述">0. 概述</h2>
+<p>Objective-C Runtime 使得C具有了面向对象的能力，在程序运行时创建，检查，修改类，对象和它们的方法。Runtime 是 C和汇编写的，这里<a href="http://www.opensource.apple.com/source/objc4/">http://www.opensource.apple.com/source/objc4/</a>可以下载Apple维护的开源代码，GUN也有一个开源的Runtime版本，它们都努力保持一致。<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008048">Apple官方的runtime编程指南</a></p>
+<p>对于 C 语言，函数的调用会在编译期就已经决定好，在编译完成后直接顺序执行。但是 OC 是一门动态语言，函数调用变成了消息发送，在编译期不能知道调用哪个函数，Runtime 就是去解决如何在运行时期找到调用方法的问题。&gt;</p>
+<!-- more -->
+<h2 id="1-runtime-函数">1、Runtime 函数</h2>
+<p>Runtime 系统是由一系列的函数和数据结构组成的公共接口动态共享库，在/user/includeobjc 目录下可以看到头文件，可以用到其中一些函数通过C语言实现Objective-C中一样的功能。苹果官方文档 <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html">https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html</a> 里有详细的Runtime 函数文档。</p>
+<h2 id="2-class-和-nsobject-基础数据结构">2. Class 和 NSObject 基础数据结构</h2>
+<h3 id="21-class">2.1 Class</h3>
+<p>objc_class 结构体的定义如下：</p>
+<pre><code class="language-C">//-------- [file:objc-runtime-new.h] --------
+struct objc_class : objc_object {
+    // Class ISA;
+    Class superclass;
+    cache_t cache;             // formerly cache pointer and vtable
+    class_data_bits_t bits;    // class_rw_t * plus custom rr/alloc flags
+    ......
+}
+</code></pre>
+<h3 id="22-objc_object">2.2 objc_object</h3>
+<p>objc_object 是一个类的实例结构体，objc/objc.h 中 objc_object是一个类的实例结构体定义如下：</p>
+<pre><code class="language-C">//-------- [file:objc-private.h] --------
+typedef struct objc_class *Class;
+typedef struct objc_object *id;
+
+struct objc_object {
+private:
+    isa_t isa;
+    ......
+}
+
+union isa_t 
+{
+    ......
+    Class cls;
+    uintptr_t bits;
+    ......
+}
+</code></pre>
+<p>向object发送消息时，Runtime 库会根据object的isa指针找到这个实例object所属于的类，然后在类的方法列表以及父类的方法列表中寻找对应的方法运行。id 是一个objc_object结构类型的指针，这个类型的对象能转换成任何一种对象。</p>
+<h3 id="23-cache_t">2.3 cache_t</h3>
+<p>cache_t 结构体中cache字段用于缓存调用过的method。cache指针指向cache_t结构体，这个结构体定义如下：</p>
+<pre><code class="language-C">struct cache_t {
+    struct bucket_t *_buckets;
+    mask_t _mask;
+    mask_t _occupied;
+};
+</code></pre>
+<h3 id="24-meta-class">2.4 Meta Class</h3>
+<p><code>meta class</code> 是一个类对象的类，</p>
+<ul>
+<li>当向对象发送消息时，runtime 会在这个对象所属类方法列表中查找发送消息对应的方法;</li>
+<li>但当向类发送消息时，runtime 就会在这个类的 <code>meta class</code> 方法列表中查找。</li>
+</ul>
+<p>所有的 <code>meta class</code>，包括<code>Root class</code>，<code>SuperClass</code>, <code>SubClass</code>的<code>isa</code>都指向 <code>Root class</code> 的 <code>meta class</code>，这样能够形成一个闭环。</p>
+<figure data-type="image" tabindex="1"><img src="https://raw.githubusercontent.com/qxuewei/XWResources/master/images/metaClass.png" alt="meta class 关系图" loading="lazy"></figure>
+<h2 id="3runtime-类与对象操作函数">3.Runtime 类与对象操作函数</h2>
+<p>Runtime 有很多函数可以操作类和对象。类相关的是class为前缀，对象相关相关的函数是 objc 或者 object 为前缀。</p>
+<h3 id="31类相关操作函数">3.1类相关操作函数</h3>
+<h4 id="name">name</h4>
+<pre><code class="language-objective-c">// 获取类的类名
+const cahr * class_getName (Class cls);
+</code></pre>
+<h4 id="super_class-和-meta_class">super_class 和 meta_class</h4>
+<pre><code class="language-objective-c">// 获取类的父类
+Class class_getSuperclass (Class cls);
+
+// 判断给定的Class是否是一个meta class
+BOOL class_isMetaClass (Class cls);
+</code></pre>
+<h4 id="instance_size">instance_size</h4>
+<pre><code class="language-objective-c">// 获取实例大小
+size_t class_getInstanceSize (Class cls);
+</code></pre>
+<h3 id="32-成员变量ivars及属性">3.2 成员变量（ivars）及属性</h3>
+<h4 id="321-成员变量操作函数">3.2.1 成员变量操作函数</h4>
+<pre><code class="language-objective-c">// 获取类中指定名称实例成员变量的信息
+Ivar class_getInstanceVariable (Class cls, const char *name);
+
+// 获取类成员变量的信息
+Ivar class_getClassVariable (Class cls, const char *name);
+
+// 添加成员变量
+BOOL class_addIvar (Class cls, const char *name, size_t size, uint8_t alignment, const char *types);  //只能向在runtime时创建的类添加成员变量，这个方法只能在objc_allocateClassPair函数与objc_registerClassPair之间调用。另外，这个类也不能是元类。
+
+// 获取整个成员变量列表
+Ivar * class_copyIvarList (Class cls, unsigned int *outCount); // 必须使用free()来释放这个数组
+
+</code></pre>
+<p>测试成员变量</p>
+<pre><code>//成员变量
+- (void)testIvar {
+    BOOL isSuccessAddIvar = class_addIvar([NSString class], &quot;_phone&quot;, sizeof(id), log2(sizeof(id)), &quot;@&quot;);
+    if (isSuccessAddIvar) {
+        NSLog(@&quot;Add Ivar success&quot;);
+    }else{
+        NSLog(@&quot;Add Ivar error&quot;);
+    }
+    unsigned int outCount;
+    Ivar *ivarList = class_copyIvarList([People class], &amp;outCount);
+    for (int i = 0; i &lt; outCount; i++) {
+        Ivar ivar = ivarList[i];
+        const char *ivarName = ivar_getName(ivar);
+        const char *type = ivar_getTypeEncoding(ivar);
+        ptrdiff_t offset = ivar_getOffset(ivar);
+        NSLog(@&quot;ivar:%s, offset:%zd, type:%s&quot;, ivarName, offset, type);
+    }
+}
+
+</code></pre>
+<h4 id="322-属性操作函数">3.2.2 属性操作函数</h4>
+<pre><code class="language-objective-c">// 获取指定的属性
+objc_property_t class_getProperty(Class cls, const char *name);
+
+// 获取属性列表
+objc_property_t * class_copyPropertyList(Class cls, unsigned int *outCount);
+
+// 为类添加属性
+BOOL class_addProperty (Class cls, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount);
+
+// 替换类的属性
+void class_replaceProperty (Class cls, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount);
+</code></pre>
+<p>针对ivar来操作的，不过它只操作那些property的值，包括扩展中的property。</p>
+<p>测试属性</p>
+<pre><code>- (void)testProperty {    
+    objc_property_attribute_t attribute1 = {&quot;T&quot;, &quot;@\&quot;NSString\&quot;&quot;};
+    objc_property_attribute_t attribute2 = {&quot;C&quot;, &quot;&quot;};
+    objc_property_attribute_t attribute3 = {&quot;N&quot;, &quot;&quot;};
+    objc_property_attribute_t attribute4 = {&quot;V&quot;, &quot;_addProperty&quot;};
+    objc_property_attribute_t attributesList[] = {attribute1, attribute2, attribute3, attribute4};
+    BOOL isSuccessAddProperty = class_addProperty([People class], &quot;addProperty&quot;, attributesList, 4);
+    if (isSuccessAddProperty) {
+        NSLog(@&quot;Add Property Success&quot;);
+    }else{
+        NSLog(@&quot;Add Property Error&quot;);
+    }
+    unsigned int outCount;
+    objc_property_t * propertyList = class_copyPropertyList([People class], &amp;outCount);
+    for (unsigned int i = 0; i &lt; outCount; i++) {
+        objc_property_t property = propertyList[i];
+        const char *propertyName = property_getName(property);
+        const char *attribute = property_getAttributes(property);
+        NSLog(@&quot;propertyName: %s, attribute: %s&quot;, propertyName, attribute);
+        unsigned int attributeCount;
+        objc_property_attribute_t *attributeList = property_copyAttributeList(property, &amp;attributeCount);
+        for (unsigned int i = 0; i &lt; attributeCount; i++) {
+            objc_property_attribute_t attribute = attributeList[i];
+            const char *name = attribute.name;
+            const char *value = attribute.value;
+            NSLog(@&quot;attribute name: %s, value: %s&quot;,name,value);
+        }
+    }
+}
+
+</code></pre>
+<p>运行结果</p>
+<pre><code>2018-05-01 17:14:52.957653+0800 RuntimeDemo[24515:910260] Add Property Success
+2018-05-01 17:14:52.957871+0800 RuntimeDemo[24515:910260] propertyName: addProperty, attribute: T@&quot;NSString&quot;,C,N,V_addProperty
+2018-05-01 17:14:52.958034+0800 RuntimeDemo[24515:910260] attribute name: T, value: @&quot;NSString&quot;
+2018-05-01 17:14:52.958175+0800 RuntimeDemo[24515:910260] attribute name: C, value:
+2018-05-01 17:14:52.958309+0800 RuntimeDemo[24515:910260] attribute name: N, value:
+2018-05-01 17:14:52.958452+0800 RuntimeDemo[24515:910260] attribute name: V, value: _addProperty
+2018-05-01 17:14:52.958575+0800 RuntimeDemo[24515:910260] propertyName: name, attribute: T@&quot;NSString&quot;,C,N,V_name
+2018-05-01 17:14:52.958732+0800 RuntimeDemo[24515:910260] attribute name: T, value: @&quot;NSString&quot;
+2018-05-01 17:14:52.958850+0800 RuntimeDemo[24515:910260] attribute name: C, value:
+2018-05-01 17:14:52.958983+0800 RuntimeDemo[24515:910260] attribute name: N, value:
+2018-05-01 17:14:52.959096+0800 RuntimeDemo[24515:910260] attribute name: V, value: _name
+2018-05-01 17:14:52.959225+0800 RuntimeDemo[24515:910260] propertyName: age, attribute: T@&quot;NSNumber&quot;,&amp;,N,V_age
+2018-05-01 17:14:52.959319+0800 RuntimeDemo[24515:910260] attribute name: T, value: @&quot;NSNumber&quot;
+2018-05-01 17:14:52.959420+0800 RuntimeDemo[24515:910260] attribute name: &amp;, value:
+2018-05-01 17:14:52.959646+0800 RuntimeDemo[24515:910260] attribute name: N, value:
+2018-05-01 17:14:52.959847+0800 RuntimeDemo[24515:910260] attribute name: V, value: _age
+2018-05-01 17:14:52.960024+0800 RuntimeDemo[24515:910260] propertyName: sex, attribute: TQ,N,V_sex
+2018-05-01 17:14:52.960186+0800 RuntimeDemo[24515:910260] attribute name: T, value: Q
+2018-05-01 17:14:52.960365+0800 RuntimeDemo[24515:910260] attribute name: N, value:
+2018-05-01 17:14:52.960584+0800 RuntimeDemo[24515:910260] attribute name: V, value: _sex
+2018-05-01 17:14:52.960737+0800 RuntimeDemo[24515:910260] propertyName: address, attribute: T@&quot;NSString&quot;,C,N,V_address
+2018-05-01 17:14:52.960928+0800 RuntimeDemo[24515:910260] attribute name: T, value: @&quot;NSString&quot;
+2018-05-01 17:14:52.961101+0800 RuntimeDemo[24515:910260] attribute name: C, value:
+2018-05-01 17:14:52.961274+0800 RuntimeDemo[24515:910260] attribute name: N, value:
+2018-05-01 17:14:52.961463+0800 RuntimeDemo[24515:910260] attribute name: V, value: _address
+</code></pre>
+<pre><code>T 是固定的，放在第一个
+@”NSString” 代表这个property是一个字符串对象
+&amp; 代表强引用，其中与之并列的是：’C’代表Copy，’&amp;’代表强引用，’W’表示weak，assign为空，默认为assign。R 代表readOnly属性，readwrite时为空
+N 区分的nonatomic和atomic，默认为atomic，atomic为空，’N’代表是nonatomic
+V_exprice V代表变量，后面紧跟着的是成员变量名，代表这个property的成员变量名为_exprice
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://raw.githubusercontent.com/qxuewei/XWResources/master/images/runtime_property_attrit.png" alt="property_getAttributes 说明" loading="lazy"></figure>
+<h4 id="323-协议相关函数">3.2.3 协议相关函数</h4>
+<pre><code class="language-objective-c">// 添加协议
+BOOL class_addProtocol ( Class cls, Protocol *protocol );
+ 
+// 返回类是否实现指定的协议
+BOOL class_conformsToProtocol ( Class cls, Protocol *protocol );
+ 
+// 返回类实现的协议列表
+Protocol * class_copyProtocolList ( Class cls, unsigned int *outCount );
+</code></pre>
+<p>测试协议</p>
+<pre><code class="language-objective-c">@protocol PeopleProcol &lt;NSObject&gt;
+@end
+
+- (void)testProtocol {
+    // 添加协议
+    Protocol *p = @protocol(PeopleProcol);
+    if (class_addProtocol([People class], p)) {
+        NSLog(@&quot;Add Protoclol Success&quot;);
+    }else{
+        NSLog(@&quot;Add protocol Fail&quot;);
+    }
+    if (class_conformsToProtocol([People class], p)) {
+        NSLog(@&quot;实现了 PeopleProcol 协议&quot;);
+    }else{
+        NSLog(@&quot;没有实现 PeopleProcol 协议&quot;);
+    }
+    unsigned int outCount;
+    Protocol *__unsafe_unretained *protocolList = class_copyProtocolList([People class], &amp;outCount);
+    for (unsigned int i = 0; i &lt; outCount; i++) {
+        Protocol *p = protocolList[i];
+        const char *protocolName = protocol_getName(p);
+        NSLog(@&quot;协议名称: %s&quot;,protocolName);
+    }
+}
+</code></pre>
+<p>运行结果</p>
+<pre><code>
+2018-05-01 17:29:12.580433+0800 RuntimeDemo[25007:940310] Add Protoclol Success
+2018-05-01 17:29:12.580591+0800 RuntimeDemo[25007:940310] 实现了 PeopleProcol 协议
+2018-05-01 17:29:12.580707+0800 RuntimeDemo[25007:940310] 协议名称: PeopleProcol
+</code></pre>
+<h4 id="324-版本号">3.2.4 版本号</h4>
+<pre><code>- (void)testVersion {
+    int version = class_getVersion([People class]);
+    NSLog(@&quot;version %d&quot;,version);
+    
+    class_setVersion([People class], 10086);
+    
+    int nerVersion = class_getVersion([People class]);
+    NSLog(@&quot;nerVersion %d&quot;,nerVersion);
+}
+</code></pre>
+<p>运行结果</p>
+<pre><code>2018-05-01 17:38:29.593821+0800 RuntimeDemo[25266:956588] version 0
+2018-05-01 17:38:29.593972+0800 RuntimeDemo[25266:956588] nerVersion 10086
+</code></pre>
+<h3 id="33-动态创建类和对象">3.3 动态创建类和对象</h3>
+<h4 id="331-动态创建类">3.3.1. 动态创建类</h4>
+<pre><code class="language-objective-c">// 创建一个新类和元类
+Class objc_allocateClassPair (Class superclass, const char *name, size_t extraBytes);
+
+// 销魂一个类及其相关联的类
+void objc_disposeClassPair (Class cls);
+
+// 在应用中注册由objc_allocateClassPair创建类
+void objc_registerClassPair (Class cls);
+</code></pre>
+<p>其中：</p>
+<p>（1）objc_allocateClassPair函数：如果我们要创建一个根类，则superclass指定为Nil。extraBytes通常指定为0，该参数是分配给类和元类对象尾部的索引ivars的字节数。</p>
+<p>（2）为了创建一个新类，我们需要调用objc_allocateClassPair。然后使用诸如class_addMethod，class_addIvar等函数来为新创建的类添加方法、实例变量和属性等。完成这些后，我们需要调用objc_registerClassPair函数来注册类，之后这个新类就可以在程序中使用了。</p>
+<p>（3）实例方法和实例变量应该添加到类自身上，而类方法应该添加到类的元类上。</p>
+<p>（4）objc_disposeClassPair只能销毁由objc_allocateClassPair创建的类，当有实例存在或者它的子类存在时，调用这个函数会抛出异常。</p>
+<p>测试代码：</p>
+<pre><code class="language-objctive-c">- (void)testAddClass {
+    Class TestClass = objc_allocateClassPair([NSObject class], &quot;myClass&quot;, 0);
+    if (class_addIvar(TestClass, &quot;myIvar&quot;, sizeof(NSString *), sizeof(NSString *), &quot;@&quot;)) {
+        NSLog(@&quot;Add Ivar Success&quot;);
+    }
+    class_addMethod(TestClass, @selector(method1:), (IMP)method0, &quot;v@:&quot;);
+    // 注册这个类到runtime才可使用
+    objc_registerClassPair(TestClass);
+    
+    // 生成一个实例化对象
+    id myObjc = [[TestClass alloc] init];
+    NSString *str = @&quot;qiuxuewei&quot;;
+    //给刚刚添加的变量赋值
+    //object_setInstanceVariable(myobj, &quot;myIvar&quot;, (void *)&amp;str);在ARC下不允许使用
+    [myObjc setValue:str forKey:@&quot;myIvar&quot;];
+    [myObjc method1:10086];
+}
+- (void)method1:(int)a {
+}
+void method0(id self, SEL _cmd, int a) {
+    Ivar v = class_getInstanceVariable([self class], &quot;myIvar&quot;);
+    id o = object_getIvar(self, v);
+    NSLog(@&quot;%@ \n int a is %d&quot;, o,a);
+}
+</code></pre>
+<p>运行结果：</p>
+<pre><code>2018-05-01 22:30:30.159096+0800 RuntimeDemo[31292:1162987] Add Ivar Success
+2018-05-01 22:30:30.159344+0800 RuntimeDemo[31292:1162987] qiuxuewei 
+ int a is 10086
+</code></pre>
+<h4 id="332-动态创建对象">3.3.2. 动态创建对象</h4>
+<pre><code class="language-objective-c">// 创建类的实例
+id class_createInstance (Class cls, size_t extraBytes);
+
+// 在指定位置创建类实例
+id objc_constructInstance (Class cls, void *bytes);
+
+// 销毁类实例
+void * objc_destructInstance (id obj);
+
+</code></pre>
+<p>class_createInstance函数：创建实例时，会在默认的内存区域为类分配内存。extraBytes参数表示分配的额外字节数。这些额外的字节可用于存储在类定义中所定义的实例变量之外的实例变量。该函数在ARC环境下无法使用。</p>
+<p>调用class_createInstance的效果与+alloc方法类似。不过在使用class_createInstance时，我们需要确切的知道我们要用它来做什么。</p>
+<p>测试代码</p>
+<pre><code class="language-objective-c">- (void)testCreteInstance {
+    id testInstance = class_createInstance([NSString class], sizeof(unsigned));
+    id str1 = [testInstance init];
+    NSLog(@&quot;%@&quot;,[str1 class]);
+    id str2 = [[NSString alloc] initWithString: @&quot;Test&quot;];
+    NSLog(@&quot;%@&quot;,[str2 class]);
+}
+</code></pre>
+<p>运行结果：</p>
+<pre><code>2018-05-01 23:43:25.941205+0800 RuntimeDemo[32783:1223167] NSString
+2018-05-01 23:43:25.941364+0800 RuntimeDemo[32783:1223167] __NSCFConstantString
+</code></pre>
+<h4 id="333-其他类和对象相关的操作函数">3.3.3. 其他类和对象相关的操作函数</h4>
+<p>类</p>
+<pre><code class="language-objective-c">// 获取已注册的类定义的列表
+int objc_getClassList(Class *buffer, int bufferCount);
+
+// 创建并返回一个指向所有已注册类的指针列表
+Class * objc_copyClassList (unsigned int * outCount);
+
+// 返回指定类的类定义
+Class objc_lookUpClass ( const char *name );
+Class objc_getClass ( const char *name );
+Class objc_getRequiredClass ( const char *name );
+ 
+// 返回指定类的元类
+Class objc_getMetaClass ( const char *name );
+
+</code></pre>
+<p>对象</p>
+<pre><code class="language-objective-c">
+// 返回指定对象的一份拷贝
+id object_copy ( id obj, size_t size );
+ 
+// 释放指定对象占用的内存
+id object_dispose ( id obj );
+
+// 修改类实例的实例变量的值
+Ivar object_setInstanceVariable ( id obj, const char *name, void *value );
+ 
+// 获取对象实例变量的值
+Ivar object_getInstanceVariable ( id obj, const char *name, void **outValue );
+ 
+// 返回指向给定对象分配的任何额外字节的指针
+void * object_getIndexedIvars ( id obj );
+ 
+// 返回对象中实例变量的值
+id object_getIvar ( id obj, Ivar ivar );
+ 
+// 设置对象中实例变量的值
+void object_setIvar ( id obj, Ivar ivar, id value );
+
+// 返回给定对象的类名
+const char * object_getClassName ( id obj );
+ 
+// 返回对象的类
+Class object_getClass ( id obj );
+ 
+// 设置对象的类
+Class object_setClass ( id obj, Class cls );
+
+</code></pre>
+<p>获取类的定义</p>
+<pre><code class="language-objective-c">// 获取已注册的类定义的列表
+int objc_getClassList (Class *)
+
+</code></pre>
+<h4 id="334-应用实例">3.3.4. 应用实例</h4>
+<h5 id="1-json-转-model">1. Json 转 Model</h5>
+<p>操作函数</p>
+<pre><code class="language-objective-c">- (instancetype)initWithDict:(NSDictionary *)dict {
+    if (self = [self init]) {
+        NSMutableArray &lt;NSString *&gt;*keys = [NSMutableArray array];
+        NSMutableArray &lt;NSString *&gt;*attributes = [NSMutableArray array];
+        
+        unsigned int outCount;
+        objc_property_t * propertyList = class_copyPropertyList([self class], &amp;outCount);
+        for (unsigned int i = 0; i &lt; outCount; i++) {
+            objc_property_t property = propertyList[i];
+            const char *name = property_getName(property);
+            NSString *propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+            [keys addObject:propertyName];
+            
+            const char *attribute = property_getAttributes(property);
+            NSString *attributeName = [NSString stringWithCString:attribute encoding:NSUTF8StringEncoding];
+            [attributes addObject:attributeName];
+        }
+        free(propertyList);
+        for (NSString *key in keys) {
+            if ([dict valueForKey:key]) {
+                [self setValue:[dict valueForKey:key] forKey:key];
+            }
+        }
+    }
+    return self;
+}
+
+</code></pre>
+<h5 id="2-快速归解档">2. 快速归解档</h5>
+<pre><code class="language-objective-c">遵循 NSCoding 协议
+// 归档
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super init]) {
+        unsigned int outCount;
+        Ivar * ivarList = class_copyIvarList([self class], &amp;outCount);
+        for (unsigned int i = 0; i &lt; outCount; i++) {
+            Ivar ivar = ivarList[i];
+            NSString *key = [NSString stringWithCString:ivar_getName(ivar) encoding:NSUTF8StringEncoding];
+            [self setValue:[aDecoder decodeObjectForKey:key] forKey:key];
+        }
+    }
+    return self;
+}
+// 解档
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    unsigned int outCount;
+    Ivar * ivarList = class_copyIvarList([self class], &amp;outCount);
+    for (unsigned int i = 0; i &lt; outCount; i++) {
+        Ivar ivar = ivarList[i];
+        NSString *key = [NSString stringWithCString:ivar_getName(ivar) encoding:NSUTF8StringEncoding];
+        [aCoder encodeObject:[self valueForKey:key] forKey:key];
+    }
+}
+</code></pre>
+<p>测试</p>
+<pre><code class="language-objective-c">- (void)testCoder {
+    NSString *key = @&quot;peopleKey&quot;;
+    People * people = [[People alloc] init];
+    people.name = @&quot;邱学伟&quot;;
+    people.age = @18;
+    NSData *peopleData = [NSKeyedArchiver archivedDataWithRootObject:people];
+    [[NSUserDefaults standardUserDefaults] setObject:peopleData forKey:key];
+    
+    NSData *testData = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    People *testPeople = [NSKeyedUnarchiver unarchiveObjectWithData:testData];
+    NSLog(@&quot;%@&quot;,testPeople.name);
+}
+</code></pre>
+<h5 id="3-关联对象">3. 关联对象</h5>
+<pre><code class="language-objective-c">// 关联对象
+void objc_setAssociatedObject (id object, const void * key, id value, objc_AssociationPolicy policy);
+
+// 获取关联的对象
+id objc_getAssociatedObject (id object, const void * key);
+
+// 移除关联的对象
+void objc_removeAssociatedObjects (id object);
+</code></pre>
+<p>参数说明</p>
+<pre><code class="language-objective-c">id object : 被关联的对象 
+const void *key : 关联的key， set和get 需统一
+id value : 关联的对象
+objc_AssociationPolicy policy : 内存管理的策略
+</code></pre>
+<p>objc_AssociationPolicy policy的enum值有：、</p>
+<pre><code class="language-objective-c">
+typedef OBJC_ENUM(uintptr_t, objc_AssociationPolicy) {
+
+    OBJC_ASSOCIATION_ASSIGN = 0,           /**&lt; Specifies a weak reference to the associated object. */
+    
+    OBJC_ASSOCIATION_RETAIN_NONATOMIC = 1, /**&lt; Specifies a strong reference to the associated object. 
+                                            *   The association is not made atomically. */
+    
+    OBJC_ASSOCIATION_COPY_NONATOMIC = 3,   /**&lt; Specifies that the associated object is copied. 
+                                            *   The association is not made atomically. */
+    
+    OBJC_ASSOCIATION_RETAIN = 01401,       /**&lt; Specifies a strong reference to the associated object.
+                                            *   The association is made atomically. */
+    
+    OBJC_ASSOCIATION_COPY = 01403          /**&lt; Specifies that the associated object is copied.
+                                            *   The association is made atomically. */
+
+};
+
+</code></pre>
+<p>应用实例</p>
+<pre><code class="language-objective-c">//
+//  People+Category.h
+//  RuntimeDemo
+//
+//  Created by 邱学伟 on 2018/5/3.
+//  Copyright © 2018年 邱学伟. All rights reserved.
+//
+
+#import &quot;People.h&quot;
+@interface People (Category)
+/**
+ 新增属性
+ */
+@property (nonatomic, copy) NSString *blog;
+@end
+
+</code></pre>
+<pre><code class="language-objective-c">//
+//  People+Category.m
+//  RuntimeDemo
+//
+//  Created by 邱学伟 on 2018/5/3.
+//  Copyright © 2018年 邱学伟. All rights reserved.
+//
+
+#import &quot;People+Category.h&quot;
+#import &lt;objc/runtime.h&gt;
+@implementation People (Category)
+static const char * cPeopleBlogKey = &quot;cPeopleBlogKey&quot;;
+- (NSString *)blog {
+    return objc_getAssociatedObject(self, cPeopleBlogKey);
+}
+- (void)setBlog:(NSString *)blog {
+    objc_setAssociatedObject(self, cPeopleBlogKey, blog, OBJC_ASSOCIATION_COPY);
+}
+@end
+</code></pre>
+<h2 id="4-方法与消息">4. 方法与消息</h2>
+<h3 id="41-sel">4.1 SEL</h3>
+<p>SEL 又叫方法选择器， 是表示一个方法的selector的指针，其定义如下</p>
+<pre><code class="language-objective-c">typedef  struct objc_selector *SEL;
+</code></pre>
+<p>方法的selector用于表示运行时方法的名字，Objective-C在编译时，会根据每一个方法的名字，参数序列，生成一个唯一的整型标示（Int类型的地址），这个标识就是SEL. 如下</p>
+<pre><code class="language-objective-c">+ (void)load {
+    SEL sel = @selector(testMethod);
+    NSLog(@&quot;Programmer sel = %p&quot;,sel);
+}
+- (void)testMethod {
+    NSLog(@&quot;testMethod&quot;);
+}
+</code></pre>
+<p>两个类之间，不管它们是父类与子类的关系，还是之间没有这种关系，只要方法名相同，那么方法的SEL就是一样的。每一个方法都对应着一个SEL。所以在Objective-C同一个类(及类的继承体系)中，不能存在2个同名的方法，即使参数类型不同也不行。相同的方法只能对应一个SEL。这也就导致Objective-C在处理相同方法名且参数个数相同但类型不同的方法方面的能力很差.<br>
+当然，不同的类可以拥有相同的selector，这个没有问题。不同类的实例对象执行相同的selector时，会在各自的方法列表中去根据selector去寻找自己对应的IMP。</p>
+<p>本质上，SEL只是一个指向方法的指针（准确的说，只是一个根据方法名hash化了的KEY值，能唯一代表一个方法），它的存在只是为了加快方法的查询速度。这个查找过程我们将在下面讨论。</p>
+<p>我们可以在运行时添加新的selector，也可以在运行时获取已存在的selector，我们可以通过下面三种方法来获取SEL:</p>
+<p>（1）sel_registerName函数</p>
+<p>（2）Objective-C编译器提供的@selector()</p>
+<p>（3）NSSelectorFromString()方法</p>
+<h3 id="42-imp">4.2 IMP</h3>
+<p>IMP 是一个函数指针，指向方法实现的首地址。</p>
+<pre><code>id (*IMP)(id,SEL,...)
+</code></pre>
+<p>这个函数使用当前CPU架构实现的标准的C调用约定。第一个参数是指向self的指针(如果是实例方法，则是类实例的内存地址；如果是类方法，则是指向元类的指针)，第二个参数是方法选择器(selector)，接下来是方法的实际参数列表。</p>
+<p>前面介绍过的SEL就是为了查找方法的最终实现IMP的。由于每个方法对应唯一的SEL，因此我们可以通过SEL方便快速准确地获得它所对应的IMP，查找过程将在下面讨论。取得IMP后，我们就获得了执行这个方法代码的入口点，此时，我们就可以像调用普通的C语言函数一样来使用这个函数指针了。</p>
+<p>通过取得IMP，我们可以跳过Runtime的消息传递机制，直接执行IMP指向的函数实现，这样省去了Runtime消息传递过程中所做的一系列查找操作，会比直接向对象发送消息高效一些。</p>
+<h3 id="43-method">4.3 Method</h3>
+<p>Method 用于表示类定义中的方法，定义如下：</p>
+<pre><code class="language-objective-c">typedef struct objc_method *Method;
+
+struct objc_method {
+     SEL method_name OBJC2_UNAVAILABLE; // 方法名
+     char *method_types OBJC2_UNAVAILABLE; //是个char指针，存储着方法的参数类型和返回值类型
+     IMP method_imp OBJC2_UNAVAILABLE; // 方法实现，函数指针
+}
+</code></pre>
+<p>该结构体中包含一个SEL和IMP，实际上相当于在SEL和IMP之间作了一个映射。有了SEL，我们便可以找到对应的IMP，从而调用方法的实现代码。</p>
+<h3 id="44-objc_method_description">4.4 objc_method_description</h3>
+<p>objc_method_description定义了一个Objective-C方法，其定义如下：</p>
+<pre><code class="language-objective-c">struct objc_method_description { SEL name; char *types; };
+</code></pre>
+<h3 id="45-method-相关操作函数">4.5 Method 相关操作函数</h3>
+<pre><code class="language-objective-c"> // 调用指定方法的实现
+    id method_invoke (id receiver, Method m, ...);
+    
+    // 调用返回一个数据结构的方法的实现
+    void method_invoke_stret (id receiver, Method m, ...);
+    
+    // 获取方法名
+    SEL method_getName (Method m);
+    
+    // 获取方法的实现
+    IMP method_getImplementation (Method m);
+    
+    // 获取描述方法参数和返回值类型的字符串
+    const char * method_getTypeEncoding (Method m);
+    
+    // 获取方法的返回值类型的字符串
+    char * method_copyReturnType ( Method m );
+    
+    // 获取方法的指定位置参数的类型字符串
+    char * method_copyArgumentType ( Method m, unsigned int index );
+    
+    // 通过引用返回方法的返回值类型字符串
+    void method_getReturnType ( Method m, char *dst, size_t dst_len );
+    
+    // 返回方法的参数的个数
+    unsigned int method_getNumberOfArguments ( Method m );
+    
+    // 通过引用返回方法指定位置参数的类型字符串
+    void method_getArgumentType ( Method m, unsigned int index, char *dst, size_t dst_len );
+    
+    // 返回指定方法的方法描述结构体
+    struct objc_method_description * method_getDescription ( Method m );
+    
+    // 设置方法的实现
+    IMP method_setImplementation ( Method m, IMP imp );
+    
+    // 交换两个方法的实现
+    void method_exchangeImplementations ( Method m1, Method m2 );
+</code></pre>
+<p>（1）method_invoke函数，返回的是实际实现的返回值。参数receiver不能为空。这个方法的效率会比method_getImplementation和method_getName更快。</p>
+<p>（2）method_getName函数，返回的是一个SEL。如果想获取方法名的C字符串，可以使用sel_getName(method_getName(method))。</p>
+<p>（3）method_getReturnType函数，类型字符串会被拷贝到dst中。</p>
+<p>（4）method_setImplementation函数，注意该函数返回值是方法之前的实现。</p>
+<h3 id="46-方法选择器">4.6 方法选择器</h3>
+<pre><code class="language-objective-c">// 返回给定选择器指定的方法的名称
+const char * sel_getName ( SEL sel );
+
+// 在Objective-C Runtime系统中注册一个方法，将方法名映射到一个选择器，并返回这个选择器
+SEL sel_registerName ( const char *str );
+
+// 在Objective-C Runtime系统中注册一个方法
+SEL sel_getUid ( const char *str );
+
+// 比较两个选择器
+BOOL sel_isEqual ( SEL lhs, SEL rhs );
+</code></pre>
+<p>sel_registerName函数：在我们将一个方法添加到类定义时，我们必须在Objective-C Runtime系统中注册一个方法名以获取方法的选择器。</p>
+<h3 id="47-方法调用流程">4.7 方法调用流程</h3>
+<h4 id="1-消息发送">1. 消息发送</h4>
+<p>在Objective-C中，消息直到运行时才绑定到方法实现上。编译器会将消息表达式[receiver message]转化为一个消息函数的调用，即objc_msgSend。这个函数将消息接收者和方法名作为其基础参数，如以下所示：</p>
+<pre><code>objc_msgSend(receiver, selector)
+</code></pre>
+<p>如果消息中还有其他参数，则该方法的形式如下所示：</p>
+<pre><code>objc_msgSend(receiver, selector，arg1, arg2, ...);
+</code></pre>
+<p>这个函数完成了动态绑定的所有事情：</p>
+<p>（1）首先它找到selector对应的方法实现。因为同一个方法可能在不同的类中有不同的实现，所以我们需要依赖于接收者的类来找到的确切的实现。</p>
+<p>（2）它调用方法实现，并将接收者对象及方法的所有参数传给它。</p>
+<p>（3）最后，它将实现返回的值作为它自己的返回值。</p>
+<p>消息的关键在于结构体 objc_class, 这个结构体有两个字段是我们在分发消息的时候关注的：</p>
+<ol>
+<li>指向父类的指针。</li>
+<li>一个类的方法分发表，即methodLists</li>
+</ol>
+<p>当我们创建一个新对象时，先为其分配内存，并初始化其成员变量。其中isa指针也会被初始化，让对象可以访问类及类的继承体系。</p>
+<p>下图演示了这样一个消息的基本框架：</p>
+<figure data-type="image" tabindex="3"><img src="https://raw.githubusercontent.com/qxuewei/XWResources/master/images/runtime_msgSend.gif" alt="消息的基本框架" loading="lazy"></figure>
+<p>当消息发送给一个对象时，objc_msgSend通过对象的isa指针获取到类的结构体，然后在方法分发表里面查找方法的selector。如果没有找到selector，则通过objc_msgSend结构体中的指向父类的指针找到其父类，并在父类的分发表里面查找方法的selector。依此，会一直沿着类的继承体系到达NSObject类。一旦定位到selector，函数会就获取到了实现的入口点，并传入相应的参数来执行方法的具体实现。如果最后没有定位到selector，则会走消息转发流程</p>
+<h4 id="2-隐藏参数">2. 隐藏参数</h4>
+<p>objc_msgSend 有两个隐藏参数</p>
+<ol>
+<li>消息接收对象</li>
+<li>方法的selector</li>
+</ol>
+<p>这两个参数为方法的实现提供了调用者的信息。之所以说是隐藏的，是因为他们在定义方法的源代码中没有声明。他们是在编译时被插入实现代码的。</p>
+<p>虽然这些参数没有显示声明，但在代码中仍然可以引用它们。我们可以使用self来引用接收者对象，使用_cmd 来引用选择器。如下代码：</p>
+<pre><code class="language-objective-c">- strange
+{
+    id  target = getTheReceiver();
+    SEL method = getTheMethod();
+    if ( target == self || method == _cmd )
+        return nil;
+    return [target performSelector:method];
+}
+</code></pre>
+<p>当然，这两个参数我们用的比较多的是self，_cmd 在实际中用得比较少。</p>
+<h4 id="3-获取方法地址">3. 获取方法地址</h4>
+<p>Runtime中方法的动态绑定让我们写代码时更具灵活性，如我们可以把消息转发给我们想要的对象，或者随意交换一个方法的实现等。不过灵活性的提升也带来了性能上的一些损耗。毕竟我们需要去查找方法的实现，而不像函数调用来得那么直接。当然，方法的缓存一定程度上解决了这一问题。</p>
+<p>我们上面提到过，如果想要避开这种动态绑定方式，我们可以获取方法实现的地址，然后像调用函数一样来直接调用它。特别是当我们需要在一个循环内频繁地调用一个特定的方法时，通过这种方式可以提高程序的性能。</p>
+<p>NSObject类提供了methodForSelector:方法，让我们可以获取到方法的指针，然后通过这个指针来调用实现代码。我们需要将methodForSelector:返回的指针转换为合适的函数类型，函数参数和返回值都需要匹配上。</p>
+<p>这里需要注意的就是函数指针的前两个参数必须是id和SEL。</p>
+<p>当然这种方式只适合于在类似于for循环这种情况下频繁调用同一方法，以提高性能的情况。另外，methodForSelector:是由Cocoa运行时提供的；它不是Objective-C语言的特性。</p>
+<pre><code class="language-objective-c">- (void)testCommonMethod {
+    for (int i = 0; i &lt; 10000; i++) {
+        [self logMethod:i];
+    }
+    //执行时长: Test Case '-[RuntimeDemoTests testCommonMethod]' passed (2.311 seconds).
+}
+
+- (void)testRuntimeMethod {
+    void(*logM)(id, SEL, int);
+    IMP imp = [self methodForSelector:@selector(logMethod:)];
+    logM = (void(*)(id, SEL, int))imp;
+    for (int i = 0; i &lt; 10000; i++) {
+        logM(self, @selector(logMethod:), i);
+    }
+    //执行时长: Test Case '-[RuntimeDemoTests testRuntimeMethod]' passed (2.199 seconds).
+}
+</code></pre>
+<h4 id="4-消息转发">4. 消息转发</h4>
+<p>当一个对象能接收一个消息时，就会走正常的方法调用流程。但如果一个对象无法接收指定消息时，又会发生什么事呢？默认情况下，如果是以[object message]的方式调用方法，如果object无法响应message消息时，编译器会报错。但如果是以perform…的形式来调用，则需要等到运行时才能确定object是否能接收message消息。如果不能，则程序崩溃。</p>
+<p>通常，当我们不能确定一个对象是否能接收某个消息时，会先调用respondsToSelector:来判断一下。如下代码所示：</p>
+<pre><code class="language-objective-c">// perform方法要求传入参数必须是对象，如果方法本身的参数是int，直接传NSNumber会导致得到的int参数不正确
+if ([self respondsToSelector:@selector(logMethod:)]) {
+        [self performSelector:@selector(logMethod:) withObject:[NSNumber numberWithInt:10086]];
+    }
+</code></pre>
+<p>当一个对象无法接收某一消息时，就会启动所谓”消息转发(message forwarding)“机制，通过这一机制，我们可以告诉对象如何处理未知的消息。默认情况下，对象接收到未知的消息，会导致程序崩溃，通过控制台，我们可以看到以下异常信息：</p>
+<p><strong>unrecognized selector sent to instance 0x100111940</strong></p>
+<p>这段异常信息实际上是由NSObject的”doesNotRecognizeSelector”方法抛出的。不过，我们可以采取一些措施，让我们的程序执行特定的逻辑，而避免程序的崩溃。</p>
+<p>消息转发机制基本上分为三个步骤：</p>
+<p>（1）动态方法解析</p>
+<p>（2）备用接收者</p>
+<p>（3）完整转发</p>
+<h5 id="1-动态方法解析">1.  动态方法解析</h5>
+<pre><code>对象在接收到未知的消息时，首先会调用所属类的类方法+resolveInstanceMethod:(实例方法)或者+resolveClassMethod:(类方法)。在这个方法中，我们有机会为该未知消息新增一个”处理方法”“。不过使用该方法的前提是我们已经实现了该”处理方法”，只需要在运行时通过class_addMethod函数动态添加到类里面就可以了。如下代码所示：
+</code></pre>
+<pre><code class="language-objective-c">void functionForMethod (id self, SEL _cmd) {
+    NSLog(@&quot;functionForMethod&quot;);
+}
+/// 调用未实现对象方法
++ (BOOL)resolveInstanceMethod:(SEL)sel {
+    NSString *selName = NSStringFromSelector(sel);
+    if ([selName isEqualToString:@&quot;methodNull&quot;]) {
+        class_addMethod(self.class, sel, (IMP)functionForMethod, &quot;v@:&quot;);
+        return YES;
+    }
+    return [super resolveClassMethod:sel];
+}
+/// 调用未实现类方法
++ (BOOL)resolveClassMethod:(SEL)sel {
+    NSString *selName = NSStringFromSelector(sel);
+    if ([selName isEqualToString:@&quot;methodNull&quot;]) {
+        //v@:表示返回值和参数，可以在苹果官网查看Type Encoding相关文档 https://developer.apple.com/library/mac/DOCUMENTATION/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
+        class_addMethod(self.class, sel, (IMP)functionForMethod, &quot;v@:&quot;);
+        return YES;
+    }
+    return [super resolveClassMethod:sel];
+}
+</code></pre>
+<h5 id="2-备用接受者">2.  备用接受者</h5>
+<pre><code>如果在上一步无法处理消息，则Runtime会继续调以下方法：
+</code></pre>
+<pre><code>- (id)forwardingTargetForSelector:(SEL)aSelector
+</code></pre>
+<p>如果一个对象实现了这个方法，并返回一个非nil的结果，则这个对象会作为消息的新接收者，且消息会被分发到这个对象。当然这个对象不能是self自身，否则就是出现无限循环。当然，如果我们没有指定相应的对象来处理aSelector，则应该调用父类的实现来返回结果。</p>
+<p>使用这个方法通常是在对象内部，可能还有一系列其它对象能处理该消息，我们便可借这些对象来处理消息并返回，这样在对象外部看来，还是由该对象亲自处理了这一消息。如下代码所示：</p>
+<pre><code class="language-objective-c">//
+//  People.m
+//  RuntimeDemo
+//
+//  Created by 邱学伟 on 2018/4/27.
+//  Copyright © 2018年 邱学伟. All rights reserved.
+//
+
+#import &quot;People.h&quot;
+#import &lt;objc/runtime.h&gt;
+
+@interface XWPeople : NSObject
+- (void)people2log;
+@end
+@implementation XWPeople
+- (void)people2log {
+    NSLog(@&quot;people2log&quot;);
+}
+@end
+
+@interface People () &lt;NSCoding&gt; {
+}
+@property (nonatomic, strong) XWPeople *xw_people;
+@end
+@implementation People
+
+//// 1 级处理
+void functionForMethod (id self, SEL _cmd) {
+    NSLog(@&quot;functionForMethod&quot;);
+}
+/// 调用未实现对象方法
++ (BOOL)resolveInstanceMethod:(SEL)sel {
+    NSString *selName = NSStringFromSelector(sel);
+    if ([selName isEqualToString:@&quot;methodNull&quot;]) {
+        class_addMethod(self.class, sel, (IMP)functionForMethod, &quot;v@:&quot;);
+        return YES;
+    }
+    return [super resolveClassMethod:sel];
+}
+/// 调用未实现类方法
++ (BOOL)resolveClassMethod:(SEL)sel {
+    NSString *selName = NSStringFromSelector(sel);
+    if ([selName isEqualToString:@&quot;methodNull&quot;]) {
+        //v@:表示返回值和参数，可以在苹果官网查看Type Encoding相关文档 https://developer.apple.com/library/mac/DOCUMENTATION/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
+        class_addMethod(self.class, sel, (IMP)functionForMethod, &quot;v@:&quot;);
+        return YES;
+    }
+    return [super resolveClassMethod:sel];
+}
+
+/// 2 级处理
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    NSString *selName = NSStringFromSelector(aSelector);
+    if ([selName isEqualToString:@&quot;people2log&quot;]) {
+        return self.xw_people;
+    }
+    return [super forwardingTargetForSelector:aSelector];
+}
+- (XWPeople *)xw_people {
+    if(!_xw_people){
+        _xw_people = [[XWPeople alloc] init];
+    }
+    return _xw_people;
+}
+@end
+</code></pre>
+<p>这一步合适于我们只想将消息转发到另一个能处理该消息的对象上。但这一步无法对消息进行处理，如操作消息的参数和返回值。</p>
+<h5 id="3-完整转发">3.  完整转发</h5>
+<p>如果在上一步还不能处理未知消息，则唯一能做的就是启用完整的消息转发机制了。此时会调用以下方法：</p>
+<pre><code>- (void)forwardInvocation:(NSInvocation *)anInvocation
+
+</code></pre>
+<p>运行时系统会在这一步给消息接收者最后一次机会将消息转发给其它对象。对象会创建一个表示消息的NSInvocation对象，把与尚未处理的消息有关的全部细节都封装在anInvocation中，包括selector，目标(target)和参数。我们可以在forwardInvocation方法中选择将消息转发给其它对象。</p>
+<p>forwardInvocation:方法的实现有两个任务：</p>
+<p>（1）定位可以响应封装在anInvocation中的消息的对象。这个对象不需要能处理所有未知消息。</p>
+<p>（2）使用anInvocation作为参数，将消息发送到选中的对象。anInvocation将会保留调用结果，运行时系统会提取这一结果并将其发送到消息的原始发送者。</p>
+<p>不过，在这个方法中我们可以实现一些更复杂的功能，我们可以对消息的内容进行修改，比如追回一个参数等，然后再去触发消息。另外，若发现某个消息不应由本类处理，则应调用父类的同名方法，以便继承体系中的每个类都有机会处理此调用请求。</p>
+<p>还有一个很重要的问题，我们必须重写以下方法：</p>
+<pre><code>- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+</code></pre>
+<p>消息转发机制使用从这个方法中获取的信息来创建NSInvocation对象。因此我们必须重写这个方法，为给定的selector提供一个合适的方法签名。</p>
+<p>完整的示例如下所示：</p>
+<pre><code class="language-objective-c">//
+//  People.m
+//  RuntimeDemo
+//
+//  Created by 邱学伟 on 2018/4/27.
+//  Copyright © 2018年 邱学伟. All rights reserved.
+//
+
+#import &quot;People.h&quot;
+#import &lt;objc/runtime.h&gt;
+
+@interface XWPeople : NSObject
+- (void)people2log;
+- (void)people3log;
+@end
+@implementation XWPeople
+- (void)people2log {
+    NSLog(@&quot;people2log&quot;);
+}
+
+- (void)people3log {
+    NSLog(@&quot;people3log&quot;);
+}
+@end
+
+@interface People () &lt;NSCoding&gt; {
+}
+@property (nonatomic, strong) XWPeople *xw_people;
+@end
+@implementation People
+
+//// 1 级处理
+void functionForMethod (id self, SEL _cmd) {
+    NSLog(@&quot;functionForMethod&quot;);
+}
+/// 调用未实现对象方法
++ (BOOL)resolveInstanceMethod:(SEL)sel {
+    NSString *selName = NSStringFromSelector(sel);
+    if ([selName isEqualToString:@&quot;methodNull&quot;]) {
+        class_addMethod(self.class, sel, (IMP)functionForMethod, &quot;v@:&quot;);
+        return YES;
+    }
+    return [super resolveClassMethod:sel];
+}
+/// 调用未实现类方法
++ (BOOL)resolveClassMethod:(SEL)sel {
+    NSString *selName = NSStringFromSelector(sel);
+    if ([selName isEqualToString:@&quot;methodNull&quot;]) {
+        //v@:表示返回值和参数，可以在苹果官网查看Type Encoding相关文档 https://developer.apple.com/library/mac/DOCUMENTATION/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html
+        class_addMethod(self.class, sel, (IMP)functionForMethod, &quot;v@:&quot;);
+        return YES;
+    }
+    return [super resolveClassMethod:sel];
+}
+
+/// 2 级处理
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    NSString *selName = NSStringFromSelector(aSelector);
+    if ([selName isEqualToString:@&quot;people2log&quot;]) {
+        return self.xw_people;
+    }
+    return [super forwardingTargetForSelector:aSelector];
+}
+- (XWPeople *)xw_people {
+    if(!_xw_people){
+        _xw_people = [[XWPeople alloc] init];
+    }
+    return _xw_people;
+}
+
+/// 3 级处理
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+    NSMethodSignature *signature = [super methodSignatureForSelector:aSelector];
+    if (!signature) {
+        if ([XWPeople instancesRespondToSelector:aSelector]) {
+            signature = [XWPeople instanceMethodSignatureForSelector:aSelector];
+        }
+    }
+    return signature;
+}
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+    if ([XWPeople instancesRespondToSelector:anInvocation.selector]) {
+        [anInvocation invokeWithTarget:self.xw_people];
+    }
+}
+
+@end
+</code></pre>
+<p>NSObject的forwardInvocation:方法实现只是简单调用了doesNotRecognizeSelector:方法，它不会转发任何消息。这样，如果不在以上所述的三个步骤中处理未知消息，则会引发一个异常。</p>
+<p>从某种意义上来讲，forwardInvocation:就像一个未知消息的分发中心，将这些未知的消息转发给其它对象。或者也可以像一个运输站一样将所有未知消息都发送给同一个接收对象。这取决于具体的实现。</p>
+<h5 id="4-消息转发与多重继承">4、消息转发与多重继承</h5>
+<p>回过头来看第二和第三步，通过这两个方法我们可以允许一个对象与其它对象建立关系，以处理某些未知消息，而表面上看仍然是该对象在处理消息。通过这种关系，我们可以模拟“多重继承”的某些特性，让对象可以“继承”其它对象的特性来处理一些事情。不过，这两者间有一个重要的区别：多重继承将不同的功能集成到一个对象中，它会让对象变得过大，涉及的东西过多；而消息转发将功能分解到独立的小的对象中，并通过某种方式将这些对象连接起来，并做相应的消息转发。</p>
+<p>不过消息转发虽然类似于继承，但NSObject的一些方法还是能区分两者。如respondsToSelector:和isKindOfClass:只能用于继承体系，而不能用于转发链。便如果我们想让这种消息转发看起来像是继承，则可以重写这些方法，如以下代码所示：</p>
+<pre><code class="language-objective-c">- (BOOL)respondsToSelector:(SEL)aSelector   {
+       if ( [super respondsToSelector:aSelector] )         
+       		return YES;     
+       else {          
+       		/* Here, test whether the aSelector message can     *            
+      		 * be forwarded to another object and whether that  *            
+      		* object can respond to it. Return YES if it can.  */      
+       }
+      return NO;  
+}
+</code></pre>
+<h3 id="46-method-swizzling">4.6 Method Swizzling</h3>
+<h4 id="461-概述">4.6.1 概述</h4>
+<p>Objective-C 中的 Method Swizzling 是一项异常强大的技术，它可以允许我们动态地替换方法的实现，实现 Hook 功能，是一种比子类化更加灵活的“重写”方法的方式。</p>
+<h4 id="462-原理">4.6.2 原理</h4>
+<p>Objective-C同一个类(及类的继承体系)中，不能存在2个同名的方法，即使参数类型不同也不行。所以下面两个方法在 runtime 看来就是同一个方法：</p>
+<pre><code class="language-objective-c">- (void)viewWillAppear:(BOOL)animated;
+- (void)viewWillAppear:(NSString *)string;
+</code></pre>
+<p>而下面两个方法却是可以共存的</p>
+<pre><code class="language-objective-c">- (void)viewWillAppear:(BOOL)animated;
++ (void)viewWillAppear:(BOOL)animated;
+</code></pre>
+<p>因为实例方法和类方法是分别保存在类对象和元类对象中的。</p>
+<p>原则上，方法的名称 name 和方法的实现 imp 是一一对应的，而 Method Swizzling 的原理就是动态地改变它们的对应关系，以达到替换方法实现的目的</p>
+<p>原有方法和实现的对应关系如下图：<br>
+<img src="https://github.com/qxuewei/XWResources/blob/master/images/Swizzling_1.png?raw=true" alt="原有方法和实现的对应关系" loading="lazy"></p>
+<p>通过runtime可实现：<br>
+<img src="https://github.com/qxuewei/XWResources/blob/master/images/Swizzling_2.png?raw=true" alt="runtime 调整的对应关系" loading="lazy"></p>
+<p>在OC语言的runtime特性中，调用一个对象的方法就是给这个对象发送消息。是通过查找接收消息对象的方法列表，从方法列表中查找对应的SEL，这个SEL对应着一个IMP(一个IMP可以对应多个SEL)，通过这个IMP找到对应的方法调用。</p>
+<p>在每个类中都有一个Dispatch Table，这个Dispatch Table本质是将类中的SEL和IMP(可以理解为函数指针)进行对应。而我们的Method Swizzling就是对这个table进行了操作，让SEL对应另一个IMP。</p>
+<h4 id="463-使用注意">4.6.3 使用注意</h4>
+<ul>
+<li>Swizzling应该总在+load中执行：Objective-C在运行时会自动调用类的两个方法+load和+initialize。+load会在类初始加载时调用，和+initialize比较+load能保证在类的初始化过程中被加载</li>
+<li>Swizzling应该总是在dispatch_once中执行：swizzling会改变全局状态，所以在运行时采取一些预防措施，使用dispatch_once就能够确保代码不管有多少线程都只被执行一次。这将成为method swizzling的最佳实践。</li>
+<li>Selector，Method和Implementation：这几个之间关系可以这样理解，一个类维护一个运行时可接收的消息分发表，分发表中每个入口是一个Method，其中key是一个特定的名称，及SEL，与其对应的实现是IMP即指向底层C函数的指针。</li>
+</ul>
+<h4 id="464-应用实例">4.6.4 应用实例</h4>
+<h5 id="1-替换方法实现">1. 替换方法实现</h5>
+<pre><code class="language-objective-c">//  ViewController+Method.m
+//  RuntimeDemo
+//
+//  Created by 邱学伟 on 2018/5/4.
+//  Copyright © 2018年 邱学伟. All rights reserved.
+//
+
+#import &quot;ViewController+Method.h&quot;
+#import &lt;objc/runtime.h&gt;
+
+@implementation ViewController (Method)
++ (void)load {
+    [super load];
+    [self exchangeMethod];
+}
+
+/// runtime 交换方法
++ (void)exchangeMethod {
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        Class class = [self class];
+        
+        SEL originSel = @selector(viewWillAppear:);
+        SEL swizzledSel = @selector(xw_viewWillAppear:);
+        
+        Method originMethod = class_getInstanceMethod(class, originSel);
+        Method swizzledMethod = class_getInstanceMethod(class, swizzledSel);
+        
+        //先尝试給源方法添加实现，这里是为了避免源方法没有实现的情况
+        BOOL isAddMethod = class_addMethod(class, originSel, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod));
+        if (isAddMethod) {
+            class_replaceMethod(class, swizzledSel, method_getImplementation(originMethod), method_getTypeEncoding(originMethod));
+        }else{
+            method_exchangeImplementations(originMethod, swizzledMethod);
+        }
+    });
+}
+- (void)xw_viewWillAppear:(BOOL)animation {
+    [self xw_viewWillAppear:animation];
+    NSLog(@&quot;xw_viewWillAppear - %@&quot;,self);
+}
+@end
+
+</code></pre>
+<h5 id="2-method-swizzling类簇">2、Method Swizzling类簇</h5>
+<p>在我们项目开发过程中，经常因为NSArray数组越界或者NSDictionary的key或者value值为nil等问题导致的崩溃，我们可以尝试使用前面知识对NSArray、NSMutableArray、NSDictionary、NSMutableDictionary等类进行Method Swizzling，但是结果发现Method Swizzling根本就不起作用，到底为什么呢？</p>
+<p>这是因为Method Swizzling对NSArray这些的类簇是不起作用的。因为这些类簇类，其实是一种抽象工厂的设计模式。抽象工厂内部有很多其它继承自当前类的子类，抽象工厂类会根据不同情况，创建不同的抽象对象来进行使用。例如我们调用NSArray的objectAtIndex:方法，这个类会在方法内部判断，内部创建不同抽象类进行操作。</p>
+<p>所以也就是我们对NSArray类进行操作其实只是对父类进行了操作，在NSArray内部会创建其他子类来执行操作，真正执行操作的并不是NSArray自身，所以我们应该对其“真身”进行操作。</p>
+<p>下面我们实现了防止NSArray因为调用objectAtIndex:方法，取下标时数组越界导致的崩溃：</p>
+<pre><code class="language-objective-c">#import &quot;NSArray+ MyArray.h&quot;
+#import &quot;objc/runtime.h&quot;
+@implementation NSArray MyArray)
++ (void)load {
+    Method fromMethod = class_getInstanceMethod(objc_getClass(&quot;__NSArrayI&quot;), @selector(objectAtIndex:));
+    Method toMethod = class_getInstanceMethod(objc_getClass(&quot;__NSArrayI&quot;), @selector(my_objectAtIndex:));
+    method_exchangeImplementations(fromMethod, toMethod);
+}
+
+- (id)my_objectAtIndex:(NSUInteger)index {
+    if (self.count-1 &lt; index) {
+        // 这里做一下异常处理，不然都不知道出错了。
+        @try {
+            return [self my_objectAtIndex:index];
+        }
+        @catch (NSException *exception) {
+            // 在崩溃后会打印崩溃信息，方便我们调试。
+            NSLog(@&quot;---------- %s Crash Because Method %s  ----------\n&quot;, class_getName(self.class), __func__);
+            NSLog(@&quot;%@&quot;, [exception callStackSymbols]);
+            return nil;
+    }
+        @finally {}
+    } else {
+        return [self my_objectAtIndex:index];
+    }
+}
+@end
+</code></pre>
+<p>常见类簇真身：<br>
+<img src="https://github.com/qxuewei/XWResources/blob/master/images/runtime_%E7%B1%BB%E7%B0%87%E7%9C%9F%E8%BA%AB.png?raw=true" alt="类簇" loading="lazy"></p>
+<h2 id="5-protocol-和-category">5. Protocol 和 Category</h2>
+<h3 id="51-category">5.1 Category</h3>
+<p>指向分类的结构体的指针</p>
+<pre><code class="language-objective-c">typedef struct objc_category *Category;
+
+struct objc_category {
+     char *category_name OBJC2_UNAVAILABLE; // 分类名
+     char *class_name OBJC2_UNAVAILABLE; // 分类所属的类名
+     struct objc_method_list *instance_methods OBJC2_UNAVAILABLE; // 实例方法列表
+     struct objc_method_list *class_methods OBJC2_UNAVAILABLE; // 类方法列表，Meta Class方法列表的子集
+     struct objc_protocol_list *protocols OBJC2_UNAVAILABLE; // 分类所实现的协议列表
+}
+</code></pre>
+<p>示例代码</p>
+<pre><code class="language-objective-c">//
+//  main.m
+//  RuntimeDemo
+//
+//  Created by 邱学伟 on 2018/4/27.
+//  Copyright © 2018年 邱学伟. All rights reserved.
+//
+
+#import &lt;UIKit/UIKit.h&gt;
+#import &quot;AppDelegate.h&quot;
+
+@interface NSObject (Fuck)
++ (void)foo;
+@end
+
+@implementation NSObject (Fuck)
+- (void)foo {
+    NSLog(@&quot;我是Foo %@&quot;,[self class]);
+}
+@end
+
+int main(int argc, char * argv[]) {
+    @autoreleasepool {
+        
+        [NSObject foo];
+        [[NSObject new] foo];
+        
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}
+
+</code></pre>
+<p>输出：</p>
+<pre><code>2018-05-04 16:23:26.643100+0800 RuntimeDemo[48558:2377362] 我是Foo NSObject
+2018-05-04 16:23:26.644354+0800 RuntimeDemo[48558:2377362] 我是Foo NSObject
+</code></pre>
+<p>objc runtime加载后NSObject的Sark Category被加载，头文件+(void)foo没有IMP，只会出现一个warning。被加到Class的Method list里的方法只有-(void)foo，Meta Class的方法列表里没有。</p>
+<p>执行[NSObject foo]时，会在Meta Class的Method list里找，找不着就继续往super class里找，NSObject Meta Clas的super class是NSObject本身，这时在NSObject的Method list里就有foo这个方法了，能够正常输出。</p>
+<p>执行[[NSObject new] foo]就简单的多了，[NSObject new]生成一个实例，实例的Method list是有foo方法的，于是正常输出。</p>
+<p>如果换做其他类就会报错了</p>
+<h3 id="52-protocol">5.2 Protocol</h3>
+<p>Protocol其实就是一个对象结构体</p>
+<pre><code>typedef struct objc_object Protocol;
+</code></pre>
+<p>操作函数:</p>
+<pre><code class="language-objective-c">// 返回指定的协议
+Protocol * objc_getProtocol ( const char *name );
+// 获取运行时所知道的所有协议的数组
+Protocol ** objc_copyProtocolList ( unsigned int *outCount );
+// 创建新的协议实例
+Protocol * objc_allocateProtocol ( const char *name );
+// 在运行时中注册新创建的协议
+void objc_registerProtocol ( Protocol *proto ); //创建一个新协议后必须使用这个进行注册这个新协议，但是注册后不能够再修改和添加新方法。
+// 为协议添加方法
+void protocol_addMethodDescription ( Protocol *proto, SEL name, const char *types, BOOL isRequiredMethod, BOOL isInstanceMethod );
+// 添加一个已注册的协议到协议中
+void protocol_addProtocol ( Protocol *proto, Protocol *addition );
+// 为协议添加属性
+void protocol_addProperty ( Protocol *proto, const char *name, const objc_property_attribute_t *attributes, unsigned int attributeCount, BOOL isRequiredProperty, BOOL isInstanceProperty );
+// 返回协议名
+const char * protocol_getName ( Protocol *p );
+// 测试两个协议是否相等
+BOOL protocol_isEqual ( Protocol *proto, Protocol *other );
+// 获取协议中指定条件的方法的方法描述数组
+struct objc_method_description * protocol_copyMethodDescriptionList ( Protocol *p, BOOL isRequiredMethod, BOOL isInstanceMethod, unsigned int *outCount );
+// 获取协议中指定方法的方法描述
+struct objc_method_description protocol_getMethodDescription ( Protocol *p, SEL aSel, BOOL isRequiredMethod, BOOL isInstanceMethod );
+// 获取协议中的属性列表
+objc_property_t * protocol_copyPropertyList ( Protocol *proto, unsigned int *outCount );
+// 获取协议的指定属性
+objc_property_t protocol_getProperty ( Protocol *proto, const char *name, BOOL isRequiredProperty, BOOL isInstanceProperty );
+// 获取协议采用的协议
+Protocol ** protocol_copyProtocolList ( Protocol *proto, unsigned int *outCount );
+// 查看协议是否采用了另一个协议
+BOOL protocol_conformsToProtocol ( Protocol *proto, Protocol *other );
+
+</code></pre>
+<h2 id="6-补充">6. 补充</h2>
+<h3 id="61-super">6.1 Super</h3>
+<p>在Objective-C中，如果我们需要在类的方法中调用父类的方法时，通常都会用到super，如下所示：</p>
+<pre><code class="language-objective-c">@interface MyViewController: UIViewController
+@end
+@implementation MyViewController
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // do something
+    ...
+}
+@end
+</code></pre>
+<p>super与self不同。self是类的一个隐藏参数，每个方法的实现的第一个参数即为self。而super并不是隐藏参数，它实际上只是一个”编译器标示符”，它负责告诉编译器，当调用viewDidLoad方法时，去调用父类的方法，而不是本类中的方法。而它实际上与self指向的是相同的消息接收者。为了理解这一点，我们先来看看super的定义</p>
+<pre><code class="language-objective-c">struct objc_super { id receiver; Class superClass; };
+</code></pre>
+<p>这个结构体有两个成员：</p>
+<p>（1）receiver：即消息的实际接收者</p>
+<p>（2）superClass：指针当前类的父类</p>
+<p>当我们使用super来接收消息时，编译器会生成一个objc_super结构体。就上面的例子而言，这个结构体的receiver就是MyViewController对象，与self相同；superClass指向MyViewController的父类UIViewController。</p>
+<p>接下来，发送消息时，不是调用objc_msgSend函数，而是调用objc_msgSendSuper函数，其声明如下：</p>
+<pre><code class="language-objective-c">id objc_msgSendSuper ( struct objc_super *super, SEL op, ... );
+</code></pre>
+<p>该函数第一个参数即为前面生成的objc_super结构体，第二个参数是方法的selector。该函数实际的操作是：从objc_super结构体指向的superClass的方法列表开始查找viewDidLoad的selector，找到后以objc-&gt;receiver去调用这个selector，而此时的操作就是如下方式了：</p>
+<pre><code class="language-objective-c">objc_msgSend(objc_super-&gt;receiver, @selector(viewDidLoad))
+</code></pre>
+<p>由于objc_super-&gt;receiver就是self本身，所以该方法实际与下面这个调用是相同的</p>
+<pre><code class="language-objective-c">objc_msgSend(self, @selector(viewDidLoad))
+</code></pre>
+<p>如下：</p>
+<pre><code class="language-objective-c">+ (void)load {
+    [super load];
+    NSLog(@&quot;self class: %@&quot;, self.class);
+    NSLog(@&quot;super class: %@&quot;, super.class);
+}
+</code></pre>
+<p>输出：</p>
+<pre><code>2018-05-04 15:19:45.264902+0800 RuntimeDemo[47032:2208798] self class: ViewController
+2018-05-04 15:19:45.265792+0800 RuntimeDemo[47032:2208798] super class: ViewController
+
+</code></pre>
+<h3 id="62-库相关操作">6.2 库相关操作</h3>
+<p>库相关的操作主要是用于获取由系统提供的库相关的信息，主要包含以下函数：</p>
+<pre><code class="language-objective-c">// 获取所有加载的Objective-C框架和动态库的名称
+const char ** objc_copyImageNames ( unsigned int *outCount );
+
+// 获取指定类所在动态库
+const char * class_getImageName ( Class cls );
+
+// 获取指定库或框架中所有类的类名
+const char ** objc_copyClassNamesForImage ( const char *image, unsigned int *outCount );
+</code></pre>
+<p>通过这几个函数，我们可以了解到某个类所有的库，以及某个库中包含哪些类。如下代码所示：</p>
+<pre><code class="language-objective-c">- (void)testImage {
+    NSLog(@&quot;获取指定类所在动态库&quot;);
+    NSLog(@&quot;UIView's Framework: %s&quot;, class_getImageName(NSClassFromString(@&quot;UIView&quot;)));
+    NSLog(@&quot;获取指定库或框架中所有类的类名&quot;);
+    unsigned int outCount;
+    const char ** classes = objc_copyClassNamesForImage(class_getImageName(NSClassFromString(@&quot;UIView&quot;)), &amp;outCount);
+    for (int i = 0; i &lt; outCount; i++) {
+        NSLog(@&quot;class name: %s&quot;, classes[i]);
+    }
+}
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-objective-c">2018-05-04 15:30:51.342342+0800 RuntimeDemo[47333:2253385] 获取指定类所在动态库
+2018-05-04 15:30:51.342499+0800 RuntimeDemo[47333:2253385] UIView's Framework: /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Library/CoreSimulator/Profiles/Runtimes/iOS.simruntime/Contents/Resources/RuntimeRoot/System/Library/Frameworks/UIKit.framework/UIKit
+2018-05-04 15:30:51.342620+0800 RuntimeDemo[47333:2253385] 获取指定库或框架中所有类的类名
+2018-05-04 15:30:51.343164+0800 RuntimeDemo[47333:2253385] class name: UIGestureKeyboardIntroduction
+2018-05-04 15:30:51.343269+0800 RuntimeDemo[47333:2253385] class name: _UIPreviewPresentationPlatterView
+2018-05-04 15:30:51.343364+0800 RuntimeDemo[47333:2253385] class name: UIKeyboardUISettings
+2018-05-04 15:30:51.343456+0800 RuntimeDemo[47333:2253385] class name: _UIFocusScrollManager
+2018-05-04 15:30:51.343550+0800 RuntimeDemo[47333:2253385] class name: _UIPickerViewTopFrame
+2018-05-04 15:30:51.343655+0800 RuntimeDemo[47333:2253385] class name: _UIOnePartImageView
+2018-05-04 15:30:51.343749+0800 RuntimeDemo[47333:2253385] class name: _UIPickerViewSelectionBar
+。。。。。。。。。。。。。。。。。。。。。
+</code></pre>
+<h3 id="63-块操作">6.3 块操作</h3>
+<p>我们都知道block给我们带到极大的方便，苹果也不断提供一些使用block的新的API。同时，苹果在runtime中也提供了一些函数来支持针对block的操作，这些函数包括：</p>
+<pre><code class="language-objective-c">// 创建一个指针函数的指针，该函数调用时会调用特定的block
+IMP imp_implementationWithBlock ( id block );
+
+// 返回与IMP(使用imp_implementationWithBlock创建的)相关的block
+id imp_getBlock ( IMP anImp );
+
+// 解除block与IMP(使用imp_implementationWithBlock创建的)的关联关系，并释放block的拷贝
+BOOL imp_removeBlock ( IMP anImp );
+</code></pre>
+<p>imp_implementationWithBlock函数：参数block的签名必须是method_return_type ^(id self, method_args …)形式的。该方法能让我们使用block作为IMP。如下代码所示：</p>
+<pre><code class="language-objective-c">- (void)testBlock {
+    IMP imp = imp_implementationWithBlock(^(id obj, NSString *str) {
+        NSLog(@&quot;testBlock - %@&quot;,str);
+    });
+    class_addMethod(self.class, @selector(testBlock:), imp, &quot;v@:@&quot;);
+    [self performSelector:@selector(testBlock:) withObject:@&quot;邱学伟!&quot;];
+}
+</code></pre>
+<p>输出：</p>
+<pre><code class="language-objective-c">2018-05-04 15:41:47.221228+0800 RuntimeDemo[47587:2282146] testBlock - 邱学伟!
+</code></pre>
+<h3 id="64-弱引用操作">6.4 弱引用操作</h3>
+<p>操作函数：</p>
+<pre><code class="language-objective-c">// 加载弱引用指针引用的对象并返回
+id objc_loadWeak ( id *location );
+
+// 存储__weak变量的新值
+id objc_storeWeak ( id *location, id obj );
+</code></pre>
+<p>objc_loadWeak函数：该函数加载一个弱指针引用的对象，并在对其做retain和autoreleasing操作后返回它。这样，对象就可以在调用者使用它时保持足够长的生命周期。该函数典型的用法是在任何有使用__weak变量的表达式中使用。</p>
+<p>objc_storeWeak函数：该函数的典型用法是用于__weak变量做为赋值对象时。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[iOS - 系统中的锁]]></title>
+        <id>https://qxuewei.github.io/post/ios-xi-tong-zhong-de-suo/</id>
+        <link href="https://qxuewei.github.io/post/ios-xi-tong-zhong-de-suo/">
+        </link>
+        <updated>2020-06-11T05:40:14.000Z</updated>
+        <summary type="html"><![CDATA[<p>多线程同时访问同一块资源会造成资源抢夺，容易引发数据错乱和数据安全问题，此时我们需要保证资源同时只有一个线程访问，加锁就是为了解决这个问题。</p>
+<p>常用的加锁方式：（性能由差到好）</p>
+<ul>
+<li><code>OSSpinLock</code> 自旋锁，存在优先级反转问题，破坏了 spinLock，后来Apple推出 <code>os_unfair_lock_t</code> 解决优先级翻转问题</li>
+<li><code>dispatch_semaphore</code> 信号量</li>
+<li><code>pthread_mutex</code> 互斥锁 （C语言）</li>
+<li><code>NSLock</code> 对象锁</li>
+<li><code>NSCondition</code> 条件锁</li>
+<li><code>NSRecursiveLock</code> 递归锁</li>
+<li><code>NSConditionLock</code> 条件锁</li>
+<li><code>@synchronized</code> 性能最差</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<p>多线程同时访问同一块资源会造成资源抢夺，容易引发数据错乱和数据安全问题，此时我们需要保证资源同时只有一个线程访问，加锁就是为了解决这个问题。</p>
+<p>常用的加锁方式：（性能由差到好）</p>
+<ul>
+<li><code>OSSpinLock</code> 自旋锁，存在优先级反转问题，破坏了 spinLock，后来Apple推出 <code>os_unfair_lock_t</code> 解决优先级翻转问题</li>
+<li><code>dispatch_semaphore</code> 信号量</li>
+<li><code>pthread_mutex</code> 互斥锁 （C语言）</li>
+<li><code>NSLock</code> 对象锁</li>
+<li><code>NSCondition</code> 条件锁</li>
+<li><code>NSRecursiveLock</code> 递归锁</li>
+<li><code>NSConditionLock</code> 条件锁</li>
+<li><code>@synchronized</code> 性能最差</li>
+</ul>
+<!-- more -->
+<p>各种锁的性能比较<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2020.06.11.15918541083583.15910531507405.jpg" alt="" loading="lazy"></p>
+<h2 id="自旋锁">自旋锁</h2>
+<h3 id="osspinlock-os_unfair_lock">'OSSpinLock'、'os_unfair_lock'</h3>
+<p>'OSSpinLock' 是一种自旋锁，和互斥锁类似，都是为了保证线程安全的锁。对于互斥锁，当一个线程获得这个锁以后，其他想要获得此锁的线程将会被阻塞，直到该锁被释放；自旋锁，当一个线程获得锁之后，其他线程将会一直循环查看该锁是否被释放，此锁适用于锁的持有者保存时间较短的情况。</p>
+<pre><code>spinLock = OS_SPINLOCK_INIT;
+OSSpinLockLock(&amp;spinLock);
+sleep(4);
+OSSpinLockUnlock(&amp;spinLock);
+</code></pre>
+<p>'OSSpinLock' 不再安全了？ 因为存在优先级翻转的问题。<br>
+在新版本iOS系统中，系统维护了5个不同的线程优先级(Qos): background, utility, default, user-initiated, user-interactive。高优先级线程始终会在低优先级线程前执行，一个线程不会受到比他更低优先级线程的干扰。这种线程调度算法会产生潜在的优先级翻转的问题，从而破坏 spin lock.</p>
+<p>实例：如果一个低优先级的线程获得锁并访问共享资源，此时一个高优先级的线程也尝试获得这个锁，它会处于 spin lock 的忙时状态从而占用大量CPU，此时低优先级线程无法与高优先级线程抢夺CPU时间，从而导致任务迟迟无法完成，无法释放lock。</p>
+<p>为解决此问题，在iOS10，给出了新API：<code>os_unfair_lock</code></p>
+<pre><code>os_unfair_lock_t unfairLock = &amp;(OS_UNFAIR_LOCK_INIT);
+os_unfair_lock_lock(unfairLock);
+sleep(4);
+os_unfair_lock_unlock(unfairLock);
+</code></pre>
+<h2 id="信号量">信号量</h2>
+<h3 id="dispatch_semaphore"><code>dispatch_semaphore</code></h3>
+<p>信号量(Semaphore)，有时被称为信号灯，是在多线程环境下使用的一种设施，是可以用来保证两个或多个关键代码段不被并发调用。在进入一个关键代码段之前，线程必须获取一个信号量；一旦该关键代码段完成了，那么该线程必须释放信号量。其它想进入该关键代码段的线程必须等待直到第一个线程释放信号量</p>
+<p><code>dispatch_semaphore</code> 可以通过控制并发数实现锁机制。通过控制信号量的值为 0 或 1 来实现锁。<code>dispatch_semaphore_wait</code> 会使信号量-1，<code>dispatch_semaphore_signal</code> 会使信号量+1，信号量为0时线程等待，为1时方可继续执行。</p>
+<pre><code class="language-objc">#import &quot;Dispatch_Semaphore.h&quot;
+@interface Dispatch_Semaphore ()
+{
+    dispatch_semaphore_t _semaphore;
+}
+@property (nonatomic, strong) NSMutableArray *array;
+@property (assign) NSUInteger index;
+@end
+@implementation Dispatch_Semaphore
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        /// 通道默认为1, 首次执行
+        _semaphore = dispatch_semaphore_create(1);
+    }
+    return self;
+}
+- (void)run {
+    for (NSUInteger i = 0; i &lt; self.array.count; i++) {
+        if (i % 2 == 0) {
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                [self log];
+            });
+        } else {
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                [self log];
+            });
+        }
+    }
+}
+- (void)log {
+    /// 通道 -1 阻塞其他线程进入
+    dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
+    NSLog(@&quot;%@&quot;,self.array[self.index++]);
+    /// 通道+1 其他线程可进入
+    dispatch_semaphore_signal(_semaphore);
+}
+- (NSMutableArray *)array {
+    if(!_array){
+        NSMutableArray *arrayM = [NSMutableArray array];
+        for (NSUInteger i = 0; i &lt; 1000; i++) {
+            [arrayM addObject:@(i)];
+        }
+        _array = arrayM;
+    }
+    return _array;
+}
+@end
+</code></pre>
+<h2 id="互斥锁">互斥锁</h2>
+<h3 id="pthread_mutex"><code>pthread_mutex</code></h3>
+<pre><code class="language-objc">#import &quot;Phread_mutex.h&quot;
+#import &lt;pthread.h&gt;
+@interface Phread_mutex ()
+{
+    pthread_mutex_t _mutex_t;
+}
+@property (nonatomic, strong) NSMutableArray *array;
+@property (assign) NSUInteger index;
+@end
+
+@implementation Phread_mutex
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        /// 锁初始化
+        pthread_mutex_t mutex_t = PTHREAD_MUTEX_INITIALIZER;
+        _mutex_t = mutex_t;
+    }
+    return self;
+}
+- (void)run {
+    for (NSUInteger i = 0; i &lt; self.array.count; i++) {
+        if (i % 2 == 0) {
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                [self log];
+            });
+        } else {
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                [self log];
+            });
+        }
+    }
+}
+- (void)log {
+    // 加互斥锁
+    pthread_mutex_lock(&amp;(_mutex_t));
+    NSLog(@&quot;%@&quot;,self.array[self.index++]);
+    // 解互斥锁
+    pthread_mutex_unlock(&amp;(_mutex_t));
+}
+- (NSMutableArray *)array {
+    if(!_array){
+        NSMutableArray *arrayM = [NSMutableArray array];
+        for (NSUInteger i = 0; i &lt; 1000; i++) {
+            [arrayM addObject:@(i)];
+        }
+        _array = arrayM;
+    }
+    return _array;
+}
+@end
+</code></pre>
+<h3 id="nslock"><code>NSLock</code></h3>
+<p><code>NSLock</code> 和 <code>NSRecursiveLock</code>, <code>NSConditionLock</code> 都是对 <code>pthread_mutex</code> 的封装。</p>
+<p>NSLock 遵循 NSLocking 协议. lock 加锁，unlock 解锁，tryLock 尝试加锁，如果失败的话返回 NO，lockBeforeDate: 是在指定Date之前尝试加锁，如果在指定时间之前都不能加锁，则返回NO。</p>
+<p><code>NSLocking</code> 协议</p>
+<pre><code class="language-objc">@protocol NSLocking
+
+- (void)lock;
+- (void)unlock;
+
+@end
+</code></pre>
+<pre><code class="language-objc">- (void)log {
+    // 加互斥锁
+    [self.lock lock];
+    NSLog(@&quot;%@&quot;,self.array[self.index++]);
+    // 解互斥锁
+    [self.lock unlock];
+}
+</code></pre>
+<h2 id="条件锁">条件锁</h2>
+<h3 id="nsconditionlock"><code>NSConditionLock</code></h3>
+<p><code>NSConditionLock</code> 同样遵循了<code>NSLocking</code> 协议，除此之外，还可以设置自定义条件来获得锁和释放锁.</p>
+<pre><code class="language-objc">#import &quot;NSConditionLockDemo.h&quot;
+@interface NSConditionLockDemo ()
+@property (nonatomic, strong) NSMutableArray *images;
+@property (assign) NSUInteger index;
+@property (nonatomic, strong) NSConditionLock *conditionLock;
+@end
+@implementation NSConditionLockDemo
+static const NSInteger lockTag = 10086;
+static const NSInteger imageCount = 100;
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.conditionLock = [[NSConditionLock alloc] init];
+    }
+    return self;
+}
+- (void)run {
+    for (NSUInteger i = 0; i &lt; imageCount; i++) {
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self downloadImages];
+        });
+    }
+    [self showImages];
+}
+/// 异步下载 imageCount 张图片
+- (void)downloadImages {
+    sleep(arc4random_uniform(5));
+    [self.conditionLock lock];
+    [self.images addObject:@(arc4random_uniform(100))];
+    [self.conditionLock unlock];
+    if (self.images.count == imageCount) {
+        [self.conditionLock unlockWithCondition:lockTag];
+    }
+}
+/// 展示下载好的 imageCount 张图片
+- (void)showImages {
+    [self.conditionLock lockWhenCondition:lockTag];
+    [self.images enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSLog(@&quot;show: %@&quot;,obj);
+    }];
+    [self.conditionLock unlockWithCondition:lockTag];
+}
+- (NSMutableArray *)images {
+    if(!_images){
+        _images = [NSMutableArray array];
+    }
+    return _images;
+}
+@end
+</code></pre>
+<h2 id="递归锁">递归锁</h2>
+<h3 id="nsrecursivelock"><code>NSRecursiveLock</code></h3>
+<pre><code class="language-objc">@interface NSRecursiveLockDemo ()
+@property (nonatomic, strong) NSRecursiveLock *recursiveLock;
+@end
+
+@implementation NSRecursiveLockDemo
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.recursiveLock = [[NSRecursiveLock alloc] init];
+    }
+    return self;
+}
+- (void)run {
+    NSInteger n = 3;
+    NSLog(@&quot;%ld! = %ld&quot;,(long)n, (long)[self sum:3]);
+}
+- (NSInteger)sum:(NSUInteger)n {
+    [self.recursiveLock lock];
+    NSInteger result = 0;
+    if (n &lt;= 1) {
+        result = n;
+    } else {
+        result = [self sum:n - 1] * n;
+    }
+    [self.recursiveLock unlock];
+    return result;
+}
+@end
+</code></pre>
+<p>如果将 <code>NSRecursiveLock</code> 换成 <code>NSLock</code> 就会造成死锁。</p>
+<h3 id="synchronized"><code>@synchronized</code></h3>
+<pre><code class="language-objc">- (void)lock1 {
+    @synchronized (self) {
+        // 加锁操作
+    }
+}
+</code></pre>
+<p>性能最差</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java - 基础语法二]]></title>
+        <id>https://qxuewei.github.io/post/java-ji-chu-yu-fa-er/</id>
+        <link href="https://qxuewei.github.io/post/java-ji-chu-yu-fa-er/">
+        </link>
+        <updated>2020-03-31T13:58:49.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="java-基础语法二">Java - 基础语法二</h1>
+<h2 id="1-常用-api">① 常用 API</h2>
+<h3 id="object-类">Object 类</h3>
+<p><code>java.lang.Object</code>类是Java语言中的根类，即所有类的父类。它中描述的所有方法子类都可以使用。在对象实例化的时候，最终找的父类就是Object。</p>
+<p>常用 API：<br>
+<code>public String toString()</code>: 返回该对象的字符串表示<br>
+<code>public boolean equals(Object obj)</code> : 与其他对象比较是否与当前对象“相等”</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="java-基础语法二">Java - 基础语法二</h1>
+<h2 id="1-常用-api">① 常用 API</h2>
+<h3 id="object-类">Object 类</h3>
+<p><code>java.lang.Object</code>类是Java语言中的根类，即所有类的父类。它中描述的所有方法子类都可以使用。在对象实例化的时候，最终找的父类就是Object。</p>
+<p>常用 API：<br>
+<code>public String toString()</code>: 返回该对象的字符串表示<br>
+<code>public boolean equals(Object obj)</code> : 与其他对象比较是否与当前对象“相等”</p>
+<!-- more -->
+<h3 id="objects-类">Objects 类</h3>
+<p><code>Object</code> 类的 <code>equals</code> 方法容易抛出空指针异常，在 <code>Objects</code> 类中提供了 <code>equals</code> 方法优化这个问题。<br>
+<code>public static boolean equals(Object a, Object b)</code>:判断两个对象是否相等。</p>
+<pre><code class="language-Java">public static boolean equals(Object a, Object b) {  
+    return (a == b) || (a != null &amp;&amp; a.equals(b));  
+}
+</code></pre>
+<h3 id="date-类">Date 类</h3>
+<ul>
+<li><code>public Date()</code>：分配Date对象并初始化此对象，以表示分配它的时间（精确到毫秒）。</li>
+<li><code>public Date(long date)</code>：分配Date对象并初始化此对象，以表示自从标准基准时间（称为“历元（epoch）”，即1970年1月1日00:00:00 GMT）以来的指定毫秒数。</li>
+<li><code>public long getTime()</code> 把日期对象转换成对应的时间毫秒值。</li>
+</ul>
+<h3 id="dateformat-类">DateFormat 类</h3>
+<p><code>java.text.DateFormat</code> 是日期/时间格式化子类的抽象类，通过这个类完成日期和文本之间的转换。</p>
+<h4 id="格式规则">格式规则</h4>
+<table>
+<thead>
+<tr>
+<th>标识字母（区分大小写）</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>y</td>
+<td>年</td>
+</tr>
+<tr>
+<td>M</td>
+<td>月</td>
+</tr>
+<tr>
+<td>d</td>
+<td>日</td>
+</tr>
+<tr>
+<td>H</td>
+<td>时</td>
+</tr>
+<tr>
+<td>m</td>
+<td>分</td>
+</tr>
+<tr>
+<td>s</td>
+<td>秒</td>
+</tr>
+</tbody>
+</table>
+<p>Demo:</p>
+<pre><code class="language-java">   /*从出生到现在经历多少天*/
+    private static void daysFormBirthday() throws ParseException {
+        System.out.println(&quot;输入生日：（格式 yyyy-MM-dd）&quot;);
+        Scanner scanner = new Scanner(System.in);
+        String birthday = scanner.next();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+        Date birthdayDate = simpleDateFormat.parse(birthday);
+
+        long birthdayDateTime = birthdayDate.getTime();
+        long nowTime = new Date().getTime();
+        long interval = nowTime - birthdayDateTime;
+        long days = interval / 1000 / 60 / 60 / 24;
+        System.out.println(&quot;从出生到现在已过&quot; + days + &quot;天！&quot;);
+    }
+</code></pre>
+<h3 id="calendar-类">Calendar 类</h3>
+<p>日历类。<br>
+Calendar类中提供很多成员常量，代表给定的日历字段：</p>
+<table>
+<thead>
+<tr>
+<th>字段值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YEAR</td>
+<td>年</td>
+</tr>
+<tr>
+<td>MONTH</td>
+<td>月（从0开始，可以+1使用）</td>
+</tr>
+<tr>
+<td>DAY_OF_MONTH</td>
+<td>月中的天（几号）</td>
+</tr>
+<tr>
+<td>HOUR</td>
+<td>时（12小时制）</td>
+</tr>
+<tr>
+<td>HOUR_OF_DAY</td>
+<td>时（24小时制）</td>
+</tr>
+<tr>
+<td>MINUTE</td>
+<td>分</td>
+</tr>
+<tr>
+<td>SECOND</td>
+<td>秒</td>
+</tr>
+<tr>
+<td>DAY_OF_WEEK</td>
+<td>周中的天（周几，周日为1，可以-1使用）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="system-类">System 类</h3>
+<ul>
+<li><code>public static long currentTimeMillis()</code>：返回以毫秒为单位的当前时间。</li>
+<li><code>public static void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)</code>：将数组中指定的数据拷贝到另一个数组中。</li>
+</ul>
+<p>数组的拷贝动作是系统级的，性能很高。System.arraycopy方法具有5个参数，含义分别为：</p>
+<table>
+<thead>
+<tr>
+<th>参数序号</th>
+<th>参数名称</th>
+<th>参数类型</th>
+<th>参数含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>src</td>
+<td>Object</td>
+<td>源数组</td>
+</tr>
+<tr>
+<td>2</td>
+<td>srcPos</td>
+<td>int</td>
+<td>源数组索引起始位置</td>
+</tr>
+<tr>
+<td>3</td>
+<td>dest</td>
+<td>Object</td>
+<td>目标数组</td>
+</tr>
+<tr>
+<td>4</td>
+<td>destPos</td>
+<td>int</td>
+<td>目标数组索引起始位置</td>
+</tr>
+<tr>
+<td>5</td>
+<td>length</td>
+<td>int</td>
+<td>复制元素个数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-collection-集合">② Collection 集合</h2>
+<p>数组的长度是固定的，集合的长度是可变的<br>
+数组中存储的是同一类型的元素，可以存储基本数据类型值。集合存储的都是对象，而且对象的类型可以不一致，在开发中一般当对象多的时候，使用集合存储。</p>
+<h3 id="collection-常用功能">Collection 常用功能</h3>
+<p>Collection是所有单列集合的父接口，因此在Collection中定义了单列集合(List和Set)通用的一些方法，这些方法可用于操作所有的单列集合。方法如下：</p>
+<ul>
+<li><code>public boolean add(E e)</code>：  把给定的对象添加到当前集合中 。</li>
+<li><code>public void clear()</code> :清空集合中所有的元素。</li>
+<li><code>public boolean remove(E e)</code>: 把给定的对象在当前集合中删除。</li>
+<li><code>public boolean contains(E e)</code>: 判断当前集合中是否包含给定的对象。</li>
+<li><code>public boolean isEmpty()</code>: 判断当前集合是否为空。</li>
+<li><code>public int size()</code>: 返回集合中元素的个数。</li>
+<li><code>public Object[] toArray()</code>: 把集合中的元素，存储到数组中。</li>
+</ul>
+<h3 id="迭代器-iterator">迭代器 （Iterator）</h3>
+<p>Iterator接口的常用方法如下：</p>
+<ul>
+<li><code>public E next()</code>:返回迭代的下一个元素。</li>
+<li><code>public boolean hasNext()</code>:如果仍有元素可以迭代，则返回 true。</li>
+</ul>
+<h3 id="泛型">泛型</h3>
+<p>当使用泛型类或者接口时，传递的数据中，泛型类型不确定，可以通过通配符&lt;?&gt;表示。但是一旦使用泛型的通配符后，只能使用Object类中的共性方法，集合中元素自身方法无法使用。</p>
+<p>受限泛型<br>
+<strong>泛型的上限</strong>：</p>
+<ul>
+<li><strong>格式</strong>： <code>类型名称 &lt;? extends 类 &gt; 对象名称</code></li>
+<li><strong>意义</strong>： <code>只能接收该类型及其子类</code></li>
+</ul>
+<p><strong>泛型的下限</strong>：</p>
+<ul>
+<li><strong>格式</strong>： <code>类型名称 &lt;? super 类 &gt; 对象名称</code></li>
+<li><strong>意义</strong>： <code>只能接收该类型及其父类型</code></li>
+</ul>
+<h3 id="list">List</h3>
+<p><code>java.util.ArrayList</code> 集合数据存储的结构是数组结构，元素增删满，查找快。日常开发常用的功能是查询数据和遍历数据，所以<code>ArrayList</code>是最常用的集合。<br>
+<code>java.until.LinkedList</code>集合数据存储的结构是链表结构，方便元素添加和删除的集合，但是查询慢。</p>
+<h3 id="set">Set</h3>
+<p><code>java.until.Set</code> 接口和 <code>java.util.List</code> 接口一样，同样继承于 <code>Collection</code> 接口，它与 <code>Collection</code> 接口中的方法基本一致。<code>Set</code>接口中的元素无序，并且都会以某种规则保证存入的元素不会出现重复。<br>
+<code>HashSet</code> 能保证存储的元素唯一，但是无序。想要即唯一，又有顺序就需要用 <code>java.util.LinkedHashSet</code></p>
+<h3 id="collections">Collections</h3>
+<p><code>java.utils.Collections</code>是集合工具类，用来对集合进行操作。部分方法:</p>
+<ul>
+<li><code>public static &lt;T&gt; boolean addAll(Collection&lt;T&gt; c, T... elements)</code>:往集合中添加一些元素。</li>
+<li><code>public static void shuffle(List&lt;?&gt; list) 打乱顺序</code>:打乱集合顺序。</li>
+<li><code>public static &lt;T&gt; void sort(List&lt;T&gt; list)</code>:将集合中元素按照默认规则排序。</li>
+<li><code>public static &lt;T&gt; void sort(List&lt;T&gt; list，Comparator&lt;? super T&gt; )</code>:将集合中元素按照指定规则排序。</li>
+</ul>
+<p><code>Comparator</code> 接口代表一个比较器，其中：<br>
+<code>public int compare(String o1, String o2);</code> 比较其两个参数的顺序。<br>
+若按照升序排序，则 o1 &lt; o2 (负数)<br>
+若按照降序排序，则 o1 &gt; o1 (正数)</p>
+<p>Demo：</p>
+<pre><code class="language-Java">private static void sortDemo() {
+    ArrayList&lt;Student&gt; arrayList = new ArrayList&lt;Student&gt;();
+    arrayList.add(new Student(&quot;邱学伟&quot;,18));
+    arrayList.add(new Student(&quot;梁朝伟&quot;,30));
+    arrayList.add(new Student(&quot;周星驰&quot;,24));
+    arrayList.add(new Student(&quot;刘德华&quot;,28));
+    arrayList.add(new Student(&quot;a&quot;,22));
+    arrayList.add(new Student(&quot;b&quot;,22));
+    // 按类内定义排序
+//        Collections.sort(arrayList); 
+
+    // 年龄降序
+//        arrayList.sort(new Comparator&lt;Student&gt;() {
+//            @Override
+//            public int compare(Student o1, Student o2) {
+//                return o2.getAge() - o1.getAge();//年龄降序
+//            }
+//        });
+
+    // 年龄升序，相同年龄 按首字母
+    arrayList.sort(new Comparator&lt;Student&gt;() {
+        @Override
+        public int compare(Student o1, Student o2) {
+            int result = o1.getAge() - o2.getAge();
+            if (result == 0) {
+                result = o1.getName().charAt(0) - o2.getName().charAt(0);
+            }
+            return result;
+        }
+    });
+
+    for (Student student : arrayList) {
+        System.out.println(student);
+    }
+}
+</code></pre>
+<h3 id="map">Map</h3>
+<p>Map 中的集合，元素是成对存在的，每个元素由键和值两部分组成，通过键可以找到所对应的值；<br>
+Collection 中的集合称为单列集合，Map 中的集合称为双列集合；<br>
+Map 中的集合不能包含重复的键，值可以重复。每个键对应一个值。<br>
+Map接口中定义了很多方法，常用的如下：</p>
+<ul>
+<li><code>public V put(K key, V value)</code>:  把指定的键与指定的值添加到Map集合中。</li>
+<li><code>public V remove(Object key)</code>: 把指定的键 所对应的键值对元素 在Map集合中删除，返回被删除元素的值。</li>
+<li><code>public V get(Object key)</code> 根据指定的键，在Map集合中获取对应的值。</li>
+<li><code>boolean containsKey(Object key)</code> 判断集合中是否包含指定的键。</li>
+<li><code>public Set&lt;K&gt; keySet()</code>: 获取Map集合中所有的键，存储到Set集合中。</li>
+<li><code>public Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()</code>: 获取到Map集合中所有的键值对对象的集合(Set集合)。</li>
+</ul>
+<h4 id="entry-键值对对象">Entry 键值对对象</h4>
+<p><code>Entry</code> 将键值对的对应关系封装成了对象，即键值对对象，这样我们在遍历 Map 集合时，就可以从每一个键值对（<code>Entry</code>）对象中获取对应的键与其对应的值。</p>
+<ul>
+<li><code>public K getKey()</code>：获取Entry对象中的键。</li>
+<li><code>public V getValue()</code>：获取Entry对象中的值。</li>
+</ul>
+<p>在Map集合中也提供了获取所有Entry对象的方法：</p>
+<ul>
+<li><code>public Set&lt;Map.Entry&lt;K,V&gt;&gt; entrySet()</code>: 获取到Map集合中所有的键值对对象的集合(Set集合)。</li>
+</ul>
+<p>当给 HashMap 中存放自定义对象时，如果自定义对象作为 Key 存在，这时要保证对象的唯一，则必须重写对象的 <code>hashCode</code> 和 <code>equals</code> 方法。<br>
+如果要保证 map 中存在的 key 和取出的顺序一致，可以使用 <code>java.util.LinkedHashMap</code>集合存放。</p>
+<h2 id="3-线程">③ 线程</h2>
+<p>并发：指两个或多个事件在同一时间段内发生。<br>
+并行：指两个或多个事件在同一时刻发生（同时发生）。</p>
+<p>进程：一个内存中运行的应用程序，每个进程都有一个独立的内存空间，一个应用程序可以同时运行多个进程；进程也是程序的一次执行过程，是系统运行程序的基本单位；系统运行一个程序即是一个进程从创建、运行到消亡的过程。<br>
+线程：线程是进程中的一个执行单元，负责当前进程中的程序的执行，一个进程中至少有一个线程。一个进程是可以有多个线程的，这个应用程序也可称之为多线程程序。</p>
+<p>简而言之：一个程序运行后至少有一个进程，一个进程可以包含多个线程。</p>
+<p>线程的调度方式：</p>
+<ol>
+<li>分时调度：所有线程轮流使用 CPU 的使用权，平均分配每个线程占用 CPU 的时间。</li>
+<li>抢占式调度：优先让优先级高的线程使用 CPU，如果线程的优先级相同，那么会随机选择一个（线程随机性），Java 使用的是抢占式调度。
+<ol>
+<li>CPU 使用抢占式调度模式在多个线程间进行着高速的切换，对于 CPU 的一个核而言，某个时刻，只能执行一个线程，而 CPU 在多个线程间切换速度相对我们感觉要快，看上去就像在同一时刻运行。其实，多线程程序并不能提高程序的运行速度，但能够提高程序的运行效率，让 CPU 的使用率更高。</li>
+</ol>
+</li>
+</ol>
+<h3 id="线程同步的三种方式">线程同步的三种方式</h3>
+<ol>
+<li>同步代码块</li>
+<li>同步方法</li>
+<li>锁机制</li>
+</ol>
+<p>同步代码块：</p>
+<pre><code class="language-Java">synchronized(同步锁) 
+{
+    /// 需要同步执行的代码
+}
+</code></pre>
+<p>其中同步锁：</p>
+<ol>
+<li>锁对象，可以是任意类型</li>
+<li>多个线程对象，要使用同一把锁</li>
+</ol>
+<h3 id="线程之间的通信">线程之间的通信</h3>
+<p>wait/notify 就是线程间的一种协作机制。</p>
+<p><strong>调用wait和notify方法需要注意的细节</strong></p>
+<ol>
+<li>wait方法与notify方法必须要由同一个锁对象调用。因为：对应的锁对象可以通过notify唤醒使用同一个锁对象调用的wait方法后的线程。</li>
+<li>wait方法与notify方法是属于Object类的方法的。因为：锁对象可以是任意对象，而任意对象的所属类都是继承了Object类的。</li>
+<li>wait方法与notify方法必须要在同步代码块或者是同步函数中使用。因为：必须要通过锁对象调用这2个方法。</li>
+</ol>
+<h3 id="线程池">线程池</h3>
+<p>一个容纳多个线程的容器，其中的线程可以反复使用，省去了频繁创建线程对象的操作，无需反复创建线程而消耗过多的资源。</p>
+<h2 id="4-lambda">④ Lambda</h2>
+<p>面向对象的思想：<br>
+做一件事情，找一个能解决这个事情的对象，调用对象的方法，完成事情；<br>
+函数式编程思想：<br>
+只要能获取到结果，谁去做的，怎么做的都不重要，重视的是结果不重视过程。</p>
+<h3 id="lambda-的标准格式">Lambda 的标准格式：</h3>
+<ul>
+<li>一些参数</li>
+<li>一个箭头</li>
+<li>一段代码</li>
+</ul>
+<pre><code class="language-java">(参数类型 参数名称) -&gt; { 代码语句 }
+</code></pre>
+<p>小括号内的语法与传统方法参数列表一致：无参数则留空；多个参数则用逗号分隔。<br>
+-&gt; 是新引入的语法，代表指向动作<br>
+大括号内的语法与传统方法体要求基本一致</p>
+<pre><code class="language-Java">// Lambda , 年龄升序，相同年龄，首字母降序
+arrayList.sort((Student s1, Student s2)-&gt;{
+    int result = s1.getAge() - s2.getAge();
+    if (result == 0) {
+        result = s2.getName().charAt(0) - s1.getName().charAt(0);
+    }
+    return result;
+});
+</code></pre>
+<p>省略规则：<br>
+小括号内参数的类型可以省略；<br>
+如果小括号内有且仅有一个参数，则小括号可以省略<br>
+如果大括号内有且仅有一个语句，则无论是否有返回值，都可以省略大括号、return 关键字及语句分号。</p>
+<p>使用 Lambda 注意：</p>
+<ol>
+<li>使用 Lambda 必须有接口，且要求接口中有且仅有一个抽象方法</li>
+<li>使用 Lambda 必须具有上下文推断。</li>
+</ol>
+<p>Java 中的 Lambda 可以被当做是匿名内部类的替代品。<br>
+如果函数的参数是一个函数式接口类型，就可以使用 Lambda 表达式进行替代，使用 Lambda 表达式作为方法参数，其实就是使用函数式接口作为方法参数。<br>
+类似的，如果一个方法的返回值是一个函数式接口，那么也可以直接返回一个 Lambda 表达式。</p>
+<h3 id="常用函数式接口">常用函数式接口</h3>
+<h4 id="1-supplier-接口">1. Supplier 接口</h4>
+<p><code>java.util.function.Supplier&lt;T&gt;</code> 接口仅包含一个无参方法 <code>T get()</code>。用以获取一个泛型参数指定类型的对象数据。由于这是一个函数式接口，这也就意味着对应的 Lambda 表达式需要“对外提供”一个符合泛型类型的对象数据。</p>
+<pre><code class="language-java">private static void demo2() {
+    String s1 = &quot;极客学伟&quot;;
+    String s2 = &quot;科技有限公司&quot;;
+    String s3 = getString(()-&gt; s1 + s2 );
+    System.out.print(s3);
+}
+private static String getString(Supplier&lt;String&gt; function) {
+    return function.get();
+}
+</code></pre>
+<h4 id="2-consumer-接口">2. Consumer 接口</h4>
+<p><code>java.util.function.Consumer&lt;T&gt;</code> 接口与 Supplier 相反，它不是产生一个数据，而是消费一个数据，其数据类型由泛型决定。</p>
+<h5 id="抽象方法-accept">抽象方法 accept</h5>
+<pre><code class="language-java">private static void demo3() {
+    consumerString((num)-&gt; System.out.println(&quot;打印：&quot; + num));
+}
+private static void consumerString(Consumer&lt;Integer&gt; function) {
+    function.accept(1024);
+}
+</code></pre>
+<h5 id="默认方法-andthen">默认方法 andThen</h5>
+<p>消费数据时，首先做一个操作，然后再做一个操作，实现组合。</p>
+<pre><code class="language-java">private static void demo4() {
+    consumerAndThenString(s -&gt; System.out.println(s.toLowerCase()) ,s -&gt; System.out.println(s.toUpperCase()));
+}
+private static void consumerAndThenString(Consumer&lt;String&gt; f1, Consumer&lt;String&gt; f2) {
+    f1.andThen(f2).accept(&quot;Hello World!&quot;);
+}
+</code></pre>
+<pre><code class="language-Java">private static void demo5() {
+    ArrayList&lt;Student&gt; students = new ArrayList&lt;Student&gt;(Arrays.asList(new Student(&quot;极客&quot;,18) , new Student(&quot;学伟&quot;,28)));
+    userInfoLog(students,student -&gt; System.out.print(&quot;姓名：&quot; + student.getName()) , student -&gt; System.out.print(&quot; 年龄：&quot; + student.getAge() + &quot;;\n&quot;));
+}
+private static void userInfoLog(ArrayList&lt;Student&gt; s, Consumer&lt;Student&gt; s1, Consumer&lt;Student&gt; s2) {
+    for (Student student : s) {
+        s1.andThen(s2).accept(student);
+    }
+}
+</code></pre>
+<h4 id="3-predicate-接口">3. Predicate 接口</h4>
+<p>对某种类型的数据进行判断，从而得到一个 boolean 值的结果，可以使用 <code>java.util.function.Predicate&lt;T&gt;</code> 接口。</p>
+<h5 id="抽象方法test">抽象方法：test</h5>
+<p>用于条件判断的场景：</p>
+<pre><code class="language-Java">private static void demo6() {
+    Student s = new Student(&quot;极客学伟&quot;,27);
+    adjustMethod(student -&gt; student.getName().equals(&quot;极客学伟&quot;) , s);
+}
+private static void adjustMethod(Predicate&lt;Student&gt; predicate, Student s) {
+    boolean isMe = predicate.test(s);
+    System.out.println(&quot;名字叫&quot; + s.getName() + &quot;的&quot; + (isMe ? &quot;很帅&quot; : &quot;一点点丑&quot;));
+}
+</code></pre>
+<h5 id="默认方法and">默认方法：and</h5>
+<p>逻辑判断中将两个 <code>Predicate</code> 条件使用“与”逻辑连接起来实现 “并且”的效果</p>
+<h5 id="默认方法or">默认方法：or</h5>
+<p>逻辑判断中将两个 <code>Predicate</code> 条件使用“或”逻辑连接起来实现 “或者”的效果</p>
+<h5 id="默认方法negate">默认方法：negate</h5>
+<p>逻辑判断中将两个 <code>Predicate</code> 条件使用“非”逻辑连接起来实现 “取反”的效果</p>
+<p>Demo：</p>
+<pre><code class="language-Java">private static void demo7() {
+    String[] girls = {&quot;邓紫棋，26&quot;, &quot;韩红，46&quot;, &quot;韩雪，36&quot;, &quot;杨紫，29&quot;, &quot;慧慧，28&quot;, &quot;古力娜扎，32&quot;, &quot;AngelaBaby，28&quot;};
+    /// 筛选 二十来岁名字是两个字的女神
+    ArrayList&lt;String&gt; result = predicateDemo(girls, g -&gt; Integer.parseInt(g.split(&quot;，&quot;)[1]) &lt; 30, g -&gt; g.split(&quot;，&quot;)[0].length() &lt; 3);
+    result.forEach(System.out::println);
+}
+// 筛选满足两个条件的数组
+private static ArrayList&lt;String&gt; predicateDemo(String[] girls, Predicate&lt;String&gt; p1, Predicate&lt;String&gt; p2) {
+    ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;(girls.length);
+    for (String girl : girls) {
+        if (p1.and(p2).test(girl)) {
+            list.add(girl);
+        }
+    }
+    return list;
+}
+</code></pre>
+<h4 id="4-function-接口">4. Function 接口</h4>
+<p><code>java.util.function.Function&lt;T,R&gt;</code> 接口用来根据一个类型的数据得到另一个类型的数据，前者成为前置条件，后者称为后置条件。</p>
+<h5 id="抽象方法apply">抽象方法：apply</h5>
+<p><code>R apply(T t)</code> 根据类型 T 的参数获取类型 R 的结果。</p>
+<h2 id="5-stream">⑤ Stream</h2>
+<p>Java 中的流思想类似于工厂车间的“生产流水线”。<br>
+Stream（流）是一个来自数据源的元素队列</p>
+<ul>
+<li>元素是特定类型的对象，形成一个队列。Java 中的 Stream 并不会存储元素，而是按需计算。</li>
+<li>数据源 流的来源，可以是集合数组等。</li>
+</ul>
+<p>基础特性：</p>
+<ul>
+<li>Pipelining：中间操作都会返回流对象本身，这样多个操作可以串联成一个管道，如同流式风格。</li>
+<li>内部迭代：以前对集合遍历都是通过 <code>Iterator</code> 或者增强 <code>for</code> 的方式，显式的在集合外部进行迭代，这叫外部迭代。Stream 提供内部迭代的方式，流可以直接调用遍历方法。</li>
+</ul>
+<p>使用步骤：<br>
+获取一个数据源 -&gt; 数据转换 -&gt; 执行操作获取想要的结果。每次转换原有 Stream 对象不改变，返回一个新的 Stream 对象（可以多次转换），这就允许对其操作可以像链条一样排列，变成一个管道。</p>
+<p>demo：</p>
+<pre><code class="language-Java">
+/// 筛选 二十来岁名字是两个字的女神
+private static void streamDemo1() {
+    String[] girls = {&quot;邓紫棋，26&quot;, &quot;韩红，46&quot;, &quot;韩雪，36&quot;, &quot;杨紫，29&quot;, &quot;慧慧，28&quot;, &quot;古力娜扎，32&quot;, &quot;AngelaBaby，28&quot;};
+    Arrays.stream(girls).filter(s -&gt; parseInt(s.split(&quot;，&quot;)[1]) &lt; 30).filter(s -&gt; s.split(&quot;，&quot;)[0].length() &lt; 3).forEach(s -&gt; System.out.println(s));
+}
+</code></pre>
+<h3 id="获取-stream">获取 Stream</h3>
+<h4 id="collection">Collection</h4>
+<p><code>java.util.Collection</code> 接口中加入了 default 方法 <code>stream</code> 用来获取流，所以其所有实现类均可直接获取流。</p>
+<h4 id="map-2">Map</h4>
+<p><code>java.util.Map</code> 接口不是 <code>Collection</code> 的子接口，且其 K-V 数据结构不符合流元素的单一特征，所以获取对应的流需要 Key、Value 或 entry 等情况。</p>
+<h4 id="数组">数组</h4>
+<p>数组对象不可能添加默认方法，<code>Stream</code> 接口中提供了静态方法 <code>of</code>，用于生成数组的 <code>stream</code></p>
+<pre><code class="language-java">private static void arrayStreamDemo() {
+    String[] array = {&quot;张三&quot;, &quot;李四&quot;, &quot;王五&quot;, &quot;赵六&quot;};
+    Stream&lt;String&gt; arrayStream = Stream.of(array);
+    arrayStream.forEach(System.out::println);
+}
+</code></pre>
+<h3 id="stream-常用方法">Stream 常用方法</h3>
+<h4 id="逐一处理foreach">逐一处理：forEach</h4>
+<p>接收一个 <code>Consumer</code> 接口函数，会将每一个流元素交给该函数处理。</p>
+<h4 id="过滤filter">过滤：filter</h4>
+<p>将一个流转换成另一个子集流</p>
+<h4 id="映射map">映射：map</h4>
+<p>将流中的元素映射到另一个流中</p>
+<h4 id="统计个数count">统计个数：count</h4>
+<p>获取流中的元素个数</p>
+<h4 id="提取前几个limit">提取前几个：limit</h4>
+<p>对流进行截取，只取前 n 个</p>
+<h4 id="跳过前几个skip">跳过前几个：skip</h4>
+<p>跳过流中的前 n 个元素</p>
+<h4 id="组合concat">组合：concat</h4>
+<p>将两个流合并成为一个流</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java - 基础语法一]]></title>
+        <id>https://qxuewei.github.io/post/java-ji-chu-yu-fa-yi/</id>
+        <link href="https://qxuewei.github.io/post/java-ji-chu-yu-fa-yi/">
+        </link>
+        <updated>2020-03-28T14:18:04.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="java-基础语法一">Java - 基础语法一</h1>
+<h2 id="1-基础语法">① 基础语法</h2>
+<ul>
+<li>JVM（Java Virtual Machine）: Java 虚拟机，简称 JVM，是运行所有 Java 程序的假想计算机，是 Java 程序的运行环境，是 Java 最具吸引力的特性之一。我们编写的 Java 程序，都运行在 JVM 之上。</li>
+<li>JRE（Java Runtime Environment）：Java 程序的运行环境，包含 JVM 和运行时所需要的核心类库。</li>
+<li>JDK（Java Development Environment）：Java 程序开发工具包，包含 JRE 和开发人员使用的工具。</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="java-基础语法一">Java - 基础语法一</h1>
+<h2 id="1-基础语法">① 基础语法</h2>
+<ul>
+<li>JVM（Java Virtual Machine）: Java 虚拟机，简称 JVM，是运行所有 Java 程序的假想计算机，是 Java 程序的运行环境，是 Java 最具吸引力的特性之一。我们编写的 Java 程序，都运行在 JVM 之上。</li>
+<li>JRE（Java Runtime Environment）：Java 程序的运行环境，包含 JVM 和运行时所需要的核心类库。</li>
+<li>JDK（Java Development Environment）：Java 程序开发工具包，包含 JRE 和开发人员使用的工具。</li>
+</ul>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="http://blog.image.jkxuewei.com/mweb/2020.03.28.15854041867234.15827280446149.jpg" alt="" loading="lazy"></figure>
+<h3 id="方法">方法</h3>
+<p>格式：</p>
+<pre><code class="language-java">修饰符 返回值类型 方法名（参数列表）
+{
+    // 代码
+    return 结果;// 如果返回值类型不为 void
+}
+</code></pre>
+<h3 id="方法重载多个方法的名称一样但是参数列表不一样">方法重载：多个方法的名称一样，但是参数列表不一样</h3>
+<h4 id="方法重载与以下因素有关">方法重载与以下因素有关：</h4>
+<ul>
+<li>参数个数不同</li>
+<li>参数类型不同</li>
+<li>参数的多类型顺序不同</li>
+</ul>
+<h4 id="方法重载与以下因素无关">方法重载与以下因素无关：</h4>
+<ul>
+<li>与参数的名称无关</li>
+<li>与方法的返回值类型无关</li>
+</ul>
+<h3 id="数组一种容器可以同时存放多个数据源">数组：一种容器，可以同时存放多个数据源</h3>
+<h4 id="数组特点">数组特点：</h4>
+<ol>
+<li>数组是一种引用数据类型</li>
+<li>数组当中的多个数据，类型必须统一</li>
+<li>数组的长度在程序运行期间不可改变</li>
+</ol>
+<h4 id="动态初始化在创建数组的时候直接指定数组当中的数据元素个数">动态初始化：在创建数组的时候，直接指定数组当中的数据元素个数</h4>
+<p>格式：<code>数据类型[] 数组名称 = new 数据类型[数组长度]</code></p>
+<h4 id="静态初始化在创建数组的时候不直接指定数据个数多少而是直接将具体的数据内容进行指定">静态初始化：在创建数组的时候，不直接指定数据个数多少，而是直接将具体的数据内容进行指定</h4>
+<p>标准格式：<code>数据类型[] 数组名称 = new 数据类型[] {元素 1、元素 2、...}</code><br>
+省略格式：<code>数据类型[] 数组名称 = {元素 1、元素 2、...}</code></p>
+<h4 id="注意事项">注意事项</h4>
+<ol>
+<li>静态初始化没有直接指定长度，但是仍然会自动推算得到长度 <code>int[] arrayA = {10, 20, 30};</code></li>
+<li>静态初始化标准格式可以拆分成两个步骤  <code>int[] arrayB; arrayB = new int[5];</code></li>
+<li>动态初始化也可以拆分成两个步骤 <code>int arrayC; arrayC = new int [] {1, 2, 3 };</code></li>
+<li>静态初始化一旦使用省略格式，就不能拆分成为两个步骤了</li>
+</ol>
+<h4 id="java-的内存需要划分成为-5-个部分">Java 的内存需要划分成为 5 个部分：</h4>
+<ol>
+<li>栈（Srack）：存放的都是方法中的局部变量，<strong>方法的运行一定在栈中</strong>
+<ol>
+<li>局部变量：方法的参数，或者是方法{} 内部的变量。</li>
+<li>作用域：一旦超出作用域，立刻从栈内存当中消失。</li>
+</ol>
+</li>
+<li><strong>堆（Heap）：凡是 new 出来的东西，都在堆当中</strong>
+<ol>
+<li>堆内存里面的东西都有一个地址值：16 进制</li>
+<li>堆内存里面的数据，都有默认值</li>
+</ol>
+</li>
+<li>方法区（Method Area）：存储 .class 相关信息，包含方法的信息。</li>
+<li>本地方法栈（Native Method Stack）：与操作系统相关</li>
+<li>寄存器（pc Register）：与 CPU 相关</li>
+</ol>
+<h2 id="2-面向对象">② 面向对象</h2>
+<h3 id="局部变量和成员变量">局部变量和成员变量</h3>
+<ul>
+<li>定义的位置不同
+<ul>
+<li>局部变量：在方法内部</li>
+<li>成员变量：在方法外部，直接写在类中</li>
+</ul>
+</li>
+<li>作用范围不同
+<ul>
+<li>局部变量：只有在方法中才可以使用，出了方法就不能用</li>
+<li>成员变量：整个类全都可以通用</li>
+</ul>
+</li>
+<li>默认值不同
+<ul>
+<li>局部变量：没有默认值，如果想使用，必须手动进行赋值</li>
+<li>成员变量：如果没有赋值，会有默认值，规则和数组一样</li>
+</ul>
+</li>
+<li>内存位置不一样
+<ul>
+<li>局部变量：位于栈内存</li>
+<li>成员变量：位于堆内存</li>
+</ul>
+</li>
+<li>生命周期不一样
+<ul>
+<li>局部变量：随方法进栈而诞生，随着方法出栈而消失</li>
+<li>成员变量：随着对象创建而诞生，随着对象被垃圾回收而消失</li>
+</ul>
+</li>
+</ul>
+<h3 id="面向对象三大特性封装-继承-多态">面向对象三大特性：封装、继承、多态</h3>
+<p>封装性在 Java 体现：</p>
+<ul>
+<li>方法就是封装</li>
+<li>Private 关键字也是封装</li>
+</ul>
+<p><strong>对于基本数据类型当中的 boolean 值，Getter 方法一定要写成 isXxx 的形式，而 setXxx 规则不变</strong></p>
+<h3 id="构造方法">构造方法</h3>
+<p>构造方法是专门用来创建对象的方法，当我们通过关键字 new 来创建对象时，其实就是在调用构造方法</p>
+<h4 id="格式">格式：</h4>
+<pre><code>public 类名称(参数类型 参数名称) 
+{
+    方法体
+}
+</code></pre>
+<h4 id="构造方法使用注意事项">构造方法使用注意事项：</h4>
+<ul>
+<li>构造方法的名称必须和所在的类名称完全一样，就连大小写也要一样</li>
+<li>构造方法不要写返回值类型，连 Void 都不写</li>
+<li>构造方法不能 return 一个具体返回值</li>
+<li>如果没有编写任何构造方法，编译器会默认生成一个构造方法，无参数、无方法体</li>
+<li>一旦编写了至少一个构造方法，编译器便不再自动生成</li>
+</ul>
+<h4 id="标准的类">标准的类</h4>
+<ol>
+<li>所有的成员变量都要用 private 关键字修饰</li>
+<li>为每一个成员变量编写一对儿 Getter/Setter 方法</li>
+<li>编写一个无参数的构造方法</li>
+<li>编写一个全参数的构造方法</li>
+</ol>
+<h2 id="3-常用-api">③ 常用 API</h2>
+<h3 id="random">Random</h3>
+<p>用于生成随机数<br>
+<code>public int nextInt(int n)</code> 返回一个 [0,n) 之间的随机数。</p>
+<h3 id="arraylist">ArrayList</h3>
+<p>数组的长度不可以发生变化，ArrayList 集合的长度是可以随意变化的。<br>
+如果希望向 ArrayList 当中存储基本类型数据，必须使用基本类型对应的“包装类”</p>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>包装类（引用类型）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+</tbody>
+</table>
+<h3 id="string">String</h3>
+<p>程序中所有双引号字符串，都是 String 类的对象</p>
+<h4 id="特点">特点</h4>
+<ul>
+<li>字符串的内容永不改变</li>
+<li>正是因为字符串不可改变，所以字符串是可以共享使用的</li>
+<li>字符串效果上相当于是 char[] 字符数组，底层原理是 byte[] 字节数组</li>
+</ul>
+<p>字符串常量池，在堆中开辟的一块空间。 使用 &quot;&quot; 直接创建的字符串都存放在字符串常量池中。</p>
+<ol>
+<li>对于引用类型来说，“==” 进行的是地址值的比较，基本数据类型是对值的比较；</li>
+<li>双引号直接创建的字符串在常量池中，new 的不在池中。</li>
+</ol>
+<p>如果需要对字符串的内容进行比较，可以使用如下方法：</p>
+<pre><code>public boolean equals(Object obj); // 严格区分大小写
+public boolean equalsIgnoreCase(Object obj); // 忽略大小写
+</code></pre>
+<p><code>split</code> 方法的参数其实是一个正则表达式，如果要按照英文 . 进行切分，必须写 &quot;\\.&quot; (两个反斜杠)</p>
+<h3 id="static-关键字">Static 关键字</h3>
+<p>用来修饰成员变量和成员方法，被修饰的成员属于类的，而不是单单是属于某个对象的。</p>
+<ul>
+<li>当 <code>static</code> 修饰成员变量，该变量称为类变量，该类的每个对象都共享同一个类变量的值。<br>
+格式：</li>
+</ul>
+<pre><code class="language-Java">static 数据类型 变量名;
+</code></pre>
+<ul>
+<li>当 <code>static</code> 修饰成员方法时，该方法称为类方法。</li>
+</ul>
+<p>静态代码块：定义在成员位置，使用 <code>static</code> 修饰的代码块 {}</p>
+<ul>
+<li>位置：类中方法之外</li>
+<li>执行：随着类的加载而执行且只执行一次，优先于 main 方法和构造方法的执行。</li>
+<li>作用：类类变量进行初始化赋值。</li>
+</ul>
+<p>格式：</p>
+<pre><code class="language-Java">public class className 
+{
+    static {
+        /// 执行语句    
+    }
+}
+</code></pre>
+<h3 id="arrays">Arrays</h3>
+<p><code>java.util.Arrays</code> 是一个与数组相关的工具类，里面提供了大量的静态方法，用来实现数组常见操作。<br>
+<code>toString(数组)</code> 将参数数组变成字符串<br>
+<code>sort(数组)</code> 按照默认升序对数组的元素进行排序：注意 如果数组内是自定义类型，那么这个自定义类需要有 <code>Comparable</code> 或者 <code>Comparator</code> 接口的支持。</p>
+<h3 id="math">Math</h3>
+<p><code>abs(double num)</code> 绝对值<br>
+<code>ceil(double num)</code> 向上取整<br>
+<code>floor(double num)</code> 向下取整<br>
+<code>round(double num)</code> 四舍五入<br>
+<code>Math.PI</code> 圆周率</p>
+<h2 id="4-继承">④ 继承</h2>
+<h3 id="继承">继承</h3>
+<p>子类继承父类的属性和行为，使得子类对象具有父类相同的属性、相同的行为，子类可以直接访问父类中的非私有的属性和行为。<br>
+优点：<br>
+1、提高代码的复用性<br>
+2、类与类之间产生了关系，是多态的前提。</p>
+<p>子父类中出现了同名的成员变量时，在子类中需要访问父类中非私有变量时，需要使用 <code>super</code> 关键字修饰父类成员变量。</p>
+<p>如果子父类中出现了同名的成员方法，这是的访问是一种特殊情况-称之为<strong>方法重写</strong></p>
+<p>Java 中指支持单继承，不支持多继承。</p>
+<h3 id="抽象类">抽象类</h3>
+<p>父类中的方法，被他的子类们重写，子类各自的实现都不尽相同，那么父类的方法声明和方法主体，只有声明还有意义，而方法主体则没有存在的意义了，我们把没有方法主体的方法称为抽象方法。包含抽象方法的类就是抽象类。</p>
+<h3 id="抽象方法">抽象方法</h3>
+<p>抽象方法，方法前加 <code>abstract</code> 关键字,去掉关键字，直接分号结束。<br>
+定义格式：</p>
+<pre><code class="language-Java">修饰符 abstract 返回值类型 方法名(参数列表);
+</code></pre>
+<h3 id="抽象类-2">抽象类</h3>
+<p>抽象类：抽象方法所在的类，必须是抽象类才行，在 class 之前写上 <code>abstract</code> 即可。抽象类可以定义正常方法。<br>
+定义格式：</p>
+<pre><code class="language-Java">abstract class 类名字
+{
+    ///xxx
+}
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>抽象类不能实例化，必须用子类继承抽象父类，子类必须覆盖重写抽象类的所有抽象方法。</li>
+<li>抽象类中，可以有构造方法，是供子类创建对象时，初始化父类成员使用的。</li>
+<li>抽象类中，不一定包含抽象方法，但是有抽象方法的类必定是抽象类。</li>
+<li>抽象类的子类，必须重写抽象父类中所有的抽象方法，否则，编译无法通过而报错，除非子类也是抽象类。</li>
+</ul>
+<h2 id="5-接口">⑤ 接口</h2>
+<p>接口是 Java 中的一种引用类型，是方法的集合，如果类的内部封装了成员变量，构造方法和成员方法，那么接口的内部主要就是封装了方法。接口不是类，是一种引用数据类型，其他的引用数据类型还包括：数组、类。<br>
+接口可包含五部分：常量、抽象方法、默认方法、静态方法、私有方法<br>
+定义格式：</p>
+<pre><code class="language-Java">public interface 接口名称
+{
+    // 抽象方法,继承类必须全部实现
+    // 默认方法,default 修饰符修饰，可以继承可以重写，必须通过实现类来调用
+    // 静态方法,只能通过接口名调用，不可通过实现类名或者实现类对象调用
+    // 私有方法,私有成员方法只有默认方法可以调用、私有静态方法只有默认方法和静态方法可以调用
+}
+</code></pre>
+<p>接口使用步骤：</p>
+<ol>
+<li>接口不能直接使用，必须有一个“实现类”来“实现”该接口；格式：<code>public class 实现类名称 implement 接口名称</code></li>
+<li>接口的实现类必须覆盖重写接口中所有的抽象方法。</li>
+<li>创建实现类的对象，进行使用</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li>如果实现类并没有覆盖重写接口的所有抽象方法，那么这个实现类自己就必须是抽象类。</li>
+<li>接口没有静态代码块或者构造方法</li>
+<li>一个类的直接父类是唯一的，但是一个类可以用时实现多个接口。格式：<code>public class 类名称 implements 接口 A, 接口 B {}</code></li>
+<li>多个接口存在相同名称抽象方法，实现类只需覆盖重写一次即可。</li>
+<li>如果实现类没有覆盖重写所有接口中定义的所有抽象方法，那么实现类就必须是一个抽象类。</li>
+<li>如果多个接口中存在相同名称的默认方法，那么实现类一定要对冲突的默认方法进行覆盖重写。</li>
+<li>一个类如果直接父类中的方法和接口当中的默认方法产生了冲突，优先用父类中的方法。（Java 继承优先级高于接口）</li>
+</ol>
+<h3 id="接口中的方法默认是抽象方法">接口中的方法默认是抽象方法</h3>
+<p>格式： <code>public abstract 返回值类型 方法名称(参数列表);</code><br>
+实现类必须覆盖重写接口所有抽象方法，除非实现类是抽象类。</p>
+<h3 id="接口中的默认方法">接口中的默认方法</h3>
+<p>接口中的默认方法可以解决接口升级的问题。<br>
+格式：<code>public default 返回值类型 方法名称(参数列表);</code></p>
+<h3 id="接口中静态方法">接口中静态方法</h3>
+<p>不能用接口实现类的对象来调用接口中的静态方法，应该直接使用接口名称直接调用静态方法。<br>
+格式：<code>public static 返回值类型 方法名称(参数列表);</code></p>
+<h3 id="接口中的私有方法">接口中的私有方法</h3>
+<p>抽取公共方法用来解决多个默认方法之间重复代码的问题，但这个共有方法不应该让实现类使用，应该是私有化的。<br>
+格式：<code>private default 返回值类型 方法名称(参数列表);</code>、<code>private static 返回值类型 方法名称(参数列表);</code></p>
+<h3 id="接口中的成员变量-即-常量">接口中的“成员变量” 即 “常量”</h3>
+<p>接口中可以定义“成员变量”，但必须使用 <code>public static final</code> 三个关键字进行修饰（可省略）。从效果上看，这其实就是接口的“常量”。一旦使用 <code>final</code> 关键字，说明不可变<br>
+格式：<code>public static final 数据类型 名称 = 数据值;</code><br>
+注意事项：</p>
+<ol>
+<li>接口中的常量，可以省略 <code>public static final</code> 关键字。含义不变。</li>
+<li>接口中的常量，必须进行赋值，不能不赋值。</li>
+<li>建议常量名称大写。多个单词用 _ 分割。</li>
+</ol>
+<h3 id="接口中的多继承">接口中的多继承</h3>
+<ul>
+<li>类与类之间是单继承的，直接父类只有一个</li>
+<li>类与接口之间是多继承的，一个类可以实现多个接口</li>
+<li>接口与接口之间是多继承的
+<ul>
+<li>多个父接口中的抽象方法可以重复</li>
+<li>多个父接口中的默认方法如果重复，必须在子接口进行覆盖重写，并带 <code>default</code> 关键字。</li>
+</ul>
+</li>
+</ul>
+<h3 id="接口其他特性">接口其他特性</h3>
+<ul>
+<li>接口中，无法定义成员变量，但可以定义常量，其值不可改变，默认使用 <code>public static final</code> 修饰，可以省略、</li>
+<li>接口中，没有构造方法，不能创建对象</li>
+<li>接口中，没有静态代码块</li>
+</ul>
+<h2 id="6-多态">⑥ 多态</h2>
+<p>对象具有多个形态<br>
+代码中体现多态性，父类引用指向子类对象。格式：<code>父类名称 对象名 = new 子类名称();</code> 或 <code>接口名称 对象名 = new 实现类名称();</code></p>
+<p>多态访问成员变量的两种方式：</p>
+<ol>
+<li>直接通过对象名称访问成员变量：看等号左边是谁，优先用谁，没有则向上找。（成员变量无法进行覆盖重写）</li>
+<li>间接通过成员方法访问成员变量：看该方法属于谁，优先用谁，没有则向上找。</li>
+</ol>
+<p>多态访问成员方法：<br>
+看 new 的是谁，就优先用谁，没有则向上找。</p>
+<p>口诀：<br>
+多态访问成员变量：编译看左边，运行也看左边<br>
+多态访问成员方法：编译看左边，运行看右边。</p>
+<p>多态的好处：无论右边 new 的是哪个子类对象，左边声明的类和调用的方法可以保持一致。</p>
+<h3 id="对象的向上转型">对象的向上转型</h3>
+<p>其实就是多态的写法：<code>父类名称 对象名 = new 子类名称();</code><br>
+含义：右侧创建一个子类对象，把它当做父类看待使用。<br>
+注意事项：向上转型一定是安全的。类似于基本数据类型的类型转换 （float -&gt; double）<br>
+弊端：一旦向上转型为父类，那么就无法调用子类原本特有的内容。（解决方案-使用向下转型）</p>
+<h3 id="对象的向下转型">对象的向下转型</h3>
+<p>其实是一个还原的动作。格式：<code>子类名称 对象名 = (子类名称)父类对象;</code><br>
+含义：将父类对象，<strong>还原</strong>为本来的子类对象<br>
+注意事项：<br>
+必须保证对象创建的时候就是向下转型的类型。</p>
+<h3 id="instanceof-关键字"><code>instanceof</code> 关键字</h3>
+<p>返回一个 boolean 值，判断前面的对象能不能当做后面类型的实例。<br>
+格式：<code>对象名 instanceof 类名</code></p>
+<h2 id="7-其他">⑦ 其他</h2>
+<h3 id="final-关键字"><code>final</code> 关键字</h3>
+<p>用于修饰<strong>不可改变</strong>的内容</p>
+<h4 id="final-用法"><code>final</code> 用法</h4>
+<ol>
+<li>修饰类：不能有任何子类，而且一个类如果是 <code>final</code> 的，那么其中所有的成员方法都无法对其进行覆盖重写</li>
+<li>修饰方法：这个方法不能被覆盖重写，对于类和方法而言，<code>abstract</code> 关键字和 <code>final</code> 关键字不能同时使用，因为矛盾。</li>
+<li>修饰局部变量：这个变量只能被赋值一次，不能再次被修改。“一次赋值，终生不变”。对于基本数据类型，不可变值得是变量中的数据不可变；对于引用类型，不可变指的是变量中的地址值不可变。</li>
+<li>修饰成员变量：这个变量只能而且必须被赋值一次，不能再次被修改。而且不再有默认值。
+<ol>
+<li>由于成员变量具有默认值，所以用了 <code>final</code> 之后必须手动赋值，不会再有默认值。</li>
+<li>对于 <code>final</code> 的成员变量，要么使用直接赋值，要么使用构造方法赋值，两者取其一。</li>
+<li>如果使用构造方法对 <code>final</code> 修饰的成员变量赋值，必须保证类中所有重载的构造方法，都最终会对 <code>final</code> 的成员变量进行赋值。</li>
+</ol>
+</li>
+<li>被 <code>final</code> 修饰的常量名称，一般有书写规范，所有字母均大写。</li>
+</ol>
+<h3 id="java-中的四种权限修饰符">Java 中的四种权限修饰符</h3>
+<p><code>public &gt; protected (专门给不同包子类用的) &gt; (default) &gt; private</code></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>public</th>
+<th>protected</th>
+<th>（default）</th>
+<th>private</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同一个类（我自己）</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>用一个包（我邻居）</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>不同包子类（我儿子）</td>
+<td>YES</td>
+<td>YES</td>
+<td>NO</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>不同包非子类（陌生人）</td>
+<td>YES</td>
+<td>NO</td>
+<td>NO</td>
+<td>NO</td>
+</tr>
+</tbody>
+</table>
+<h3 id="内部类">内部类</h3>
+<h4 id="分类">分类：</h4>
+<ol>
+<li>成员内部类</li>
+<li>局部内部类（包含匿名内部类）</li>
+</ol>
+<h4 id="成员内部类">成员内部类</h4>
+<p>格式:</p>
+<pre><code>修饰符 class 外部类名称 
+{
+    修饰符 class 内部类名称
+    {
+        xxx
+    }
+}
+</code></pre>
+<p>内部类可以直接访问外部类的成员，包括私有成员。<br>
+外部类要访问内部类的成员，必须建立内部类的对象。<br>
+即 : 内用外，随意访问。外用内需要借助内部类对象。</p>
+<h4 id="如何使用成员内部类">如何使用成员内部类</h4>
+<ol>
+<li>间接方式：在外部类的方法中，使用内部类；然后 main 只是调用外部类的方法。</li>
+<li>直接方式：定义格式：<code>外部类名称.内部类名称 对象名 = new 外部类名称().new 内部类名称();</code></li>
+</ol>
+<h4 id="内部类使用外部类的成员变量">内部类使用外部类的成员变量</h4>
+<p>如果出现重名现象，使用格式：<code>外部类名称.this.外部类成员变量名</code><br>
+实例：</p>
+<pre><code class="language-java">public class Outer
+{
+    int num = 10;
+     public class Inner
+     {
+        int num = 20;
+        public void methodInner()
+        {
+           int num = 30;
+           System.out.println(num); // 局部变量，就近原则
+           System.out.println(this.num); // 内部类的成员变量
+           System.out.println(Outer.this.num); // 外部类的成员变量
+        }
+     }
+}
+</code></pre>
+<h4 id="局部内部类">局部内部类</h4>
+<p>如果一个类定义在一个方法内部，那么就是局部内部类。<br>
+“局部”：只有当前所属的方法才能使用它，出了这个方法外面就不能用了。</p>
+<p>局部内部类如果要访问所在方法的局部变量，那么这个局部变量必须是【有效 final 的】即 用 final 声明的变量或者事实上只赋值一次的变量。<br>
+原因：new 出来的对象在堆内存中，局部变量跟着方法走，在栈内存中。方法运行结束立刻出栈，局部变量立即消失。但是 new 出来的对象会在堆中持续存在，直到垃圾回收消失。</p>
+<h4 id="定义类的权限修饰符">定义类的权限修饰符</h4>
+<ul>
+<li>外部类：<code>public 或 (default)</code></li>
+<li>成员内部类：都可以</li>
+<li>局部内部类：什么都不能写</li>
+</ul>
+<h4 id="匿名内部类">匿名内部类</h4>
+<p>如果接口的实现类（或者是父类的子类）只需要使用唯一的一次，那么这种情况下就可以省略掉该类的定义，而改为使用<strong>匿名内部类</strong></p>
+<p>定义格式：</p>
+<pre><code>接口名称 对象名 = new 接口名称()
+{
+    /// 覆盖重写接口中所有的抽象方法。
+}
+</code></pre>
+<p>对格式 &quot;new 接口名称(){...}&quot; 进行解析：</p>
+<ol>
+<li>new 代表创建对象的动作</li>
+<li>接口名称就是匿名内部类需要实现哪个接口</li>
+<li>{...} 这才是匿名内部类的内容</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li>匿名内部类，在【创建对象】的时候只能使用唯一一次，如果希望多次创建对象，那么就必须使用单独定义的实现类。</li>
+<li>匿名对象，在【调用方法】的时候只能调用唯一一次，如果希望同一个对象调用多次方法，那么必须给对象起个名字。</li>
+<li>匿名内部类是省略了【实现类/子类名称】，但是匿名对象时省略了【对象名称】，匿名内部类和匿名对象不是一回事！！</li>
+</ol>
+<h3 id="interface-作为成员变量"><code>interface</code> 作为成员变量</h3>
+<p>使用接口作为成员变量以便随时更换实现方式，这种设计更为灵活，增强了程序的扩展性。<br>
+接口作为成员变量时，对他进行复制的操作，实际上是赋给他接口的一个子类实现对象。</p>
+<p>接口作为参数数，传递它的子类对象；<br>
+接口作为返回值类型是，也是返回它的子类对象。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[iOS - 类与对象]]></title>
+        <id>https://qxuewei.github.io/post/ios-lei-yu-dui-xiang/</id>
+        <link href="https://qxuewei.github.io/post/ios-lei-yu-dui-xiang/">
+        </link>
+        <updated>2020-01-02T12:57:00.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="ios-类与对象">iOS - 类与对象</h1>
+<h3 id="类方法">类方法</h3>
+<p>OC 中类的方法只有实例方法和静态方法两种：</p>
+<pre><code class="language-ObjectiveC">@interface Controller: NSObject
+/// 静态方法
++ (void)thisIsAStaticMethod;
+
+/// 实例方法
+- (void)thisIsAnInstanceMethod;
+@end
+</code></pre>
+<p>OC 中的方法只要声明在 @interface 里，就可以认为是公有的。实际上，OC 没有像 Java，C++ 中的那种绝对的 私有及保护 的成员方法，仅仅可以对调用者隐藏某些方法。</p>
+<p>声明和实现都写在 @implementation 里的方法，类的外部是看不到的。</p>
+<p>可以使用 分类（Category） 和 类扩展（Extension）来实现私有方法。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="ios-类与对象">iOS - 类与对象</h1>
+<h3 id="类方法">类方法</h3>
+<p>OC 中类的方法只有实例方法和静态方法两种：</p>
+<pre><code class="language-ObjectiveC">@interface Controller: NSObject
+/// 静态方法
++ (void)thisIsAStaticMethod;
+
+/// 实例方法
+- (void)thisIsAnInstanceMethod;
+@end
+</code></pre>
+<p>OC 中的方法只要声明在 @interface 里，就可以认为是公有的。实际上，OC 没有像 Java，C++ 中的那种绝对的 私有及保护 的成员方法，仅仅可以对调用者隐藏某些方法。</p>
+<p>声明和实现都写在 @implementation 里的方法，类的外部是看不到的。</p>
+<p>可以使用 分类（Category） 和 类扩展（Extension）来实现私有方法。</p>
+<!-- more -->
+<pre><code class="language-ObjectiveC">// AClass.h
+@interface AClass: NSObject
+- (void)sayHello;
+@end
+
+// AClass.m
+@interface AClass (private)
+- (void)privateSayHello1;
+@end
+
+@interface AClass ()
+- (void)privateSayHello2;
+@end
+
+@implementation AClass
+- (void)sayHello 
+{
+    [self privateSayHello];
+}
+
+- (void)privateSayHello1
+{
+    NSLog(@&quot;privateSayHello1&quot;);
+}
+
+- (void)privateSayHello2
+{
+    NSLog(@&quot;privateSayHello2&quot;);
+}
+
+@end
+</code></pre>
+<p>使用这种方法外部就不能直接调用到 <code>privateSayHello1</code> 和 <code>privateSayHello2</code> 方法。</p>
+<h3 id="类变量">类变量</h3>
+<p>Apple 推荐现代的 Objective-C 中使用 <code>@property</code> 来实现成员变量，使用 <code>@property</code> 声明的变量可以使用 <code>实例名.变量名</code> 来获取和修改。<br>
+<code>@property</code> 可以看做一种语法糖，使用 <code>@property</code> 此声明</p>
+<pre><code class="language-ObjectiveC">@interface AClass: NSObject
+@property (nonatomic, copy) NSString *name;
+@end
+</code></pre>
+<p>可等价于</p>
+<pre><code class="language-ObjectiveC">@interface AClass: NSObject
+{
+    NSString *_name;
+}
+- (NSString *)name;
+- (void)setName:(NSString *)name;
+@end
+
+@implementation AClass
+- (NSString *)name
+{
+    return _name;
+}
+- (void)setName:(NSString *)name
+{
+    _name = name;
+}
+@end
+</code></pre>
+<p><strong><code>@property</code> 会自动生成 <code>getter</code> 和 <code>setter</code> 方法，同时进行自动内存管理</strong></p>
+<p><code>@property</code> 可声明的属性修饰符有如下几种：</p>
+<ul>
+<li><code>readwrite</code> 可读写，需要生成 <code>getter</code> 和 <code>setter</code> 方法.</li>
+<li><code>readonly</code> 只读，只会生成 <code>getter</code> 方法，不会生成 <code>setter</code> 方法，不希望属性在类外改变时使用。</li>
+<li><code>assign</code> 赋值属性，<code>setter</code> 方法将传入的参数赋值给实例变量。</li>
+<li><code>strong</code> 持有特性，<code>setter</code> 方法将传入的参数先保留，再赋值，传入参数的引用计数会 +1。</li>
+<li><code>copy</code> 拷贝特性，<code>setter</code> 方法将传入对象复制一份；需要完全一份新的变量时使用。</li>
+<li><code>nonatomic</code> 和 <code>atomic</code> ，决定编译器生成的 <code>getter</code> 和 <code>setter</code> 方法是否是原子操作。</li>
+</ul>
+<p><strong>默认的 <code>@property</code> 是<br>
+基本数据类型： <code>readwrite</code>、<code>assign</code>、<code>atomic</code>；<br>
+对象： <code>readwrite</code>、<code>strong</code>、<code>atomic</code>；</strong></p>
+<h3 id="protocol">Protocol</h3>
+<p>OC 是单继承的，OC 中的类可以实现多个 <code>protocol</code> 来实现类似 C++ 中多重继承的效果。</p>
+<p><code>protocol</code> 类似 JAVA 中的 <code>interface</code>，定义了一个方法列表，这个方法列表中的方法可以使用 <code>@required</code> <code>@optional</code> 标注，以表示该方法是否客户类必须要实现的方法。</p>
+<p>当 <code>protocol</code> 中含有 <code>property</code> 时，编译器不会进行自动 <code>synthesize</code> 的，需要手动处理：在实现这个 <code>protocol</code> 的时候要么再次声明 <code>property</code> 要么手动 <code>synthesize</code></p>
+<h3 id="category">Category</h3>
+<p><code>Category</code> 是一种很灵活的扩展原有类的机制，使用 <code>Category</code> 不需要访问原有类的代码，也无需集成，<code>Category</code> 提供了一种简单的方式，来实现类的相关方法的模块化，把不同的方法分配到不同的类文件中。</p>
+<p>在使用 <code>Category</code> 时需要注意的是，如果有多个 <code>Category</code> 均实现了同一个方法，那么这些方法在运行时只有一个会被调用，具体哪个会被调用是不确定的，因此建议在使用 <code>Category</code> 时在函数命名方法加上前缀。</p>
+<h3 id="extension">Extension</h3>
+<p><code>Extension</code> 可以认为是一种匿名的 <code>Category</code> ，<code>Extension</code> 与 <code>Category</code> 有如下区别：</p>
+<ul>
+<li>使用 <code>Extension</code> 必须有原有类的源码</li>
+<li><code>Extension</code> 声明的方法必须在类的主 <code>@implementation</code> 区间内实现，可以避免使用有名 <code>Category</code> 带来的多个不必要的<code>@implementation</code>。</li>
+<li><code>Extension</code> 可以在类中添加新的属性和实例变量，<code>Category</code> 不可以。</li>
+<li><code>Extension</code> 和 <code>Category</code> 里添加的方法必须要有实现。（没有实现编译器会给出警告）</li>
+<li><code>Category</code> 一般用来给类添加私有的变量和方法，在类的内部使用。</li>
+</ul>
+<h3 id="如果在类中添加全局变量">如果在类中添加全局变量</h3>
+<p>一个简单直接的做法是在 .m 文件中使用 <code>static</code> 变量。由于 <code>static</code> 变量在编译器就是确定的，因此对于 <code>NSObject</code> 对象来说，初始化的值只能是 nil, 如何进行类似 init 的初始化呢? 可以通过重载 <code>initialize</code> 方法。</p>
+<pre><code class="language-ObjectiveC">static NSOperationQueue *_queue = nil;
+@implementation XWPerson
+- (void)initialize
+{
+    if (!_queue) {
+        _queue = [[NSOperationQueue alloc] init];
+    }
+}
+@end
+</code></pre>
+<p>为什么这里要判断是否为 <code>nil</code> 呢？因为 <code>initialize</code> 方法可能会调用多次。</p>
+<p>有一种方法是声明 <code>static</code> 函数，下面代码来自 <a href="https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLSessionManager.m">AFNetworking</a>，声明了一个当前文件范围可用的队列：</p>
+<pre><code class="language-ObjectiveC">static dispatch_queue_t url_session_manager_creation_queue() {
+    static dispatch_queue_t af_url_session_manager_creation_queue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        af_url_session_manager_creation_queue = dispatch_queue_create(&quot;com.alamofire.networking.session.manager.creation&quot;, DISPATCH_QUEUE_SERIAL);
+    });
+
+    return af_url_session_manager_creation_queue;
+}
+</code></pre>
+<p>除此以外，还可以通过编译器的 <code>__attribute_</code> 特性来实现初始化：</p>
+<pre><code class="language-ObjectiveC">__attribute__((constructor))
+static void initialize_Queue() {
+    _personOperationQueue = [[NSOperationQueue alloc] init];
+}
+</code></pre>
+<h3 id="类的初始化">类的初始化</h3>
+<p>Objective-C 是建立在 Runtime 基础上的语言，类也不例外。OC 中类的初始化也是动态的，在 OC 中绝大部分类都继承自 <code>NSObject</code> ，它有两个非常特殊的类方法 <code>+load</code> 和 <code>+initialize</code>，用于类的初始化。</p>
+<h4 id="load"><code>+load</code></h4>
+<p><code>+load</code> 方法是当类或分类被添加到 Objective-C runtime 时被调用的，实现这个方法可以让我们在类加载的时候执行一些类相关的行为。子类的 <code>+load</code> 方法会在它所有的父类的 <code>+load</code> 方法之后执行，而分类的 <code>+load</code> 方法会在它的主类 <code>+load</code> 方法之后执行。</p>
+<h4 id="initialize"><code>+initialize</code></h4>
+<p><code>+initialize</code> 方法是在类或它的子类收到第一条消息之前被调用的，这里所指的消息包括实例方法和类方法的调用。也就是说 <code>+initialize</code> 方法是以懒加载的方式被调用的。如果程序一直没有给某各类或它的子类发送消息，那么这个类的 <code>+initialize</code> 方法是永远不会被调用的。</p>
+<p>如果一个分类实现了 <code>+initialize</code> 方法，那么就会对这个类中的实现造成覆盖。</p>
+<hr>
+<h3 id="更多干货文章">更多干货文章</h3>
+<h5 id="博客wwwqiuxueweicom">博客：<a href="http://www.qiuxuewei.com">www.qiuxuewei.com</a></h5>
+<h5 id="微信公众号开发者成长之路">微信公众号：<strong>@开发者成长之路</strong></h5>
+<h5 id=""><img src="http://blog.image.jkxuewei.com/sou_wechat.png" alt="公众号二维码" loading="lazy"></h5>
+<p><strong>一个没有鸡汤只有干货的公众号</strong></p>
+<hr>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[内存管理、磁盘和文件拾遗]]></title>
+        <id>https://qxuewei.github.io/post/nei-cun-guan-li-ci-pan-he-wen-jian-shi-yi/</id>
+        <link href="https://qxuewei.github.io/post/nei-cun-guan-li-ci-pan-he-wen-jian-shi-yi/">
+        </link>
+        <updated>2020-01-01T15:28:42.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="内存管理-磁盘和文件拾遗">内存管理、磁盘和文件拾遗</h1>
+<h2 id="part1-内存管理">Part1. 内存管理</h2>
+<p>一个程序的可执行文件在内存中的结果，从大的角度可以分为两个部分：只读部分和可读写部分。只读部分包括程序代码（.text）和程序中的常量（.rodata）。<br>
+可读写部分（变量）大致可分为下面几个部分：</p>
+<ul>
+<li><code>.data</code>：初始化了的全局变量和静态变量</li>
+<li><code>.bss</code>：即 <code>Block Started by Symbol</code>，未初始化的全局变量和静态变量</li>
+<li><code>heap</code>：堆，使用 <code>malloc</code>、<code>realloc</code>和<code>free</code>函数控制的变量，堆在所有的线程，共享库，和动态加载的模块中被共享使用。</li>
+<li><code>stack</code>：栈，函数调用时使用栈来保存函数现场，自动变量（即生命周期限制在某个 scope 的变量）也存放在栈中。</li>
+</ul>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="内存管理-磁盘和文件拾遗">内存管理、磁盘和文件拾遗</h1>
+<h2 id="part1-内存管理">Part1. 内存管理</h2>
+<p>一个程序的可执行文件在内存中的结果，从大的角度可以分为两个部分：只读部分和可读写部分。只读部分包括程序代码（.text）和程序中的常量（.rodata）。<br>
+可读写部分（变量）大致可分为下面几个部分：</p>
+<ul>
+<li><code>.data</code>：初始化了的全局变量和静态变量</li>
+<li><code>.bss</code>：即 <code>Block Started by Symbol</code>，未初始化的全局变量和静态变量</li>
+<li><code>heap</code>：堆，使用 <code>malloc</code>、<code>realloc</code>和<code>free</code>函数控制的变量，堆在所有的线程，共享库，和动态加载的模块中被共享使用。</li>
+<li><code>stack</code>：栈，函数调用时使用栈来保存函数现场，自动变量（即生命周期限制在某个 scope 的变量）也存放在栈中。</li>
+</ul>
+<!-- more -->
+<h3 id="1-data-和-bss-区">1. <code>.data</code> 和 <code>.bss</code> 区</h3>
+<p>这两个经常放在一起说，因为他们都是用来存储全局变量和静态变量的，区别在于 <code>.data</code> 区存放的初始化过的，<code>.bss</code>区存放的是没有初始化过的。例如：</p>
+<pre><code class="language-c">int val = 3;
+char string[] = 'Hello World';
+</code></pre>
+<p>这两个变量的值会在一开始被存储在 <code>.text</code> 中，因为值是写在代码里面的，在程序启动时会拷贝到 <code>.data</code> 区中。<br>
+若不初始化，类似:</p>
+<pre><code class="language-c">static int i;
+</code></pre>
+<p>这个变量就会被放在 <code>.bss</code> 区中。</p>
+<h4 id="静态变量和全局变量">静态变量和全局变量</h4>
+<h5 id="全局变量">全局变量</h5>
+<p>在一个代码文件中，一个变量要么定义在函数中，要么定义在函数外。当定义在函数外时，这个变量就有了全局作用域，成为了全局变量。<br>
+全局变量不光意味着这个变量可以在整个文件中使用，也意味着这个变量可以在其他文件中使用（这种叫 <code>external linkage</code>）。<br>
+当有如下两个文件时：<br>
+A.c</p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+int a;
+int compute(void);
+int main()
+{
+    a = 1;
+    printf(&quot;%d %d&quot;, a, compute());
+    return 0;
+}
+</code></pre>
+<p>B.c</p>
+<pre><code class="language-c">int a;
+int compute(void)
+{
+    a = 0;
+    return a;
+}
+</code></pre>
+<p>在编译过程中会产生重复定义的错误！因为有两个全局的 a 变量，编译器不知道应该使用哪一个，为了避免这种问题，就需要引入 <code>static</code>。</p>
+<h5 id="静态变量">静态变量</h5>
+<p>使用 <code>static</code> 关键字修饰的变量，<code>static</code> 关键字对变量的作用域进行了限制，具体的限制如下：</p>
+<ul>
+<li>在函数外定义：全局变量，但是只在当前文件中可见（叫做 internal linkage）。</li>
+<li>在函数内定义：全局变量，但是只在此函数内可见（同时，在多次函数调用中，变量的值不会丢失）。</li>
+<li><code>C++</code> 在类中定义：全局变量，但是只在此类中可见</li>
+</ul>
+<p>对于全局变量来说，为了避免上面提到的重复定义错误，我们可以在一个文件中使用 <code>static</code>，另一个不使用，这样使用 <code>static</code> 的就会使用自己的 a 变量，而没有用 <code>static</code> 的会使用全局的 a 变量。</p>
+<p><em>注意：<code>静态</code>这个中文翻译有点莫名其妙，给人的感觉像是不可改变的，实际上<code>static</code> 跟不可改变没有关系，不可改变的变量使用 <code>const</code> 关键字修饰！！！</em></p>
+<h5 id="extern"><code>extern</code></h5>
+<p><code>extern</code> 是 C 语言的另一个关键字，用来指示变量或函数的定义在别的文件中，使用 <code>extern</code> 可以在多个源文件中共享某个变量。</p>
+<h4 id="程序在内存和硬盘上不同的存在形式">程序在内存和硬盘上不同的存在形式</h4>
+<p>这里提到的四个区，是指程序在<strong>内存</strong>中存在的形式，和程序在<strong>硬盘</strong>上存储的格式不是完全对应的。程序在硬盘上存储的格式更加复杂，而且是和操作系统有关的，具体可以参考：<a href="https://en.wikipedia.org/wiki/Comparison_of_executable_file_formats">wikipedia</a>。<br>
+一个明显的例子区分这个差别：<br>
+之前提到的未定义的全局变量存储在 <code>.bss</code> 区，这个区域不会占用可执行文件的空间（一般只存储这个区域的长度），但是却会占用内存空间。这些变量没有定义，因此可执行文件中不需要存储他们的值，在程序启动过程中，他们的值会被初始化成 0，存储在内存中。</p>
+<h3 id="2-栈">2. 栈</h3>
+<p>栈是用于存放本地变量，内部临时变量以及有关上下文的内存区域。程序在调用函数时，操作系统会自动通过压栈和弹栈完成保存函数现场等操作，不需要程序员手动干预。<br>
+栈是一块连续的内存区域，栈顶的地址和栈的最大容量是系统预先规定好的，能从栈获得的空间较小。如果申请的空间超过栈的剩余空间时，例如递归深度过深，将提示：<code>stackoverflow</code>。<br>
+栈是机器系统提供的数据结构，计算机会在底层对栈提供支持：分配专门的寄存器存放栈的地址，压栈、出栈都有专门的指令执行，这就决定了栈的效率比较高。</p>
+<h3 id="3-堆">3. 堆</h3>
+<p>堆是用于存放除了栈里的东西之外所有其他东西的内存区域，当使用 <code>malloc</code> 和 <code>free</code> 时就是在操作堆中的内存。对于堆来说，释放工作由程序员控制，容易产生 <code>memory leak</code>。</p>
+<p>堆是向高地址扩展的数据结构，是不连续的内存区域。这里由于系统是用链表来存储的空闲内存地址的，自然是不连续的，而链表的遍历方向是由低地址向高地址。堆的大小受限于计算机系统中有效的虚拟内存。由此可见，堆获得的空间比较灵活，也比较大。</p>
+<p>对于堆而言，频繁的 <code>new</code>/<code>delete</code> 势必会造成内存空间的不连续，从而造成大量的碎片，使程序效率降低。对于栈而言，则不会出现这个问题，因为栈是先进后出的队列，永远都不可能有一个内存块从栈中间弹出。</p>
+<p>堆都是动态分配的，没有静态分配的堆。栈有两种分配方式：静态分配和动态分配。静态分配是编译器完成的，比如局部变量的分配。动态分配由 <code>alloca</code> 函数进行分配，但是栈的动态分配和堆是不同的，他的动态分配是由编译器进行释放，无需我们手工实现。</p>
+<p>计算机底层并没有对堆的支持，堆则是 C/C++ 函数库提供的，同时由于上面提到的碎片问题，都会导致堆的效率比栈要低。</p>
+<h2 id="part2-内存分配">Part.2 内存分配</h2>
+<ul>
+<li>虚拟地址：用户编译时将代码（或数据）分成若干个段，每条代码或每个数据的地址由段名称 + 段内相对地址构成，这样的程序地址称为虚拟地址。</li>
+<li>逻辑地址：虚拟地址中，段内相对地址部分称为逻辑地址。</li>
+<li>物理地址：实际物理内存中所看到的存储地址称为物理地址。</li>
+<li>逻辑地址空间：在实际应用中，将虚拟地址和逻辑地址经常不加以区分，通称为逻辑地址，逻辑地址的几个称为逻辑地址空间。</li>
+<li>线性地址空间：CPU 地址总线可以访问的所有地址合称为线性地址空间。</li>
+<li>物理地址空间：实际存在的可访问的物理内存地址集合称为物理地址空间。</li>
+<li>MMU（Memery Management Unit）内存管理单元：实现将用户程序的虚拟地址（逻辑地址）-&gt; 物理地址映射的 CPU 中的硬件电路。</li>
+<li>基地址：在进行地址映射时，经常以段或页为单位并以其最小地址（即起始地址）为基值来进行计算。</li>
+<li>偏移量：在以段或页为单位进行地址映射时，相对于基地址的地址值。</li>
+</ul>
+<p>虚拟地址先经过分段机制映射到线性地址，然后线性地址通过分页机制映射到物理地址。</p>
+<h2 id="part3-虚拟内存">Part.3 虚拟内存</h2>
+<h3 id="请求调页">请求调页</h3>
+<p>也成为按需调页，即对不在内存中的“页”，当进程执行时才调入，否则有可能到程序结束时也不会调入。</p>
+<h3 id="页面置换算法">页面置换算法</h3>
+<ul>
+<li>
+<p>FIFO 算法<br>
+先入先出，即淘汰最早调入的页面。</p>
+</li>
+<li>
+<p>OPT（MIN） 算法<br>
+选未来最远将使用的页淘汰，是一种最优的方案，可以证明缺页数最小。<br>
+可惜，MIN 需要知道将来发生的事，只能在理论中存在，实际不可应用。</p>
+</li>
+<li>
+<p>LRU（Least-Recently-Used） 算法<br>
+用过去的历史预测将来，选最近最长时间没有使用的页淘汰（也称最近最少使用）。LRU 准确实现：计数器法，页码栈法。由于代价较高，通常不使用准确实现，而是采用近似实现，例如 <code>Clock</code> 算法。</p>
+</li>
+</ul>
+<h3 id="内存抖动">内存抖动</h3>
+<p>页面的频繁更换，导致整个系统效率急剧下降，这个现象称为内存抖动（或颠簸）。<br>
+抖动一般是内存分配算法不好，内存太小引起或者程序的算法不佳引起的。</p>
+<h3 id="belady-现象"><code>Belady</code> 现象</h3>
+<p>对有的页面置换算法，页错误率可能会随着分配帧数的增加而增加。<br>
+FIFO 会产生 <code>Belady</code> 异常。<br>
+栈式算法无 <code>Belady</code> 异常，LRU、LFU（最不经常使用）、OPT 都属于栈式算法。</p>
+<h2 id="part4-磁盘调度">Part.4 磁盘调度</h2>
+<p>磁盘访问延迟 = 队列时间 + 控制器时间 + 寻道时间 + 旋转时间 + 传输时间。<br>
+磁盘调度的目的是减小延迟，其中前两项可以忽略，寻道时间是主要矛盾。</p>
+<h3 id="磁盘调度算法">磁盘调度算法</h3>
+<ul>
+<li>
+<p>FCFS<br>
+先进先出的调度策略，这个策略具有公平的优点，因为每个请求都会得到处理，并且是按照接收到的顺序进行处理。</p>
+</li>
+<li>
+<p>SSTF（Shortest-seek-time 最短寻道时间优先）<br>
+选择使磁头从当前位置开始移动最少的磁盘 I/O 请求，所以 SSTF 总是选择导致最小寻道时间的请求。<br>
+总是选择最小寻找时间并不能保证平均寻找时间最小，但是能提供比 FCFS 算法更好的性能，会存在饥饿现象。</p>
+</li>
+<li>
+<p>SCAN<br>
+SSTF + 中途不回折，每个请求都有处理机会。<br>
+SCAN 要求磁头仅仅沿一个方向移动，并在途中满足所有未完成的请求，直到它到达这个方向上的最后一个磁道，或者在这个方向上没有其他请求为止。<br>
+由于磁头移动规律与电梯运行相似，SCAN 也被称为电梯算法。<br>
+SCAN 算法对最近扫描过的区域不公平，因此，它的访问局部性方面不如 FCFS 算法和 SSTF 算法好。</p>
+</li>
+<li>
+<p>C-SCAN<br>
+SCAN + 直接移到另一端，两端请求都能很快处理。<br>
+把扫描限定在一个方向，当访问到某个方向的最后一个磁道时，磁道返回磁盘相反方向磁道的末端，并再次开始扫描。<br>
+其中 “C” 是 <code>Circular(环)</code>的意思。</p>
+</li>
+<li>
+<p>LOOK 和 C-LOOK<br>
+采用 SCAN 算法和 C-SCAN 算法时磁头总是严格地遵循从盘面的一端到另一端，显然，在实际使用时还可以改进，即磁头移动只需要到达最远端的一个请求即可返回，不需要到达磁盘端点。这种形式的 SCAN 算法和 C-SCAN 算法称为 LOOK 和 C-LOOK 调度。这是因为它们在朝一个给定方向移动前会查看是否有请求。</p>
+</li>
+</ul>
+<h2 id="part5-文件系统">Part5. 文件系统</h2>
+<h3 id="分区表">分区表</h3>
+<ul>
+<li>MBR：支持最大卷为 2TB（Terabytes），并且每个磁盘最多有 4 个主分区（或 3 个主分区、1 个扩展分区和无限制的逻辑驱动器）</li>
+<li>GPT：支持最大卷为 18EB（Exabytes），并且每磁盘的分区数没有上限，只受到操作系统限制，由于分区表本身需要占用一定空间，最初规划硬盘分区时，留给分区表的空间决定了最多可以有多少个分区，IA-64版 Windows 限制最多有 128 个分区，这也是 EFI 标准规定的分区表的最小尺寸。另外 GPT 分区磁盘有备份分区表来提高分区数据结构的完整性。</li>
+</ul>
+<h3 id="raid-技术">RAID 技术</h3>
+<p>独立硬盘冗余阵列（RAID, Redundant Array of Independent Disks），旧称廉价磁盘冗余阵列（Redundant Array of Inexpensive Disks），简称磁盘阵列。利用虚拟化存储技术把多个硬盘组合起来，成为一个或多个硬盘阵列组，目的为提升性能或数据冗余，或是两者同时提升。</p>
+<p>在运作中，取决于 RAID 层级不同，数据会以多种模式分散于各个硬盘，RAID 层级的命名会以 RAID 开头并带数字，例如：RAID 0、RAID 1、RAID 5、RAID 6、RAID 7、RAID 01、RAID 10、RAID 50、RAID 60。每种等级都有其理论上的优缺点，不同的等级在两个目标间获取平衡，分别是增加数据可靠性以及增加存储器（群）读写性能。</p>
+<ul>
+<li>
+<p>RAID 0<br>
+RAID 0 是最早出现的 RAID 模式，需要两块以上的硬盘，可以提高整个磁盘的性能和吞吐量。<br>
+RAID 0 没有提供冗余或错误修复能力，其中一块硬盘损坏，所有的数据将遗失。<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2020.01.01.15778871221775.15778853893740.jpg" alt="-w183" loading="lazy"></p>
+</li>
+<li>
+<p>RAID 1<br>
+RAID 1 就是镜像，其原理为在主硬盘上存放数据的同时也在镜像硬盘上写一样的数据，当主硬盘（物理）损坏时，镜像硬盘则代替主硬盘的工作。因为有镜像硬盘做数据备份，所以 RAID 1 的数据安全性在所有 RAID 级别上来说是最好的。<br>
+但无论用多少磁盘做 RAID 1，仅算一个磁盘的容量，是所有 RAID 中磁盘利用率最低的。<br>
+实际容量：<code>Size = min(S1, S2, S3 ... Sn)</code><br>
+<img src="http://blog.image.jkxuewei.com/mweb/2020.01.01.15778871221788.15778854865641.jpg" alt="-w175" loading="lazy"></p>
+</li>
+<li>
+<p>RAID 2<br>
+这是 RAID 0 的改良版，以汉明码（Hamming Code）的方式将数据进行编码后分区为独立的比特，并将数据分别写入硬盘中。因为在数据中加入了错误修正码（ECC，Error Correction Code），所以数据整体的容量会比原始数据大一些，RAID 2 至少需要三台磁盘驱动器方能运作。<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2020.01.01.15778871221801.15778855454481.jpg" alt="-w348" loading="lazy"></p>
+</li>
+<li>
+<p>RAID 3<br>
+采用 Bit-interleaving（数据交错存储）技术，它需要通过编码再将数据比特分割后分别存在磁盘中，而将同比特检查后单独存在一个硬盘中，但由于数据内的比特分散在不同的硬盘上，因此就算要读取一小段数据资料都可能需要所有的硬盘进行工作，所以这种规格比较适用于读取大量数据时使用。<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2020.01.01.15778871221815.15778855779280.jpg" alt="-w258" loading="lazy"></p>
+</li>
+<li>
+<p>RAID 4<br>
+它与 RAID 3 不同的是它在分区时是以区块为单位分别存在硬盘中，但每次的数据访问都必须从同比特检查的那个硬盘中取出对应的同比特数据进行核对，由于过于频繁的使用，所以对硬盘的损耗可能会提高。（快交织技术，Block interleaving）。<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2020.01.01.15778871221828.15778855992090.jpg" alt="-w256" loading="lazy"></p>
+<p><strong>RAID 2、3、4 在实际应用中很少使用</strong></p>
+</li>
+<li>
+<p>RAID 5<br>
+RAID Level 5 是一种存储性能、数据安全和存储成本兼顾的存储解决方案，他使用的是 Disk Striping（硬盘分区）技术。<br>
+RAID 5 至少需要三块硬盘，RAID 5 不是对存储的数据进行备份，而是把数据和相对应的数据分别存储于不同的磁盘上。<br>
+RAID 5 允许一块硬盘损坏。<br>
+实际容量：<code>Size = (N - 1) * min(S1, S2, S3... SN)</code><br>
+<img src="http://blog.image.jkxuewei.com/mweb/2020.01.01.15778871221842.15778856469979.jpg" alt="-w263" loading="lazy"></p>
+</li>
+<li>
+<p>RAID 6<br>
+与 RAID 5 相比，RAID 6 增加第二个独立的奇偶校验信息块。两个独立的奇偶系统使用不同的算法，数据的可靠性非常高，即使两块磁盘同时失效也不会影响数据的使用。<br>
+RAID 6 至少需要 4 块硬盘。<br>
+实际容量：<code>Size = (N - 2) * min(S1, S2, S3 ... SN)</code><br>
+<img src="http://blog.image.jkxuewei.com/mweb/2020.01.01.15778871221858.15778857093463.jpg" alt="-w304" loading="lazy"></p>
+</li>
+<li>
+<p>RAID 10/01 (RAID 1 + 0, RAID 0 + 1)<br>
+RAID 10 是先镜射再分区数据，再将所有硬盘分为两组，视为是 RAID 0 的最低组合，然后将这两组各自视为 RAID 1 运作。<br>
+RAID 01 则是跟 RAID 10 的程序相反，是先分区再将数据镜射到两组硬盘。它将所有的硬盘分为两组，变成 RAID 1 的最低组合，而将两组硬盘各自视为 RAID 0 运作。<br>
+当 RAID 10 有一个硬盘受损，其余硬盘会继续运作，RAID 01 只要有一个硬盘受损，同组 RAID 0 的所有硬盘都会停止运作，只剩下其他组的硬盘运作，可靠性较低。<br>
+如果以 6 个硬盘建 RAID 01，镜射再用三个建 RAID 0，那么坏一个硬盘便会有三个硬盘脱机，因此，RAID 10 远比 RAID 01 常用，零售主板绝大多数支持 RAID 0/1/5/10, 但不支持 RAID 01.<br>
+RAID 10 至少需要 4 块硬盘，且硬盘数量必须为偶数。<br>
+<img src="http://blog.image.jkxuewei.com/mweb/2020.01.01.15778871221874.15778861611396.jpg" alt="-w271" loading="lazy"></p>
+</li>
+</ul>
+<h3 id="常见的文件系统">常见的文件系统</h3>
+<ul>
+<li>Windows：FAT，FAT16，FAT32，NTFS</li>
+<li>Linux：ext2/3/4，btrfs，ZFS</li>
+<li>Mac OS X：HFS+</li>
+</ul>
+<hr>
+<h3 id="更多干货文章">更多干货文章</h3>
+<h5 id="博客wwwqiuxueweicom">博客：<a href="http://www.qiuxuewei.com">www.qiuxuewei.com</a></h5>
+<h5 id="微信公众号开发者成长之路">微信公众号：<strong>@开发者成长之路</strong></h5>
+<h5 id=""><img src="http://blog.image.jkxuewei.com/sou_wechat.png" alt="公众号二维码" loading="lazy"></h5>
+<p><strong>一个没有鸡汤只有干货的公众号</strong></p>
+<hr>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[并发技术、进程、线程和锁拾遗]]></title>
+        <id>https://qxuewei.github.io/post/bing-fa-ji-zhu-jin-cheng-xian-cheng-he-suo-shi-yi/</id>
+        <link href="https://qxuewei.github.io/post/bing-fa-ji-zhu-jin-cheng-xian-cheng-he-suo-shi-yi/">
+        </link>
+        <updated>2019-12-31T14:21:29.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="并发技术-进程-线程和锁拾遗">并发技术、进程、线程和锁拾遗</h1>
+<h2 id="part1-多任务">Part1. 多任务</h2>
+<p>计算机发展起初，CPU 资源十分昂贵，如果让 CPU 只能运行一个程序那么当 CPU 空闲下来（例如等待 I/O 时），CPU 资源就会被浪费，为了使 CPU 资源得到更好的利用，先驱编写了一个监控程序，如果发现某个程序暂时无需使用 CPU 时，监控程序就把另外的正在等待 CPU 资源的程序启动起来，以充分利用 CPU资源。这种方法称为 - <strong>多道程序（Multiprogramming）</strong></p>
+<p>对于多道程序，最大的弊端是各程序之间不区分轻重缓急，对于用户交互式的程序来说，对 CPU 计算时间的需求并不多，但是对于响应速度却有比较高的要求。而对于计算类程序来说则相反，对响应速度要求低，但需要长时间的 CPU 计算。想象一个场景：我在同时在浏览网页和听音乐，我们希望浏览器能够快速响应，同时也希望音乐不停，这时候<strong>多道程序</strong>就没法达到我们的要求了。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="并发技术-进程-线程和锁拾遗">并发技术、进程、线程和锁拾遗</h1>
+<h2 id="part1-多任务">Part1. 多任务</h2>
+<p>计算机发展起初，CPU 资源十分昂贵，如果让 CPU 只能运行一个程序那么当 CPU 空闲下来（例如等待 I/O 时），CPU 资源就会被浪费，为了使 CPU 资源得到更好的利用，先驱编写了一个监控程序，如果发现某个程序暂时无需使用 CPU 时，监控程序就把另外的正在等待 CPU 资源的程序启动起来，以充分利用 CPU资源。这种方法称为 - <strong>多道程序（Multiprogramming）</strong></p>
+<p>对于多道程序，最大的弊端是各程序之间不区分轻重缓急，对于用户交互式的程序来说，对 CPU 计算时间的需求并不多，但是对于响应速度却有比较高的要求。而对于计算类程序来说则相反，对响应速度要求低，但需要长时间的 CPU 计算。想象一个场景：我在同时在浏览网页和听音乐，我们希望浏览器能够快速响应，同时也希望音乐不停，这时候<strong>多道程序</strong>就没法达到我们的要求了。</p>
+<!-- more -->
+<p>于是人们改进了<strong>多道程序</strong>，使得每个程序运行一段时间之后，都主动让出 CPU 资源，这样每个程序在一段时间内都有机会运行一小段时间。这样像浏览器这样的交互式程序就能够快速地被处理，同时计算类程序也不会受到很大影响。这种程序协作方式被称为 <strong>分时系统（Time-Sharing System）</strong>。</p>
+<p>在分时系统的帮助下，我们可以边用浏览器边听歌了。<strong>但是</strong>如果某个程序出现了错误，导致了死循环，不仅仅是这个程序会出错，整个系统都会死机，为了避免这种情况，一个更为先进的操作系统模式被发明处理，也就是我们现在熟悉的<strong>多任务系统（Multi-tasking System）</strong>。</p>
+<p>操作系统从最底层接管了所有硬件资源。所有的应用程序在操作系统上以 <strong>进程（Process）</strong> 的方式运行，每个进程都有自己独立的地址空间，相互隔离。CPU 由操作系统统一统一进行分配。每个进程都有机会得到 CPU，同时在操作系统控制下，如果一个进程运行超过了一定时间，就会被暂停掉，失去 CPU 资源。这样就避免了一个程序的错误导致整个系统死机。如果操作系统分配给各个进程的运行时间都很短，CPU 可以在多个进程间快速切断，就像很多进程都同时在运行的样子。几乎所有现代操作系统都是采用这样的方式支持多任务。</p>
+<h2 id="part2-进程">Part2. 进程</h2>
+<p>进程（Process）是计算机中的程序关于某数据集合上的一次运行活动，是系统进行资源分配和调度的基本单位，是操作系统结构的基础。它可以申请和拥有系统资源，是一个活动的实体。它不只是程序的代码，还包括当前的活动，通过程序计数器的值和处理递存器的内容来表示。</p>
+<ul>
+<li>进程是一个实体，每一个进程都有它自己的地址空间，一般情况下，包括文本区域（text region）、数据区域（data region）和堆栈（stack region）。文本区域存储器执行的代码；数据区域存储变量和进程执行期间使用的动态分配的内存；堆栈区域存储着活动过程调用的指令和本地变量。</li>
+<li>进程是一个“执行中的程序”。程序是一个没有生命的实体，只有处理器赋予程序生命时，它才能成为一个活动的实体，我们称其为进程。</li>
+</ul>
+<h3 id="1-进程的基本状态">1. 进程的基本状态</h3>
+<ol>
+<li>等待态：等待某个事件的完成；</li>
+<li>就绪态：等待系统分配处理器以便运行；</li>
+<li>运行态：占有处理器正在运行；</li>
+</ol>
+<p>几种状态的切换：</p>
+<ul>
+<li>运行态 -&gt; 等待态：往往是由于等待外设，等待主存等资源分配或等待人工干预而引起的。</li>
+<li>等待态 -&gt; 就绪态：则是等待的条件已满足，只需分配到处理器后就能运行。</li>
+<li>运行态 -&gt; 就绪态：不是由于自身原因，而是由外界原因使运行状态的进程让出处理器，这时就变成就绪态。例如：时间片用完，或有更高优先级的进程来抢占处理器等</li>
+<li>就绪态 -&gt; 运行态：系统按某种策略选中就绪队列中的一个进程占用处理器，此时就变成了运行态。</li>
+</ul>
+<h3 id="2-进程调度">2. 进程调度</h3>
+<h4 id="调度种类">调度种类</h4>
+<p>高级、中级和低级调度作业从提交开始直到完成，往往要经历下述三级调度：</p>
+<ul>
+<li>高级调度（High-Level Scheduling）:又称为作业调度，它决定把后备作业调入内存运行；</li>
+<li>中级调度（Intermediate-Level Scheduling）:又称为在虚拟存储器中引入，在内、外存对换区进行进程对换。</li>
+<li>低级调度（Low-Level Scheduling）:又称为进程调度，它决定把就绪队列的某进程获得 CPU。</li>
+</ul>
+<h4 id="非抢占式调度与抢占式调度">非抢占式调度与抢占式调度</h4>
+<ul>
+<li>非抢占式<br>
+分派程序一旦把处理机分配给某进程后便让它一直运行下去，直到进程完成或者发生进程调度某事件而阻塞时，才把处理机分配给另一个进程。</li>
+<li>抢占式<br>
+操作系统将正在运行的进程强行暂停，由调度程序将 CPU 分配给其他就绪进程的调度方式。</li>
+</ul>
+<h4 id="调度策略的设计">调度策略的设计</h4>
+<ul>
+<li>响应时间：从用户输入到产生反应的时间</li>
+<li>周转时间：从任务开始到任务结束的时间</li>
+</ul>
+<p>CPU 任务可以分为交互式任务和批处理任务，调度最终的目标是合理的使用 CPU，使得交互式任务的响应时间尽可能短，用户不至于感到延迟，同时使得批处理任务的周转时间尽可能短，减少用户等待的时间。</p>
+<h4 id="调度算法">调度算法</h4>
+<ol>
+<li>
+<p>FIFO 或 First Come，First Served（FCFS）<br>
+调度的顺序就是任务到达就绪队列的顺序。<br>
+公平、简单（FIFO 队列）、非抢占、不适合交互式。未考虑任务特性，平均等待时间可以缩短。</p>
+</li>
+<li>
+<p>Shortest Job First（SJF）<br>
+最短的作业（CPU 区间长度最小）优先调度<br>
+可以证明，SJF 可以保证最小的平均等待时间<br>
+Shortest Job First （SRJF）： SJF 的可抢占版本，比 SJF 更有优势<br>
+SJF、SRJF 如何知道下一 CPU 区间大小？根据历史进行预测：指数平均法。</p>
+</li>
+<li>
+<p>优先权调度<br>
+每个任务关联一个优先权、调度优先权最高的任务。<br>
+注意：优先权太低的任务一直就绪，得不到运行，出现“饥饿”现象。<br>
+FCFS 是 RR 的特例，SJF 是优先权调度的特例，这些调度算法都不适合于交互式系统。</p>
+</li>
+<li>
+<p>Round-Robin（RR）<br>
+设置一个时间片，按时间片来轮转调度（“轮叫”算法）<br>
+优点：定时有响应，等待时间较短；缺点：上下文切换次数较多；<br>
+如何确定时间片？时间片太大，响应时间太长；吞吐量变小，周转时间变长；当时间片过长时，退化为 FCFS。</p>
+</li>
+<li>
+<p>多级队列调度<br>
+按照一定的规则建立多个进程队列<br>
+不同的队列有固定的优先级（高优先级有抢占权）<br>
+不同的队列可以给不同的时间片和采用不同的调度方法<br>
+存在问题 1：没法区分 I/O bound 和 CPU bound；<br>
+存在问题 2：也存在一定程度的“饥饿”现象</p>
+</li>
+<li>
+<p>多级反馈队列<br>
+在多级队列的基础上，任务可以在队列之间移动，更细致的区分任务。<br>
+可以根据“享用”CPU 时间多少来移动队列，阻止“饥饿”。<br>
+最通用的调度算法，多数 OS 都使用该方法或其变形，如 UNIX、Windows 等。</p>
+</li>
+</ol>
+<h3 id="3-进程同步">3. 进程同步</h3>
+<h4 id="临界资源与临界区">临界资源与临界区</h4>
+<p>在操作系统中，进程是占有资源的最小单位（线程可以访问其所在进程内的所有资源，但线程本身并不占有资源或仅仅占有一点必须资源）。但对于某些资源来说，其在同一时间只能被一个进程所占用。这些一次只能被一个进程所占用的资源就是所谓的临界资源。<br>
+典型的临界资源比如物理上的打印机，或是存在硬盘或内存中被多个进程所共享的一些变量和数据等（如果这类资源不被看成临界资源加以保护，那么很有可能造成丢数据的问题）。<br>
+对于临界资源的访问，必须是互斥进行。也就是当临界资源被占用时，另一个申请临界资源的进程会被阻塞，直到其所申请的临界资源被释放。而进程内访问临界资源的代码被称为临界区。</p>
+<p>解决临界区问题可能的方法：</p>
+<ol>
+<li>一般软件方法</li>
+<li>关中断方法</li>
+<li>硬件原子指令方法</li>
+<li>信号量方法</li>
+</ol>
+<h4 id="信号量">信号量</h4>
+<p>信号量是一个确定的二元组（s，q），其中 s 是一个具有非负初值的整型变量，q 是一个初始状态为空的队列，整型变量 s 表示系统中某类资源的数目：</p>
+<ul>
+<li>当 s ≥ 0 时，表示系统中当前可用资源的数目</li>
+<li>当 s &lt; 0 时，其绝对值表示系统中因请求该类资源而被阻塞的进程数目</li>
+</ul>
+<p>除信号量的初值外，信号量的值仅能由 P 操作和 V 操作更改，操作系统利用它的状态对进程和资源进行管理。</p>
+<p>P 操作：P 操作记为 P(s)，其中 s 为一信号量，它执行时主要完成以下动作：</p>
+<pre><code>// 可理解为占用一个资源，若原来就没有则记账“欠”1 个
+s.value = s.value - 1;
+</code></pre>
+<p>若 <code>s.value ≥ 0</code>，则进程继续执行，否则（即<code>s.value &lt; 0</code>），则进程被阻塞，并将该进程插入到信号量 s 的等待队列 s.queue 中。<br>
+<em>实际上，P 操作可以理解为分配资源的计数器，或是使进程处于等待状态的控制指令</em></p>
+<p>V 操作：V 操作记为 V(s)，其中 s 为一信号量，它执行时，主要完成以下动作：</p>
+<pre><code>// 可理解为归还一个资源，若原来就没有则意义是用此资源还 1 个欠账
+s.value = s.value + 1;
+</code></pre>
+<p>若 <code>s.value &gt; 0</code>，则进程继续执行，否则（即 <code>s.value ≤ 0</code>），则从信号量 s 的等待队列 s.queue 中移出第一个进程，使其变为就绪状态，然后返回原进程继续执行。<br>
+<em>实际上，V 操作可以理解为归还资源的计数器，或是唤醒进程使其处于就绪状态的控制指令</em></p>
+<p>信号量方法实现：生产者 - 消费者互斥与同步控制</p>
+<pre><code>semaphore fullBuffers = 0;//仓库中已填满的货架个数
+semaphore emptyBuffers = BUFFER_SIZE;//仓库货架空闲个数
+semaphore mutex = 1;//生产 - 消费互斥信号
+
+Producer() 
+{ 
+    while(True)
+    {  
+       /*生产产品item*/
+       emptyBuffers.P(); 
+       mutex.P(); 
+       /*item存入仓库buffer*/
+       mutex.V();
+       fullBuffers.V();
+    }
+}
+ 
+Consumer() 
+{
+    while(True)
+    {
+        fullBuffers.P(); 
+        mutex.P();	
+        /*从仓库buffer中取产品item*/
+        mutex.V();
+        emptyBuffers.V();
+        /*消费产品item*/
+    }
+}
+
+</code></pre>
+<h4 id="死锁">死锁</h4>
+<p>死锁：多个进程因循环等待而造成的无法执行的现象<br>
+死锁会造成进程无法执行，同时会造成系统资源的极大浪费（资源无法释放）。<br>
+死锁产生的 4 个必要条件：</p>
+<ul>
+<li>互斥使用（Mutual exclusion）
+<ul>
+<li>指进程对所有分配到的资源进行排他性使用，即在一段时间内某资源只由一个进程占用。如果此时还有其他进程请求资源，则请求者只能等待，直至占有资源的进程用毕释放。</li>
+</ul>
+</li>
+<li>不可抢占（No preemption）
+<ul>
+<li>指进程已获得的资源，在未使用完之前，不能被剥夺，只能在使用完时由自己释放。</li>
+</ul>
+</li>
+<li>请求和保持（Hold and wait）
+<ul>
+<li>指进程已经保持至少一个资源，但又提出了新的资源请求，而该资源已被其他进程占有，此时请求进程阻塞，但又对自己已获得其他资源保持不放。</li>
+</ul>
+</li>
+<li>循环等待（Circular wait）
+<ul>
+<li>指在发生死锁时，必然存在一个进程-资源的环形链，即进程集合{P0, P1, P2, P3, P4, ..., Pn} 中的 P0 正在等待一个 P1 占用的资源；P1 正在等待 P2 占用的资源，...，Pn 正在等待已被 P0 占用的资源。</li>
+</ul>
+</li>
+</ul>
+<p>死锁的避免：银行家算法<br>
+思想：判断此次请求是否造成死锁，若会造成死锁，则拒绝该请求。</p>
+<h3 id="4-进程间通信">4. 进程间通信</h3>
+<p>本地进程间通信的方式有很多，可以总结为下面四类：</p>
+<ul>
+<li>消息传递（管道、FIFO、消息队列）</li>
+<li>同步（互斥量、条件变量、读写锁、文件和写记录锁、信号量）</li>
+<li>共享内存（匿名的和具名的）</li>
+<li>远程过程调用（Solaris门 和 Sun RPC）</li>
+</ul>
+<h2 id="part3-线程">Part3. 线程</h2>
+<p>多线程解决了前面提到的多任务问题。然而很多时候不同的程序需要共享同样的资源（文件，信号量等），如果全都使用进程的话会导致切换的成本很高，造成 CPU 资源的浪费。于是出现了线程的概念。<br>
+线程，有时被称为轻量级进程（Lightweight Process，LWP），是程序执行流的最小单元。一个标准的线程由线程 ID，当前指令指针（PC），寄存器集合和堆栈组成。<br>
+线程具有以下属性：</p>
+<ol>
+<li>
+<p>轻型实体<br>
+线程中的实体基本上不拥有系统资源，只是有一点必不可少的、能保证独立运行的资源。线程的实体包括：程序、数据和 TCB（Thread Control Block）。线程是动态概念，它的动态特性由线程控制块 TCB 描述。</p>
+</li>
+<li>
+<p>独立调度和分派的基本单位<br>
+在多线程 OS 中，线程是能独立运行的基本单位，因而也是独立调度和分派的基本的单位。由于线程很“轻”，故线程的切换非常迅速且开销小（在同一进程中的）</p>
+</li>
+<li>
+<p>可并发执行<br>
+在一个进程中的多个线程之间，可以并发执行，甚至允许在一个进程中所有线程都能并发执行；</p>
+</li>
+<li>
+<p>共享进程资源<br>
+在同一进程中的各个线程，都可以共享该进程所拥有的资源，这首先表现在：所有线程都具有相同的地址空间（进程的地址空间），这意味着，线程可以访问改地址空间的每一个虚拟地址；此外，还可以访问进程所拥有的已打开文件、定时器、信号量等。由于同一个进程内的线程共享内存和文件，所以线程之间互相通信不必调用内核。<br>
+线程共享的环境包括：进程代码段、进程的公有数据（利用这些共享的数据，线程很容易的实现相互之前的通讯）、进程打开的文件描述符、信号的处理器、进程的当前目录和进程用户 ID 与进程组 ID。</p>
+</li>
+</ol>
+<h2 id="part4-锁">Part4. 锁</h2>
+<p>锁要解决的是线程之间争夺资源的问题：</p>
+<ul>
+<li>资源是否是独占（独占锁 - 共享锁）</li>
+<li>抢占不到资源怎么办（互斥锁 - 自旋锁）</li>
+<li>自己能不能重复抢（重入锁 - 不可重入锁）</li>
+<li>竞争读的情况比较多，读可不可以不加锁（读写锁）</li>
+</ul>
+<p>上面几个角度并非相互独立，在实际场景中需要将他们集合起来才能构造出一个合适的锁。</p>
+<h3 id="独占锁-共享锁">独占锁 - 共享锁</h3>
+<p>当一个共享资源只有一份的时候，通常我们使用独占锁，常见的即各个语言中的 <code>Mutex</code>。当共享资源有多份时，可以使用信号量（Semaphere）。</p>
+<h3 id="互斥锁-自旋锁">互斥锁 - 自旋锁</h3>
+<p>对于互斥锁来说，如果一个线程已经锁定了一个互斥锁，第二个线程又试图去获取这个互斥锁，则第二个线程将会被挂起（即休眠、不占用 CPU 资源）。</p>
+<p>在计算机系统中，频繁的挂起和切换线程，也是有成本的。自旋锁就是解决这个问题的。</p>
+<p>自旋锁：指当一个线程在获取锁的时候，如果锁已经被其他线程获取，那么该线程将循环等待，然后不断的判断锁是否能够被成功获取，直到获取到锁才会退出循环。</p>
+<p>容易看出，当资源等待的时间较长，用互斥锁让线程休眠，会消耗更少的资源，当资源等待的时间较短时，使用自旋锁将减少线程的切换，获得更高的性能。</p>
+<p>Java 中的 <code>synchornized</code> 和 .NET 中的 <code>lock</code>（<code>Monitor</code>）的实现，是结合了两种锁的特点。简单说，它们在发现资源被抢占之后，会先试着自旋等待一段时间，如果等待时间太长，则会进入挂起状态。通过这样的实现，可以较大程度上挖掘出锁的性能。</p>
+<h3 id="重入锁-不可重入锁">重入锁 - 不可重入锁</h3>
+<p>可重入锁（ReetrantLock），也叫作递归锁，指的是同一线程内，外层函数获得锁之后，内层递归函数仍然可以获取到该锁。<br>
+换而言之：同一线程再次进入同步代码时，可以使用自己已获取到的锁。</p>
+<p>使用可重入锁时，在同一线程中多次获取锁，不会导致死锁。使用不可重入锁，则会导致死锁发生。</p>
+<p>Java 中的 <code>synchornized</code> 和 .NET 中的 <code>lock</code>（<code>Monitor</code>） 都是可重入的。</p>
+<h3 id="读写锁">读写锁</h3>
+<p>有些情况下，对于共享资源读竞争的情况远远多于写竞争，这种情况下，对读操作每次都进行加锁，是得不偿失的。读写锁就是为了解决这个问题。</p>
+<p>读写锁允许同一时刻被多个读线程访问，但是在写线程访问时，所有读线程和其他的写线程都会被阻塞。简单可以总结为，读读不互斥，读写互斥，谢谢互斥。</p>
+<p>对读写锁来说，有一个升级和降级的概念，即当前获得了读锁，想把当前的锁变成写锁，成为升级，反之称为降级。锁的升降级本身也是为了提升性能，通过改变当前锁的性质，避免重复获取锁。</p>
+<h2 id="part5-协程">Part.5 协程</h2>
+<p>协程，又称为微线程，纤程。英文名： Coroutine<br>
+协程可以理解为用户级线程，协程和线程的区别是：线程是抢占式的调度，而协程是协同式的调度，协程避免了无意义的调度，由此可以提高性能，但也因此，程序员必须自己承担调度的责任，同时，协程也失去了标准线程使用多 CPU 的能力。</p>
+<h2 id="part6-io多路复用">Part.6 IO多路复用</h2>
+<h3 id="基本概念">基本概念</h3>
+<p>IO 多路复用是指内核一旦发现进程指定的一个或者多个 IO 条件准备读取，他就通知该进程。IO 多路复用适用于如下场景：</p>
+<ol>
+<li>当客户处理多个描述字时（一般是交互式输入和网络套接口），必须使用 I/O 复用。</li>
+<li>当一个客户同时处理多个套接口时，而这种情况是可能的，但很少出现。</li>
+<li>如果一个 TCP 服务器既要处理监听套接口，又要处理已连接套接口，一般也要用到 I/O 复用。</li>
+<li>如果一个度武器既要处理 TCP，又要处理 UDP，一般要使用 I/O 复用。</li>
+<li>如果一个服务器要处理多个服务或多个协议，一般要使用 I/O 复用。</li>
+</ol>
+<p>与多进程和多线程技术相比，I/O 多路复用技术的最大优势是系统开销小，系统不必创建 进程/线程，也不必维护这些 进程/线程，从而大大减小了系统的开销。</p>
+<h3 id="常见的-io-复用实现">常见的 IO 复用实现</h3>
+<ul>
+<li>select （Linux/Windows/BSD）</li>
+<li>epoll （Linux）</li>
+<li>kqueue （BSD/Mac OS）</li>
+</ul>
+<hr>
+<h3 id="更多干货文章">更多干货文章</h3>
+<h5 id="博客wwwqiuxueweicom">博客：<a href="http://www.qiuxuewei.com">www.qiuxuewei.com</a></h5>
+<h5 id="微信公众号开发者成长之路">微信公众号：<strong>@开发者成长之路</strong></h5>
+<h5 id=""><img src="http://blog.image.jkxuewei.com/sou_wechat.png" alt="公众号二维码" loading="lazy"></h5>
+<p><strong>一个没有鸡汤只有干货的公众号</strong></p>
+<hr>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[如何成为有效学习的高手]]></title>
+        <id>https://qxuewei.github.io/post/ru-he-cheng-wei-you-xiao-xue-xi-de-gao-shou/</id>
+        <link href="https://qxuewei.github.io/post/ru-he-cheng-wei-you-xiao-xue-xi-de-gao-shou/">
+        </link>
+        <updated>2019-12-29T16:05:21.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="如何成为有效学习的高手">《如何成为有效学习的高手》</h1>
+<h2 id="前言">前言</h2>
+<p>高效学习的定义是找到适合自己的学习方法,在最短的时间里能够集中注意力,以解决生活或工作中的一个任务为目的着手学习. 需要勤加练习,必要的时候要向名师求助!</p>
+<p>这其中有七个关键点:</p>
+<ol>
+<li>适合自己</li>
+<li>学习方法</li>
+<li>最短时间</li>
+<li>注意力</li>
+<li>解决任务</li>
+<li>设定目标</li>
+<li>名师</li>
+</ol>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="如何成为有效学习的高手">《如何成为有效学习的高手》</h1>
+<h2 id="前言">前言</h2>
+<p>高效学习的定义是找到适合自己的学习方法,在最短的时间里能够集中注意力,以解决生活或工作中的一个任务为目的着手学习. 需要勤加练习,必要的时候要向名师求助!</p>
+<p>这其中有七个关键点:</p>
+<ol>
+<li>适合自己</li>
+<li>学习方法</li>
+<li>最短时间</li>
+<li>注意力</li>
+<li>解决任务</li>
+<li>设定目标</li>
+<li>名师</li>
+</ol>
+<!-- more -->
+<h2 id="1找到适合自己的学习方法">1.找到适合自己的学习方法</h2>
+<h4 id="自然主义和结构主义">自然主义和结构主义</h4>
+<p>这是两种针对不同知识门类需采用的两种不同的学习方法. 学语言, 学乐器演奏. 如果你采用从最基础的语法,字母,音符开始学. 虽然能学成, 但是这不是最合适的学习方法. 咱所说的话从来没有从语法开始学起, 照样能说的好. 何况是世界上最难学习的语言之一的中文. 如果从基础开始学, 相对低效. 并且是用需要用自然主义的学习方法用了结构主义去学. 这样只会事倍功半.</p>
+<p>自然主义的学习方法简单来说是模仿,结构主义为的是创新</p>
+<p>像语言,乐器,书法这类知识适合用自然主义学习. 像医药,艺术,经济学,程序这类需要创新的要用结构主义去学.</p>
+<p>选对学习方法能够做到有效的学习, 如何使其升级为高效这就需要一些学习方法. 最简单是把目标拆碎. 针对每一个细节反复练习, 不要一开始就顾全大局. 成年人很难把一大段时间空闲出来全神贯注专注一个技能的学习, 碎片化学习变得尤为重要. 在碎片化的时间里做到高效也有技巧, 就是带着问题和困惑去执行碎片化学习, 并且多使用搜索这个功能. 要注意的一点有一种假的碎片化学习叫做收藏, 这里看到一篇好文章想到的不是马上阅读而是收藏到收藏夹里! 等以后有时间再看, 这里要告诉你, 很难, 非常难! 即便你以后有时间了, 也不会来学这篇文章. 所以收藏夹我建议只有一天或者两天的有效期, 不要超过两天! 否则收藏夹没有存在的意义! 在地铁上看到一篇很棒的文章首选立即去读它,读完, 实在看不完可以收藏起来晚上回家继续看完. 需要敲代码的地方如果不方便马上敲出来可以晚上回去敲. 这样的话你偶遇的这篇文章会彻底成为你的知识积累, 而不是收藏夹里那些无用的东西.</p>
+<h2 id="2不谈兴趣-用任务驱动学习">2.不谈兴趣, 用任务驱动学习</h2>
+<p>都说兴趣是最好的老师, 但对于一个陌生的领域,何谈兴趣. 兴趣可以是最好的老师, 这是你了解他并发现他的美之后产生的兴趣.  成年人是不需要兴趣驱动学习的, 应该用任务来驱动. 工作中的职业强迫, 生活中的任务驱动, 以教为学 都是兴趣.</p>
+<p>在学习, 工作中经常给自己布置任务, 每一个任务作为学习的一个小阶段, 任务驱动自己这样效率会大大提升. 除此之外还可以以教为学, 通过想把这个知识传授给别人为目标, 去掌握此项技能, 自己掌握了才能教育别人, 写博客就是以教为学的典型示例. 每一个人都能成为一个很好的老师!</p>
+<h2 id="3拖延症的-确诊和治疗">3.拖延症的 &quot;确诊和治疗&quot;</h2>
+<p>任何人都有拖延症, 只不过有选择性的拖延, 没人会在地震的时候拖延着逃生. 所以拖延是所制定的目标不够紧迫,不够重视. 所以把所定的目标足够重视, 在心底把他作为人生不可不做的一件事. 拖延自然会消失. 将任务 &quot;严峻化&quot; !<br>
+成年人在读书的时候也要讲究方法, 不能跟学生时代一样每本书都精读, 精读的意思就一字一句读到尾. 要学会速读, 拿起一本书先看目录, 如果对自己职业技能和道德品质没有多大作用果断扔掉.</p>
+<h2 id="4在衣食住行上训练专注力">4.在衣食住行上训练专注力</h2>
+<p>拖延症的本质是做事缺乏专注力.<br>
+一段时间内, 专注做一件事. 平常的生活并不能训练人的专注力, 但是在生活中营造仪式感, 就会提升注意力. 比如: 购买昂贵的学习工具. 如果你学习某一项技能时需要工具时, 购买最贵的. 这样好的开始会是成功的一半. 学习工具昂贵你自然不会耽搁, 试想练书法有人用旧报纸, 有人用20块钱一张的宣纸, 自然后者在每写一笔都会郑重其事, 技能自然能得到突飞猛进的提升. 再者是一个人好好吃饭, 吃饭的时候点点好的, 或是做点好的, 不要吃自助. 自助不会让你吃好, 只能让你吃撑! 使用射灯, 把灯光会聚集到一处, 其他的地方时黑的, 这很好的营造一种仪式感. 进入高质量的睡眠.</p>
+<h2 id="5直奔大师-不必从基础开始">5.直奔大师, 不必从基础开始</h2>
+<p>学英语很多人都想着是从基础学起, 比如从新概念四册厚厚的教材开始学起, 很多人在看到第一册就会坚持不下去, 甚至在第一册的前几章就坚持不下去, 这很正常,因为没有一个学习英语的明确的目标, 自然没有强大的动力. 有了明确的目标之后, 也不应该是从基础学起, 而是要直奔大师! 不必从基础开始.<br>
+要去哪里, 就从哪里开始. 比如学吉他, 如果从一个个音符学起相信很多人会觉得枯燥无味. 如果一开始学着弹一首自己喜欢的完整的吉他曲, 进而再对基础乐理知识查漏补缺, 这样学习效果会事半功倍! 怯场是最糟糕的自觉吗一个人单子变得比之前大一点, 能走的路可能就会长一点.</p>
+<h2 id="6给自己制造反馈">6.给自己制造反馈</h2>
+<p>学习要真正有效, 一定更要有反馈. 学完一项技能一定要输出, 比如掌握了一项编程知识, 要把它写成博客记录下来, 学唱了一首歌要把它录下来, 这样在输出的时候会发现掌握的情况, 也会对自己更自信, 看到一本书或是一篇文章之后, 一定要写个摘要或是笔记, 再或是发篇微博, 总之一定要有一个反馈,没人看不重要, 这是记录给自己看的! 写摘要不要脱稿写, 因为那是考研你的记忆力, 要照着文本用自己的语言进行总结输出, 另外两种反馈一是给自己录音, 给自己录像. 针对不一样的情景给自己制造不一样的反馈.</p>
+<h2 id="7怎样突破学习瓶颈">7.怎样突破学习瓶颈</h2>
+<p>首先要有一个认知, 瓶颈不是极限. 学习过程中遇到瓶颈需要调整的不是方法, 而是心态. 遇到瓶颈很可能是对自己不自信造成的. 所以解决心态问题. 把注意力放在每一件小事上, 而不要过多去想最后的结果. 这样会不知不觉的达到你想要的高度. 扩大涉猎范围, 想要突破它需要不断积累, 比如吉他弹奏遇到瓶颈之后多听一些顶级大师的吉他演奏, 会从中找到突破的. 更加专注,请教名师.</p>
+<hr>
+<h3 id="更多干货文章">更多干货文章</h3>
+<h5 id="博客wwwqiuxueweicom">博客：<a href="http://www.qiuxuewei.com">www.qiuxuewei.com</a></h5>
+<h5 id="微信公众号开发者成长之路">微信公众号：<strong>@开发者成长之路</strong></h5>
+<h5 id=""><img src="http://blog.image.jkxuewei.com/sou_wechat.png" alt="公众号二维码" loading="lazy"></h5>
+<p><strong>一个没有鸡汤只有干货的公众号</strong></p>
+<hr>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[体系结构与操作系统拾遗]]></title>
+        <id>https://qxuewei.github.io/post/ti-xi-jie-gou-yu-cao-zuo-xi-tong-shi-yi/</id>
+        <link href="https://qxuewei.github.io/post/ti-xi-jie-gou-yu-cao-zuo-xi-tong-shi-yi/">
+        </link>
+        <updated>2019-12-28T11:19:19.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="体系结构与操作系统拾遗">体系结构与操作系统拾遗</h1>
+<h2 id="part1-体系结构基础">Part1. 体系结构基础</h2>
+<h3 id="1-冯诺依曼体系结构">1. 冯·诺依曼体系结构</h3>
+<ol>
+<li>计算机处理的数据和指令一律用二进制数表示</li>
+<li>顺序执行程序
+<ol>
+<li>计算机运行过程中，把要执行的程序和处理的数据首先存入主存储器（内存），计算机执行程序时，将自动地并按顺序从主存储器中取出指令一条一条地执行，这一概念称作顺序执行程序。</li>
+</ol>
+</li>
+<li>计算机硬件由运算器、控制器、存储器、输入设备和输出设备五大部分组成。</li>
+</ol>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="体系结构与操作系统拾遗">体系结构与操作系统拾遗</h1>
+<h2 id="part1-体系结构基础">Part1. 体系结构基础</h2>
+<h3 id="1-冯诺依曼体系结构">1. 冯·诺依曼体系结构</h3>
+<ol>
+<li>计算机处理的数据和指令一律用二进制数表示</li>
+<li>顺序执行程序
+<ol>
+<li>计算机运行过程中，把要执行的程序和处理的数据首先存入主存储器（内存），计算机执行程序时，将自动地并按顺序从主存储器中取出指令一条一条地执行，这一概念称作顺序执行程序。</li>
+</ol>
+</li>
+<li>计算机硬件由运算器、控制器、存储器、输入设备和输出设备五大部分组成。</li>
+</ol>
+<!-- more -->
+<h3 id="2-数据的机内表示">2. 数据的机内表示</h3>
+<h4 id="二进制表示">二进制表示</h4>
+<ol>
+<li>
+<p>机器数</p>
+<ol>
+<li>由于计算机中符号和数字是一样的，都必须用二进制数串来表示，因此，正负号也必须用 0、1 来表示。</li>
+<li>用最高位 0 表示正、1 表示负，这种正负号数字化的机内表示形式就称为 “机器数”，而相应的机器外部用正负号表示的数称为“真值”，将一个真值表示成二进制字串的机器数的过程就称为编码。</li>
+</ol>
+</li>
+<li>
+<p>原码<br>
+原码就是符号位加上真值的绝对值，即用第一位表示符号，其余位表示值，比如如果是 8 位二进制:<br>
+[+1]原 = 0000 0001<br>
+[-1]原 = 1000 0001<br>
+第一位是符号位，因为第一位是符号位，所以 8 位二进制的取值范围就是：<br>
+[1111 1111, 0111, 1111] 即 [-127, +127]<br>
+原码是人脑最容易理解和计算表达方式。</p>
+</li>
+<li>
+<p>反码<br>
+反码的表示方法是：正数的反码就是其本身，负数的反码是在其原码的基础上，符号位不变，其余各个位取反。<br>
+[+1] = 原码:[0000 0001] = 反码:[0000 0001]<br>
+[-1] = 原码:[1000 0001] = 反码:[1111 1110]<br>
+可见如果一个反码表示负数，人脑无法直观的看出它的数值，通常要将其转换成原码再计算。</p>
+</li>
+<li>
+<p>补码<br>
+补码的表示方法是：正数的补码就是其本身，负数的补码是在其原码的基础上，符号位不变，其余各位取反，最后 +1。（即在反码的基础上 +1）<br>
+[+1] = 原码:[0000 0001] = 补码:[0000 0001]<br>
+[-1] = 原码:[1000 0001] = 补码:[1111 1111]<br>
+对于负数，补码表示方式也是人脑无法直观看出其数值的，通常也需要转换成原码再计算其数值。</p>
+</li>
+<li>
+<p>定点数与浮点数<br>
+定点数是小数点固定的数。在计算机中没有专门表示小数点的位，小数点的位置是约定默认的。一般固定在机器数的最低位之后，或是固定在符号位之后。前者称为定点纯整数，后者称为定点纯小数。<br>
+定点数表示法简单直观，但是数值表示的范围太小，运算时容易产生溢出。</p>
+<p>浮点数是小数点的位置可以变动的数。为增大数值表示范围，防止溢出，采用浮点数表示法。浮点表示法类似于十进制中的科学计数法。</p>
+<p>在计算机中，通常把浮点数分成阶码和尾数两部分来表示，其中阶码一般用补码定点整数表示，尾数一般用补码或原码定点小数表示。为保证不损失有效数字，对尾数进行格式化处理，也就是平时所说的科学计数法，即保证尾数的最高位为 1，实际数值通过阶码进行调整。<br>
+阶符表示指数的符号位、阶码表示幂次、数符表示尾数的符号位、尾数表示格式化后的小数值。</p>
+<pre><code>N = 尾数 x 基数阶码（指数）
+</code></pre>
+</li>
+</ol>
+<h4 id="位bit-字节byte-字word">位（Bit）、字节（Byte）、字（Word）</h4>
+<p>位（Bit）：是电子计算机中最小的数据单位，每一位的状态只能是 0 或 1.</p>
+<p>字节（Byte）：8 个二进制构成 1 个字节（Byte），它是存储空间的基本计量单位。1 个字节（Byte）可以存储一个英文字母或半个汉字，换而言之：1 个汉字占据 2 个字节（Byte）的存储空间。</p>
+<p>字（Word）：由若干个字节构成，字的位数叫做字长，不同档次的机器有不同的字长。例如：一台 8 位机，它的 1 个字就等于 1 个字节。如果是一台 16 位机，那么它的 1 个字就由 2 个字节构成，字长为 16 位。字是计算机进行数据处理和运算的单位。</p>
+<h4 id="字节序">字节序</h4>
+<p>字节序（字节顺序）是指占内存多于一个字节类型的数据在内存中的存放顺序，通常有小端、大端两种字节顺序。</p>
+<p>小端字节序（Little Endian）：指低字节数据存放在内存低地址处，高字节数据存放在内存高地址处；<br>
+大端字节序（Big Endian）：指高字节数据存放在低地址处，低字节数据存放在高地址处。</p>
+<p>基于 X86 平台的 PC 机是小端字节序的，而有的嵌入式平台则是大端字节序的。所有网络协议也都是采用大端字节序的方式来传输数据的，所以有时我们也会把大端字节序称之为：网络字节序。</p>
+<p>比如数字 0x12345678 在两种不同字节序 CPU 中的存储顺序如下所示：</p>
+<pre><code>大端字节序（Big Endian）
+低地址                                            高地址
+----------------------------------------------------&gt;
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     12     |      34    |     56      |     78    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+小端字节序（Little Endian）
+低地址                                            高地址
+----------------------------------------------------&gt;
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     78     |      56    |     34      |     12    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre>
+<p>联合体 <code>union</code> 的存放顺序是所有成员都从低地址开始存放，利用该特性，就能判断 CPU 对内存采用 Little-Endian 还是 Big-Endian 模式读写。<br>
+示例代码:</p>
+<pre><code class="language-c">union test {
+    short value;
+    char str[sizeof(short)];
+}example
+
+void main()
+{
+    example.value = 0x0102;
+    if (sizeof(short) == 2) {
+        if (example.str[0] == 1 &amp;&amp; example.str[1] == 2) {
+            printf(&quot;大端字节序&quot;);
+        } else if (example.str[0] == 2 &amp;&amp; example.str[1] == 1) {
+            printf(&quot;小端字节序&quot;);        
+        } else {
+            printf(&quot;结果未知&quot;);
+        }
+    }
+}
+</code></pre>
+<h4 id="字节对齐">字节对齐</h4>
+<p>现代计算机中内存空间都是按照 byte 划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个接一个的排放，这就是对齐。</p>
+<h5 id="为什么要进行字节对齐">为什么要进行字节对齐？</h5>
+<ul>
+<li>最根本的原因是效率问题，字节对齐能提高存取数据的速度。</li>
+<li>某些平台只能在特定的地址处访问特定类型的数据</li>
+</ul>
+<p>比如有的平台每次都是从偶地址处读取数据，对于一个 int 型的变量，若从偶地址单元处存放，则只需一个读取周期即可读取该变量，但是若从奇地址单元处存放，则需要 2 个读取周期读取该变量。</p>
+<h5 id="字节对齐的原则">字节对齐的原则</h5>
+<ul>
+<li>数据成员对齐规则：结构（struct）或联合（union）的数据成员，第一个数据成员放在 <code>offset</code> 为 0 的地方，以后每个数据成员存储的起初位置要从该成员大小或者成员的子成员大小（只要该成员有子成员，比如说是数组、结构体等）的整数倍开始，比如 int 在 32 位机为 4 字节，则要从 4 的整数倍地址开始存储。</li>
+<li>结构体作为成员：如果一个结构体里有某些结构体成员，则结构体成员要从其内部最大元素大小的整数倍地址开始存储。（<code>struct a</code> 里存有 <code>struct b</code>，<code>b</code> 里有 <code>char</code>、<code>int</code>、<code>double</code> 等元素，那么 <code>b</code> 应该从 8 的整数倍开始存储。）</li>
+<li>结构体的总大小，也就是 <code>sizeof</code> 的结果，必须使其内部最大成员的整数倍，不足的要补齐。</li>
+</ul>
+<h2 id="part2-操作系统基础">Part2. 操作系统基础</h2>
+<h3 id="1-操作系统提供的服务">1. 操作系统提供的服务</h3>
+<p>操作系统五大功能：</p>
+<ul>
+<li>作业管理</li>
+<li>文件管理</li>
+<li>存储管理</li>
+<li>输入输出设备管理</li>
+<li>进程及处理机管理</li>
+</ul>
+<h3 id="2-中断与系统调用">2. 中断与系统调用</h3>
+<h4 id="中断">中断</h4>
+<p>中断：计算机执行程序的过程中，由于出现了某些特殊事情，使得 CPU 暂停对程序的执行，转而去执行处理这一事件的程序，等这些特殊事情处理完之后再回去执行之前的程序。<br>
+中断分三类：</p>
+<ol>
+<li>由计算机硬件异常或故障引起的中断，称为内部异常中断；</li>
+<li>由程序中执行了引起中断的指令而造成的中断，称为软中断（这也是和我们将要说明的系统调用相关的中断）</li>
+<li>由外部设备请求引起的中断，称为外部中断。</li>
+</ol>
+<p>简单说，对中断的理解就是对一些特殊事情的处理。</p>
+<p>与中断紧密相连的一个概念就是中断处理程序，当中断发生的时候，系统需要去对中断进行处理，对这些中断的处理是由操作系统内核中的特定函数进行的，这些处理中断的特定的函数就是我们所说的中断处理程序。</p>
+<p>另一个与中断紧密相连的概念是中断的优先级，中断的优先级说明的是当一个中断正在被处理的时候，处理器能接收的中断的级别。中断的优先级表明了中断需要被处理的紧急程度，每个中断都有一个对应的优先级，当处理器在处理某一中断的时候，只有比这个中断优先级高的中断可以被处理器接受并且被处理。优先级比这个当前正在被处理的中断优先级要低的中断将会被忽略。<br>
+中断优先级：</p>
+<pre><code>机器错误 &gt; 时钟 &gt; 磁盘 &gt; 网络设备 &gt; 终端 &gt; 软件中断
+</code></pre>
+<p>当发现软件中断时，其他所有的中断都可能发生并被处理；但当发生磁盘中断时，就只有时钟中断和机器错误中断能被处理了。</p>
+<h4 id="系统调用">系统调用</h4>
+<p>进程的执行在系统上的两个级别：用户级（用户态）和核心级（系统态）。</p>
+<p>程序的执行一般是在用户态下执行的，但当程序需要使用操作系统提供的服务时，比如说打开某一设备、创建文件、读写文件等，就需要向操作系统发生调用服务的请求，这就是系统调用。</p>
+<p><code>Linux</code> 系统有专门的函数库来提供这些请求操作系统服务的入口，这个函数库中包含了操作系统所提供的对外服务的接口，当进程发出系统调用之后，它所处的运行状态就会由用户态变成核心态。但这个时候，进程本身其实并没有做什么事情，这个时候是由内核在做相应的操作，去完成进程所提出的这些请求。</p>
+<p>系统调用和中断的关系在于：当进程发出系统调用申请的时候，会产生一个软件中断。产生这个软件中断以后，系统会去对这个软中断进行处理，这个时候进程就处于核心态了。</p>
+<p>用户态和核心态区别：</p>
+<ol>
+<li>用户态的进程能存取他们自己的指令和数据，但不能存取内核指令和数据（或其他进程的指令和数据），然而，核心态下的进程能够存取内核和用户地址。</li>
+<li>某些机器指令是特权指令，在用户态下执行特权指令会引起错误。</li>
+</ol>
+<p><strong>在系统中内核并不是作为一个与用户进程平行的进程的集合，内核是为用户进程运行的。</strong></p>
+<hr>
+<h3 id="更多干货文章">更多干货文章</h3>
+<h5 id="博客wwwqiuxueweicom">博客：<a href="http://www.qiuxuewei.com">www.qiuxuewei.com</a></h5>
+<h5 id="微信公众号开发者成长之路">微信公众号：<strong>@开发者成长之路</strong></h5>
+<h5 id=""><img src="http://blog.image.jkxuewei.com/sou_wechat.png" alt="公众号二维码" loading="lazy"></h5>
+<p><strong>一个没有鸡汤只有干货的公众号</strong></p>
+<hr>
+]]></content>
+    </entry>
+</feed>

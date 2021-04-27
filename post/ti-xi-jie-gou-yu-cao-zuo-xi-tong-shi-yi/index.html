@@ -1,0 +1,436 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>体系结构与操作系统拾遗 | 极客学伟</title>
+<meta name="description" content="一名准独立开发者的内心独白" />
+<link rel="shortcut icon" href="https://qxuewei.github.io//favicon.ico?v=1619502595382">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://qxuewei.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124834054-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124834054-1');
+</script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qxuewei.github.io/">
+  <img class="avatar" src="https://qxuewei.github.io//images/avatar.png?v=1619502595382" alt="">
+  </a>
+  <h1 class="site-title">
+    极客学伟
+  </h1>
+  <p class="site-description">
+    一名准独立开发者的内心独白
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://blog.csdn.net/qxuewei" class="menu" target="_blank">
+          CSDN
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/qxuewei" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/qxuewei" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://weibo.com/qxuewei" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/qxuewei" target="_blank">
+          <i class="fab fa-zhihu"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/qxuewei" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              体系结构与操作系统拾遗
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-12-28
+              </span>
+              <span>
+                11 min read
+              </span>
+              
+                <a href="https://qxuewei.github.io/tag/od9BBCWB7/" class="post-tag">
+                  # 计算机
+                </a>
+              
+                <a href="https://qxuewei.github.io/tag/Re43WuPjwZ/" class="post-tag">
+                  # 操作系统
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://blog.image.jkxuewei.com/mweb/2019.12.28.15775292852857.victor-aznabaev-pjTU9Edzc1g-unsplash.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="体系结构与操作系统拾遗">体系结构与操作系统拾遗</h1>
+<h2 id="part1-体系结构基础">Part1. 体系结构基础</h2>
+<h3 id="1-冯诺依曼体系结构">1. 冯·诺依曼体系结构</h3>
+<ol>
+<li>计算机处理的数据和指令一律用二进制数表示</li>
+<li>顺序执行程序
+<ol>
+<li>计算机运行过程中，把要执行的程序和处理的数据首先存入主存储器（内存），计算机执行程序时，将自动地并按顺序从主存储器中取出指令一条一条地执行，这一概念称作顺序执行程序。</li>
+</ol>
+</li>
+<li>计算机硬件由运算器、控制器、存储器、输入设备和输出设备五大部分组成。</li>
+</ol>
+<!-- more -->
+<h3 id="2-数据的机内表示">2. 数据的机内表示</h3>
+<h4 id="二进制表示">二进制表示</h4>
+<ol>
+<li>
+<p>机器数</p>
+<ol>
+<li>由于计算机中符号和数字是一样的，都必须用二进制数串来表示，因此，正负号也必须用 0、1 来表示。</li>
+<li>用最高位 0 表示正、1 表示负，这种正负号数字化的机内表示形式就称为 “机器数”，而相应的机器外部用正负号表示的数称为“真值”，将一个真值表示成二进制字串的机器数的过程就称为编码。</li>
+</ol>
+</li>
+<li>
+<p>原码<br>
+原码就是符号位加上真值的绝对值，即用第一位表示符号，其余位表示值，比如如果是 8 位二进制:<br>
+[+1]原 = 0000 0001<br>
+[-1]原 = 1000 0001<br>
+第一位是符号位，因为第一位是符号位，所以 8 位二进制的取值范围就是：<br>
+[1111 1111, 0111, 1111] 即 [-127, +127]<br>
+原码是人脑最容易理解和计算表达方式。</p>
+</li>
+<li>
+<p>反码<br>
+反码的表示方法是：正数的反码就是其本身，负数的反码是在其原码的基础上，符号位不变，其余各个位取反。<br>
+[+1] = 原码:[0000 0001] = 反码:[0000 0001]<br>
+[-1] = 原码:[1000 0001] = 反码:[1111 1110]<br>
+可见如果一个反码表示负数，人脑无法直观的看出它的数值，通常要将其转换成原码再计算。</p>
+</li>
+<li>
+<p>补码<br>
+补码的表示方法是：正数的补码就是其本身，负数的补码是在其原码的基础上，符号位不变，其余各位取反，最后 +1。（即在反码的基础上 +1）<br>
+[+1] = 原码:[0000 0001] = 补码:[0000 0001]<br>
+[-1] = 原码:[1000 0001] = 补码:[1111 1111]<br>
+对于负数，补码表示方式也是人脑无法直观看出其数值的，通常也需要转换成原码再计算其数值。</p>
+</li>
+<li>
+<p>定点数与浮点数<br>
+定点数是小数点固定的数。在计算机中没有专门表示小数点的位，小数点的位置是约定默认的。一般固定在机器数的最低位之后，或是固定在符号位之后。前者称为定点纯整数，后者称为定点纯小数。<br>
+定点数表示法简单直观，但是数值表示的范围太小，运算时容易产生溢出。</p>
+<p>浮点数是小数点的位置可以变动的数。为增大数值表示范围，防止溢出，采用浮点数表示法。浮点表示法类似于十进制中的科学计数法。</p>
+<p>在计算机中，通常把浮点数分成阶码和尾数两部分来表示，其中阶码一般用补码定点整数表示，尾数一般用补码或原码定点小数表示。为保证不损失有效数字，对尾数进行格式化处理，也就是平时所说的科学计数法，即保证尾数的最高位为 1，实际数值通过阶码进行调整。<br>
+阶符表示指数的符号位、阶码表示幂次、数符表示尾数的符号位、尾数表示格式化后的小数值。</p>
+<pre><code>N = 尾数 x 基数阶码（指数）
+</code></pre>
+</li>
+</ol>
+<h4 id="位bit-字节byte-字word">位（Bit）、字节（Byte）、字（Word）</h4>
+<p>位（Bit）：是电子计算机中最小的数据单位，每一位的状态只能是 0 或 1.</p>
+<p>字节（Byte）：8 个二进制构成 1 个字节（Byte），它是存储空间的基本计量单位。1 个字节（Byte）可以存储一个英文字母或半个汉字，换而言之：1 个汉字占据 2 个字节（Byte）的存储空间。</p>
+<p>字（Word）：由若干个字节构成，字的位数叫做字长，不同档次的机器有不同的字长。例如：一台 8 位机，它的 1 个字就等于 1 个字节。如果是一台 16 位机，那么它的 1 个字就由 2 个字节构成，字长为 16 位。字是计算机进行数据处理和运算的单位。</p>
+<h4 id="字节序">字节序</h4>
+<p>字节序（字节顺序）是指占内存多于一个字节类型的数据在内存中的存放顺序，通常有小端、大端两种字节顺序。</p>
+<p>小端字节序（Little Endian）：指低字节数据存放在内存低地址处，高字节数据存放在内存高地址处；<br>
+大端字节序（Big Endian）：指高字节数据存放在低地址处，低字节数据存放在高地址处。</p>
+<p>基于 X86 平台的 PC 机是小端字节序的，而有的嵌入式平台则是大端字节序的。所有网络协议也都是采用大端字节序的方式来传输数据的，所以有时我们也会把大端字节序称之为：网络字节序。</p>
+<p>比如数字 0x12345678 在两种不同字节序 CPU 中的存储顺序如下所示：</p>
+<pre><code>大端字节序（Big Endian）
+低地址                                            高地址
+----------------------------------------------------&gt;
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     12     |      34    |     56      |     78    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
+小端字节序（Little Endian）
+低地址                                            高地址
+----------------------------------------------------&gt;
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     78     |      56    |     34      |     12    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</code></pre>
+<p>联合体 <code>union</code> 的存放顺序是所有成员都从低地址开始存放，利用该特性，就能判断 CPU 对内存采用 Little-Endian 还是 Big-Endian 模式读写。<br>
+示例代码:</p>
+<pre><code class="language-c">union test {
+    short value;
+    char str[sizeof(short)];
+}example
+
+void main()
+{
+    example.value = 0x0102;
+    if (sizeof(short) == 2) {
+        if (example.str[0] == 1 &amp;&amp; example.str[1] == 2) {
+            printf(&quot;大端字节序&quot;);
+        } else if (example.str[0] == 2 &amp;&amp; example.str[1] == 1) {
+            printf(&quot;小端字节序&quot;);        
+        } else {
+            printf(&quot;结果未知&quot;);
+        }
+    }
+}
+</code></pre>
+<h4 id="字节对齐">字节对齐</h4>
+<p>现代计算机中内存空间都是按照 byte 划分的，从理论上讲似乎对任何类型的变量的访问可以从任何地址开始，但实际情况是在访问特定类型变量的时候经常在特定的内存地址访问，这就需要各种类型数据按照一定的规则在空间上排列，而不是顺序的一个接一个的排放，这就是对齐。</p>
+<h5 id="为什么要进行字节对齐">为什么要进行字节对齐？</h5>
+<ul>
+<li>最根本的原因是效率问题，字节对齐能提高存取数据的速度。</li>
+<li>某些平台只能在特定的地址处访问特定类型的数据</li>
+</ul>
+<p>比如有的平台每次都是从偶地址处读取数据，对于一个 int 型的变量，若从偶地址单元处存放，则只需一个读取周期即可读取该变量，但是若从奇地址单元处存放，则需要 2 个读取周期读取该变量。</p>
+<h5 id="字节对齐的原则">字节对齐的原则</h5>
+<ul>
+<li>数据成员对齐规则：结构（struct）或联合（union）的数据成员，第一个数据成员放在 <code>offset</code> 为 0 的地方，以后每个数据成员存储的起初位置要从该成员大小或者成员的子成员大小（只要该成员有子成员，比如说是数组、结构体等）的整数倍开始，比如 int 在 32 位机为 4 字节，则要从 4 的整数倍地址开始存储。</li>
+<li>结构体作为成员：如果一个结构体里有某些结构体成员，则结构体成员要从其内部最大元素大小的整数倍地址开始存储。（<code>struct a</code> 里存有 <code>struct b</code>，<code>b</code> 里有 <code>char</code>、<code>int</code>、<code>double</code> 等元素，那么 <code>b</code> 应该从 8 的整数倍开始存储。）</li>
+<li>结构体的总大小，也就是 <code>sizeof</code> 的结果，必须使其内部最大成员的整数倍，不足的要补齐。</li>
+</ul>
+<h2 id="part2-操作系统基础">Part2. 操作系统基础</h2>
+<h3 id="1-操作系统提供的服务">1. 操作系统提供的服务</h3>
+<p>操作系统五大功能：</p>
+<ul>
+<li>作业管理</li>
+<li>文件管理</li>
+<li>存储管理</li>
+<li>输入输出设备管理</li>
+<li>进程及处理机管理</li>
+</ul>
+<h3 id="2-中断与系统调用">2. 中断与系统调用</h3>
+<h4 id="中断">中断</h4>
+<p>中断：计算机执行程序的过程中，由于出现了某些特殊事情，使得 CPU 暂停对程序的执行，转而去执行处理这一事件的程序，等这些特殊事情处理完之后再回去执行之前的程序。<br>
+中断分三类：</p>
+<ol>
+<li>由计算机硬件异常或故障引起的中断，称为内部异常中断；</li>
+<li>由程序中执行了引起中断的指令而造成的中断，称为软中断（这也是和我们将要说明的系统调用相关的中断）</li>
+<li>由外部设备请求引起的中断，称为外部中断。</li>
+</ol>
+<p>简单说，对中断的理解就是对一些特殊事情的处理。</p>
+<p>与中断紧密相连的一个概念就是中断处理程序，当中断发生的时候，系统需要去对中断进行处理，对这些中断的处理是由操作系统内核中的特定函数进行的，这些处理中断的特定的函数就是我们所说的中断处理程序。</p>
+<p>另一个与中断紧密相连的概念是中断的优先级，中断的优先级说明的是当一个中断正在被处理的时候，处理器能接收的中断的级别。中断的优先级表明了中断需要被处理的紧急程度，每个中断都有一个对应的优先级，当处理器在处理某一中断的时候，只有比这个中断优先级高的中断可以被处理器接受并且被处理。优先级比这个当前正在被处理的中断优先级要低的中断将会被忽略。<br>
+中断优先级：</p>
+<pre><code>机器错误 &gt; 时钟 &gt; 磁盘 &gt; 网络设备 &gt; 终端 &gt; 软件中断
+</code></pre>
+<p>当发现软件中断时，其他所有的中断都可能发生并被处理；但当发生磁盘中断时，就只有时钟中断和机器错误中断能被处理了。</p>
+<h4 id="系统调用">系统调用</h4>
+<p>进程的执行在系统上的两个级别：用户级（用户态）和核心级（系统态）。</p>
+<p>程序的执行一般是在用户态下执行的，但当程序需要使用操作系统提供的服务时，比如说打开某一设备、创建文件、读写文件等，就需要向操作系统发生调用服务的请求，这就是系统调用。</p>
+<p><code>Linux</code> 系统有专门的函数库来提供这些请求操作系统服务的入口，这个函数库中包含了操作系统所提供的对外服务的接口，当进程发出系统调用之后，它所处的运行状态就会由用户态变成核心态。但这个时候，进程本身其实并没有做什么事情，这个时候是由内核在做相应的操作，去完成进程所提出的这些请求。</p>
+<p>系统调用和中断的关系在于：当进程发出系统调用申请的时候，会产生一个软件中断。产生这个软件中断以后，系统会去对这个软中断进行处理，这个时候进程就处于核心态了。</p>
+<p>用户态和核心态区别：</p>
+<ol>
+<li>用户态的进程能存取他们自己的指令和数据，但不能存取内核指令和数据（或其他进程的指令和数据），然而，核心态下的进程能够存取内核和用户地址。</li>
+<li>某些机器指令是特权指令，在用户态下执行特权指令会引起错误。</li>
+</ol>
+<p><strong>在系统中内核并不是作为一个与用户进程平行的进程的集合，内核是为用户进程运行的。</strong></p>
+<hr>
+<h3 id="更多干货文章">更多干货文章</h3>
+<h5 id="博客wwwqiuxueweicom">博客：<a href="http://www.qiuxuewei.com">www.qiuxuewei.com</a></h5>
+<h5 id="微信公众号开发者成长之路">微信公众号：<strong>@开发者成长之路</strong></h5>
+<h5 id=""><img src="http://blog.image.jkxuewei.com/sou_wechat.png" alt="公众号二维码" loading="lazy"></h5>
+<p><strong>一个没有鸡汤只有干货的公众号</strong></p>
+<hr>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%8E%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8B%BE%E9%81%97">体系结构与操作系统拾遗</a>
+<ul>
+<li><a href="#part1-%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80">Part1. 体系结构基础</a>
+<ul>
+<li><a href="#1-%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84">1. 冯·诺依曼体系结构</a></li>
+<li><a href="#2-%E6%95%B0%E6%8D%AE%E7%9A%84%E6%9C%BA%E5%86%85%E8%A1%A8%E7%A4%BA">2. 数据的机内表示</a>
+<ul>
+<li><a href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA">二进制表示</a></li>
+<li><a href="#%E4%BD%8Dbit-%E5%AD%97%E8%8A%82byte-%E5%AD%97word">位（Bit）、字节（Byte）、字（Word）</a></li>
+<li><a href="#%E5%AD%97%E8%8A%82%E5%BA%8F">字节序</a></li>
+<li><a href="#%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90">字节对齐</a>
+<ul>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%BF%9B%E8%A1%8C%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90">为什么要进行字节对齐？</a></li>
+<li><a href="#%E5%AD%97%E8%8A%82%E5%AF%B9%E9%BD%90%E7%9A%84%E5%8E%9F%E5%88%99">字节对齐的原则</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#part2-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80">Part2. 操作系统基础</a>
+<ul>
+<li><a href="#1-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1">1. 操作系统提供的服务</a></li>
+<li><a href="#2-%E4%B8%AD%E6%96%AD%E4%B8%8E%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8">2. 中断与系统调用</a>
+<ul>
+<li><a href="#%E4%B8%AD%E6%96%AD">中断</a></li>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8">系统调用</a></li>
+</ul>
+</li>
+<li><a href="#%E6%9B%B4%E5%A4%9A%E5%B9%B2%E8%B4%A7%E6%96%87%E7%AB%A0">更多干货文章</a><br>
+*
+<ul>
+<li><a href="#%E5%8D%9A%E5%AE%A2wwwqiuxueweicom">博客：www.qiuxuewei.com</a></li>
+<li><a href="#%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E8%80%85%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF">微信公众号：<strong>@开发者成长之路</strong></a></li>
+<li><a href="#">!公众号二维码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qxuewei.github.io/post/wang-luo-shi-yi/">
+              <h3 class="post-title">
+                网络拾遗
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b5a81cc33693e3ea874',
+    clientSecret: '7bb94672c847c4aa5723a9419fc5b3db33ca0dd6',
+    repo: 'Gittalk',
+    owner: 'qxuewei',
+    admin: ['qxuewei'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://qxuewei.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

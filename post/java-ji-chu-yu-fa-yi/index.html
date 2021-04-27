@@ -1,0 +1,825 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Java - 基础语法一 | 极客学伟</title>
+<meta name="description" content="一名准独立开发者的内心独白" />
+<link rel="shortcut icon" href="https://qxuewei.github.io//favicon.ico?v=1619502595382">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://qxuewei.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124834054-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124834054-1');
+</script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qxuewei.github.io/">
+  <img class="avatar" src="https://qxuewei.github.io//images/avatar.png?v=1619502595382" alt="">
+  </a>
+  <h1 class="site-title">
+    极客学伟
+  </h1>
+  <p class="site-description">
+    一名准独立开发者的内心独白
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://blog.csdn.net/qxuewei" class="menu" target="_blank">
+          CSDN
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/qxuewei" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/qxuewei" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://weibo.com/qxuewei" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/qxuewei" target="_blank">
+          <i class="fab fa-zhihu"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/qxuewei" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Java - 基础语法一
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-03-28
+              </span>
+              <span>
+                19 min read
+              </span>
+              
+                <a href="https://qxuewei.github.io/tag/9H4f1SDbS/" class="post-tag">
+                  # Java
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://blog.image.jkxuewei.com/mweb/2020.03.28.15854051821300.maximilian-weisbecker-1td5Iq5IvNc-unsplash.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="java-基础语法一">Java - 基础语法一</h1>
+<h2 id="1-基础语法">① 基础语法</h2>
+<ul>
+<li>JVM（Java Virtual Machine）: Java 虚拟机，简称 JVM，是运行所有 Java 程序的假想计算机，是 Java 程序的运行环境，是 Java 最具吸引力的特性之一。我们编写的 Java 程序，都运行在 JVM 之上。</li>
+<li>JRE（Java Runtime Environment）：Java 程序的运行环境，包含 JVM 和运行时所需要的核心类库。</li>
+<li>JDK（Java Development Environment）：Java 程序开发工具包，包含 JRE 和开发人员使用的工具。</li>
+</ul>
+<!-- more -->
+<figure data-type="image" tabindex="1"><img src="http://blog.image.jkxuewei.com/mweb/2020.03.28.15854041867234.15827280446149.jpg" alt="" loading="lazy"></figure>
+<h3 id="方法">方法</h3>
+<p>格式：</p>
+<pre><code class="language-java">修饰符 返回值类型 方法名（参数列表）
+{
+    // 代码
+    return 结果;// 如果返回值类型不为 void
+}
+</code></pre>
+<h3 id="方法重载多个方法的名称一样但是参数列表不一样">方法重载：多个方法的名称一样，但是参数列表不一样</h3>
+<h4 id="方法重载与以下因素有关">方法重载与以下因素有关：</h4>
+<ul>
+<li>参数个数不同</li>
+<li>参数类型不同</li>
+<li>参数的多类型顺序不同</li>
+</ul>
+<h4 id="方法重载与以下因素无关">方法重载与以下因素无关：</h4>
+<ul>
+<li>与参数的名称无关</li>
+<li>与方法的返回值类型无关</li>
+</ul>
+<h3 id="数组一种容器可以同时存放多个数据源">数组：一种容器，可以同时存放多个数据源</h3>
+<h4 id="数组特点">数组特点：</h4>
+<ol>
+<li>数组是一种引用数据类型</li>
+<li>数组当中的多个数据，类型必须统一</li>
+<li>数组的长度在程序运行期间不可改变</li>
+</ol>
+<h4 id="动态初始化在创建数组的时候直接指定数组当中的数据元素个数">动态初始化：在创建数组的时候，直接指定数组当中的数据元素个数</h4>
+<p>格式：<code>数据类型[] 数组名称 = new 数据类型[数组长度]</code></p>
+<h4 id="静态初始化在创建数组的时候不直接指定数据个数多少而是直接将具体的数据内容进行指定">静态初始化：在创建数组的时候，不直接指定数据个数多少，而是直接将具体的数据内容进行指定</h4>
+<p>标准格式：<code>数据类型[] 数组名称 = new 数据类型[] {元素 1、元素 2、...}</code><br>
+省略格式：<code>数据类型[] 数组名称 = {元素 1、元素 2、...}</code></p>
+<h4 id="注意事项">注意事项</h4>
+<ol>
+<li>静态初始化没有直接指定长度，但是仍然会自动推算得到长度 <code>int[] arrayA = {10, 20, 30};</code></li>
+<li>静态初始化标准格式可以拆分成两个步骤  <code>int[] arrayB; arrayB = new int[5];</code></li>
+<li>动态初始化也可以拆分成两个步骤 <code>int arrayC; arrayC = new int [] {1, 2, 3 };</code></li>
+<li>静态初始化一旦使用省略格式，就不能拆分成为两个步骤了</li>
+</ol>
+<h4 id="java-的内存需要划分成为-5-个部分">Java 的内存需要划分成为 5 个部分：</h4>
+<ol>
+<li>栈（Srack）：存放的都是方法中的局部变量，<strong>方法的运行一定在栈中</strong>
+<ol>
+<li>局部变量：方法的参数，或者是方法{} 内部的变量。</li>
+<li>作用域：一旦超出作用域，立刻从栈内存当中消失。</li>
+</ol>
+</li>
+<li><strong>堆（Heap）：凡是 new 出来的东西，都在堆当中</strong>
+<ol>
+<li>堆内存里面的东西都有一个地址值：16 进制</li>
+<li>堆内存里面的数据，都有默认值</li>
+</ol>
+</li>
+<li>方法区（Method Area）：存储 .class 相关信息，包含方法的信息。</li>
+<li>本地方法栈（Native Method Stack）：与操作系统相关</li>
+<li>寄存器（pc Register）：与 CPU 相关</li>
+</ol>
+<h2 id="2-面向对象">② 面向对象</h2>
+<h3 id="局部变量和成员变量">局部变量和成员变量</h3>
+<ul>
+<li>定义的位置不同
+<ul>
+<li>局部变量：在方法内部</li>
+<li>成员变量：在方法外部，直接写在类中</li>
+</ul>
+</li>
+<li>作用范围不同
+<ul>
+<li>局部变量：只有在方法中才可以使用，出了方法就不能用</li>
+<li>成员变量：整个类全都可以通用</li>
+</ul>
+</li>
+<li>默认值不同
+<ul>
+<li>局部变量：没有默认值，如果想使用，必须手动进行赋值</li>
+<li>成员变量：如果没有赋值，会有默认值，规则和数组一样</li>
+</ul>
+</li>
+<li>内存位置不一样
+<ul>
+<li>局部变量：位于栈内存</li>
+<li>成员变量：位于堆内存</li>
+</ul>
+</li>
+<li>生命周期不一样
+<ul>
+<li>局部变量：随方法进栈而诞生，随着方法出栈而消失</li>
+<li>成员变量：随着对象创建而诞生，随着对象被垃圾回收而消失</li>
+</ul>
+</li>
+</ul>
+<h3 id="面向对象三大特性封装-继承-多态">面向对象三大特性：封装、继承、多态</h3>
+<p>封装性在 Java 体现：</p>
+<ul>
+<li>方法就是封装</li>
+<li>Private 关键字也是封装</li>
+</ul>
+<p><strong>对于基本数据类型当中的 boolean 值，Getter 方法一定要写成 isXxx 的形式，而 setXxx 规则不变</strong></p>
+<h3 id="构造方法">构造方法</h3>
+<p>构造方法是专门用来创建对象的方法，当我们通过关键字 new 来创建对象时，其实就是在调用构造方法</p>
+<h4 id="格式">格式：</h4>
+<pre><code>public 类名称(参数类型 参数名称) 
+{
+    方法体
+}
+</code></pre>
+<h4 id="构造方法使用注意事项">构造方法使用注意事项：</h4>
+<ul>
+<li>构造方法的名称必须和所在的类名称完全一样，就连大小写也要一样</li>
+<li>构造方法不要写返回值类型，连 Void 都不写</li>
+<li>构造方法不能 return 一个具体返回值</li>
+<li>如果没有编写任何构造方法，编译器会默认生成一个构造方法，无参数、无方法体</li>
+<li>一旦编写了至少一个构造方法，编译器便不再自动生成</li>
+</ul>
+<h4 id="标准的类">标准的类</h4>
+<ol>
+<li>所有的成员变量都要用 private 关键字修饰</li>
+<li>为每一个成员变量编写一对儿 Getter/Setter 方法</li>
+<li>编写一个无参数的构造方法</li>
+<li>编写一个全参数的构造方法</li>
+</ol>
+<h2 id="3-常用-api">③ 常用 API</h2>
+<h3 id="random">Random</h3>
+<p>用于生成随机数<br>
+<code>public int nextInt(int n)</code> 返回一个 [0,n) 之间的随机数。</p>
+<h3 id="arraylist">ArrayList</h3>
+<p>数组的长度不可以发生变化，ArrayList 集合的长度是可以随意变化的。<br>
+如果希望向 ArrayList 当中存储基本类型数据，必须使用基本类型对应的“包装类”</p>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>包装类（引用类型）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+</tbody>
+</table>
+<h3 id="string">String</h3>
+<p>程序中所有双引号字符串，都是 String 类的对象</p>
+<h4 id="特点">特点</h4>
+<ul>
+<li>字符串的内容永不改变</li>
+<li>正是因为字符串不可改变，所以字符串是可以共享使用的</li>
+<li>字符串效果上相当于是 char[] 字符数组，底层原理是 byte[] 字节数组</li>
+</ul>
+<p>字符串常量池，在堆中开辟的一块空间。 使用 &quot;&quot; 直接创建的字符串都存放在字符串常量池中。</p>
+<ol>
+<li>对于引用类型来说，“==” 进行的是地址值的比较，基本数据类型是对值的比较；</li>
+<li>双引号直接创建的字符串在常量池中，new 的不在池中。</li>
+</ol>
+<p>如果需要对字符串的内容进行比较，可以使用如下方法：</p>
+<pre><code>public boolean equals(Object obj); // 严格区分大小写
+public boolean equalsIgnoreCase(Object obj); // 忽略大小写
+</code></pre>
+<p><code>split</code> 方法的参数其实是一个正则表达式，如果要按照英文 . 进行切分，必须写 &quot;\\.&quot; (两个反斜杠)</p>
+<h3 id="static-关键字">Static 关键字</h3>
+<p>用来修饰成员变量和成员方法，被修饰的成员属于类的，而不是单单是属于某个对象的。</p>
+<ul>
+<li>当 <code>static</code> 修饰成员变量，该变量称为类变量，该类的每个对象都共享同一个类变量的值。<br>
+格式：</li>
+</ul>
+<pre><code class="language-Java">static 数据类型 变量名;
+</code></pre>
+<ul>
+<li>当 <code>static</code> 修饰成员方法时，该方法称为类方法。</li>
+</ul>
+<p>静态代码块：定义在成员位置，使用 <code>static</code> 修饰的代码块 {}</p>
+<ul>
+<li>位置：类中方法之外</li>
+<li>执行：随着类的加载而执行且只执行一次，优先于 main 方法和构造方法的执行。</li>
+<li>作用：类类变量进行初始化赋值。</li>
+</ul>
+<p>格式：</p>
+<pre><code class="language-Java">public class className 
+{
+    static {
+        /// 执行语句    
+    }
+}
+</code></pre>
+<h3 id="arrays">Arrays</h3>
+<p><code>java.util.Arrays</code> 是一个与数组相关的工具类，里面提供了大量的静态方法，用来实现数组常见操作。<br>
+<code>toString(数组)</code> 将参数数组变成字符串<br>
+<code>sort(数组)</code> 按照默认升序对数组的元素进行排序：注意 如果数组内是自定义类型，那么这个自定义类需要有 <code>Comparable</code> 或者 <code>Comparator</code> 接口的支持。</p>
+<h3 id="math">Math</h3>
+<p><code>abs(double num)</code> 绝对值<br>
+<code>ceil(double num)</code> 向上取整<br>
+<code>floor(double num)</code> 向下取整<br>
+<code>round(double num)</code> 四舍五入<br>
+<code>Math.PI</code> 圆周率</p>
+<h2 id="4-继承">④ 继承</h2>
+<h3 id="继承">继承</h3>
+<p>子类继承父类的属性和行为，使得子类对象具有父类相同的属性、相同的行为，子类可以直接访问父类中的非私有的属性和行为。<br>
+优点：<br>
+1、提高代码的复用性<br>
+2、类与类之间产生了关系，是多态的前提。</p>
+<p>子父类中出现了同名的成员变量时，在子类中需要访问父类中非私有变量时，需要使用 <code>super</code> 关键字修饰父类成员变量。</p>
+<p>如果子父类中出现了同名的成员方法，这是的访问是一种特殊情况-称之为<strong>方法重写</strong></p>
+<p>Java 中指支持单继承，不支持多继承。</p>
+<h3 id="抽象类">抽象类</h3>
+<p>父类中的方法，被他的子类们重写，子类各自的实现都不尽相同，那么父类的方法声明和方法主体，只有声明还有意义，而方法主体则没有存在的意义了，我们把没有方法主体的方法称为抽象方法。包含抽象方法的类就是抽象类。</p>
+<h3 id="抽象方法">抽象方法</h3>
+<p>抽象方法，方法前加 <code>abstract</code> 关键字,去掉关键字，直接分号结束。<br>
+定义格式：</p>
+<pre><code class="language-Java">修饰符 abstract 返回值类型 方法名(参数列表);
+</code></pre>
+<h3 id="抽象类-2">抽象类</h3>
+<p>抽象类：抽象方法所在的类，必须是抽象类才行，在 class 之前写上 <code>abstract</code> 即可。抽象类可以定义正常方法。<br>
+定义格式：</p>
+<pre><code class="language-Java">abstract class 类名字
+{
+    ///xxx
+}
+</code></pre>
+<p>注意：</p>
+<ul>
+<li>抽象类不能实例化，必须用子类继承抽象父类，子类必须覆盖重写抽象类的所有抽象方法。</li>
+<li>抽象类中，可以有构造方法，是供子类创建对象时，初始化父类成员使用的。</li>
+<li>抽象类中，不一定包含抽象方法，但是有抽象方法的类必定是抽象类。</li>
+<li>抽象类的子类，必须重写抽象父类中所有的抽象方法，否则，编译无法通过而报错，除非子类也是抽象类。</li>
+</ul>
+<h2 id="5-接口">⑤ 接口</h2>
+<p>接口是 Java 中的一种引用类型，是方法的集合，如果类的内部封装了成员变量，构造方法和成员方法，那么接口的内部主要就是封装了方法。接口不是类，是一种引用数据类型，其他的引用数据类型还包括：数组、类。<br>
+接口可包含五部分：常量、抽象方法、默认方法、静态方法、私有方法<br>
+定义格式：</p>
+<pre><code class="language-Java">public interface 接口名称
+{
+    // 抽象方法,继承类必须全部实现
+    // 默认方法,default 修饰符修饰，可以继承可以重写，必须通过实现类来调用
+    // 静态方法,只能通过接口名调用，不可通过实现类名或者实现类对象调用
+    // 私有方法,私有成员方法只有默认方法可以调用、私有静态方法只有默认方法和静态方法可以调用
+}
+</code></pre>
+<p>接口使用步骤：</p>
+<ol>
+<li>接口不能直接使用，必须有一个“实现类”来“实现”该接口；格式：<code>public class 实现类名称 implement 接口名称</code></li>
+<li>接口的实现类必须覆盖重写接口中所有的抽象方法。</li>
+<li>创建实现类的对象，进行使用</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li>如果实现类并没有覆盖重写接口的所有抽象方法，那么这个实现类自己就必须是抽象类。</li>
+<li>接口没有静态代码块或者构造方法</li>
+<li>一个类的直接父类是唯一的，但是一个类可以用时实现多个接口。格式：<code>public class 类名称 implements 接口 A, 接口 B {}</code></li>
+<li>多个接口存在相同名称抽象方法，实现类只需覆盖重写一次即可。</li>
+<li>如果实现类没有覆盖重写所有接口中定义的所有抽象方法，那么实现类就必须是一个抽象类。</li>
+<li>如果多个接口中存在相同名称的默认方法，那么实现类一定要对冲突的默认方法进行覆盖重写。</li>
+<li>一个类如果直接父类中的方法和接口当中的默认方法产生了冲突，优先用父类中的方法。（Java 继承优先级高于接口）</li>
+</ol>
+<h3 id="接口中的方法默认是抽象方法">接口中的方法默认是抽象方法</h3>
+<p>格式： <code>public abstract 返回值类型 方法名称(参数列表);</code><br>
+实现类必须覆盖重写接口所有抽象方法，除非实现类是抽象类。</p>
+<h3 id="接口中的默认方法">接口中的默认方法</h3>
+<p>接口中的默认方法可以解决接口升级的问题。<br>
+格式：<code>public default 返回值类型 方法名称(参数列表);</code></p>
+<h3 id="接口中静态方法">接口中静态方法</h3>
+<p>不能用接口实现类的对象来调用接口中的静态方法，应该直接使用接口名称直接调用静态方法。<br>
+格式：<code>public static 返回值类型 方法名称(参数列表);</code></p>
+<h3 id="接口中的私有方法">接口中的私有方法</h3>
+<p>抽取公共方法用来解决多个默认方法之间重复代码的问题，但这个共有方法不应该让实现类使用，应该是私有化的。<br>
+格式：<code>private default 返回值类型 方法名称(参数列表);</code>、<code>private static 返回值类型 方法名称(参数列表);</code></p>
+<h3 id="接口中的成员变量-即-常量">接口中的“成员变量” 即 “常量”</h3>
+<p>接口中可以定义“成员变量”，但必须使用 <code>public static final</code> 三个关键字进行修饰（可省略）。从效果上看，这其实就是接口的“常量”。一旦使用 <code>final</code> 关键字，说明不可变<br>
+格式：<code>public static final 数据类型 名称 = 数据值;</code><br>
+注意事项：</p>
+<ol>
+<li>接口中的常量，可以省略 <code>public static final</code> 关键字。含义不变。</li>
+<li>接口中的常量，必须进行赋值，不能不赋值。</li>
+<li>建议常量名称大写。多个单词用 _ 分割。</li>
+</ol>
+<h3 id="接口中的多继承">接口中的多继承</h3>
+<ul>
+<li>类与类之间是单继承的，直接父类只有一个</li>
+<li>类与接口之间是多继承的，一个类可以实现多个接口</li>
+<li>接口与接口之间是多继承的
+<ul>
+<li>多个父接口中的抽象方法可以重复</li>
+<li>多个父接口中的默认方法如果重复，必须在子接口进行覆盖重写，并带 <code>default</code> 关键字。</li>
+</ul>
+</li>
+</ul>
+<h3 id="接口其他特性">接口其他特性</h3>
+<ul>
+<li>接口中，无法定义成员变量，但可以定义常量，其值不可改变，默认使用 <code>public static final</code> 修饰，可以省略、</li>
+<li>接口中，没有构造方法，不能创建对象</li>
+<li>接口中，没有静态代码块</li>
+</ul>
+<h2 id="6-多态">⑥ 多态</h2>
+<p>对象具有多个形态<br>
+代码中体现多态性，父类引用指向子类对象。格式：<code>父类名称 对象名 = new 子类名称();</code> 或 <code>接口名称 对象名 = new 实现类名称();</code></p>
+<p>多态访问成员变量的两种方式：</p>
+<ol>
+<li>直接通过对象名称访问成员变量：看等号左边是谁，优先用谁，没有则向上找。（成员变量无法进行覆盖重写）</li>
+<li>间接通过成员方法访问成员变量：看该方法属于谁，优先用谁，没有则向上找。</li>
+</ol>
+<p>多态访问成员方法：<br>
+看 new 的是谁，就优先用谁，没有则向上找。</p>
+<p>口诀：<br>
+多态访问成员变量：编译看左边，运行也看左边<br>
+多态访问成员方法：编译看左边，运行看右边。</p>
+<p>多态的好处：无论右边 new 的是哪个子类对象，左边声明的类和调用的方法可以保持一致。</p>
+<h3 id="对象的向上转型">对象的向上转型</h3>
+<p>其实就是多态的写法：<code>父类名称 对象名 = new 子类名称();</code><br>
+含义：右侧创建一个子类对象，把它当做父类看待使用。<br>
+注意事项：向上转型一定是安全的。类似于基本数据类型的类型转换 （float -&gt; double）<br>
+弊端：一旦向上转型为父类，那么就无法调用子类原本特有的内容。（解决方案-使用向下转型）</p>
+<h3 id="对象的向下转型">对象的向下转型</h3>
+<p>其实是一个还原的动作。格式：<code>子类名称 对象名 = (子类名称)父类对象;</code><br>
+含义：将父类对象，<strong>还原</strong>为本来的子类对象<br>
+注意事项：<br>
+必须保证对象创建的时候就是向下转型的类型。</p>
+<h3 id="instanceof-关键字"><code>instanceof</code> 关键字</h3>
+<p>返回一个 boolean 值，判断前面的对象能不能当做后面类型的实例。<br>
+格式：<code>对象名 instanceof 类名</code></p>
+<h2 id="7-其他">⑦ 其他</h2>
+<h3 id="final-关键字"><code>final</code> 关键字</h3>
+<p>用于修饰<strong>不可改变</strong>的内容</p>
+<h4 id="final-用法"><code>final</code> 用法</h4>
+<ol>
+<li>修饰类：不能有任何子类，而且一个类如果是 <code>final</code> 的，那么其中所有的成员方法都无法对其进行覆盖重写</li>
+<li>修饰方法：这个方法不能被覆盖重写，对于类和方法而言，<code>abstract</code> 关键字和 <code>final</code> 关键字不能同时使用，因为矛盾。</li>
+<li>修饰局部变量：这个变量只能被赋值一次，不能再次被修改。“一次赋值，终生不变”。对于基本数据类型，不可变值得是变量中的数据不可变；对于引用类型，不可变指的是变量中的地址值不可变。</li>
+<li>修饰成员变量：这个变量只能而且必须被赋值一次，不能再次被修改。而且不再有默认值。
+<ol>
+<li>由于成员变量具有默认值，所以用了 <code>final</code> 之后必须手动赋值，不会再有默认值。</li>
+<li>对于 <code>final</code> 的成员变量，要么使用直接赋值，要么使用构造方法赋值，两者取其一。</li>
+<li>如果使用构造方法对 <code>final</code> 修饰的成员变量赋值，必须保证类中所有重载的构造方法，都最终会对 <code>final</code> 的成员变量进行赋值。</li>
+</ol>
+</li>
+<li>被 <code>final</code> 修饰的常量名称，一般有书写规范，所有字母均大写。</li>
+</ol>
+<h3 id="java-中的四种权限修饰符">Java 中的四种权限修饰符</h3>
+<p><code>public &gt; protected (专门给不同包子类用的) &gt; (default) &gt; private</code></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>public</th>
+<th>protected</th>
+<th>（default）</th>
+<th>private</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>同一个类（我自己）</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+</tr>
+<tr>
+<td>用一个包（我邻居）</td>
+<td>YES</td>
+<td>YES</td>
+<td>YES</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>不同包子类（我儿子）</td>
+<td>YES</td>
+<td>YES</td>
+<td>NO</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>不同包非子类（陌生人）</td>
+<td>YES</td>
+<td>NO</td>
+<td>NO</td>
+<td>NO</td>
+</tr>
+</tbody>
+</table>
+<h3 id="内部类">内部类</h3>
+<h4 id="分类">分类：</h4>
+<ol>
+<li>成员内部类</li>
+<li>局部内部类（包含匿名内部类）</li>
+</ol>
+<h4 id="成员内部类">成员内部类</h4>
+<p>格式:</p>
+<pre><code>修饰符 class 外部类名称 
+{
+    修饰符 class 内部类名称
+    {
+        xxx
+    }
+}
+</code></pre>
+<p>内部类可以直接访问外部类的成员，包括私有成员。<br>
+外部类要访问内部类的成员，必须建立内部类的对象。<br>
+即 : 内用外，随意访问。外用内需要借助内部类对象。</p>
+<h4 id="如何使用成员内部类">如何使用成员内部类</h4>
+<ol>
+<li>间接方式：在外部类的方法中，使用内部类；然后 main 只是调用外部类的方法。</li>
+<li>直接方式：定义格式：<code>外部类名称.内部类名称 对象名 = new 外部类名称().new 内部类名称();</code></li>
+</ol>
+<h4 id="内部类使用外部类的成员变量">内部类使用外部类的成员变量</h4>
+<p>如果出现重名现象，使用格式：<code>外部类名称.this.外部类成员变量名</code><br>
+实例：</p>
+<pre><code class="language-java">public class Outer
+{
+    int num = 10;
+     public class Inner
+     {
+        int num = 20;
+        public void methodInner()
+        {
+           int num = 30;
+           System.out.println(num); // 局部变量，就近原则
+           System.out.println(this.num); // 内部类的成员变量
+           System.out.println(Outer.this.num); // 外部类的成员变量
+        }
+     }
+}
+</code></pre>
+<h4 id="局部内部类">局部内部类</h4>
+<p>如果一个类定义在一个方法内部，那么就是局部内部类。<br>
+“局部”：只有当前所属的方法才能使用它，出了这个方法外面就不能用了。</p>
+<p>局部内部类如果要访问所在方法的局部变量，那么这个局部变量必须是【有效 final 的】即 用 final 声明的变量或者事实上只赋值一次的变量。<br>
+原因：new 出来的对象在堆内存中，局部变量跟着方法走，在栈内存中。方法运行结束立刻出栈，局部变量立即消失。但是 new 出来的对象会在堆中持续存在，直到垃圾回收消失。</p>
+<h4 id="定义类的权限修饰符">定义类的权限修饰符</h4>
+<ul>
+<li>外部类：<code>public 或 (default)</code></li>
+<li>成员内部类：都可以</li>
+<li>局部内部类：什么都不能写</li>
+</ul>
+<h4 id="匿名内部类">匿名内部类</h4>
+<p>如果接口的实现类（或者是父类的子类）只需要使用唯一的一次，那么这种情况下就可以省略掉该类的定义，而改为使用<strong>匿名内部类</strong></p>
+<p>定义格式：</p>
+<pre><code>接口名称 对象名 = new 接口名称()
+{
+    /// 覆盖重写接口中所有的抽象方法。
+}
+</code></pre>
+<p>对格式 &quot;new 接口名称(){...}&quot; 进行解析：</p>
+<ol>
+<li>new 代表创建对象的动作</li>
+<li>接口名称就是匿名内部类需要实现哪个接口</li>
+<li>{...} 这才是匿名内部类的内容</li>
+</ol>
+<p>注意事项：</p>
+<ol>
+<li>匿名内部类，在【创建对象】的时候只能使用唯一一次，如果希望多次创建对象，那么就必须使用单独定义的实现类。</li>
+<li>匿名对象，在【调用方法】的时候只能调用唯一一次，如果希望同一个对象调用多次方法，那么必须给对象起个名字。</li>
+<li>匿名内部类是省略了【实现类/子类名称】，但是匿名对象时省略了【对象名称】，匿名内部类和匿名对象不是一回事！！</li>
+</ol>
+<h3 id="interface-作为成员变量"><code>interface</code> 作为成员变量</h3>
+<p>使用接口作为成员变量以便随时更换实现方式，这种设计更为灵活，增强了程序的扩展性。<br>
+接口作为成员变量时，对他进行复制的操作，实际上是赋给他接口的一个子类实现对象。</p>
+<p>接口作为参数数，传递它的子类对象；<br>
+接口作为返回值类型是，也是返回它的子类对象。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#java-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B8%80">Java - 基础语法一</a>
+<ul>
+<li><a href="#1-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95">① 基础语法</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95">方法</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E5%A4%9A%E4%B8%AA%E6%96%B9%E6%B3%95%E7%9A%84%E5%90%8D%E7%A7%B0%E4%B8%80%E6%A0%B7%E4%BD%86%E6%98%AF%E5%8F%82%E6%95%B0%E5%88%97%E8%A1%A8%E4%B8%8D%E4%B8%80%E6%A0%B7">方法重载：多个方法的名称一样，但是参数列表不一样</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%B8%8E%E4%BB%A5%E4%B8%8B%E5%9B%A0%E7%B4%A0%E6%9C%89%E5%85%B3">方法重载与以下因素有关：</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%B8%8E%E4%BB%A5%E4%B8%8B%E5%9B%A0%E7%B4%A0%E6%97%A0%E5%85%B3">方法重载与以下因素无关：</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E7%BB%84%E4%B8%80%E7%A7%8D%E5%AE%B9%E5%99%A8%E5%8F%AF%E4%BB%A5%E5%90%8C%E6%97%B6%E5%AD%98%E6%94%BE%E5%A4%9A%E4%B8%AA%E6%95%B0%E6%8D%AE%E6%BA%90">数组：一种容器，可以同时存放多个数据源</a>
+<ul>
+<li><a href="#%E6%95%B0%E7%BB%84%E7%89%B9%E7%82%B9">数组特点：</a></li>
+<li><a href="#%E5%8A%A8%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9C%A8%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84%E7%9A%84%E6%97%B6%E5%80%99%E7%9B%B4%E6%8E%A5%E6%8C%87%E5%AE%9A%E6%95%B0%E7%BB%84%E5%BD%93%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%85%83%E7%B4%A0%E4%B8%AA%E6%95%B0">动态初始化：在创建数组的时候，直接指定数组当中的数据元素个数</a></li>
+<li><a href="#%E9%9D%99%E6%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9C%A8%E5%88%9B%E5%BB%BA%E6%95%B0%E7%BB%84%E7%9A%84%E6%97%B6%E5%80%99%E4%B8%8D%E7%9B%B4%E6%8E%A5%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E4%B8%AA%E6%95%B0%E5%A4%9A%E5%B0%91%E8%80%8C%E6%98%AF%E7%9B%B4%E6%8E%A5%E5%B0%86%E5%85%B7%E4%BD%93%E7%9A%84%E6%95%B0%E6%8D%AE%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%E6%8C%87%E5%AE%9A">静态初始化：在创建数组的时候，不直接指定数据个数多少，而是直接将具体的数据内容进行指定</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+<li><a href="#java-%E7%9A%84%E5%86%85%E5%AD%98%E9%9C%80%E8%A6%81%E5%88%92%E5%88%86%E6%88%90%E4%B8%BA-5-%E4%B8%AA%E9%83%A8%E5%88%86">Java 的内存需要划分成为 5 个部分：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1">② 面向对象</a>
+<ul>
+<li><a href="#%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E5%92%8C%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F">局部变量和成员变量</a></li>
+<li><a href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7%E5%B0%81%E8%A3%85-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E6%80%81">面向对象三大特性：封装、继承、多态</a></li>
+<li><a href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95">构造方法</a>
+<ul>
+<li><a href="#%E6%A0%BC%E5%BC%8F">格式：</a></li>
+<li><a href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">构造方法使用注意事项：</a></li>
+<li><a href="#%E6%A0%87%E5%87%86%E7%9A%84%E7%B1%BB">标准的类</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-%E5%B8%B8%E7%94%A8-api">③ 常用 API</a>
+<ul>
+<li><a href="#random">Random</a></li>
+<li><a href="#arraylist">ArrayList</a></li>
+<li><a href="#string">String</a>
+<ul>
+<li><a href="#%E7%89%B9%E7%82%B9">特点</a></li>
+</ul>
+</li>
+<li><a href="#static-%E5%85%B3%E9%94%AE%E5%AD%97">Static 关键字</a></li>
+<li><a href="#arrays">Arrays</a></li>
+<li><a href="#math">Math</a></li>
+</ul>
+</li>
+<li><a href="#4-%E7%BB%A7%E6%89%BF">④ 继承</a>
+<ul>
+<li><a href="#%E7%BB%A7%E6%89%BF">继承</a></li>
+<li><a href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB">抽象类</a></li>
+<li><a href="#%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95">抽象方法</a></li>
+<li><a href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB-2">抽象类</a></li>
+</ul>
+</li>
+<li><a href="#5-%E6%8E%A5%E5%8F%A3">⑤ 接口</a>
+<ul>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95%E9%BB%98%E8%AE%A4%E6%98%AF%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95">接口中的方法默认是抽象方法</a></li>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95">接口中的默认方法</a></li>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E4%B8%AD%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95">接口中静态方法</a></li>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95">接口中的私有方法</a></li>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F-%E5%8D%B3-%E5%B8%B8%E9%87%8F">接口中的“成员变量” 即 “常量”</a></li>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E4%B8%AD%E7%9A%84%E5%A4%9A%E7%BB%A7%E6%89%BF">接口中的多继承</a></li>
+<li><a href="#%E6%8E%A5%E5%8F%A3%E5%85%B6%E4%BB%96%E7%89%B9%E6%80%A7">接口其他特性</a></li>
+</ul>
+</li>
+<li><a href="#6-%E5%A4%9A%E6%80%81">⑥ 多态</a>
+<ul>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%90%91%E4%B8%8A%E8%BD%AC%E5%9E%8B">对象的向上转型</a></li>
+<li><a href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%90%91%E4%B8%8B%E8%BD%AC%E5%9E%8B">对象的向下转型</a></li>
+<li><a href="#instanceof-%E5%85%B3%E9%94%AE%E5%AD%97"><code>instanceof</code> 关键字</a></li>
+</ul>
+</li>
+<li><a href="#7-%E5%85%B6%E4%BB%96">⑦ 其他</a>
+<ul>
+<li><a href="#final-%E5%85%B3%E9%94%AE%E5%AD%97"><code>final</code> 关键字</a>
+<ul>
+<li><a href="#final-%E7%94%A8%E6%B3%95"><code>final</code> 用法</a></li>
+</ul>
+</li>
+<li><a href="#java-%E4%B8%AD%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6">Java 中的四种权限修饰符</a></li>
+<li><a href="#%E5%86%85%E9%83%A8%E7%B1%BB">内部类</a>
+<ul>
+<li><a href="#%E5%88%86%E7%B1%BB">分类：</a></li>
+<li><a href="#%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB">成员内部类</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB">如何使用成员内部类</a></li>
+<li><a href="#%E5%86%85%E9%83%A8%E7%B1%BB%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F">内部类使用外部类的成员变量</a></li>
+<li><a href="#%E5%B1%80%E9%83%A8%E5%86%85%E9%83%A8%E7%B1%BB">局部内部类</a></li>
+<li><a href="#%E5%AE%9A%E4%B9%89%E7%B1%BB%E7%9A%84%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6">定义类的权限修饰符</a></li>
+<li><a href="#%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB">匿名内部类</a></li>
+</ul>
+</li>
+<li><a href="#interface-%E4%BD%9C%E4%B8%BA%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><code>interface</code> 作为成员变量</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qxuewei.github.io/post/ios-lei-yu-dui-xiang/">
+              <h3 class="post-title">
+                iOS - 类与对象
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b5a81cc33693e3ea874',
+    clientSecret: '7bb94672c847c4aa5723a9419fc5b3db33ca0dd6',
+    repo: 'Gittalk',
+    owner: 'qxuewei',
+    admin: ['qxuewei'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://qxuewei.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

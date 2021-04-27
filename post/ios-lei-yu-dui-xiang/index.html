@@ -1,0 +1,404 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>iOS - 类与对象 | 极客学伟</title>
+<meta name="description" content="一名准独立开发者的内心独白" />
+<link rel="shortcut icon" href="https://qxuewei.github.io//favicon.ico?v=1619502595382">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://qxuewei.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124834054-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124834054-1');
+</script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qxuewei.github.io/">
+  <img class="avatar" src="https://qxuewei.github.io//images/avatar.png?v=1619502595382" alt="">
+  </a>
+  <h1 class="site-title">
+    极客学伟
+  </h1>
+  <p class="site-description">
+    一名准独立开发者的内心独白
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://blog.csdn.net/qxuewei" class="menu" target="_blank">
+          CSDN
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/qxuewei" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/qxuewei" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://weibo.com/qxuewei" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/qxuewei" target="_blank">
+          <i class="fab fa-zhihu"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/qxuewei" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              iOS - 类与对象
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-01-02
+              </span>
+              <span>
+                6 min read
+              </span>
+              
+                <a href="https://qxuewei.github.io/tag/PmC0N8rc0/" class="post-tag">
+                  # iOS 基础
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://blog.image.jkxuewei.com/mweb/2020.01.02.15779697951077.baim-hanif-pYWuOMhtc6k-unsplash-1.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="ios-类与对象">iOS - 类与对象</h1>
+<h3 id="类方法">类方法</h3>
+<p>OC 中类的方法只有实例方法和静态方法两种：</p>
+<pre><code class="language-ObjectiveC">@interface Controller: NSObject
+/// 静态方法
++ (void)thisIsAStaticMethod;
+
+/// 实例方法
+- (void)thisIsAnInstanceMethod;
+@end
+</code></pre>
+<p>OC 中的方法只要声明在 @interface 里，就可以认为是公有的。实际上，OC 没有像 Java，C++ 中的那种绝对的 私有及保护 的成员方法，仅仅可以对调用者隐藏某些方法。</p>
+<p>声明和实现都写在 @implementation 里的方法，类的外部是看不到的。</p>
+<p>可以使用 分类（Category） 和 类扩展（Extension）来实现私有方法。</p>
+<!-- more -->
+<pre><code class="language-ObjectiveC">// AClass.h
+@interface AClass: NSObject
+- (void)sayHello;
+@end
+
+// AClass.m
+@interface AClass (private)
+- (void)privateSayHello1;
+@end
+
+@interface AClass ()
+- (void)privateSayHello2;
+@end
+
+@implementation AClass
+- (void)sayHello 
+{
+    [self privateSayHello];
+}
+
+- (void)privateSayHello1
+{
+    NSLog(@&quot;privateSayHello1&quot;);
+}
+
+- (void)privateSayHello2
+{
+    NSLog(@&quot;privateSayHello2&quot;);
+}
+
+@end
+</code></pre>
+<p>使用这种方法外部就不能直接调用到 <code>privateSayHello1</code> 和 <code>privateSayHello2</code> 方法。</p>
+<h3 id="类变量">类变量</h3>
+<p>Apple 推荐现代的 Objective-C 中使用 <code>@property</code> 来实现成员变量，使用 <code>@property</code> 声明的变量可以使用 <code>实例名.变量名</code> 来获取和修改。<br>
+<code>@property</code> 可以看做一种语法糖，使用 <code>@property</code> 此声明</p>
+<pre><code class="language-ObjectiveC">@interface AClass: NSObject
+@property (nonatomic, copy) NSString *name;
+@end
+</code></pre>
+<p>可等价于</p>
+<pre><code class="language-ObjectiveC">@interface AClass: NSObject
+{
+    NSString *_name;
+}
+- (NSString *)name;
+- (void)setName:(NSString *)name;
+@end
+
+@implementation AClass
+- (NSString *)name
+{
+    return _name;
+}
+- (void)setName:(NSString *)name
+{
+    _name = name;
+}
+@end
+</code></pre>
+<p><strong><code>@property</code> 会自动生成 <code>getter</code> 和 <code>setter</code> 方法，同时进行自动内存管理</strong></p>
+<p><code>@property</code> 可声明的属性修饰符有如下几种：</p>
+<ul>
+<li><code>readwrite</code> 可读写，需要生成 <code>getter</code> 和 <code>setter</code> 方法.</li>
+<li><code>readonly</code> 只读，只会生成 <code>getter</code> 方法，不会生成 <code>setter</code> 方法，不希望属性在类外改变时使用。</li>
+<li><code>assign</code> 赋值属性，<code>setter</code> 方法将传入的参数赋值给实例变量。</li>
+<li><code>strong</code> 持有特性，<code>setter</code> 方法将传入的参数先保留，再赋值，传入参数的引用计数会 +1。</li>
+<li><code>copy</code> 拷贝特性，<code>setter</code> 方法将传入对象复制一份；需要完全一份新的变量时使用。</li>
+<li><code>nonatomic</code> 和 <code>atomic</code> ，决定编译器生成的 <code>getter</code> 和 <code>setter</code> 方法是否是原子操作。</li>
+</ul>
+<p><strong>默认的 <code>@property</code> 是<br>
+基本数据类型： <code>readwrite</code>、<code>assign</code>、<code>atomic</code>；<br>
+对象： <code>readwrite</code>、<code>strong</code>、<code>atomic</code>；</strong></p>
+<h3 id="protocol">Protocol</h3>
+<p>OC 是单继承的，OC 中的类可以实现多个 <code>protocol</code> 来实现类似 C++ 中多重继承的效果。</p>
+<p><code>protocol</code> 类似 JAVA 中的 <code>interface</code>，定义了一个方法列表，这个方法列表中的方法可以使用 <code>@required</code> <code>@optional</code> 标注，以表示该方法是否客户类必须要实现的方法。</p>
+<p>当 <code>protocol</code> 中含有 <code>property</code> 时，编译器不会进行自动 <code>synthesize</code> 的，需要手动处理：在实现这个 <code>protocol</code> 的时候要么再次声明 <code>property</code> 要么手动 <code>synthesize</code></p>
+<h3 id="category">Category</h3>
+<p><code>Category</code> 是一种很灵活的扩展原有类的机制，使用 <code>Category</code> 不需要访问原有类的代码，也无需集成，<code>Category</code> 提供了一种简单的方式，来实现类的相关方法的模块化，把不同的方法分配到不同的类文件中。</p>
+<p>在使用 <code>Category</code> 时需要注意的是，如果有多个 <code>Category</code> 均实现了同一个方法，那么这些方法在运行时只有一个会被调用，具体哪个会被调用是不确定的，因此建议在使用 <code>Category</code> 时在函数命名方法加上前缀。</p>
+<h3 id="extension">Extension</h3>
+<p><code>Extension</code> 可以认为是一种匿名的 <code>Category</code> ，<code>Extension</code> 与 <code>Category</code> 有如下区别：</p>
+<ul>
+<li>使用 <code>Extension</code> 必须有原有类的源码</li>
+<li><code>Extension</code> 声明的方法必须在类的主 <code>@implementation</code> 区间内实现，可以避免使用有名 <code>Category</code> 带来的多个不必要的<code>@implementation</code>。</li>
+<li><code>Extension</code> 可以在类中添加新的属性和实例变量，<code>Category</code> 不可以。</li>
+<li><code>Extension</code> 和 <code>Category</code> 里添加的方法必须要有实现。（没有实现编译器会给出警告）</li>
+<li><code>Category</code> 一般用来给类添加私有的变量和方法，在类的内部使用。</li>
+</ul>
+<h3 id="如果在类中添加全局变量">如果在类中添加全局变量</h3>
+<p>一个简单直接的做法是在 .m 文件中使用 <code>static</code> 变量。由于 <code>static</code> 变量在编译器就是确定的，因此对于 <code>NSObject</code> 对象来说，初始化的值只能是 nil, 如何进行类似 init 的初始化呢? 可以通过重载 <code>initialize</code> 方法。</p>
+<pre><code class="language-ObjectiveC">static NSOperationQueue *_queue = nil;
+@implementation XWPerson
+- (void)initialize
+{
+    if (!_queue) {
+        _queue = [[NSOperationQueue alloc] init];
+    }
+}
+@end
+</code></pre>
+<p>为什么这里要判断是否为 <code>nil</code> 呢？因为 <code>initialize</code> 方法可能会调用多次。</p>
+<p>有一种方法是声明 <code>static</code> 函数，下面代码来自 <a href="https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLSessionManager.m">AFNetworking</a>，声明了一个当前文件范围可用的队列：</p>
+<pre><code class="language-ObjectiveC">static dispatch_queue_t url_session_manager_creation_queue() {
+    static dispatch_queue_t af_url_session_manager_creation_queue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;onceToken, ^{
+        af_url_session_manager_creation_queue = dispatch_queue_create(&quot;com.alamofire.networking.session.manager.creation&quot;, DISPATCH_QUEUE_SERIAL);
+    });
+
+    return af_url_session_manager_creation_queue;
+}
+</code></pre>
+<p>除此以外，还可以通过编译器的 <code>__attribute_</code> 特性来实现初始化：</p>
+<pre><code class="language-ObjectiveC">__attribute__((constructor))
+static void initialize_Queue() {
+    _personOperationQueue = [[NSOperationQueue alloc] init];
+}
+</code></pre>
+<h3 id="类的初始化">类的初始化</h3>
+<p>Objective-C 是建立在 Runtime 基础上的语言，类也不例外。OC 中类的初始化也是动态的，在 OC 中绝大部分类都继承自 <code>NSObject</code> ，它有两个非常特殊的类方法 <code>+load</code> 和 <code>+initialize</code>，用于类的初始化。</p>
+<h4 id="load"><code>+load</code></h4>
+<p><code>+load</code> 方法是当类或分类被添加到 Objective-C runtime 时被调用的，实现这个方法可以让我们在类加载的时候执行一些类相关的行为。子类的 <code>+load</code> 方法会在它所有的父类的 <code>+load</code> 方法之后执行，而分类的 <code>+load</code> 方法会在它的主类 <code>+load</code> 方法之后执行。</p>
+<h4 id="initialize"><code>+initialize</code></h4>
+<p><code>+initialize</code> 方法是在类或它的子类收到第一条消息之前被调用的，这里所指的消息包括实例方法和类方法的调用。也就是说 <code>+initialize</code> 方法是以懒加载的方式被调用的。如果程序一直没有给某各类或它的子类发送消息，那么这个类的 <code>+initialize</code> 方法是永远不会被调用的。</p>
+<p>如果一个分类实现了 <code>+initialize</code> 方法，那么就会对这个类中的实现造成覆盖。</p>
+<hr>
+<h3 id="更多干货文章">更多干货文章</h3>
+<h5 id="博客wwwqiuxueweicom">博客：<a href="http://www.qiuxuewei.com">www.qiuxuewei.com</a></h5>
+<h5 id="微信公众号开发者成长之路">微信公众号：<strong>@开发者成长之路</strong></h5>
+<h5 id=""><img src="http://blog.image.jkxuewei.com/sou_wechat.png" alt="公众号二维码" loading="lazy"></h5>
+<p><strong>一个没有鸡汤只有干货的公众号</strong></p>
+<hr>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#ios-%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1">iOS - 类与对象</a><br>
+*
+<ul>
+<li><a href="#%E7%B1%BB%E6%96%B9%E6%B3%95">类方法</a></li>
+<li><a href="#%E7%B1%BB%E5%8F%98%E9%87%8F">类变量</a></li>
+<li><a href="#protocol">Protocol</a></li>
+<li><a href="#category">Category</a></li>
+<li><a href="#extension">Extension</a></li>
+<li><a href="#%E5%A6%82%E6%9E%9C%E5%9C%A8%E7%B1%BB%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F">如果在类中添加全局变量</a></li>
+<li><a href="#%E7%B1%BB%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96">类的初始化</a>
+<ul>
+<li><a href="#load"><code>+load</code></a></li>
+<li><a href="#initialize"><code>+initialize</code></a></li>
+</ul>
+</li>
+<li><a href="#%E6%9B%B4%E5%A4%9A%E5%B9%B2%E8%B4%A7%E6%96%87%E7%AB%A0">更多干货文章</a><br>
+*
+<ul>
+<li><a href="#%E5%8D%9A%E5%AE%A2wwwqiuxueweicom">博客：www.qiuxuewei.com</a></li>
+<li><a href="#%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E5%BC%80%E5%8F%91%E8%80%85%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF">微信公众号：<strong>@开发者成长之路</strong></a></li>
+<li><a href="#">!公众号二维码</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qxuewei.github.io/post/nei-cun-guan-li-ci-pan-he-wen-jian-shi-yi/">
+              <h3 class="post-title">
+                内存管理、磁盘和文件拾遗
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b5a81cc33693e3ea874',
+    clientSecret: '7bb94672c847c4aa5723a9419fc5b3db33ca0dd6',
+    repo: 'Gittalk',
+    owner: 'qxuewei',
+    admin: ['qxuewei'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://qxuewei.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

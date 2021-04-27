@@ -1,0 +1,1060 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MySQL - 基础语法 | 极客学伟</title>
+<meta name="description" content="一名准独立开发者的内心独白" />
+<link rel="shortcut icon" href="https://qxuewei.github.io//favicon.ico?v=1619502595382">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://qxuewei.github.io//styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124834054-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-124834054-1');
+</script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qxuewei.github.io/">
+  <img class="avatar" src="https://qxuewei.github.io//images/avatar.png?v=1619502595382" alt="">
+  </a>
+  <h1 class="site-title">
+    极客学伟
+  </h1>
+  <p class="site-description">
+    一名准独立开发者的内心独白
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://blog.csdn.net/qxuewei" class="menu" target="_blank">
+          CSDN
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/qxuewei" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+        <a href="https://twitter.com/qxuewei" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      
+    
+      
+        <a href="https://weibo.com/qxuewei" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/qxuewei" target="_blank">
+          <i class="fab fa-zhihu"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.facebook.com/qxuewei" target="_blank">
+          <i class="fab fa-facebook"></i>
+        </a>
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              MySQL - 基础语法
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-06-30
+              </span>
+              <span>
+                20 min read
+              </span>
+              
+                <a href="https://qxuewei.github.io/tag/u6X-XcnSO/" class="post-tag">
+                  # 数据库
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://blog.image.jkxuewei.com/mweb/2020.06.30.15935112492167.michael-dziedzic-dSyhpTGhNHg-unsplash.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="mysql-基础语法">MySQL - 基础语法</h1>
+<h2 id="sql">SQL</h2>
+<p>Structured Query Language：结构化查询语言<br>
+定义了了操作所有关系型数据库的规则</p>
+<h2 id="sql-通用语法">SQL 通用语法</h2>
+<ol>
+<li>SQL 语句可以单行或多行书写，以分号结尾</li>
+<li>可使用空格和缩进来增强语句的可读性</li>
+<li>MySQL 数据库的SQL语句不区分大小写，关键字建议大写</li>
+<li>注释：
+<ol>
+<li>单行注释：-- 注释内容 或 # 注释内容 （MySQL独有）</li>
+<li>多行注释：/* 注释内容 */</li>
+</ol>
+</li>
+</ol>
+<!-- more -->
+<h2 id="sql-分类">SQL 分类</h2>
+<ol>
+<li>DDL（Date Definition Language） 数据库定义语言：定义数据库对象：数据库、表、列。关键字：<code>CREATE</code>、<code>DROP</code>、<code>ALTER</code> 等</li>
+<li>DML（Date Manipulation Language）数据库操作语言：对数据库表中的数据进行增删改。关键字：<code>INSERT</code>、<code>DELETE</code>、<code>UPDATE</code> 等</li>
+<li>DQL (Date Query Language) 数据库查询语言：用来查询数据库表中的数据。关键字：<code>SELECT</code>、<code>WHERE</code> 等</li>
+<li>DCL (Date Control Language) 数据库控制语言：定于数据库的访问权限和安全级别。关键字：<code>CRANT</code>、<code>REVOKE</code> 等</li>
+</ol>
+<h3 id="ddl">DDL</h3>
+<h4 id="操作数据库">操作数据库</h4>
+<h5 id="c-create-创建">C (Create) - 创建</h5>
+<ul>
+<li>创建数据库：<code>CREATE DATABASE 数据库名称;</code></li>
+<li>创建数据库-不存在再创建：<code>CREATE DATABASE IF NOT EXISTS 数据库名称;</code></li>
+<li>创建数据库-指定字符集：<code>CREATE DATABASE 数据库名称 CHARACTER SET 字符集名;</code></li>
+</ul>
+<h5 id="r-retrieve-查询">R (Retrieve) - 查询</h5>
+<ul>
+<li>查询所有数据库名称：<code>SHOW DATABASE;</code></li>
+<li>查询某个数据库的字符集：查询某个数据库的创建语句：<code>SHOW CREATE DATABASE 数据库名称;</code></li>
+</ul>
+<h5 id="u-update-修改">U (Update) - 修改</h5>
+<ul>
+<li>修改数据库的字符集：<code>ALTER DATABASE 数据库名称 CHARACTER SET 字符集名称;</code></li>
+</ul>
+<h5 id="d-delete-删除">D (Delete) - 删除</h5>
+<ul>
+<li>删除数据库：<code>DROP DATABASE 数据库名称</code></li>
+<li>删除数据库-存在再删除：<code>DROP DATABASE IF EXISTS 数据库名称</code></li>
+</ul>
+<h5 id="使用数据库">使用数据库</h5>
+<ul>
+<li>查询当前正在使用的数据库名称：<code>SELECT DATABASE();</code></li>
+<li>使用数据库：<code>USE 数据库名称;</code></li>
+</ul>
+<h4 id="操作表">操作表</h4>
+<h5 id="c-create-创建-2">C (Create) - 创建</h5>
+<pre><code class="language-sql">CREAT TABLE 表名(
+    列名1 数据类型1,
+    列名2 数据类型2,
+    ...
+    列名n 数据类型n
+);
+</code></pre>
+<p>常用表类型：</p>
+<ul>
+<li>int: <code>age INT,</code></li>
+<li>double: <code>score DOUBLE(5,2), # 最多5位，保留2位小数 99.12</code></li>
+<li>date: 日期，只包含年月日，yyyy-MM-dd</li>
+<li>datetime: 日期，包含年月日时分秒，yyyy-MM-dd HH:mm:ss</li>
+<li>timestamp: 时间戳，包含年月日时分秒，yyyy-MM-dd HH:mm:ss，如果不给其赋值，或赋值为null，则默认使用当前系统时间自动赋值，常用语 创建时间 字段</li>
+<li>varchar: 字符串，<code>name VARCHAR(20) # 最大20字符的姓名</code></li>
+</ul>
+<p>复制表：<code>CREATE TABLE 新表名 LIKE 旧表名;</code></p>
+<h5 id="r-retrieve-查询-2">R (Retrieve) - 查询</h5>
+<ul>
+<li>查询某个数据库中所有的表名称：<code>SHOW TABLES;</code></li>
+<li>查询表结构：<code>DESC 表名称;</code></li>
+<li>查询建表语句：<code>SHOW CREATE TABLE 表名;</code></li>
+</ul>
+<h5 id="u-update-修改-2">U (Update) - 修改</h5>
+<ul>
+<li>修改表名：<code>ALTER TABLE 旧表名 RENAME TO 新表名;</code></li>
+<li>修改表字符集：<code>ALTER TABLE 表名 CHARACTER SET 字符集名称;</code></li>
+<li>添加一列：<code>ALTER TABLE 表名 ADD 列名 数据类型;</code></li>
+<li>修改列名称和数据类型：
+<ul>
+<li>即修改名称也修改数据类型：<code>ALTER TABLE 表名 CHANGE 列名 新列名 新数据类型;</code></li>
+<li>只修改数据类型：<code>ALTER TABLE 表名 MODIFY 列名 新数据类型;</code></li>
+</ul>
+</li>
+<li>删除列：<code>ALTER TABLE 表名 DROP 列名;</code></li>
+</ul>
+<h5 id="d-delete-删除-2">D (Delete) - 删除</h5>
+<ul>
+<li>删除表：<code>DROP TABLE 表名;</code></li>
+<li>删除表-存在再删：<code>DROP TABLE IF EXISTS 表名;</code></li>
+</ul>
+<h3 id="dml">DML</h3>
+<h4 id="添加数据">添加数据</h4>
+<p>语法：<code>INSTER INTO 表名(列名1,列名2,...,列名n) VALUES(值1,值2,...,值n);</code><br>
+注意：1. 列名和值要一一对应。2.如果表名后，不定义列名，则默认给所列添加值(<code>INSERT INTO 表名 VALUES(值1,值2,...,值n)</code>)。3.除了数字类型，其他类型需要使用引号（单引号、双引号都行）引起来</p>
+<h4 id="删除数据">删除数据</h4>
+<p>语法：<code>DELETE FROM 表名 [WHERE 条件]</code><br>
+注意：1. 如果不加条件（<code>DELETE FORM 表名;</code>），删除表中所有记录。如果不加 WHERE 则删除整个表中所有数据(会执行n次删除操作)。2. 如果想删除整个表中所有数据，建议使用<code>TRUNCATE TABLE 表名; (删除表，然后创建一个同名空表)</code></p>
+<h4 id="修改数据">修改数据</h4>
+<p>语法：<code>UPDATE 表名 SET 列名1=值1, 列名2=值2, ... [WHERE 条件];</code><br>
+注意：1. 如果不加条件（<code>UPDATE 表名 SET 列名1=值1, 列名2=值2, ...</code>）,则会将表中所有记录全部修改。</p>
+<h3 id="dql">DQL</h3>
+<p>查询表中的记录：<code>SELECT * FROM 表名;</code><br>
+语法：<code>SELECT 字段列表 FROM 表名列表 WHERE 条件列表 GROUP BY 分组字段 HAVING 分组之后的条件 ORDER BY 排序 LIMIT 分页限定</code></p>
+<h4 id="基础查询">基础查询</h4>
+<ol>
+<li>多个字段的查询
+<ol>
+<li><code>SELECT 字段名1，字段名2，... FROM 表名;</code></li>
+<li>注意：如果查询所有字段，则可以使用 * 来替代字段列表</li>
+</ol>
+</li>
+<li>去除重复
+<ul>
+<li><code>DISTINCT</code>
+<ul>
+<li>eg: <code>SELECT DISTINCT address FROM student;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>计算列
+<ol>
+<li>一般可以使用四则运算计算一些列的值。（一般只会进行数值型的计算）
+<ul>
+<li>eg: <code>SELECT name,math,english,math + english FROM student;</code> # (查询每个人的各科成绩和总分)</li>
+</ul>
+</li>
+<li>ifnull(表达式1，表达式2)：null 参与的运算，计算结果都为null
+<ol>
+<li>表达式1：哪个字段需要判断是否为 null</li>
+<li>表达式2：如果1字段为null后替换的新值</li>
+<li>eg: <code>SELECT name,math,english,math + IFNULL(english, 0) FROM student;</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>起别名
+<ol>
+<li>as: as 可以省略</li>
+<li>eg: <code>SELECT name,math AS 数学,english AS 英语,math + IFNULL(english, 0) AS 总分 FROM student;</code></li>
+</ol>
+</li>
+</ol>
+<h4 id="条件查询">条件查询</h4>
+<ol>
+<li><code>WHERERE</code> 子句后跟条件</li>
+<li>运算符
+<ol>
+<li><code>&gt;、 &lt;、 &lt;=、 &gt;=、 =、 &lt;&gt;</code></li>
+<li><code>BETWEEN...AND</code></li>
+<li><code>IN (集合)</code></li>
+<li><code>LIKE</code></li>
+<li><code>IS NULL</code></li>
+<li><code>AND 或 &amp;&amp;</code></li>
+<li><code>OR 或 ||</code></li>
+<li><code>NOT 或 !</code></li>
+<li><code>LIKE</code>
+<ol>
+<li>占位符
+<ol>
+<li>_: 单个任意字符</li>
+<li>%: 多个任意字符</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h5 id="eg">eg:</h5>
+<pre><code class="language-sql">-- 查询年龄大于20岁
+SELECT * FROM student WHERE age &gt; 20;
+
+-- 查询年龄大于等于20岁
+SELECT * FROM student WHERE age &gt;= 20;
+	
+-- 查询年龄等于20岁
+SELECT * FROM student WHERE age = 20;
+	
+-- 查询年龄不等于20岁
+SELECT * FROM student WHERE age != 20;
+SELECT * FROM student WHERE age &lt;&gt; 20;
+	
+-- 查询年龄大于等于20 小于等于30
+SELECT * FROM student WHERE age &gt;= 20 &amp;&amp;  age &lt;=30;
+SELECT * FROM student WHERE age &gt;= 20 AND  age &lt;=30;
+SELECT * FROM student WHERE age BETWEEN 20 AND 30;
+	
+-- 查询年龄22岁，18岁，25岁的信息
+SELECT * FROM student WHERE age = 22 OR age = 18 OR age = 25
+SELECT * FROM student WHERE age IN (22,18,25);
+	
+-- 查询英语成绩为null
+SELECT * FROM student WHERE english = NULL; -- 不对的。null值不能使用 = （!=） 判断
+SELECT * FROM student WHERE english IS NULL;
+	
+-- 查询英语成绩不为null
+SELECT * FROM student WHERE english  IS NOT NULL;
+
+-- 查询姓马的有哪些？ like
+SELECT * FROM student WHERE NAME LIKE '马%';
+
+-- 查询姓名第二个字是化的人
+SELECT * FROM student WHERE NAME LIKE &quot;_化%&quot;;
+	
+-- 查询姓名是3个字的人
+SELECT * FROM student WHERE NAME LIKE '___';
+				
+-- 查询姓名中包含德的人
+SELECT * FROM student WHERE NAME LIKE '%德%';
+</code></pre>
+<h4 id="排序查询">排序查询</h4>
+<ul>
+<li>语法：<code>ORDER BY 子句</code>
+<ul>
+<li><code>ORDER BY 排序字段1 排序方式1, 排序字段2 排序方式2...;</code></li>
+</ul>
+</li>
+<li>排序方式：
+<ul>
+<li>ASC：升序 （默认）</li>
+<li>DESC：降序</li>
+</ul>
+</li>
+<li>注意：
+<ul>
+<li>如果有多个排序条件，则当前面条件值一致时，才会判断第二条件。</li>
+</ul>
+</li>
+</ul>
+<h4 id="聚合函数">聚合函数</h4>
+<p>将一列数据作为一个整体，进行纵向计算。<br>
+注意：聚合函数的计算时，默认排除null值</p>
+<ul>
+<li><code>COUNT</code>: 计算个数
+<ul>
+<li>一般选择非空的列：主键</li>
+<li><code>COUNT(*)</code></li>
+</ul>
+</li>
+<li><code>MAX</code>: 最大值</li>
+<li><code>MIN</code>: 最小值</li>
+<li><code>SUM</code>: 和</li>
+<li><code>AVG</code>: 平均值</li>
+</ul>
+<h4 id="分组查询">分组查询</h4>
+<ul>
+<li>语法：<code>GROUP BY 分组字段;</code></li>
+<li>注意：
+<ul>
+<li>分组之后查询的字段只能是: 分组字段和聚合函数</li>
+<li><code>WHERE</code> 和 <code>HAVING</code> 的区别？
+<ul>
+<li><code>WHERE</code> 在分组之前进行限定，如果不满足条件，则不参与分组。<code>HAVING</code> 在分组之后限定，如果不满足结果，则不会被查询出来。</li>
+<li><code>WHERE</code> 后不可以跟聚合函数，<code>HAVING</code> 可以进行聚合函数的判断。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="eg-2">eg:</h5>
+<pre><code class="language-sql">-- 按照性别分组。分别查询男、女同学的平均分
+SELECT sex , AVG(math) FROM student GROUP BY sex;
+	
+-- 按照性别分组。分别查询男、女同学的平均分,人数
+SELECT sex , AVG(math),COUNT(id) FROM student GROUP BY sex;
+	
+--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组
+SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex;
+	
+--  按照性别分组。分别查询男、女同学的平均分,人数 要求：分数低于70分的人，不参与分组,分组之后。人数要大于2个人
+SELECT sex , AVG(math),COUNT(id) FROM student WHERE math &gt; 70 GROUP BY sex HAVING COUNT(id) &gt; 2;
+
+SELECT sex , AVG(math),COUNT(id) 人数 FROM student WHERE math &gt; 70 GROUP BY sex HAVING 人数 &gt; 2;
+</code></pre>
+<h4 id="分页查询">分页查询</h4>
+<ul>
+<li>语法：<code>LIMIT</code> 开始的索引，每页查询的条数；</li>
+<li>公式：开始的索引 = （当前的页码-1） * 每页显示的条数</li>
+<li><code>LIMIT</code> 是一个MYSQL的特有关键字</li>
+</ul>
+<h3 id="dcl">DCL</h3>
+<p>管理用户，授权。</p>
+<h4 id="管理用户">管理用户</h4>
+<ul>
+<li>添加用户：<code>CREATE USER '用户名'@'主机名' INDENTIFIED' BY '密码';</code></li>
+<li>删除用户：<code>DROP USER '用户名'@'主机名'</code></li>
+<li>修改用户密码：<code>UPDATE USER SET PASSWORD = PASSWORD('新密码') WHERE USER = '用户名';</code> 或 <code>SET PASSWORD FOR '用户名'@'主机名' = PASSWORD('新密码');</code></li>
+</ul>
+<h4 id="权限管理">权限管理</h4>
+<ul>
+<li>查询权限: <code>SHOW GRANTS FOR '用户名'@'主机名';</code>
+<ul>
+<li><code>SHOW GRANTS FOR 'lisi'@'%';</code></li>
+</ul>
+</li>
+<li>授予权限：<code>GRANT 权限列表 ON 数据库名.表名 TO '用户名'@'主机名';</code>
+<ul>
+<li><code>GRANT ALL ON *.* TO 'zhangsan'@'localhost'; -- 为张三授予root权限</code></li>
+</ul>
+</li>
+<li>撤销权限：<code>REVOKE 权限列表 ON 数据库名.表名 FROM '用户名'@'主机名';</code>
+<ul>
+<li><code>REVOKE UPDATE ON db3.</code>account<code>FROM 'lisi'@'%'; -- 撤销李四db3的account表的操作权限</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="eg-3">eg:</h5>
+<pre><code class="language-sql">-- 每页显示3条记录 
+SELECT * FROM student LIMIT 0,3; -- 第1页
+SELECT * FROM student LIMIT 3,3; -- 第2页
+SELECT * FROM student LIMIT 6,3; -- 第3页
+</code></pre>
+<h2 id="约束">约束</h2>
+<ul>
+<li>概念：对表中的数据进行限定，保证数据的正确性、有效性和完整性。</li>
+<li>分类：
+<ul>
+<li>主键：<code>PRIMARY KEY</code></li>
+<li>非空：<code>NOT NULL</code></li>
+<li>唯一：<code>UNIQUE</code></li>
+<li>外键：<code>FOREIGN KEY</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="非空not-null-某一列的值不能为-null">非空：<code>NOT NULL</code>, 某一列的值不能为 null</h3>
+<ul>
+<li>
+<p>创建表时添加非空约束</p>
+<pre><code class="language-SQL">CREAT TABLE student (
+    id INT,
+    NAME VARCHAR(20) NOT NULL -- name 不为空    
+);
+</code></pre>
+</li>
+<li>
+<p>创建完表后，添加非空约束<br>
+<code>ALTER TABLE student MODIFY NAME VARCHAR(20) NOT NULL;</code></p>
+</li>
+<li>
+<p>创建完表后，删除非空约束<br>
+<code>ALTER TABLE student MODIFY NAME VARCHAR(20);</code></p>
+</li>
+</ul>
+<h3 id="唯一约束unique-某一列的值不能重复">唯一约束：<code>UNIQUE</code> 某一列的值不能重复</h3>
+<ul>
+<li>
+<p>注意：唯一约束可以有 NULL 值，但只能有一条记录为 NULL</p>
+</li>
+<li>
+<p>创建表时添加唯一约束</p>
+<pre><code class="language-sql">CREAT TABLE student (
+id INT,
+phoneNumber VARCHAR(20) UNIQUE -- 手机号 不可重复    
+);
+</code></pre>
+</li>
+<li>
+<p>创建完表后，添加唯一约束<br>
+<code>ALTER TABLE student MODIFY phoneNumber VARCHAR(20) UNIQUE;</code></p>
+</li>
+<li>
+<p>创建完表后，删除唯一约束<br>
+<code>ALTER TABLE student DROP INDEX phoneNumber;</code></p>
+</li>
+</ul>
+<h3 id="主键约束primary-key">主键约束：<code>PRIMARY KEY</code></h3>
+<ul>
+<li>
+<p>注意：</p>
+<ul>
+<li>含义：非空且唯一</li>
+<li>一张表只能有一个字段为主键</li>
+<li>主键就是表中记录的唯一标识</li>
+</ul>
+</li>
+<li>
+<p>在创建表时，添加主键约束</p>
+<pre><code class="language-SQL">CREAT TABLE student(
+    id INT PRIMARY KEY, -- 给id添加主键约束
+    name VARCHAR(20)
+);
+</code></pre>
+</li>
+<li>
+<p>删除主键约束<br>
+<code>ALTER TABLE student DROP PRIMARY KEY;</code></p>
+</li>
+<li>
+<p>创建完表后，添加主键<br>
+<code>ALTER TABLE student MODIFY id INT PRIMARY KEY;</code></p>
+</li>
+<li>
+<p>自动增长：如果某一列是数值类型，使用 <code>AUTO_INCREMENT</code> 可以完成值的自动增长。</p>
+<ul>
+<li>
+<p>在创建表时，添加主键约束，并且完成主键自增长</p>
+<pre><code class="language-SQL">CREATE TABLE student (
+    id INT PRIMARY KEY AUTO_INCREMENT, -- 给id添加主键约束
+    name VARCHAR(20)
+);
+</code></pre>
+</li>
+<li>
+<p>删除自动增长<br>
+<code>ALTER TABLE student MODIFY id INT</code></p>
+</li>
+<li>
+<p>添加自动增长<br>
+<code>ALTER TABLE student MODIFY id INT AUTO_INCREMENT</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="外键约束foreign-key">外键约束：<code>FOREIGN KEY</code></h3>
+<ul>
+<li>
+<p>在创建表时，可以添加外键</p>
+<ul>
+<li>
+<p>注意：外键可以为null，但不能为不存在的值</p>
+</li>
+<li>
+<p>语法：</p>
+<pre><code class="language-SQL">CREATE TABLE 表名(
+	....
+	外键列
+    CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称)
+);
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>删除外键<br>
+<code>ALTER TABLE 表名 DROP FOREIGN KEY 外键名称;</code></p>
+</li>
+<li>
+<p>创建表之后，添加外键<br>
+<code>ALTER TABLE 表名 ADD CONSTRAINT 外键名称 FOREIGN KEY (外键列名称) REFERENCES 主表名称(主表列名称);</code></p>
+</li>
+<li>
+<p>级联操作</p>
+<ol>
+<li>
+<p>添加级联操作</p>
+<ol>
+<li>分类：
+<ol>
+<li>级联更新：ON UPDATE CASCADE</li>
+<li>级联删除：ON DELETE CASCADE</li>
+</ol>
+</li>
+<li>语法：</li>
+</ol>
+<pre><code class="language-SQL">ALTER TABLE 表名 ADD CONSTRAINT 外键名称 
+FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称) ON UPDATE CASCADE / ON DELETE CASCADE;
+</code></pre>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="数据库的设计">数据库的设计</h2>
+<h3 id="多表之间的关系">多表之间的关系</h3>
+<ul>
+<li>一对一：eg: 人和身份证</li>
+<li>一对多：eg: 部门和员工
+<ul>
+<li>实现方式：在&quot;多&quot;的一方建立外键，指向&quot;一&quot;的一方的主键</li>
+</ul>
+</li>
+<li>多对多：eg: 学生和课程
+<ul>
+<li>实现方式：借助第三张中间表。中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键</li>
+</ul>
+</li>
+</ul>
+<h4 id="案例">案例</h4>
+<pre><code class="language-SQL">-- 创建旅游线路分类表 tab_category
+-- cid 旅游线路分类主键，自动增长
+-- cname 旅游线路分类名称非空，唯一，字符串 100
+CREATE TABLE tab_category (
+    cid INT PRIMARY KEY AUTO_INCREMENT,
+    cname VARCHAR(100) NOT NULL UNIQUE
+);
+	
+-- 创建旅游线路表 tab_route
+/*
+rid 旅游线路主键，自动增长
+rname 旅游线路名称非空，唯一，字符串 100
+price 价格
+rdate 上架时间，日期类型
+cid 外键，所属分类
+*/
+CREATE TABLE tab_route(
+    rid INT PRIMARY KEY AUTO_INCREMENT,
+    rname VARCHAR(100) NOT NULL UNIQUE,
+    price DOUBLE,
+    rdate DATE,
+    cid INT,
+    FOREIGN KEY (cid) REFERENCES tab_category(cid)
+);
+	
+/*创建用户表 tab_user
+uid 用户主键，自增长
+username 用户名长度 100，唯一，非空
+password 密码长度 30，非空
+name 真实姓名长度 100
+birthday 生日
+sex 性别，定长字符串 1
+telephone 手机号，字符串 11
+email 邮箱，字符串长度 100
+*/
+CREATE TABLE tab_user (
+    uid INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    PASSWORD VARCHAR(30) NOT NULL,
+    NAME VARCHAR(100),
+    birthday DATE,
+    sex CHAR(1) DEFAULT '男',
+    telephone VARCHAR(11),
+    email VARCHAR(100)
+);
+	
+/*
+创建收藏表 tab_favorite
+rid 旅游线路 id，外键
+date 收藏时间
+uid 用户 id，外键
+rid 和 uid 不能重复，设置复合主键，同一个用户不能收藏同一个线路两次
+*/
+CREATE TABLE tab_favorite (
+    rid INT, -- 线路id
+    DATE DATETIME,
+    uid INT, -- 用户id
+    -- 创建复合主键
+    PRIMARY KEY(rid,uid), -- 联合主键
+    FOREIGN KEY (rid) REFERENCES tab_route(rid),
+    FOREIGN KEY(uid) REFERENCES tab_user(uid)
+);
+
+</code></pre>
+<h3 id="数据库设计的范式">数据库设计的范式</h3>
+<ul>
+<li>
+<p>概念：设计数据库时，需要遵循的一些规范。要遵循后边的范式要求，必须先遵循前边的所有范式要求</p>
+<pre><code>  	设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，各种范式呈递次规范，越高的范式数据库冗余越小。
+  	目前关系数据库有六种范式：第一范式（1NF）、第二范式（2NF）、第三范式（3NF）、巴斯-科德范式（BCNF）、第四范式(4NF）和第五范式（5NF，又称完美范式）。
+</code></pre>
+</li>
+<li>
+<p>分类：</p>
+<ul>
+<li>第一范式（1NF）：每一列都是不可分割的原子数据项</li>
+<li>第二范式（2NF）：在第一范式的基础上，非码属性必须完全依赖于码。（在1NF基础上消除非主属性对码的部分函数依赖）
+<ul>
+<li>函数依赖：A-&gt;B, 如果通过A属性（属性组）的值，可以确定唯一B属性的值，则称B依赖于A。eg: 学号-&gt;姓名，（学号，课程名称）-&gt; 分数
+<ul>
+<li>完全函数依赖：A-&gt;B，如果A是一个属性组，则B属性的值需要依赖于A属性组中的所有元素值。eg:（学号，课程名称）-&gt; 分数</li>
+<li>部分函数依赖：A-&gt;B，如果A是一个属性组，则B属性值只需要依赖A属性组中的某一些值即可。eg:（学号，课程名称）-&gt; 姓名</li>
+<li>传递函数依赖：A-&gt;B, B-&gt;C，如果通过A属性（属性组）的值，可以确定唯一B属性的值，再通过B属性（属性组）的值可以确定唯一C属性的值，则称C传递依赖于A。</li>
+</ul>
+</li>
+<li>码：如果在一张表中，一个属性（属性组）被其他所有属性完全依赖，则称这个属性（属性组）为该表的码。eg: （学号，课程名称）
+<ul>
+<li>主属性：码属性（组）中所有的属性</li>
+<li>非主属性：除码属性（组）外的属性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第三范式（3NF）：在2NF的基础上，任何非主属性不依赖于其他非主属性。（在2NF基础上消除传递依赖）</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库的备份和还原">数据库的备份和还原</h2>
+<ul>
+<li>命令行：
+<ul>
+<li>备份语法：<code>mysqldump -u用户名 -p密码 数据库名称 &gt; 保存的位置</code></li>
+<li>还原方式：
+<ul>
+<li>登录数据库</li>
+<li>创建数据库</li>
+<li>使用数据库</li>
+<li>执行文件 （之前保存的文件路径）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="多表查询">多表查询</h2>
+<ul>
+<li>笛卡尔积：有两个集合A、B, 取这两个集合的所有组成情况</li>
+<li>要完成多表查询，需要消除无用的数据</li>
+<li>语法：</li>
+</ul>
+<pre><code class="language-SQL">SELECT
+    列名列表
+FROM
+    表名列表
+WHERE
+    条件
+</code></pre>
+<p>练习：</p>
+<pre><code class="language-SQL"># 创建部门表
+CREATE TABLE dept(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(20)
+);
+INSERT INTO dept (NAME) VALUES ('开发部'),('市场部'),('财务部');
+# 创建员工表
+CREATE TABLE emp (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(10),
+	gender CHAR(1), -- 性别
+	salary DOUBLE, -- 工资
+	join_date DATE, -- 入职日期
+	dept_id INT,
+	FOREIGN KEY (dept_id) REFERENCES dept(id) -- 外键，关联部门表(部门表的主键)
+);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('孙悟空','男',7200,'2013-02-24',1);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('猪八戒','男',3600,'2010-12-02',2);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('唐僧','男',9000,'2008-08-08',2);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('白骨精','女',5000,'2015-10-07',3);
+INSERT INTO emp(NAME,gender,salary,join_date,dept_id) VALUES('蜘蛛精','女',4500,'2011-03-14',1);
+</code></pre>
+<h3 id="多表查询的分类">多表查询的分类</h3>
+<h4 id="内连接查询">内连接查询</h4>
+<pre><code>1. 从哪些表中查询数据
+2. 条件是什么
+3. 查询哪些字段
+</code></pre>
+<h5 id="隐式内连接">隐式内连接</h5>
+<pre><code class="language-sql">-- 查询所有员工信息和对应的部门信息
+SELECT * FROM emp,dept WHERE emp.dept_id = dept.id;
+    
+-- 查询员工表的名称，性别。部门表的名称
+-- 查询员工表的名称，性别。部门表的名称
+SELECT
+	t1.`NAME`,
+	t1.gender,
+	t2.`NAME`
+FROM
+	emp t1,		-- 员工表
+	dept t2		-- 部门表
+WHERE
+	t1.dept_id = t2.id
+</code></pre>
+<h5 id="显式内连接">显式内连接</h5>
+<ul>
+<li>语法：<code>SELECT 字段名称 FROM 表名1 [INNER] JOIN 表名2 ON 条件;</code>
+<ul>
+<li>例如 <code>SELECT * FROM emp JOIN dept ON emp.dept_id = dept.id;</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="外连接查询">外连接查询</h4>
+<h5 id="左外连接">左外连接</h5>
+<ul>
+<li>语法：<code>SELECT 字段列表 FROM 表1 LEFT [OUTER] JOIN 表2 ON 条件;</code></li>
+<li>含义：查询左表所有的数据与有表有交集的部分</li>
+<li>实例：</li>
+</ul>
+<pre><code class="language-sql">-- 查询所有员工信息，如果员工有部门，则查询部门名称，没有部门，则不显示部门名称
+SELECT
+	t1.*,
+	t2.`NAME`
+FROM
+	emp t1
+LEFT JOIN
+	dept t2
+ON
+	t1.dept_id = t2.id
+</code></pre>
+<h4 id="子查询">子查询</h4>
+<ul>
+<li>概念：查询中嵌套查询，成嵌套查询为子查询。</li>
+<li>实例：</li>
+</ul>
+<pre><code class="language-SQL">-- 查询工资最高的员工信息
+SELECT * FROM emp WHERE emp.`salary` = (SELECT MAX(salary) FROM emp);
+
+-- 查询'财务部'和'市场部'所有的员工信息
+SELECT * FROM emp WHERE dept_id IN (SELECT id FROM dept WHERE NAME = '财务部' OR NAME = '市场部');
+
+-- 查询员工入职日期是2011-11-11日之后的员工信息和部门信息
+SELECT 
+    * 
+FROM 
+    dept t1 ,
+    (SELECT * FROM emp WHERE emp.`join_date` &gt; '2011-11-11') t2
+WHERE 
+    t1.id = t2.dept_id;
+</code></pre>
+<h3 id="事务">事务</h3>
+<ul>
+<li>概念：如果一个包含多个步骤的业务操作，被事务管理，那么这些操作要么同时成功，要么同时失败。</li>
+<li>操作:
+<ul>
+<li>开启事务：<code>START TRANSACTION;</code></li>
+<li>回滚：<code>ROLLBACK</code></li>
+<li>提交：<code>COMMIT</code></li>
+</ul>
+</li>
+<li>MySQL 中事务是默认自动提交。（运行一条DML(增删改)语句就会自动提交一次事务）</li>
+<li>Oracle 数据库是默认手动提交事务，需要先开启事务，再提交。</li>
+</ul>
+<h4 id="事务的四大特征">事务的四大特征：</h4>
+<ol>
+<li>原子性：是不可分割的最小操作单位，要么同时成功，要么同时失败。</li>
+<li>持久性：当事务提交或回滚后，数据库会持久化的保存数据。</li>
+<li>隔离性：多个事务之间。相互独立。</li>
+<li>一致性：事务操作前后，数据总量不变</li>
+</ol>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#mysql-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95">MySQL - 基础语法</a>
+<ul>
+<li><a href="#sql">SQL</a></li>
+<li><a href="#sql-%E9%80%9A%E7%94%A8%E8%AF%AD%E6%B3%95">SQL 通用语法</a></li>
+<li><a href="#sql-%E5%88%86%E7%B1%BB">SQL 分类</a>
+<ul>
+<li><a href="#ddl">DDL</a>
+<ul>
+<li><a href="#%E6%93%8D%E4%BD%9C%E6%95%B0%E6%8D%AE%E5%BA%93">操作数据库</a>
+<ul>
+<li><a href="#c-create-%E5%88%9B%E5%BB%BA">C (Create) - 创建</a></li>
+<li><a href="#r-retrieve-%E6%9F%A5%E8%AF%A2">R (Retrieve) - 查询</a></li>
+<li><a href="#u-update-%E4%BF%AE%E6%94%B9">U (Update) - 修改</a></li>
+<li><a href="#d-delete-%E5%88%A0%E9%99%A4">D (Delete) - 删除</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%95%B0%E6%8D%AE%E5%BA%93">使用数据库</a></li>
+</ul>
+</li>
+<li><a href="#%E6%93%8D%E4%BD%9C%E8%A1%A8">操作表</a>
+<ul>
+<li><a href="#c-create-%E5%88%9B%E5%BB%BA-2">C (Create) - 创建</a></li>
+<li><a href="#r-retrieve-%E6%9F%A5%E8%AF%A2-2">R (Retrieve) - 查询</a></li>
+<li><a href="#u-update-%E4%BF%AE%E6%94%B9-2">U (Update) - 修改</a></li>
+<li><a href="#d-delete-%E5%88%A0%E9%99%A4-2">D (Delete) - 删除</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#dml">DML</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E6%95%B0%E6%8D%AE">添加数据</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE">删除数据</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE">修改数据</a></li>
+</ul>
+</li>
+<li><a href="#dql">DQL</a>
+<ul>
+<li><a href="#%E5%9F%BA%E7%A1%80%E6%9F%A5%E8%AF%A2">基础查询</a></li>
+<li><a href="#%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2">条件查询</a>
+<ul>
+<li><a href="#eg">eg:</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%92%E5%BA%8F%E6%9F%A5%E8%AF%A2">排序查询</a></li>
+<li><a href="#%E8%81%9A%E5%90%88%E5%87%BD%E6%95%B0">聚合函数</a></li>
+<li><a href="#%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2">分组查询</a>
+<ul>
+<li><a href="#eg-2">eg:</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2">分页查询</a></li>
+</ul>
+</li>
+<li><a href="#dcl">DCL</a>
+<ul>
+<li><a href="#%E7%AE%A1%E7%90%86%E7%94%A8%E6%88%B7">管理用户</a></li>
+<li><a href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86">权限管理</a>
+<ul>
+<li><a href="#eg-3">eg:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E7%BA%A6%E6%9D%9F">约束</a>
+<ul>
+<li><a href="#%E9%9D%9E%E7%A9%BAnot-null-%E6%9F%90%E4%B8%80%E5%88%97%E7%9A%84%E5%80%BC%E4%B8%8D%E8%83%BD%E4%B8%BA-null">非空：<code>NOT NULL</code>, 某一列的值不能为 null</a></li>
+<li><a href="#%E5%94%AF%E4%B8%80%E7%BA%A6%E6%9D%9Funique-%E6%9F%90%E4%B8%80%E5%88%97%E7%9A%84%E5%80%BC%E4%B8%8D%E8%83%BD%E9%87%8D%E5%A4%8D">唯一约束：<code>UNIQUE</code> 某一列的值不能重复</a></li>
+<li><a href="#%E4%B8%BB%E9%94%AE%E7%BA%A6%E6%9D%9Fprimary-key">主键约束：<code>PRIMARY KEY</code></a></li>
+<li><a href="#%E5%A4%96%E9%94%AE%E7%BA%A6%E6%9D%9Fforeign-key">外键约束：<code>FOREIGN KEY</code></a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%BE%E8%AE%A1">数据库的设计</a>
+<ul>
+<li><a href="#%E5%A4%9A%E8%A1%A8%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB">多表之间的关系</a>
+<ul>
+<li><a href="#%E6%A1%88%E4%BE%8B">案例</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%8C%83%E5%BC%8F">数据库设计的范式</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%A4%87%E4%BB%BD%E5%92%8C%E8%BF%98%E5%8E%9F">数据库的备份和还原</a></li>
+<li><a href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2">多表查询</a>
+<ul>
+<li><a href="#%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%88%86%E7%B1%BB">多表查询的分类</a>
+<ul>
+<li><a href="#%E5%86%85%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2">内连接查询</a>
+<ul>
+<li><a href="#%E9%9A%90%E5%BC%8F%E5%86%85%E8%BF%9E%E6%8E%A5">隐式内连接</a></li>
+<li><a href="#%E6%98%BE%E5%BC%8F%E5%86%85%E8%BF%9E%E6%8E%A5">显式内连接</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%96%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2">外连接查询</a>
+<ul>
+<li><a href="#%E5%B7%A6%E5%A4%96%E8%BF%9E%E6%8E%A5">左外连接</a></li>
+</ul>
+</li>
+<li><a href="#%E5%AD%90%E6%9F%A5%E8%AF%A2">子查询</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8B%E5%8A%A1">事务</a>
+<ul>
+<li><a href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%9B%9B%E5%A4%A7%E7%89%B9%E5%BE%81">事务的四大特征：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qxuewei.github.io/post/ios-runtime-xiang-jie/">
+              <h3 class="post-title">
+                iOS - Runtime 详解
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b5a81cc33693e3ea874',
+    clientSecret: '7bb94672c847c4aa5723a9419fc5b3db33ca0dd6',
+    repo: 'Gittalk',
+    owner: 'qxuewei',
+    admin: ['qxuewei'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://qxuewei.github.io//atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      console.log('section.offsetHeight', section.offsetHeight);
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
