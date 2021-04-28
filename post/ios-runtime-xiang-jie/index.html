@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>iOS - Runtime 详解 | 极客学伟</title>
 <meta name="description" content="一名准独立开发者的内心独白" />
-<link rel="shortcut icon" href="https://qxuewei.github.io//favicon.ico?v=1619507077659">
+<link rel="shortcut icon" href="https://qxuewei.github.io//favicon.ico?v=1619594724524">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://qxuewei.github.io//styles/main.css">
@@ -29,7 +29,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://qxuewei.github.io/">
-  <img class="avatar" src="https://qxuewei.github.io//images/avatar.png?v=1619507077659" alt="">
+  <img class="avatar" src="https://qxuewei.github.io//images/avatar.png?v=1619594724524" alt="">
   </a>
   <h1 class="site-title">
     极客学伟
@@ -134,7 +134,7 @@
 <p>对于 C 语言，函数的调用会在编译期就已经决定好，在编译完成后直接顺序执行。但是 OC 是一门动态语言，函数调用变成了消息发送，在编译期不能知道调用哪个函数，Runtime 就是去解决如何在运行时期找到调用方法的问题。</p>
 <!-- more -->
 <h2 id="1-runtime-函数">1、Runtime 函数</h2>
-<p>Runtime 系统是由一系列的函数和数据结构组成的公共接口动态共享库，在/user/includeobjc 目录下可以看到头文件，可以用到其中一些函数通过C语言实现Objective-C中一样的功能。苹果官方文档 <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html">https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html</a> 里有详细的Runtime 函数文档。</p>
+<p>Runtime 系统是由一系列的函数和数据结构组成的公共接口动态共享库，在/user/includeobjc 目录下可以看到头文件，可以用到其中一些函数通过C语言实现Objective-C中一样的功能。<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html">苹果官方文档</a>  里有详细的Runtime 函数文档。</p>
 <h2 id="2-class-和-nsobject-基础数据结构">2. Class 和 NSObject 基础数据结构</h2>
 <h3 id="21-class">2.1 Class</h3>
 <p>objc_class 结构体的定义如下：</p>

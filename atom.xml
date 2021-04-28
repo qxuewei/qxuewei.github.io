@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qxuewei.github.io/</id>
     <title>极客学伟</title>
-    <updated>2021-04-27T07:04:43.271Z</updated>
+    <updated>2021-04-28T07:25:28.084Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qxuewei.github.io/"/>
     <link rel="self" href="https://qxuewei.github.io/atom.xml"/>
@@ -829,7 +829,7 @@ WHERE
 <p>对于 C 语言，函数的调用会在编译期就已经决定好，在编译完成后直接顺序执行。但是 OC 是一门动态语言，函数调用变成了消息发送，在编译期不能知道调用哪个函数，Runtime 就是去解决如何在运行时期找到调用方法的问题。</p>
 <!-- more -->
 <h2 id="1-runtime-函数">1、Runtime 函数</h2>
-<p>Runtime 系统是由一系列的函数和数据结构组成的公共接口动态共享库，在/user/includeobjc 目录下可以看到头文件，可以用到其中一些函数通过C语言实现Objective-C中一样的功能。苹果官方文档 <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html">https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html</a> 里有详细的Runtime 函数文档。</p>
+<p>Runtime 系统是由一系列的函数和数据结构组成的公共接口动态共享库，在/user/includeobjc 目录下可以看到头文件，可以用到其中一些函数通过C语言实现Objective-C中一样的功能。<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html">苹果官方文档</a>  里有详细的Runtime 函数文档。</p>
 <h2 id="2-class-和-nsobject-基础数据结构">2. Class 和 NSObject 基础数据结构</h2>
 <h3 id="21-class">2.1 Class</h3>
 <p>objc_class 结构体的定义如下：</p>
