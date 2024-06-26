@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://qxuewei.github.io/</id>
+    <title>极客学伟个人主页</title>
+    <updated>2024-06-26T02:59:17.187Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://qxuewei.github.io/"/>
+    <link rel="self" href="https://qxuewei.github.io/atom.xml"/>
+    <subtitle>一名程序员创业过程中的内心独白</subtitle>
+    <logo>https://qxuewei.github.io/images/avatar.png</logo>
+    <icon>https://qxuewei.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, 极客学伟个人主页</rights>
+    <entry>
+        <title type="html"><![CDATA[程序员自由创业周记#36：Gap Year]]></title>
+        <id>https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-36gap-year/</id>
+        <link href="https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-36gap-year/">
+        </link>
+        <updated>2024-06-26T02:58:57.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="程序员自由创业周记36gap-year">程序员自由创业周记#36：Gap Year</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="一整年">一整年</h3>
+<p>刚过去的一周，度过了我31周岁的生日，距离结束上一份工作，刚好一年。一年过得好快，犹记得刚失业那会的迷茫，第一个月的纠结，是继续打工还是自己当“老板”。好在只纠结了一个月，就坚定的开始创业了，如果再既想又想，可能什么都做不好。起初就是把这次旅程当做Gap Year 看待的，西方的Gap Year是毕业后上班之前休整一年，用这一年去做自己喜欢的事，明确自己的人生方向。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="程序员自由创业周记36gap-year">程序员自由创业周记#36：Gap Year</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/307008/pexels-photo-307008.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="一整年">一整年</h3>
+<p>刚过去的一周，度过了我31周岁的生日，距离结束上一份工作，刚好一年。一年过得好快，犹记得刚失业那会的迷茫，第一个月的纠结，是继续打工还是自己当“老板”。好在只纠结了一个月，就坚定的开始创业了，如果再既想又想，可能什么都做不好。起初就是把这次旅程当做Gap Year 看待的，西方的Gap Year是毕业后上班之前休整一年，用这一年去做自己喜欢的事，明确自己的人生方向。</p>
+<!-- more -->
+<p>国内盛行的卷文化很少遇到Gap的，大多数是从没毕业就开始工作，一直到退休，也正如30岁之前的我。但我知道那不是我想要的生活。在之前工作的时候，架构师非常敬业，经常是组里走得最晚的那一个，遇到问题也是优先解决，极其敬业，有时凌晨也会在工作群里发消息，似乎把自己全部贡献了给了工作。后来我想，按照职场的晋升之路，若干年以后我也可能会走到那一步，但那肯定不是我想要的。就那么一瞬间，我发现职场不适合我。</p>
+<p>后来有机会体验一次Gap Year，去做我真正喜欢，想做的事。</p>
+<h3 id="有意思的一年">有意思的一年</h3>
+<p>起初的焦虑几乎每天都萦绕在我周边，没收入那段时间，去篮球场打球都提不起兴致。偶尔会看着天空发呆，好在执行力比较强，一直在工作，为自己的产品工作。</p>
+<p>有时在公园工作，有时在图书馆，有时在咖啡馆，有时在小孩补习课的家长休息区，有时在游乐场边上，在老家，在亲戚家，最多的是在我租住的那个客厅窗户没有阳光还要每个月交4500的出租房里工作。因为在家，我可以用三台显示器。也不需要通勤的哪怕5分钟的时间。</p>
+<p>后来，去年底的时候楼下开始装修，每天工作的时候耳边萦绕着各种电钻的声音，持续了两个多月，终于声音没那么刺耳后年初又迎来了隔壁邻居的装修，又是熟悉的电钻声，因为是隔壁，还经常听到工友们谈天说地的声音，我戴着耳机对此不以为意，不会动摇我做软件的决心。直到最近几天，我听到了楼上拆墙的声音...</p>
+<p>这三家肯定不是约好的，他们肯定不知道他们有一位邻居在他们装修的时候一直在家只工作，不上班。</p>
+<h3 id="本周工作">本周工作</h3>
+<p>继续做AI画图的软件，完善灵动岛小组件 <a href="https://apps.apple.com/app/id6464542768">Island Widgets-学伟®灵动岛锁屏小组件</a>。</p>
+<p>我美丽的媳妇给我设计了特别棒的Logo。</p>
+<p>也在小红书请了独立设计师按照我的原型设计了UI，还可以。用AI辅助作图，很多有意思的功能可以做，文字生成图片、AI头像、老照片修复...</p>
+<p>值得一提的是我的第一个独立软件“<a href="https://apps.apple.com/app/id1468603429">学伟扫描 - OCR&amp;PDF扫描打印</a>”是图片转文字。</p>
+<figure data-type="image" tabindex="2"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.06.14.17183266424370.17183258615765.jpg" alt="AI画图王" loading="lazy"></figure>
+<h3 id="5月收支">5月收支</h3>
+<ul>
+<li>支出：14464.96</li>
+<li>收入：$789.98</li>
+</ul>
+<p>已经达到一年以前为自己设定的目标，会坚定的一直走下去，不动摇。我也会持续告诉跟我一样的程序员，除了上班，还有其他的路可以走，不用非得是送外卖和跑滴滴。</p>
+<hr>
+<h3 id="往期文章">往期文章：</h3>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU4NDE1MzIwNg==&amp;action=getalbum&amp;album_id=3044710252514050050#wechat_redirect">创业周记合集</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[程序员自由创业周记#35：外包、技术选型和卖房]]></title>
+        <id>https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-35wai-bao-ji-zhu-xuan-xing-he-mai-fang/</id>
+        <link href="https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-35wai-bao-ji-zhu-xuan-xing-he-mai-fang/">
+        </link>
+        <updated>2024-06-26T02:58:26.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="程序员自由创业周记35外包-技术选型和卖房">程序员自由创业周记#35：外包、技术选型和卖房</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/8430048/pexels-photo-8430048.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="对待外包的态度">对待外包的态度</h3>
+<p>外包是来钱最快的方式，通过出售自己的时间和技能换取报酬，一定程度上与上班类似。创业后一直在做自己的产品，从习惯打卡软件：<a href="https://apps.apple.com/app/id1477743089">加一</a>，到灵动岛软件：<a href="https://apps.apple.com/app/id6464542768">Island Widgets</a>，然后Mac休息提醒软件：<a href="https://apps.apple.com/app/id6471501135">Nap</a>，到现在正在开发AI作图软件：AI画图王。做自己的产品最开心的就是自由，设计、交互、功能都是自己定，不需要看任何人的脸色，没有deadline。如果有外包的机会来到面前，该怎么对待呢，说下我的态度。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="程序员自由创业周记35外包-技术选型和卖房">程序员自由创业周记#35：外包、技术选型和卖房</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/8430048/pexels-photo-8430048.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="对待外包的态度">对待外包的态度</h3>
+<p>外包是来钱最快的方式，通过出售自己的时间和技能换取报酬，一定程度上与上班类似。创业后一直在做自己的产品，从习惯打卡软件：<a href="https://apps.apple.com/app/id1477743089">加一</a>，到灵动岛软件：<a href="https://apps.apple.com/app/id6464542768">Island Widgets</a>，然后Mac休息提醒软件：<a href="https://apps.apple.com/app/id6471501135">Nap</a>，到现在正在开发AI作图软件：AI画图王。做自己的产品最开心的就是自由，设计、交互、功能都是自己定，不需要看任何人的脸色，没有deadline。如果有外包的机会来到面前，该怎么对待呢，说下我的态度。</p>
+<!-- more -->
+<p>上周好朋友有一个不错的iOS私活，横跨半个北京，见了对方的老板，互相了解了下对方，相谈甚欢。后来与对方技术经理聊了下需求细节，最后我给了报价后就一直没下文了。我猜是双方的需求并没有匹配上。作为外包公司，希望能用就行，没有UI按照原型图开发一个App自然预算不会太高。而我写代码又不会将就，即便是外包代码也要写得漂亮，按照上班时期的日薪报的价显然不会让人满意。通过这个小插曲，也坚定了自己不合适做外包，可能以后也不会有类似的机会，即便有，也不准备再为此投入时间。</p>
+<h3 id="技术选型">技术选型</h3>
+<p>准备给AI画图王写代码的时候采用什么语言和使用什么框架费了一点功夫，目前会的技术栈有老古董Objective-C，Swift，Flutter和SwiftUI。OC这门上个世纪的语言是第一需要排除的，在Flutter和SwiftUI之间犹豫了一番，Flutter看起来是最适合的，跨平台，性能也不错。但是，我不擅长，而且性能和开发速度也不如原生，最后选择了继续深耕在Apple原生平台，不同的是这次用的SwiftUI这个Apple近年来强推的新框架。计划下个月上架iOS版本，下下个月上架Mac版本。</p>
+<h3 id="卖房">卖房</h3>
+<p>为了降低每月开销，第一步去掉房贷，而且烟台基本也不会回去了，17年中烟台买的那个距离海边2km的房子没有必要再留了，挂的价格是那个小区三居室单价最便宜的（69W 单价5800），值得一提的是，假如卖出去还完贷款，就没剩了。首付蒸发了，过去有几年的努力付之一炬。有时候，选择比努力更重要。</p>
+<figure data-type="image" tabindex="2"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.05.31.17171208727546.IMG_0374.PNG" alt="IMG_0374" loading="lazy"></figure>
+<h3 id="本周进展">本周进展</h3>
+<p>摸鱼的一周，学习新技术，开发新产品，打球，看比赛...</p>
+<hr>
+<h3 id="往期文章">往期文章：</h3>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU4NDE1MzIwNg==&amp;action=getalbum&amp;album_id=3044710252514050050#wechat_redirect">创业周记合集</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[程序员自由创业周记#34：直播敲代码]]></title>
+        <id>https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-34zhi-bo-qiao-dai-ma/</id>
+        <link href="https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-34zhi-bo-qiao-dai-ma/">
+        </link>
+        <updated>2024-06-26T02:58:04.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="程序员自由创业周记34直播敲代码">程序员自由创业周记#34：直播敲代码</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" alt="cover" loading="lazy"></figure>
+<h3 id="勇于尝试">勇于尝试</h3>
+<p>过去一段时候经常很在意其他人的眼光，会提醒自己要做那个让所有人都满意的好人，随着时间的推移，想法渐渐有所转变，让所有人都满意是不可能的，即便优秀如孔子，也有很多人觉得他不好，被封建统治阶级利用。何况平凡如我这种资质平平的凡人，后来就不再那么在意别人的眼光。</p>
+<p>“别人怎么看我，关我什么事” - 佚名。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="程序员自由创业周记34直播敲代码">程序员自由创业周记#34：直播敲代码</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=600" alt="cover" loading="lazy"></figure>
+<h3 id="勇于尝试">勇于尝试</h3>
+<p>过去一段时候经常很在意其他人的眼光，会提醒自己要做那个让所有人都满意的好人，随着时间的推移，想法渐渐有所转变，让所有人都满意是不可能的，即便优秀如孔子，也有很多人觉得他不好，被封建统治阶级利用。何况平凡如我这种资质平平的凡人，后来就不再那么在意别人的眼光。</p>
+<p>“别人怎么看我，关我什么事” - 佚名。</p>
+<!-- more -->
+<p>写创业周记是尝试的一部分，你创业这些破事谁爱看啊，你一个月赔4块钱也有必要写篇周记(#6：劝退)记录一下，“这不是活该吗”，“老老实实找个班上不好吗”... 很多人投来鄙夷的眼光。</p>
+<p>后来，我又继续写了29篇，包括这篇。</p>
+<p>除了周记，我甚至开启了直播敲代码，直播画面就是我在家的工位，敲代码、画原型、学新技术、甚至读蹩脚的英语...</p>
+<p>把 Build In Public 维度又增加了一分。想看一看楼主背影的读者可以移步抖音搜索【极客学伟】这个用户。</p>
+<h3 id="拥抱aigc">拥抱AIGC</h3>
+<p>新产品原本计划做一款个人OKR目标管理的软件，后来因为美丽的媳妇让我给她用AI做一张图的时候，发现没有特别好用的手机App产品，有些网页产品生成的效果也不那么尽如人意。灵机一动，要不要做一款AI软件，AI作图。去年AI火爆，各种ChatGPT套壳软件如雨后春笋般涌现，当时我没有加入，一是觉得有灵动岛这个我更想做的产品，另外就是竞争太过激烈。</p>
+<p>近期简单调研发现，AI生成图片的软件还没那么多，竞争相对小一点。如果做一款Apple全平台的原生文生图软件，降低人使用AI的门槛...</p>
+<p>说干就干。</p>
+<p>AI画图王原型图应运而生。</p>
+<figure data-type="image" tabindex="2"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.05.17.17159119900769.17159108384181.jpg" alt="AI画图王原型" loading="lazy"></figure>
+<h3 id="aiphoto">AIPhoto</h3>
+<figure data-type="image" tabindex="3"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.05.17.17159119900795.17159114803318.jpg" alt="" loading="lazy"></figure>
+<p>创建代码仓库发现这个名字已经存在了三年，回想起来是当初流行老照片修复的时候也打算做一款同类型的软件，后来因为上班忙和自己懒最终搁浅了。进一步联想，被我搁浅的项目还有好多，有些代码都写了很多了。比如17年抖音刚火的时候打算做一款文字生成抖音视频的软件，那种只播放文字的抖音视频，后来选择做了OCR。然后就是Mac端的截图软件，代码也已经写了好多。基本流程已经跑通，目前依然没有上线。</p>
+<p>然后就是平时记录的一堆产品想法。</p>
+<figure data-type="image" tabindex="4"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.05.17.17159119900808.17159116554299.jpg" alt="项目灵感" loading="lazy"></figure>
+<p>这么看我自己写软件创业并不是心血来潮，是很久很久就在心里埋下的种子。</p>
+<p>只是现在发了个芽。</p>
+<hr>
+<h3 id="往期文章">往期文章：</h3>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU4NDE1MzIwNg==&amp;action=getalbum&amp;album_id=3044710252514050050#wechat_redirect">创业周记合集</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[程序员自由创业周记#33：创业者的一天]]></title>
+        <id>https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-33chuang-ye-zhe-de-yi-tian/</id>
+        <link href="https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-33chuang-ye-zhe-de-yi-tian/">
+        </link>
+        <updated>2024-06-26T02:57:38.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="程序员自由创业周记33创业者的一天">程序员自由创业周记#33：创业者的一天</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/1226398/pexels-photo-1226398.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="一天的安排">一天的安排</h3>
+<p>只工作不上班的日子是非常考验一个人自律能力的，如果顶不住各种诱惑，一天的时间转瞬即逝。尤其对我这种兴趣极其广泛的人。如果不自律，上午一场NBA比赛就过去了；如果不自律，下午一场球就过去了；如果不自律，晚上一场电影又过去了。尤其手机上又有抖音、虎扑、B站这种时间黑洞类型的App，不自律，一天静悄悄的就过去了。</p>
+<p>怎么才能让自己战胜惰性，即便没人监督也能保持效率呢，我给自己的一些技巧就是：计划、番茄钟；</p>
+<p>比如我一天的安排：</p>
+<h4 id="在改进之前">在改进之前：</h4>
+<figure data-type="image" tabindex="2"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.05.10.17153090026221.17153061347575.jpg" alt="" loading="lazy"></figure>
+<p>这其中有几个问题就是，学完英语让自己进入工作状态后时间太晚，另外下午3点开始做饭又结束太早，晚上8点以后的工作时间很难得到保证。每天大概只有5小时真实工作时间，大概8个40分钟番茄钟，而这显然是不够的。</p>
+<h4 id="后来进行了改进">后来进行了改进</h4>
+<figure data-type="image" tabindex="3"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.05.10.17153090026234.17153060115394.jpg" alt="" loading="lazy"></figure>
+<p>把英语学习时间提前到起床后，并且在早上做好一天的饭，一般炒两个菜。送完孩子之后就可以进入工作状态，一直到下午接孩子中间不吃饭，即便同样晚上的工作时间不能保证，也能有大概8小时专注时间。对于敲代码来说，持续的心流状态很难得，中间需要尽量少被打断。</p>
+<p>这是理想的状态，实践下来之后发现，我并没那么自律😄</p>
+<p>不过好在5点起床的习惯基本已经养成了。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="程序员自由创业周记33创业者的一天">程序员自由创业周记#33：创业者的一天</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/1226398/pexels-photo-1226398.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="一天的安排">一天的安排</h3>
+<p>只工作不上班的日子是非常考验一个人自律能力的，如果顶不住各种诱惑，一天的时间转瞬即逝。尤其对我这种兴趣极其广泛的人。如果不自律，上午一场NBA比赛就过去了；如果不自律，下午一场球就过去了；如果不自律，晚上一场电影又过去了。尤其手机上又有抖音、虎扑、B站这种时间黑洞类型的App，不自律，一天静悄悄的就过去了。</p>
+<p>怎么才能让自己战胜惰性，即便没人监督也能保持效率呢，我给自己的一些技巧就是：计划、番茄钟；</p>
+<p>比如我一天的安排：</p>
+<h4 id="在改进之前">在改进之前：</h4>
+<figure data-type="image" tabindex="2"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.05.10.17153090026221.17153061347575.jpg" alt="" loading="lazy"></figure>
+<p>这其中有几个问题就是，学完英语让自己进入工作状态后时间太晚，另外下午3点开始做饭又结束太早，晚上8点以后的工作时间很难得到保证。每天大概只有5小时真实工作时间，大概8个40分钟番茄钟，而这显然是不够的。</p>
+<h4 id="后来进行了改进">后来进行了改进</h4>
+<figure data-type="image" tabindex="3"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.05.10.17153090026234.17153060115394.jpg" alt="" loading="lazy"></figure>
+<p>把英语学习时间提前到起床后，并且在早上做好一天的饭，一般炒两个菜。送完孩子之后就可以进入工作状态，一直到下午接孩子中间不吃饭，即便同样晚上的工作时间不能保证，也能有大概8小时专注时间。对于敲代码来说，持续的心流状态很难得，中间需要尽量少被打断。</p>
+<p>这是理想的状态，实践下来之后发现，我并没那么自律😄</p>
+<p>不过好在5点起床的习惯基本已经养成了。</p>
+<!-- more -->
+<h3 id="本周进展">本周进展</h3>
+<p>本周 <a href="https://apps.apple.com/app/id6464542768">Island Widgets-学伟®灵动岛锁屏小组件</a> 上线了台湾省用户许愿的灵动秒针功能，给他上线了这个功能，在灵动岛显示秒数。</p>
+<figure data-type="image" tabindex="4"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.05.10.17153090026240.17153075006160.jpg" alt="" loading="lazy"></figure>
+<h5 id="效果">效果</h5>
+<figure data-type="image" tabindex="5"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.05.10.17153090026245.65DF21A6-AEBB-4C18-B5FB-9C7D6033E31B_1_105_c.jpeg" alt="65DF21A6-AEBB-4C18-B5FB-9C7D6033E31B_1_105_c" loading="lazy"></figure>
+<h3 id="4月收支">4月收支</h3>
+<ul>
+<li>支出：24509.56</li>
+<li>收入：$584.15</li>
+</ul>
+<figure data-type="image" tabindex="6"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.05.10.17153090026250.62281632-7D75-468A-B834-D5395A0E1F16_4_5005_c.jpeg" alt="62281632-7D75-468A-B834-D5395A0E1F16_4_5005_c" loading="lazy"></figure>
+<p>如果不是连续摔坏两部手机，数码的支出原本不该有这么多。</p>
+<hr>
+<h3 id="往期文章">往期文章：</h3>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU4NDE1MzIwNg==&amp;action=getalbum&amp;album_id=3044710252514050050#wechat_redirect">创业周记合集</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[程序员自由创业周记#32：新产品构思]]></title>
+        <id>https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-32xin-chan-pin-gou-si/</id>
+        <link href="https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-32xin-chan-pin-gou-si/">
+        </link>
+        <updated>2024-06-26T02:57:10.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="程序员自由创业周记32新产品构思">程序员自由创业周记#32：新产品构思</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/3340976/pexels-photo-3340976.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="新作品">新作品</h3>
+<p>我时常把自己看做一位木匠，有点手艺，能做一些作品养活自己。而 加一、Island Widgets、Nap 就是我的作品。</p>
+<p>接下来在持续维护迭代的同时，要开启下一个作品的创造了。</p>
+<p>其实早在2022的10月份就已经开始搭建项目的基本框架并做了一些开发了。不过鉴于没有一套完善的UI和原型，进度一拖再拖。</p>
+<p>创业后发现，如果有一套完善的UI图、在编码和迭代速度方面都很快，然而边开发边自己设计既慢又丑。XWOKR 就是一个典型的例子，项目启动了一年多，依然是个Demo。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="程序员自由创业周记32新产品构思">程序员自由创业周记#32：新产品构思</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/3340976/pexels-photo-3340976.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="新作品">新作品</h3>
+<p>我时常把自己看做一位木匠，有点手艺，能做一些作品养活自己。而 加一、Island Widgets、Nap 就是我的作品。</p>
+<p>接下来在持续维护迭代的同时，要开启下一个作品的创造了。</p>
+<p>其实早在2022的10月份就已经开始搭建项目的基本框架并做了一些开发了。不过鉴于没有一套完善的UI和原型，进度一拖再拖。</p>
+<p>创业后发现，如果有一套完善的UI图、在编码和迭代速度方面都很快，然而边开发边自己设计既慢又丑。XWOKR 就是一个典型的例子，项目启动了一年多，依然是个Demo。</p>
+<!-- more -->
+<p>创业这大半年，效率最高的还是拿到加一设计图，两耳不闻窗外事，一个月完成一个完整App的时期。</p>
+<p>最近也开始了Figma的学习，补足设计的短板。</p>
+<figure data-type="image" tabindex="2"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.04.19.17134909020829.17134875991846.jpg" alt="" loading="lazy"></figure>
+<h3 id="okr-的构思">OKR 的构思</h3>
+<p>对于这个产品，脑海中时常会构思他的功能，大概是这样的：</p>
+<p>这是一个OKR产品，专注于个人目标管理的个人OKR，分不同时间阶段设定不同的目标，每个目标分成不同的可量化指标，每个可量化指标通过待办事项完成进度。（Objective -&gt; KR -&gt; TODO）</p>
+<p>最终的结果是随着各种待办的完成，所有的可量化指标进而达标，每一项指标的完成进而实现目标。（TODO -&gt; KR -&gt; Objective）。</p>
+<p>比如：设定目标：提高身体素质，分为指标1：每周至少跑步4次；指标2：每天至少睡8小时；指标3：每天至少步行5000步。</p>
+<p>每天的待办中完成相应的指标，自动记录进度。</p>
+<p>其他的特点就是周期性，每年、每个季度、每个月 制定不同的目标。</p>
+<p>复盘，对于完成有什么奖励、完不成有什么惩罚，在制定目标的时候就设置好。</p>
+<p>有时候每到年底复盘和年终总结，会觉得自己好像有些碌碌无为，其中很大一部分原因是不知道自己在干什么，为了什么，也没有直观能看到自己目标和理想的一个工具，新产品就是提供这个工具。即是给自己开发，也是为了其他有目标管理的用户。</p>
+<p>名字还没想好。</p>
+<h3 id="本周进度">本周进度</h3>
+<ul>
+<li><a href="https://apps.apple.com/app/id6464542768">Island Widgets-学伟®灵动岛锁屏小组件</a> 新增日历组件，在灵动岛和锁屏显示iPhone自带的日历，提醒您不再忘记各种日程安排</li>
+<li><a href="https://apps.apple.com/app/id6471501135">Nap - Break Reminder</a> 优化内存占用</li>
+</ul>
+<hr>
+<h3 id="往期文章">往期文章：</h3>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU4NDE1MzIwNg==&amp;action=getalbum&amp;album_id=3044710252514050050#wechat_redirect">创业周记合集</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[程序员自由创业周记#31：我曾走在崩溃的边缘]]></title>
+        <id>https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-31wo-ceng-zou-zai-beng-kui-de-bian-yuan/</id>
+        <link href="https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-31wo-ceng-zou-zai-beng-kui-de-bian-yuan/">
+        </link>
+        <updated>2024-06-26T02:56:42.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="程序员自由创业周记31我曾走在崩溃的边缘">程序员自由创业周记#31：我曾走在崩溃的边缘</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/18376941/pexels-photo-18376941.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" alt="cover" loading="lazy"></figure>
+<h3 id="给大家推荐一本书">给大家推荐一本书</h3>
+<p>《我曾走在崩溃的边缘》讲的是俞敏洪讲述新东方从0到1、从1到N的创业历程。很久以前就看过，虽然书中的内容已经忘得基本差不多了，但是书名仍记忆犹新。因为刚过去的这周，我也走在崩溃的边缘。</p>
+<p>原因是因为我的大意，导致过去两个月创业的收入付之一炬。本来今天没心情写周记的，但是这种心路历程还是值的记录一下。</p>
+<p>说是我的原因吧，我又觉得不全是。周二的下午，骑着我的小电动，迎着落日的晚霞在北京三环的辅路机动车道上一路疾驶，耳机里播放着 《一个创业“失败者”的自白》的播客（我还是那么喜欢骑行的时候听播客，就像过去5年骑自行车通勤时那样），突然耳机不响了，我似乎意识到了什么，下意识摸了下口袋，手机没了。随即调转车头回来时的路上找，值得庆幸的是在身后200米的地方找到了手机，不幸的是-碎了。一旁的行人告诉我说是刚才被车碾过去了。我拿着正在掉渣的手机，矗立在北京短暂春天傍晚的冷风中。电动车是用手机启动的，然而电动车锁了，手机无法启动。跟行人借手机打电话求助家人用她的手机给我电动车远程解锁，别人看我一年富力强的小伙手里拿着一个碎手机，纷纷避而远之，即便我坐公交车的时候每次都会给老人让座，但是此时依然没人借给我。</p>
+<figure data-type="image" tabindex="2"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.04.12.17128929537491.17128929322605.jpg" alt="" loading="lazy"></figure>
+<h3 id="祸不单行">祸不单行</h3>
+<p>碎的手机是去年4月9号花7359买的iPhone 14 Pro Max，我灵动岛软件 Island Widgets唯一能真机测试灵动岛的主力机。而周二，也是4月9号。当晚拿着这台无法开机去手机店，店员看了直摇头，屏幕碎了、电池弯了、主板断了，三大件，一样没有好的。已经失去了维修的价值，回收的话可以换个脸盆。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="程序员自由创业周记31我曾走在崩溃的边缘">程序员自由创业周记#31：我曾走在崩溃的边缘</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/18376941/pexels-photo-18376941.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" alt="cover" loading="lazy"></figure>
+<h3 id="给大家推荐一本书">给大家推荐一本书</h3>
+<p>《我曾走在崩溃的边缘》讲的是俞敏洪讲述新东方从0到1、从1到N的创业历程。很久以前就看过，虽然书中的内容已经忘得基本差不多了，但是书名仍记忆犹新。因为刚过去的这周，我也走在崩溃的边缘。</p>
+<p>原因是因为我的大意，导致过去两个月创业的收入付之一炬。本来今天没心情写周记的，但是这种心路历程还是值的记录一下。</p>
+<p>说是我的原因吧，我又觉得不全是。周二的下午，骑着我的小电动，迎着落日的晚霞在北京三环的辅路机动车道上一路疾驶，耳机里播放着 《一个创业“失败者”的自白》的播客（我还是那么喜欢骑行的时候听播客，就像过去5年骑自行车通勤时那样），突然耳机不响了，我似乎意识到了什么，下意识摸了下口袋，手机没了。随即调转车头回来时的路上找，值得庆幸的是在身后200米的地方找到了手机，不幸的是-碎了。一旁的行人告诉我说是刚才被车碾过去了。我拿着正在掉渣的手机，矗立在北京短暂春天傍晚的冷风中。电动车是用手机启动的，然而电动车锁了，手机无法启动。跟行人借手机打电话求助家人用她的手机给我电动车远程解锁，别人看我一年富力强的小伙手里拿着一个碎手机，纷纷避而远之，即便我坐公交车的时候每次都会给老人让座，但是此时依然没人借给我。</p>
+<figure data-type="image" tabindex="2"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.04.12.17128929537491.17128929322605.jpg" alt="" loading="lazy"></figure>
+<h3 id="祸不单行">祸不单行</h3>
+<p>碎的手机是去年4月9号花7359买的iPhone 14 Pro Max，我灵动岛软件 Island Widgets唯一能真机测试灵动岛的主力机。而周二，也是4月9号。当晚拿着这台无法开机去手机店，店员看了直摇头，屏幕碎了、电池弯了、主板断了，三大件，一样没有好的。已经失去了维修的价值，回收的话可以换个脸盆。</p>
+<!-- more -->
+<p>周记2：前期准备中提到我创业伊始买过一台iPhone12的测试机，幸亏有它，我还不至于失联，但是就是在第二天，我刚把手机卡放进去没多会，吃饭的时候从同一个口袋里掉在了地上，也坏了，开不了机了。</p>
+<p>要知道，现在已经不是上班巅峰的时候了，有工资心里有底，遇事不慌。这两天内失去9k，说走在崩溃的边缘也不为过吧，甚至当天晚上我下载了Boss直聘。奉劝想创业的程序员，在副业超过主业之前，尽量不要冒险全职做。</p>
+<h3 id="本周进展">本周进展</h3>
+<p>上线了在灵动岛显示和处理系统待办的功能，解决的痛点是把Apple提醒事项的各种待办在锁屏或灵动岛显示和处理，无需打开App。</p>
+<figure data-type="image" tabindex="3"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.04.12.17128928849122.17128925815463.jpg" alt="" loading="lazy"></figure>
+<h3 id="3月收支">3月收支</h3>
+<ul>
+<li>支出：14520.05</li>
+<li>收入：$597</li>
+</ul>
+<hr>
+<h3 id="往期文章">往期文章：</h3>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU4NDE1MzIwNg==&amp;action=getalbum&amp;album_id=3044710252514050050#wechat_redirect">创业周记合集</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[程序员自由创业周记#30：两周发布5个版本]]></title>
+        <id>https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-30liang-zhou-fa-bu-5-ge-ban-ben/</id>
+        <link href="https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-30liang-zhou-fa-bu-5-ge-ban-ben/">
+        </link>
+        <updated>2024-06-26T02:56:17.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="程序员自由创业周记30两周发布5个版本">程序员自由创业周记#30：两周发布5个版本</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/6633920/pexels-photo-6633920.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" alt="cover" loading="lazy"></figure>
+<h3 id="两周发布5个版本">两周发布5个版本</h3>
+<p>过去两周，Island Widgets 发了5个版本，在灵动岛小组件这个极其细分的领域，我想做到极致，以致于在提到灵动岛上可以使用小组件，第一个想起的就是 Island Widgets。如果做到这个程度，还有很长的路要走，这也迫使我不求多，但求精。所以创业这半年来，主要精力还是在这个产品。五个版本分别上线了5个不同的新功能，有意思的新功能。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="程序员自由创业周记30两周发布5个版本">程序员自由创业周记#30：两周发布5个版本</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/6633920/pexels-photo-6633920.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=2" alt="cover" loading="lazy"></figure>
+<h3 id="两周发布5个版本">两周发布5个版本</h3>
+<p>过去两周，Island Widgets 发了5个版本，在灵动岛小组件这个极其细分的领域，我想做到极致，以致于在提到灵动岛上可以使用小组件，第一个想起的就是 Island Widgets。如果做到这个程度，还有很长的路要走，这也迫使我不求多，但求精。所以创业这半年来，主要精力还是在这个产品。五个版本分别上线了5个不同的新功能，有意思的新功能。</p>
+<!-- more -->
+<p>新功能几乎都源于用户反馈，在自己斟酌后开发、测试、上线，这其中的标准就是有用和有趣。</p>
+<figure data-type="image" tabindex="2"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.29.17116851555644.E66C08EB-7343-455B-8C84-0CAD82DE8FCC_1_101_o.jpeg" alt="版本记录" loading="lazy"></figure>
+<h3 id="灵动岛软件新功能喝水提醒">灵动岛软件新功能：喝水提醒</h3>
+<p>喝水提醒这个领域之前就有耳闻，小众且细分的赛道。毕竟现代人的工作节奏之快，往往会不注重健康，等到渴了再去喝水的时候其实就是身体在抗议了。把每天喝水的数量放在灵动岛，每喝一次在灵动岛做个记录，每隔一段时间提醒，这全程不需要打开App。比起市面上的喝水提醒软件，操作便捷的同时满足了需求。</p>
+<figure data-type="image" tabindex="3"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.29.17116851555664.BB2BB4A8-C539-48B2-991A-64DBBB27AA63_1_105_c.jpeg" alt="喝水提醒" loading="lazy"></figure>
+<h3 id="灵动岛软件新功能时速">灵动岛软件新功能：时速</h3>
+<p>比如在骑车或者开车的时候，想看到自己当前的速度，也不想下载其他软件，那就可以使用 Island Widgets，把当前时速放在灵动岛上。</p>
+<figure data-type="image" tabindex="4"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.29.17116851555677.BE544817-E7E3-4091-8933-3CA951DA3549_1_105_c.jpeg" alt="灵动时速" loading="lazy"></figure>
+<h3 id="灵动岛软件新功能一言">灵动岛软件新功能：一言</h3>
+<p>如果每次拿起手机，手机上第一眼看到的是一句名言，会不经意中给自己加油打气。有些话，也能让自己有一些共鸣，</p>
+<figure data-type="image" tabindex="5"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.29.17116851555688.FED34EFD-8453-40F1-9371-0157FD230041_1_105_c.jpeg" alt="灵动鸡汤" loading="lazy"></figure>
+<h3 id="灵动岛软件新功能快递进度">灵动岛软件新功能：快递进度</h3>
+<p>这个功能也是在之前发起投票中用户反馈最希望上线的功能，比如买了一个iPhone，不用再打开购物软件，把快递进度放在灵动岛，快递到哪了一目了然。</p>
+<figure data-type="image" tabindex="6"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.29.17116851555699.17116836833244.jpg" alt="软件共建" loading="lazy"></figure>
+<h3 id="番外">番外</h3>
+<p>分享一次有趣的经历，因为我不上班，所以几乎每个工作日的下午，我都会出现在体育公园的篮球场，那天一个白发苍苍的老爷爷走近我，语重心长的告诫我，年轻的时间是有限的，现在应该干什么，不要等以后老了后悔。我听后若有所思...</p>
+<hr>
+<h3 id="往期文章">往期文章：</h3>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU4NDE1MzIwNg==&amp;action=getalbum&amp;album_id=3044710252514050050#wechat_redirect">创业周记合集</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[程序员自由创业周记#29：如果遇到裁员]]></title>
+        <id>https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-29ru-guo-yu-dao-cai-yuan/</id>
+        <link href="https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-29ru-guo-yu-dao-cai-yuan/">
+        </link>
+        <updated>2024-06-26T02:55:47.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="程序员自由创业周记29如果遇到裁员">程序员自由创业周记#29：如果遇到裁员</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/1029141/pexels-photo-1029141.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="希望">希望</h3>
+<p>希望你们的职业生涯永远不会遇到裁员，希望你们所在的部门善待员工，也希望你们的公司遵纪守法。但是，如果你们不幸遇上这种事，我也希望你们知道该如何对应。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="程序员自由创业周记29如果遇到裁员">程序员自由创业周记#29：如果遇到裁员</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/1029141/pexels-photo-1029141.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="希望">希望</h3>
+<p>希望你们的职业生涯永远不会遇到裁员，希望你们所在的部门善待员工，也希望你们的公司遵纪守法。但是，如果你们不幸遇上这种事，我也希望你们知道该如何对应。</p>
+<!-- more -->
+<h3 id="劳动法"><a href="https://www.gov.cn/flfg/2007-06/29/content_669394.htm">劳动法</a></h3>
+<p>这是劳动法的网址：https://www.gov.cn/flfg/2007-06/29/content_669394.htm 。</p>
+<p>我觉得这是每位劳动者都需要了解的法律。</p>
+<p>当企业想裁员可能会无所不用其极，很多人会受不了公司的PUA或各种威逼利诱接受了0赔偿或者N或者N+1的条件离开，在协议解除的离职合同上签了字，当你签了字，法律也不会保护你。</p>
+<p>当然，如果自己能接受，也未尝不可。</p>
+<p>但是我想告诉你的是，只要你没有犯特别大的错，法律规定的赔偿标准是2N。一般来说，拿到2N需要走法律途径。而且年终奖，如果走法律途径，大概率也能争取得到。</p>
+<p>所以你自己计算下省心拿走 N+1 离开 和 走法律途径拿 2N+年终 两者数额的差距，就能知道自己该采取哪种应对措施。所有低于 N+1 方案都是耍流氓。</p>
+<h3 id="什么是犯特别大的错">什么是“犯特别大的错”</h3>
+<p>看劳动法的第39条和第40条。其中容易中圈套的在 &quot;严重违反用人单位的规章制度的&quot; 和 &quot;劳动者不能胜任工作，经过培训或者调整工作岗位，仍不能胜任工作的；&quot;</p>
+<ul>
+<li>有些公司会因为员工没按时提交周报说员工“严重违反”了规章制度，那就去找公司的规章制度里哪一条规定了。以此类推。</li>
+<li>“不胜任工作“，找公司的规章制度，什么标准是不胜任，而不是你的领导说你不胜任。即便真的不胜任了，需要给你培训，再次指定<strong>合理</strong>标准进行考核。即便二次考核也不幸没达到标准，也是N+1走人。</li>
+</ul>
+<h3 id="如果想走法律途径维权">如果想走法律途径维权</h3>
+<p>下面是我之前在一些律师群里收集到的应对方法，分享给你们。</p>
+<figure data-type="image" tabindex="2"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.15.17104798993901.17104789339698.jpg" alt="" loading="lazy"></figure>
+<p><strong>word文件完整版见：https://github.com/qxuewei/Laodongfa</strong></p>
+<h3 id="当被告知被裁员">当被告知被裁员</h3>
+<p>你在这家公司的生涯已经结束了，不要在抱有任何幻想。专心准备后续的路，记得挺起腰来。</p>
+<figure data-type="image" tabindex="3"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.15.17104798993916.2B6E3095-6519-4719-905A-D3AAAA613BAD_1_105_c.jpeg" alt="精神辞职" loading="lazy"></figure>
+<h3 id="如果不给离职证明">如果不给离职证明</h3>
+<p>把这段话发给你们的HR。</p>
+<figure data-type="image" tabindex="4"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.15.17104798993928.7480b0436869cc2456773ef3a5335406.jpg" alt="不给离职证明应对" loading="lazy"></figure>
+<hr>
+<h3 id="往期文章">往期文章：</h3>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU4NDE1MzIwNg==&amp;action=getalbum&amp;album_id=3044710252514050050#wechat_redirect">创业周记合集</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[程序员自由创业周记#28：小憩]]></title>
+        <id>https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-28xiao-qi/</id>
+        <link href="https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-28xiao-qi/">
+        </link>
+        <updated>2024-03-01T00:45:17.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="程序员自由创业周记28小憩">程序员自由创业周记#28：小憩</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/1804035/pexels-photo-1804035.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="专注">专注</h3>
+<p>不知道你会不会有类似的经历：</p>
+<ol>
+<li>周末在家学习，有点累，玩会手机吧，2个小时过去了。。</li>
+<li>工作或学习效率太低，计划好的任务一改再改。。</li>
+<li>长时间工作不能自拔，由于一直盯着屏幕，视力一天不如一天。。</li>
+</ol>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="程序员自由创业周记28小憩">程序员自由创业周记#28：小憩</h1>
+<figure data-type="image" tabindex="1"><img src="https://images.pexels.com/photos/1804035/pexels-photo-1804035.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="cover" loading="lazy"></figure>
+<h3 id="专注">专注</h3>
+<p>不知道你会不会有类似的经历：</p>
+<ol>
+<li>周末在家学习，有点累，玩会手机吧，2个小时过去了。。</li>
+<li>工作或学习效率太低，计划好的任务一改再改。。</li>
+<li>长时间工作不能自拔，由于一直盯着屏幕，视力一天不如一天。。</li>
+</ol>
+<!-- more -->
+<p>之前的我经常会遇到类似的问题，经过几年的摸索，提高效率达成目标同时能保持健康的方式就是：计划+番茄钟。<br>
+计划不必多说，一步步达成目标必不可少的步骤，我从18年开始列每天计划，这个习惯已经保持了6年。</p>
+<figure data-type="image" tabindex="2"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.01.17092512592675.17092492400553.jpg" alt="" loading="lazy"></figure>
+<h3 id="我的今日计划">我的今日计划</h3>
+<figure data-type="image" tabindex="3"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.01.17092512592699.17092490674948.jpg" alt="" loading="lazy"></figure>
+<p>这其中的 F 就是 Fanqie 的 F。每一次番茄专注时间是 40分钟，每完成一次番茄专注，休息2分钟，看看远方、喝杯水、走动一下、活动活动脖子... 不至于一直盯着屏幕视力变差。</p>
+<h3 id="番茄计时工具">番茄计时工具</h3>
+<p>之前用的手机上的App，使用久了有两个问题：</p>
+<ol>
+<li>每次番茄计时需要自己手动开启。</li>
+<li>需要拿起手机。</li>
+</ol>
+<p>众所周知，只要我们拿起手机，时间就会变得不可控。</p>
+<p>有没有能不需要我操作的番茄计时器呢、专注时长我能自己配置、休息时长我也能自己配置、每完成几次休息的时间长一点、休息的时候只能休息。</p>
+<p>没有，那就自己做一个。 <a href="https://apps.apple.com/app/id6471501135">Nap - Break Reminder</a> 应运而生。一款在Mac端提醒休息的番茄钟产品。</p>
+<p>每次开启自动启动，我习惯把状态栏的图标隐藏掉，让他默默地在后台运行。每工作40分钟屏幕即无法使用，强制自己休息几分钟。休息结束会有提示音告诉我，需要开启新一次专注了。</p>
+<figure data-type="image" tabindex="4"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.01.17092512592715.96043B6A-0026-4BAF-B59C-B161D1432686_1_105_c.jpeg" alt="休息效果" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://wescanner-docx.jkxuewei.com/images/mweb/2024.03.01.17092512592729.17085227772565.jpg" alt="核心功能" loading="lazy"></figure>
+<p>尤其自己创业以后，时间完成自己掌控，更需要这个番茄钟给我提升工作效率，同时缓解疲劳,定时提醒喝水,避免久坐，更好的进行时间管理。</p>
+<h2 id="怎么体验">怎么体验</h2>
+<p>Mac 用户在 AppStore 搜索：<a href="https://apps.apple.com/app/id6471501135">Nap</a></p>
+<hr>
+<p>或者浏览器直接输入：https://apps.apple.com/app/id6471501135</p>
+<hr>
+<h3 id="往期文章">往期文章：</h3>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU4NDE1MzIwNg==&amp;action=getalbum&amp;album_id=3044710252514050050#wechat_redirect">创业周记合集</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[程序员自由创业周记#27：新年快乐]]></title>
+        <id>https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-27xin-nian-kuai-le/</id>
+        <link href="https://qxuewei.github.io/post/cheng-xu-yuan-zi-you-chuang-ye-zhou-ji-27xin-nian-kuai-le/">
+        </link>
+        <updated>2024-02-23T01:44:05.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="程序员自由创业周记27新年快乐">程序员自由创业周记#27：新年快乐</h1>
+<figure data-type="image" tabindex="1"><img src="https://dogefs.s3.ladydaily.com/~/source/unsplash/photo-1486078695445-0497c2f58cfe?q=80&amp;w=3348&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%253D%253D" alt="cover" loading="lazy"></figure>
+<h3 id="新年快乐">新年快乐</h3>
+<p>给我的读者说一句迟来的新年快乐，希望我们在今年都能得偿所愿~</p>
+<p>回到老家，谈得最多的也是我目前的现状和想法，我自己何尝不是千万次的问自己呢，我创业的做法在很多人看来都是另类和不务正业的。为什么不去踏踏实实找个班上呢，即使是最亲最近的媳妇也想让我去找个班上，一个程序员，一年的Gap，或是更多年的Gap，无异于断送自己的职业生涯，尤其在我们国人的思想观念里。</p>
+<p>之前计划的13个月的梦已然过半，积蓄越来越少，仲裁的结果也犹如晴天霹雳，为什么还要坚持创业，坚持自己做软件卖呢，在坚持什么呢？</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="程序员自由创业周记27新年快乐">程序员自由创业周记#27：新年快乐</h1>
+<figure data-type="image" tabindex="1"><img src="https://dogefs.s3.ladydaily.com/~/source/unsplash/photo-1486078695445-0497c2f58cfe?q=80&amp;w=3348&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%253D%253D" alt="cover" loading="lazy"></figure>
+<h3 id="新年快乐">新年快乐</h3>
+<p>给我的读者说一句迟来的新年快乐，希望我们在今年都能得偿所愿~</p>
+<p>回到老家，谈得最多的也是我目前的现状和想法，我自己何尝不是千万次的问自己呢，我创业的做法在很多人看来都是另类和不务正业的。为什么不去踏踏实实找个班上呢，即使是最亲最近的媳妇也想让我去找个班上，一个程序员，一年的Gap，或是更多年的Gap，无异于断送自己的职业生涯，尤其在我们国人的思想观念里。</p>
+<p>之前计划的13个月的梦已然过半，积蓄越来越少，仲裁的结果也犹如晴天霹雳，为什么还要坚持创业，坚持自己做软件卖呢，在坚持什么呢？</p>
+<!-- more -->
+<h3 id="我是这么想的">我是这么想的：</h3>
+<ol>
+<li>少挣的钱就当买了我的自由，而自由于我而言是无价的。</li>
+<li>人不能一辈子打工，需要有自己的事业，一份完全属于自己的事业。</li>
+<li>职场里的我就像温水里的青蛙，一年又一年，一年又一年... 毫无波澜。</li>
+<li>生命的意义于我而言就是体验，体验不同的经历。</li>
+<li>目前创业的收入已经超出我之前的预期。</li>
+</ol>
+<h3 id="节点">节点</h3>
+<p>过年期间跟媳妇定了一个节点，如果月收入达不到5k，今年8月份就去找工作。我也欣然答应，毕竟不是单身，还有家庭的责任要负，家里的顶梁柱一个月如果不能给家里带回5K，我也觉得是不称职的。而8月份就是这场13个月梦的最后一个月。按照目前的收入水平，还需多多努力才行。之前计划的是满第一年月收入3K就继续自己干，现在计划有变，不过依然志在必得。</p>
+<h3 id="仲裁判决">仲裁判决</h3>
+<p>之前聊过我开始创业的其中一个原因是被之前公司单方解除劳动合同，而且是无赔偿。仲裁在昨天出了判决书，因为在单方解除合同通知书上我签了字，而通知书上有一行“对通知内容没有异议” 的话，我当时只看到了 “签收页”。就像取快递签字一样签上了自己的名字，而这，是我败诉的原因。而我准备的十几个G的努力工作，解决工作问题，每天写日报汇报工作成果等等的证据，只字未提。希望我的读者不要遇到这种公司、这种部门，如果像我一样运气差，记得不要签字，任何字。</p>
+<h3 id="新产品">新产品</h3>
+<p>继创业后开发了 <a href="https://apps.apple.com/cn/app/id1477743089">加一 - 自律打卡</a> 和 <a href="https://apps.apple.com/cn/app/id6464542768">Island Widgets-学伟®灵动岛锁屏小组件</a> 两款产品后，这周发布了创业的第三个产品，下篇周记带来给大家认识。</p>
+<hr>
+<h3 id="往期文章">往期文章：</h3>
+<p><a href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzU4NDE1MzIwNg==&amp;action=getalbum&amp;album_id=3044710252514050050#wechat_redirect">创业周记合集</a></p>
+]]></content>
+    </entry>
+</feed>
